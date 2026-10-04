@@ -16,6 +16,7 @@
 
 namespace local_epure;
 
+#[\PHPUnit\Framework\Attributes\CoversClass(iomad::class)]
 /**
  * Tests for IOMAD detection.
  *
@@ -25,7 +26,6 @@ namespace local_epure;
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers     \local_epure\iomad
  */
-#[\PHPUnit\Framework\Attributes\CoversClass(iomad::class)]
 final class iomad_test extends \advanced_testcase {
     /**
      * On a site without IOMAD, detection is negative and there is no company.
