@@ -64,7 +64,7 @@ Administration du site › Apparence › Épure. Avec IOMAD, chaque entreprise p
 | Police | Polices embarquées (IBM Plex Sans, Inter, Source Sans 3, Figtree, Lato), polices de lisibilité (Atkinson Hyperlegible, Lexend, OpenDyslexic), ou police de l'établissement téléversée en `.woff2` ou `.woff` | Échelle typographique complète |
 | Arrondis | Net, doux, arrondi | Cartes, boutons, champs |
 | Mode d'affichage | Clair, sombre, ou au choix de l'utilisateur | Tous les composants |
-| Image de connexion | Facultative | Écran partagé, ou fond uni de la couleur de marque |
+| Page de connexion | Écran partagé ou formulaire centré, accroche, texte d'accompagnement, image de fond facultative | Voile de la couleur de marque dont l'opacité garantit un texte lisible (AA) quelle que soit l'image |
 | Pied de page | Mentions légales, accessibilité, contact | — |
 | SCSS personnalisé | Pour les cas particuliers | — |
 
@@ -137,7 +137,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 
 ## Jalons
 
-### V0.1 — Fondations (en cours)
+### V0.1 — Fondations (terminé)
 
 - [x] Dépôt, licence, feuille de route
 - [x] `theme_epure` installable, enfant de Boost
@@ -148,11 +148,12 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Squelette de `local_epure` avec détection d'IOMAD
 - [x] Intégration continue sur Moodle 4.5, 5.0 et 5.1
 
-### V0.2 — Identité et connexion
+### V0.2 — Identité et connexion (terminé)
 
-- [ ] Extraction des couleurs du logo et pipette dans la page de réglages
-- [ ] Page de connexion
-- [ ] En-tête, navigation et pied de page
+- [x] Extraction des couleurs du logo et pipette dans la page de réglages
+- [x] Page de connexion : écran partagé avec visuel de marque, accroche, image de fond avec voile calculé pour rester lisible ; ou formulaire centré
+- [x] Liens soulignés dans le texte, pour ne jamais dépendre de la seule couleur
+- [ ] En-tête, navigation et pied de page : reporté en V0.4 avec le parcours de l'apprenant
 
 ### V0.3 — Accessibilité
 
