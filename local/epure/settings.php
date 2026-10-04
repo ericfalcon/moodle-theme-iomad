@@ -25,8 +25,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
-    $settings = new admin_settingpage('local_epure', get_string('pluginname', 'local_epure'));
+    $ADMIN->add('localplugins', new admin_category('local_epure_category', get_string('pluginname', 'local_epure')));
 
+    $settings = new admin_settingpage('local_epure', get_string('status', 'local_epure'));
     if ($ADMIN->fulltree) {
         $status = \local_epure\iomad::is_installed()
             ? get_string('iomaddetected', 'local_epure')
@@ -37,6 +38,11 @@ if ($hassiteconfig) {
             html_writer::tag('p', $status)
         ));
     }
+    $ADMIN->add('local_epure_category', $settings);
 
-    $ADMIN->add('localplugins', $settings);
+    $ADMIN->add('local_epure_category', new admin_externalpage(
+        'local_epure_vocabulary',
+        get_string('vocabulary', 'local_epure'),
+        new moodle_url('/local/epure/vocabulary.php')
+    ));
 }

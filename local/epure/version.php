@@ -25,8 +25,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_epure';
-$plugin->version   = 2026100400;
-$plugin->release   = '0.1.0';
+$plugin->version   = 2026100500;
+$plugin->release   = '0.2.0';
 $plugin->maturity  = MATURITY_ALPHA;
 $plugin->requires  = 2024100700; // Moodle 4.5.
 $plugin->supported = [405, 501];
+$plugin->dependencies = ['tool_customlang' => ANY_VERSION];

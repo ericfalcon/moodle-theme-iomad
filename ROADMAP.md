@@ -88,8 +88,8 @@ Le vocabulaire s'applique **à tout Moodle**, pas seulement aux pages du thème 
 
 Mise en œuvre, dans le plugin compagnon :
 
-- il s'appuie sur le mécanisme natif des **paquets de langue locaux** de Moodle (`fr_local`, `en_local`), celui qu'utilise l'outil « Personnalisation de la langue » : aucune modification du cœur ni de `config.php` ;
-- un simple remplacement de mots ne suffit pas en français (« le cours » deviendrait « le formations ») : le plugin embarque, pour chaque langue, une liste de chaînes de Moodle et d'IOMAD réécrites avec le singulier, le pluriel et le genre du mot choisi ;
+- il s'appuie sur le mécanisme natif des **paquets de langue locaux** de Moodle (`fr_local`, `en_local`), en écrivant par l'outil « Personnalisation de la langue » : aucune modification du cœur ni de `config.php` ;
+- un simple remplacement de mots ne suffit pas en français (« le cours » deviendrait « le formation ») : le plugin réécrit chaque chaîne du paquet de langue installé en régénérant les déterminants, l'élision et les accords selon le singulier, le pluriel et le genre du mot choisi. Il couvre ainsi toutes les chaînes de Moodle, de ses plugins et d'IOMAD, sans liste à maintenir ;
 - les personnalisations déjà faites par l'administrateur dans l'outil de personnalisation sont conservées, jamais écrasées ;
 - l'opération est réversible : revenir au vocabulaire par défaut supprime les chaînes ajoutées par le plugin ;
 - le vocabulaire propre à une entreprise IOMAD s'applique aux utilisateurs de cette entreprise. Les paquets de langue étant communs à tout le site, le mécanisme reste à valider : une langue dérivée par entreprise (par exemple `fr_tilleuls`, héritant de `fr`), ou un gestionnaire de chaînes activé dans `config.php`.
@@ -150,6 +150,8 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 
 ### V0.2 — Identité et connexion (terminé)
 
+- [x] Toutes les pages à la largeur des pages d'administration (0.2.5)
+
 - [x] Extraction des couleurs du logo et pipette dans la page de réglages
 - [x] Page de connexion : écran partagé avec visuel de marque, accroche, image de fond avec voile calculé pour rester lisible ; ou formulaire centré
 - [x] Liens soulignés dans le texte, pour ne jamais dépendre de la seule couleur
@@ -170,7 +172,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 ### V0.5 — Vocabulaire et IOMAD
 
 - [x] Couleur et logo par entreprise, à partir des réglages natifs d'IOMAD (couleur des titres, logo, CSS personnalisé) — livré en 0.2.2
-- [ ] Vocabulaire de la plateforme
+- [x] Vocabulaire de la plateforme (cours, étudiants, enseignants ; français et anglais), appliqué à tout Moodle par l'outil de personnalisation de la langue — livré dans local_epure 0.2.0
 - [ ] Vocabulaire par entreprise IOMAD
 - [ ] Tableau de bord IOMAD
 
