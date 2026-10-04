@@ -181,4 +181,3 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - Traductions : le répertoire moodle.org/plugins n'accepte que l'anglais dans le plugin, les autres langues passent par AMOS. Le français est inclus pendant le développement et sera transféré dans AMOS avant la publication, par Eric Falcon, qui a déjà traduit IOMAD.
 - Nom : « Épure » (`theme_epure`) n'est pas utilisé dans le répertoire des plugins Moodle.
 - Modèle de diffusion : gratuit sur moodle.org, ou gratuit avec services payants (installation, personnalisation, support). La licence est GPL dans tous les cas.
-- Disponibilité du nom « Épure » sur moodle.org/plugins à vérifier avant la publication.
