@@ -14,10 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure;
+namespace theme_epure;
 
-use local_epure\vocabulary\company;
+use theme_epure\vocabulary\company;
 use theme_epure\vocabulary\terms;
+
 
 #[\PHPUnit\Framework\Attributes\CoversClass(vocabulary\company::class)]
 #[\PHPUnit\Framework\Attributes\CoversClass(string_manager::class)]
@@ -25,15 +26,15 @@ use theme_epure\vocabulary\terms;
 /**
  * Tests for the vocabulary of IOMAD companies.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @category   test
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \local_epure\vocabulary\company
- * @covers     \local_epure\string_manager
- * @covers     \local_epure\hook_callbacks
+ * @covers     \theme_epure\vocabulary\company
+ * @covers     \theme_epure\string_manager
+ * @covers     \theme_epure\hook_callbacks
  */
-final class company_test extends \advanced_testcase {
+final class company_vocabulary_test extends \advanced_testcase {
     /**
      * Saving the words of a company, and going back to the words of the platform.
      */
@@ -85,15 +86,14 @@ final class company_test extends \advanced_testcase {
         // Strings without the words of the company do not change.
         $this->assertSame('Add a new course', $manager->get_string('addnewcourse', 'moodle', null, 'en'));
 
-        // A string of this plugin mentions companies: the IOMAD strings are not installed on standard Moodle.
-        $this->assertStringContainsString('client', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
-        $this->assertStringNotContainsString('company', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
+        // A string of the theme names a company: the IOMAD strings are not installed on standard Moodle.
+        $this->assertSame('Client', $manager->get_string('companyvocabcompany', 'theme_epure', null, 'en'));
 
         // A user without company sees the words of all companies, here those of the language pack.
         $manager->fakecompany = 0;
-        $this->assertStringContainsString('company', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
+        $this->assertSame('Company', $manager->get_string('companyvocabcompany', 'theme_epure', null, 'en'));
         company::save(0, [terms::setting('en', 'company') => 'agency']);
-        $this->assertStringContainsString('agency', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
+        $this->assertSame('Agency', $manager->get_string('companyvocabcompany', 'theme_epure', null, 'en'));
     }
 
     /**

@@ -14,24 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure\vocabulary;
-
-use theme_epure\vocabulary\rewriter;
-use theme_epure\vocabulary\terms;
+namespace theme_epure\vocabulary;
 
 /**
  * Vocabulary of IOMAD: the words used for « company » and « department ».
  *
  * They are chosen for all companies (the platform, stored as company 0) and, if needed, for each
  * company. Language packs are shared by the whole site, so the words of a company cannot be
- * written in them: they are applied when the strings are loaded, by {@see \local_epure\string_manager},
+ * written in them: they are applied when the strings are loaded, by {@see \theme_epure\string_manager},
  * for the users of the company and for the administrator who selected it.
  *
  * The choices are stored in the plugin settings, as company_<id> (JSON, with the setting names of
  * the theme vocabulary, see {@see terms::setting()}), and the list of companies with their own
  * words as companies.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -45,7 +42,7 @@ class company {
      * @return bool
      */
     public static function active(): bool {
-        return (string) get_config('local_epure', 'companies') !== '';
+        return (string) get_config('theme_epure', 'companies') !== '';
     }
 
     /**
@@ -54,7 +51,7 @@ class company {
      * @return int[]
      */
     public static function ids(): array {
-        $ids = (string) get_config('local_epure', 'companies');
+        $ids = (string) get_config('theme_epure', 'companies');
         return $ids === '' ? [] : array_map('intval', explode(',', $ids));
     }
 
@@ -65,7 +62,7 @@ class company {
      * @return array<string, string> Setting name => value, see {@see terms::setting()}.
      */
     public static function values(int $companyid): array {
-        $json = get_config('local_epure', 'company_' . $companyid);
+        $json = get_config('theme_epure', 'company_' . $companyid);
         $values = $json ? json_decode($json, true) : null;
         return is_array($values) ? $values : [];
     }
@@ -97,7 +94,7 @@ class company {
      */
     public static function save(int $companyid, array $values): void {
         $ids = array_diff(self::ids(), [$companyid]);
-        unset_config('company_' . $companyid, 'local_epure');
+        unset_config('company_' . $companyid, 'theme_epure');
         $keep = false;
         foreach (terms::LANGUAGES as $lang) {
             foreach (terms::IOMAD_CONCEPTS as $concept) {
@@ -105,12 +102,12 @@ class company {
             }
         }
         if ($keep) {
-            set_config('company_' . $companyid, json_encode($values), 'local_epure');
+            set_config('company_' . $companyid, json_encode($values), 'theme_epure');
             $ids[] = $companyid;
         }
         sort($ids);
-        set_config('companies', implode(',', array_unique($ids)), 'local_epure');
-        set_config('companyrev', time(), 'local_epure');
+        set_config('companies', implode(',', array_unique($ids)), 'theme_epure');
+        set_config('companyrev', time(), 'theme_epure');
         self::$rewriters = [];
         // Also invalidates the strings cached by the browsers.
         get_string_manager()->reset_caches();
@@ -122,7 +119,7 @@ class company {
      * @return int
      */
     public static function revision(): int {
-        return (int) get_config('local_epure', 'companyrev');
+        return (int) get_config('theme_epure', 'companyrev');
     }
 
     /**

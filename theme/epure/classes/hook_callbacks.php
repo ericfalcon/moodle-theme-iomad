@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure;
+namespace theme_epure;
 
-use local_epure\vocabulary\company;
+use theme_epure\vocabulary\company;
 
 /**
- * Hook callbacks of local_epure.
+ * Hook callbacks of theme_epure.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,7 +39,7 @@ class hook_callbacks {
         global $CFG;
         if (
             during_initial_install() || !empty($CFG->config_php_settings['customstringmanager'])
-                || !file_exists($CFG->dirroot . '/local/iomad/lib/iomad.php') || !company::active()
+                || !company_style::iomad_installed() || !company::active()
         ) {
             return;
         }

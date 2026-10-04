@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Hook callbacks for local_epure.
+ * Hook callbacks for theme_epure.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,6 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 $callbacks = [
     [
         'hook' => \core\hook\after_config::class,
-        'callback' => [\local_epure\hook_callbacks::class, 'after_config'],
+        'callback' => [\theme_epure\hook_callbacks::class, 'after_config'],
     ],
 ];

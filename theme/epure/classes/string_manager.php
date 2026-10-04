@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure;
+namespace theme_epure;
 
-use local_epure\vocabulary\company;
+use theme_epure\vocabulary\company;
 
 /**
  * String manager that applies the IOMAD vocabulary: the words of the company of the user, else those of all companies.
@@ -29,7 +29,7 @@ use local_epure\vocabulary\company;
  * It is enabled by {@see hook_callbacks::after_config()} when words were chosen, unless
  * config.php already sets another custom string manager.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -69,7 +69,7 @@ class string_manager extends \core_string_manager_standard {
         if (!$disablecache && isset($this->companystrings[$key])) {
             return $this->companystrings[$key];
         }
-        $cache = \cache::make('local_epure', 'companystrings');
+        $cache = \cache::make('theme_epure', 'companystrings');
         $cachekey = $key . '_' . company::revision() . '_' . $this->get_key_suffix();
         if (!$disablecache && ($cached = $cache->get($cachekey)) !== false) {
             return $this->companystrings[$key] = $cached;
@@ -95,7 +95,21 @@ class string_manager extends \core_string_manager_standard {
     public function reset_caches($phpunitreset = false) {
         parent::reset_caches($phpunitreset);
         $this->companystrings = [];
-        \cache::make('local_epure', 'companystrings')->purge();
+        \cache::make('theme_epure', 'companystrings')->purge();
+    }
+
+    /**
+     * The IOMAD company of the current user, as IOMAD finds it.
+     *
+     * @return int Company identifier, 0 when there is none.
+     */
+    protected static function iomad_company_id(): int {
+        global $CFG;
+        if (!company_style::iomad_installed() || during_initial_install()) {
+            return 0;
+        }
+        require_once($CFG->dirroot . '/local/iomad/lib/iomad.php');
+        return max(0, (int) \iomad::get_my_companyid(\context_system::instance(), false));
     }
 
     /**
@@ -112,7 +126,7 @@ class string_manager extends \core_string_manager_standard {
         if ($this->companyid === null || $this->companyuserid !== $userid) {
             $this->resolving = true;
             try {
-                $this->companyid = iomad::current_company_id();
+                $this->companyid = self::iomad_company_id();
             } finally {
                 $this->resolving = false;
             }

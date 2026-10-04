@@ -13,26 +13,17 @@ Principes :
 1. **Peu de réglages, mais chacun change beaucoup de choses.** L'administrateur fait des choix ; le thème calcule le reste (palette, contrastes, variantes).
 2. **Accessible par construction.** Les contrastes, le focus, la navigation au clavier et les préférences d'affichage ne dépendent pas de la bonne volonté de l'administrateur.
 3. **Le moins de templates surchargés possible.** Chaque template surchargé est un coût à chaque mise à jour de Moodle. On privilégie le SCSS et les variables.
-4. **Fonctionne seul sur Moodle**, et va plus loin avec IOMAD grâce au plugin compagnon.
+4. **Un seul plugin**, qui fonctionne sur Moodle et s'adapte à IOMAD lorsqu'il le détecte.
 
 Public visé : organismes de formation, entreprises et établissements qui veulent une plateforme présentable à leurs apprenants et à leurs clients.
 
 ## Architecture
 
-Le dépôt contient deux plugins, rangés selon l'arborescence de Moodle :
+Le dépôt contient un seul plugin, le thème `theme_epure` (dossier `theme/epure`) : rendu, réglages, accessibilité, préférences de l'utilisateur, vocabulaire, et adaptation à IOMAD.
 
-| Dossier | Composant | Rôle | Obligatoire |
-|---|---|---|---|
-| `theme/epure` | `theme_epure` | Le thème : rendu, réglages, accessibilité, préférences de l'utilisateur, vocabulaire de la plateforme | Oui |
-| `local/epure` | `local_epure` | Adaptation à IOMAD : vocabulaire des entreprises (global et par entreprise), tableau de bord IOMAD | Non |
+IOMAD est détecté par le thème lui-même (présence de `local/iomad`) : sans IOMAD, les réglages et les fonctions propres à IOMAD restent masqués.
 
-Pourquoi deux plugins :
-
-- Un thème **affiche**, il ne calcule pas de statistiques et ne modifie pas les chaînes de langue du cœur. Ces fonctions vont dans le plugin compagnon.
-- Le thème reste simple à faire valider sur le répertoire officiel moodle.org/plugins.
-- Le plugin compagnon détecte IOMAD : sans IOMAD, ses fonctions IOMAD restent masquées.
-
-Chaque plugin est publié dans sa propre archive ZIP.
+Un plugin compagnon `local_epure` a existé dans les versions 0.1 à 0.3 ; il a été fusionné dans le thème en 0.4, qui reprend ses réglages à la mise à jour.
 
 ## Compatibilité
 
@@ -86,7 +77,7 @@ Les mots qui désignent les objets de la plateforme sont réglables. Le françai
 
 Le vocabulaire s'applique **à tout Moodle**, pas seulement aux pages du thème : menus, tableau de bord, liste des cours, participants, rôles, rapports, notifications, ainsi qu'aux écrans d'IOMAD.
 
-Mise en œuvre, dans le plugin compagnon :
+Mise en œuvre :
 
 - il s'appuie sur le mécanisme natif des **paquets de langue locaux** de Moodle (`fr_local`, `en_local`), en écrivant par l'outil « Personnalisation de la langue » : aucune modification du cœur ni de `config.php` ;
 - un simple remplacement de mots ne suffit pas en français (« le cours » deviendrait « le formation ») : le plugin réécrit chaque chaîne du paquet de langue installé en régénérant les déterminants, l'élision et les accords selon le singulier, le pluriel et le genre du mot choisi. Il couvre ainsi toutes les chaînes de Moodle, de ses plugins et d'IOMAD, sans liste à maintenir ;
@@ -94,7 +85,6 @@ Mise en œuvre, dans le plugin compagnon :
 - l'opération est réversible : revenir au vocabulaire par défaut supprime les chaînes ajoutées par le plugin ;
 - le vocabulaire propre à une entreprise IOMAD s'applique aux utilisateurs de cette entreprise. Les paquets de langue étant communs à tout le site, il est appliqué au chargement des chaînes par un gestionnaire de chaînes que le plugin active à chaque page (crochet `after_config`), sans modifier `config.php`. Une langue dérivée par entreprise a été écartée : elle serait apparue dans le menu des langues.
 
-Sans le plugin compagnon, le thème applique le vocabulaire à ses propres pages seulement.
 
 ## Accessibilité
 
@@ -133,7 +123,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 3. **Mes cours** : cartes avec couverture, durée, progression, filtres et recherche.
 4. **Page de cours** : bannière, progression, bouton « Continuer », sommaire latéral, modules repliables avec état de chaque activité.
 5. **Déclaration d'accessibilité.**
-6. **Tableau de bord IOMAD** (plugin compagnon) : indicateurs (inscrits actifs, complétion, licences, retards), complétion par département, alertes à traiter, licences, suivi des inscrits filtrable, accès rapides à la gestion.
+6. **Tableau de bord IOMAD** : le tableau de bord d'IOMAD lui-même (`blocks/iomad_company_admin`), mis en forme par le thème : onglets, icônes et sélecteur d'entreprise aux couleurs de la marque, contrastes et navigation au clavier.
 
 ## Jalons
 
@@ -145,7 +135,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Réglages : couleur (contraste affiché), police, police téléversée, arrondis, SCSS personnalisé
 - [x] Polices embarquées, servies par Moodle
 - [x] En-tête blanc ou couleur de marque, logo avec transparence et variante pour l'en-tête en couleur
-- [x] Squelette de `local_epure` avec détection d'IOMAD
+- [x] Détection d'IOMAD
 - [x] Intégration continue sur Moodle 4.5, 5.0 et 5.1
 
 ### V0.2 — Identité et connexion (terminé)
@@ -172,9 +162,9 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 ### V0.5 — Vocabulaire et IOMAD
 
 - [x] Couleur et logo par entreprise, à partir des réglages natifs d'IOMAD (couleur des titres, logo, CSS personnalisé) — livré en 0.2.2
-- [x] Vocabulaire de la plateforme (cours, étudiants, enseignants ; français et anglais), appliqué à tout Moodle par l'outil de personnalisation de la langue — livré dans local_epure 0.2.0
-- [x] Vocabulaire par entreprise IOMAD (entreprise, département), appliqué par un gestionnaire de chaînes activé par le plugin, sans modifier config.php — livré dans local_epure 0.3.0
-- [ ] Tableau de bord IOMAD
+- [x] Vocabulaire de la plateforme (cours, étudiants, enseignants ; français et anglais), appliqué à tout Moodle par l'outil de personnalisation de la langue — livré en 0.3.0
+- [x] Vocabulaire par entreprise IOMAD (entreprise, département), pour toutes les entreprises et pour chacune, appliqué par un gestionnaire de chaînes activé par le thème, sans modifier config.php — livré en 0.4.0
+- [ ] Mise en forme du tableau de bord d'IOMAD
 
 ### V1.0 — Publication
 
