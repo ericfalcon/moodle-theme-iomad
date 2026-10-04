@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Hook callbacks for theme_epure.
+ * Event observers of theme_epure.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
@@ -24,13 +24,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$callbacks = [
+// The vocabulary fields of the IOMAD company form are saved with the company. Without IOMAD, these events never happen.
+$observers = [
     [
-        'hook' => \core\hook\after_config::class,
-        'callback' => [\theme_epure\hook_callbacks::class, 'after_config'],
+        'eventname' => '\block_iomad_company_admin\event\company_created',
+        'callback' => '\theme_epure\observer::company_saved',
     ],
     [
-        'hook' => \core\hook\output\before_footer_html_generation::class,
-        'callback' => [\theme_epure\hook_callbacks::class, 'before_footer_html_generation'],
+        'eventname' => '\block_iomad_company_admin\event\company_updated',
+        'callback' => '\theme_epure\observer::company_saved',
     ],
 ];
