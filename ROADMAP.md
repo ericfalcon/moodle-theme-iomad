@@ -145,7 +145,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Extraction des couleurs du logo et pipette dans la page de réglages
 - [x] Page de connexion : écran partagé avec visuel de marque, accroche, image de fond avec voile calculé pour rester lisible ; ou formulaire centré
 - [x] Liens soulignés dans le texte, pour ne jamais dépendre de la seule couleur
-- [ ] En-tête, navigation et pied de page : reporté en V0.4 avec le parcours de l'apprenant
+- [x] Pied de page : nom du site, texte, mentions légales, données personnelles, accessibilité, contact et liens libres, sur toutes les pages dont la connexion — livré en 0.14.0
 
 ### V0.3 — Accessibilité (livré en 0.9.0)
 
@@ -169,7 +169,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Mise en forme du tableau de bord d'IOMAD : en-tête de l'entreprise, onglets, actions en cartes regroupées par intention — livré en 0.5.0
 - [x] Logo, couleur et vocabulaire de chaque entreprise dans sa fiche IOMAD (Créer / Modifier l'entreprise › Apparence) — livré en 0.6.0
 - [x] Accès direct aux catégories de cours de l'entreprise depuis le tableau de bord — livré en 0.9.0
-- [x] Chiffres clés de l'entreprise en tête du tableau de bord (utilisateurs et actifs de la semaine, cours, licences utilisées, achèvements sur 30 jours) — livré en 0.13.0
+- [x] Chiffres clés de l'entreprise en tête du tableau de bord (utilisateurs et actifs de la semaine, cours, licences utilisées, achèvements sur 30 jours) — livré en 0.13.0 ; sans IOMAD, chiffres de la plateforme en tête du tableau de bord des gestionnaires (0.14.0)
 
 ### V1.0 — Publication
 
