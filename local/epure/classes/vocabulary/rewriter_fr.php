@@ -101,7 +101,7 @@ class rewriter_fr extends rewriter {
      *
      * @param string $text Plain text.
      * @param string $concept Object.
-     * @param array<string, string> $term New word.
+     * @param array $term New word (singular, plural, gender).
      * @param string $english English version of the whole string.
      * @return string
      */

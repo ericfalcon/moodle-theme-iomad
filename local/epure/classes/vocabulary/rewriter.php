@@ -35,7 +35,7 @@ abstract class rewriter {
     /**
      * Constructor.
      *
-     * @param array<string, array<string, string>> $targets object => term, see {@see terms}.
+     * @param array $targets Terms by object (object => term), see {@see terms}.
      */
     public function __construct(array $targets) {
         $this->targets = $targets;
@@ -45,7 +45,7 @@ abstract class rewriter {
      * The rewriter for a language.
      *
      * @param string $lang Language code.
-     * @param array<string, array<string, string>> $targets object => term.
+     * @param array $targets Terms by object (object => term).
      * @return rewriter|null Null when the language is not supported.
      */
     public static function for_language(string $lang, array $targets): ?rewriter {
@@ -86,7 +86,7 @@ abstract class rewriter {
      *
      * @param string $text Plain text.
      * @param string $concept Object.
-     * @param array<string, string> $term New word.
+     * @param array $term New word (singular, plural, gender).
      * @param string $english English version of the whole string.
      * @return string
      */
