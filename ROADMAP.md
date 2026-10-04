@@ -157,7 +157,8 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 ### V0.4 — Parcours de l'apprenant
 
 - [x] Mes cours par rôle : sections « que j'anime » et « que je suis », cartes adaptées (progression, prochaine activité, échéance ; participants, à corriger, accès directs) — livré en 0.7.0
-- [ ] Tableau de bord de l'apprenant, page de cours
+- [x] Page de cours : bannière (image, catégorie, progression, prochaine activité, échéance, bouton « Continuer » ; chiffres et accès directs pour l'enseignant), progression de l'apprenant dans chaque section — livré en 0.10.0
+- [ ] Tableau de bord de l'apprenant
 - [ ] Mode sombre
 
 ### V0.5 — Vocabulaire et IOMAD
