@@ -164,7 +164,8 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Couleur et logo par entreprise, à partir des réglages natifs d'IOMAD (couleur des titres, logo, CSS personnalisé) — livré en 0.2.2
 - [x] Vocabulaire de la plateforme (cours, étudiants, enseignants ; français et anglais), appliqué à tout Moodle par l'outil de personnalisation de la langue — livré en 0.3.0
 - [x] Vocabulaire par entreprise IOMAD (entreprise, département), pour toutes les entreprises et pour chacune, appliqué par un gestionnaire de chaînes activé par le thème, sans modifier config.php — livré en 0.4.0
-- [ ] Mise en forme du tableau de bord d'IOMAD
+- [x] Mise en forme du tableau de bord d'IOMAD : en-tête de l'entreprise, onglets, actions en cartes regroupées par intention — livré en 0.5.0
+- [ ] Chiffres clés de l'entreprise en tête du tableau de bord (utilisateurs, cours, licences)
 
 ### V1.0 — Publication
 
