@@ -169,8 +169,9 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 
 ### V0.5 — Vocabulaire et IOMAD
 
+- [x] Couleur et logo par entreprise, à partir des réglages natifs d'IOMAD (couleur des titres, logo, CSS personnalisé) — livré en 0.2.2
 - [ ] Vocabulaire de la plateforme
-- [ ] Couleur, logo et vocabulaire par entreprise IOMAD
+- [ ] Vocabulaire par entreprise IOMAD
 - [ ] Tableau de bord IOMAD
 
 ### V1.0 — Publication
