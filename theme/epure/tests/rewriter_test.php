@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure;
+namespace theme_epure;
 
-use local_epure\vocabulary\rewriter;
-use local_epure\vocabulary\terms;
+use theme_epure\vocabulary\rewriter;
+use theme_epure\vocabulary\terms;
 
 #[\PHPUnit\Framework\Attributes\CoversClass(vocabulary\rewriter::class)]
 #[\PHPUnit\Framework\Attributes\CoversClass(vocabulary\rewriter_fr::class)]
@@ -25,13 +25,13 @@ use local_epure\vocabulary\terms;
 /**
  * Tests for the rewriting of language strings with the chosen vocabulary.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @category   test
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \local_epure\vocabulary\rewriter
- * @covers     \local_epure\vocabulary\rewriter_fr
- * @covers     \local_epure\vocabulary\rewriter_en
+ * @covers     \theme_epure\vocabulary\rewriter
+ * @covers     \theme_epure\vocabulary\rewriter_fr
+ * @covers     \theme_epure\vocabulary\rewriter_en
  */
 final class rewriter_test extends \basic_testcase {
     /**

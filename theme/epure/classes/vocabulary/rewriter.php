@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure\vocabulary;
+namespace theme_epure\vocabulary;
 
 /**
  * Rewrites a language string with the words chosen by the administrator.
  *
  * Placeholders ({$a}, {$a->name}), HTML tags, entities and addresses are never changed.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

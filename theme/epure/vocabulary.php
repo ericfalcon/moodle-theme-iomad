@@ -17,7 +17,7 @@
 /**
  * Vocabulary of the platform: the words used for courses, students and teachers.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,32 +28,32 @@ define('NO_OUTPUT_BUFFERING', true);
 require(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
-use local_epure\vocabulary\manager;
-use local_epure\vocabulary\terms;
+use theme_epure\vocabulary\manager;
+use theme_epure\vocabulary\terms;
 
-admin_externalpage_setup('local_epure_vocabulary');
+admin_externalpage_setup('theme_epure_vocabulary');
 
-$pageurl = new moodle_url('/local/epure/vocabulary.php');
-$form = new \local_epure\form\vocabulary_form($pageurl);
+$pageurl = new moodle_url('/theme/epure/vocabulary.php');
+$form = new \theme_epure\form\vocabulary_form($pageurl);
 $translations = get_string_manager()->get_list_of_translations(true);
 
 if ($data = $form->get_data()) {
-    foreach (\local_epure\form\vocabulary_form::values_from($data, terms::concepts()) as $name => $value) {
-        set_config($name, $value, 'local_epure');
+    foreach (\theme_epure\form\vocabulary_form::values_from($data, terms::concepts()) as $name => $value) {
+        set_config($name, $value, 'theme_epure');
     }
 
     echo $OUTPUT->header();
-    echo $OUTPUT->heading(get_string('vocabulary', 'local_epure'));
+    echo $OUTPUT->heading(get_string('vocabulary', 'theme_epure'));
     foreach (manager::languages() as $lang) {
         echo $OUTPUT->heading($translations[$lang], 3);
-        $progress = new progress_bar('local_epure_vocab_' . $lang, 500, true);
+        $progress = new progress_bar('theme_epure_vocab_' . $lang, 500, true);
         $stats = manager::apply($lang, $progress);
         $message = $stats['total']
-            ? get_string('vocabapplied', 'local_epure', (object) $stats)
-            : get_string('vocabnone', 'local_epure');
+            ? get_string('vocabapplied', 'theme_epure', (object) $stats)
+            : get_string('vocabnone', 'theme_epure');
         echo $OUTPUT->notification($message, 'success', false);
         if ($stats['kept']) {
-            echo $OUTPUT->notification(get_string('vocabkept', 'local_epure', $stats['kept']), 'info', false);
+            echo $OUTPUT->notification(get_string('vocabkept', 'theme_epure', $stats['kept']), 'info', false);
         }
     }
     echo $OUTPUT->continue_button($pageurl);
@@ -62,12 +62,12 @@ if ($data = $form->get_data()) {
 }
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('vocabulary', 'local_epure'));
-echo html_writer::tag('p', get_string('vocabintro', 'local_epure'));
+echo $OUTPUT->heading(get_string('vocabulary', 'theme_epure'));
+echo html_writer::tag('p', get_string('vocabintro', 'theme_epure'));
 
 $languages = manager::languages();
 if (!$languages) {
-    echo $OUTPUT->notification(get_string('vocabnolanguage', 'local_epure'), 'warning', false);
+    echo $OUTPUT->notification(get_string('vocabnolanguage', 'theme_epure'), 'warning', false);
 }
 foreach ($languages as $lang) {
     $examples = manager::examples($lang);
@@ -75,11 +75,11 @@ foreach ($languages as $lang) {
         continue;
     }
     $table = new html_table();
-    $table->caption = get_string('vocabexamples', 'local_epure', (object) [
+    $table->caption = get_string('vocabexamples', 'theme_epure', (object) [
         'lang' => $translations[$lang],
         'count' => manager::count($lang),
     ]);
-    $table->head = [get_string('vocabbefore', 'local_epure'), get_string('vocabafter', 'local_epure')];
+    $table->head = [get_string('vocabbefore', 'theme_epure'), get_string('vocabafter', 'theme_epure')];
     $table->attributes['class'] = 'generaltable w-auto';
     foreach ($examples as $example) {
         $table->data[] = [s($example['before']), s($example['after'])];

@@ -14,23 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure\form;
+namespace theme_epure\form;
 
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/formslib.php');
 
-use local_epure\vocabulary\manager;
-use local_epure\vocabulary\terms;
+use theme_epure\vocabulary\manager;
+use theme_epure\vocabulary\terms;
 
 /**
  * Choice of the words used for the objects of the platform, in each language.
  *
  * Custom data: concepts (objects to choose, by default those of the platform), values (setting
- * name => value, by default the settings of the platform), companyid (for the words of a company)
- * and resetlabel (label of the button that restores the default words).
+ * name => value, by default the settings of the theme), companyid (for the words of IOMAD companies,
+ * 0 for all companies), platformvalues (settings of all companies, inherited by a company) and
+ * resetlabel (label of the button that restores the default words).
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -44,10 +45,12 @@ class vocabulary_form extends \moodleform {
         $presets = terms::presets();
         $concepts = $this->_customdata['concepts'] ?? terms::concepts();
         $values = $this->_customdata['values'] ?? null;
+        // A company (but not the platform, company 0) inherits the words of the platform by default.
         $inherit = !empty($this->_customdata['companyid']);
-        $value = fn(string $name) => (string) ($values === null ? get_config('local_epure', $name) : ($values[$name] ?? ''));
+        $value = fn(string $name) => (string) ($values === null ? get_config('theme_epure', $name) : ($values[$name] ?? ''));
+        $platformvalues = $this->_customdata['platformvalues'] ?? null;
 
-        if (!empty($this->_customdata['companyid'])) {
+        if (isset($this->_customdata['companyid'])) {
             $mform->addElement('hidden', 'companyid', $this->_customdata['companyid']);
             $mform->setType('companyid', PARAM_INT);
         }
@@ -64,26 +67,27 @@ class vocabulary_form extends \moodleform {
                         ? $term['singular']
                         : $term['singular'] . ' / ' . $term['plural'];
                 }
-                $options[terms::CUSTOM] = get_string('vocabcustom', 'local_epure');
+                $options[terms::CUSTOM] = get_string('vocabcustom', 'theme_epure');
                 if ($inherit) {
-                    $platform = terms::chosen($lang, $concept) ?? $presets[$lang][$concept][terms::DEFAULTS[$lang][$concept]];
-                    $options = ['' => get_string('vocabplatform', 'local_epure', $platform['plural'])] + $options;
+                    $platform = terms::chosen($lang, $concept, $platformvalues)
+                        ?? $presets[$lang][$concept][terms::DEFAULTS[$lang][$concept]];
+                    $options = ['' => get_string('vocabplatform', 'theme_epure', $platform['plural'])] + $options;
                 }
-                $mform->addElement('select', $name, get_string('vocab_' . $concept, 'local_epure'), $options);
+                $mform->addElement('select', $name, get_string('vocab_' . $concept, 'theme_epure'), $options);
                 $mform->setDefault($name, $value($name) ?: ($inherit ? '' : terms::DEFAULTS[$lang][$concept]));
 
                 foreach (['singular', 'plural'] as $form) {
                     $field = terms::setting($lang, $concept, $form);
-                    $mform->addElement('text', $field, get_string('vocab' . $form, 'local_epure'), ['size' => 24]);
+                    $mform->addElement('text', $field, get_string('vocab' . $form, 'theme_epure'), ['size' => 24]);
                     $mform->setType($field, PARAM_TEXT);
                     $mform->setDefault($field, $value($field));
                     $mform->hideIf($field, $name, 'neq', terms::CUSTOM);
                 }
                 if ($lang === 'fr') {
                     $field = terms::setting($lang, $concept, 'gender');
-                    $mform->addElement('select', $field, get_string('vocabgender', 'local_epure'), [
-                        'm' => get_string('vocabmasculine', 'local_epure'),
-                        'f' => get_string('vocabfeminine', 'local_epure'),
+                    $mform->addElement('select', $field, get_string('vocabgender', 'theme_epure'), [
+                        'm' => get_string('vocabmasculine', 'theme_epure'),
+                        'f' => get_string('vocabfeminine', 'theme_epure'),
                     ]);
                     $mform->setDefault($field, $value($field) ?: 'm');
                     $mform->hideIf($field, $name, 'neq', terms::CUSTOM);
@@ -92,11 +96,11 @@ class vocabulary_form extends \moodleform {
         }
 
         $buttons = [
-            $mform->createElement('submit', 'submitbutton', get_string('vocabapply', 'local_epure')),
+            $mform->createElement('submit', 'submitbutton', get_string('vocabapply', 'theme_epure')),
             $mform->createElement(
                 'submit',
                 'resetbutton',
-                $this->_customdata['resetlabel'] ?? get_string('vocabreset', 'local_epure'),
+                $this->_customdata['resetlabel'] ?? get_string('vocabreset', 'theme_epure'),
                 [],
                 false
             ),

@@ -19,15 +19,15 @@ namespace local_epure;
 use local_epure\vocabulary\company;
 
 /**
- * String manager that applies the vocabulary of the IOMAD company of the user.
+ * String manager that applies the IOMAD vocabulary: the words of the company of the user, else those of all companies.
  *
  * It is the standard string manager of Moodle, with one more step: once the strings of a
- * component are loaded (language pack and local customisations), the words chosen by the
- * company replace those of the platform. The rewritten strings are cached by company,
+ * component are loaded (language pack and local customisations), the words chosen for
+ * « company » and « department » replace those of the language pack. The rewritten strings are cached by company,
  * language and component.
  *
- * It is enabled by {@see hook_callbacks::after_config()} when at least one company has its
- * own words, unless config.php already sets another custom string manager.
+ * It is enabled by {@see hook_callbacks::after_config()} when words were chosen, unless
+ * config.php already sets another custom string manager.
  *
  * @package    local_epure
  * @copyright  2026 Eric Falcon
@@ -61,7 +61,7 @@ class string_manager extends \core_string_manager_standard {
             return $strings;
         }
         $companyid = $this->company_id();
-        if (!$companyid || !($rewriter = company::rewriter($companyid, $lang))) {
+        if (!($rewriter = company::rewriter($companyid, $lang))) {
             return $strings;
         }
 

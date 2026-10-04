@@ -48,5 +48,42 @@ function xmldb_local_epure_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2026100500, 'local', 'epure');
     }
 
+    if ($oldversion < 2026100700) {
+        // The vocabulary of the platform moved to the theme, which copied the words and the strings
+        // (theme_epure upgrade to 2026100600). The words for companies and departments chosen for
+        // the whole platform become the words of all companies, applied by the string manager.
+        $config = get_config('local_epure');
+        $platform = [];
+        $iomadwords = false;
+        foreach ($config as $name => $value) {
+            $pattern = '/^vocab_(fr|en)_(course|student|teacher|company|department)(_singular|_plural|_gender)?$/';
+            if (!preg_match($pattern, $name, $m)) {
+                continue;
+            }
+            if (in_array($m[2], ['company', 'department'], true)) {
+                $platform[$name] = $value;
+                $iomadwords = $iomadwords || ($m[3] === '' && $value !== \theme_epure\vocabulary\terms::DEFAULTS[$m[1]][$m[2]]);
+            }
+            unset_config($name, 'local_epure');
+        }
+        if ($iomadwords && !get_config('local_epure', 'company_0')) {
+            \local_epure\vocabulary\company::save(0, $platform);
+        }
+
+        if ($dbman->table_exists('local_epure_vocab')) {
+            $dbman->drop_table(new xmldb_table('local_epure_vocab'));
+        }
+
+        // The strings with company words written in the language pack by local_epure 0.3 are removed
+        // by applying the vocabulary of the theme again, which no longer includes them.
+        if ($iomadwords) {
+            foreach (\theme_epure\vocabulary\manager::languages() as $lang) {
+                \theme_epure\vocabulary\manager::apply($lang);
+            }
+        }
+
+        upgrade_plugin_savepoint(true, 2026100700, 'local', 'epure');
+    }
+
     return true;
 }

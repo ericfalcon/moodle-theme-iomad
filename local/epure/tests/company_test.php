@@ -17,7 +17,7 @@
 namespace local_epure;
 
 use local_epure\vocabulary\company;
-use local_epure\vocabulary\terms;
+use theme_epure\vocabulary\terms;
 
 #[\PHPUnit\Framework\Attributes\CoversClass(vocabulary\company::class)]
 #[\PHPUnit\Framework\Attributes\CoversClass(string_manager::class)]
@@ -47,16 +47,18 @@ final class company_test extends \advanced_testcase {
         $this->assertSame(['company' => terms::presets()['en']['company']['client']], company::chosen(7, 'en'));
         $this->assertSame([], company::chosen(7, 'fr'));
 
-        // For a company, the word of the language pack is a choice: it can differ from the word of the platform.
-        set_config(terms::setting('en', 'company'), 'organisation', 'local_epure');
+        // Words for all companies (company 0), and a company keeping the word of the language pack.
+        company::save(0, [terms::setting('en', 'company') => 'organisation', terms::setting('en', 'department') => 'department']);
         company::save(8, [terms::setting('en', 'company') => 'company']);
-        $this->assertSame([7, 8], company::ids());
-        $this->assertSame('Edit company', company::rewriter(8, 'en')->rewrite('Edit organisation'));
+        $this->assertSame([0, 7, 8], company::ids());
+        $this->assertSame('Edit organisation', company::rewriter(0, 'en')->rewrite('Edit company'));
+        $this->assertSame('Edit client', company::rewriter(7, 'en')->rewrite('Edit company'));
+        $this->assertNull(company::rewriter(8, 'en')->rewrite('Edit company'));
 
         // No choice left: the company uses the words of the platform.
         company::save(7, [terms::setting('en', 'company') => '']);
-        $this->assertSame([8], company::ids());
-        $this->assertNull(company::rewriter(7, 'en'));
+        $this->assertSame([0, 8], company::ids());
+        $this->assertSame('Edit organisation', company::rewriter(7, 'en')->rewrite('Edit company'));
     }
 
     /**
@@ -87,9 +89,11 @@ final class company_test extends \advanced_testcase {
         $this->assertStringContainsString('client', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
         $this->assertStringNotContainsString('company', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
 
-        // A user without company sees the words of the platform.
+        // A user without company sees the words of all companies, here those of the language pack.
         $manager->fakecompany = 0;
         $this->assertStringContainsString('company', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
+        company::save(0, [terms::setting('en', 'company') => 'agency']);
+        $this->assertStringContainsString('agency', $manager->get_string('iomaddetected', 'local_epure', null, 'en'));
     }
 
     /**

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure\vocabulary;
+namespace theme_epure\vocabulary;
 
 /**
  * Applies the chosen vocabulary to every string of Moodle and of its plugins.
@@ -27,7 +27,7 @@ namespace local_epure\vocabulary;
  * The strings written by the plugin are recorded. A string the administrator customised
  * is never overwritten, and reverting removes only the strings the plugin wrote.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -61,7 +61,7 @@ class manager {
 
         $rewriter = rewriter::for_language($lang, terms::chosen_all($lang));
         $applied = [];
-        foreach ($DB->get_records('local_epure_vocab', ['lang' => $lang]) as $record) {
+        foreach ($DB->get_records('theme_epure_vocab', ['lang' => $lang]) as $record) {
             $applied[$record->component . '/' . $record->stringid] = $record;
         }
 
@@ -86,7 +86,7 @@ class manager {
             // A string the administrator customised stays as it is.
             if ($row->local !== null && ($record === null || $row->local !== $record->value)) {
                 if ($record !== null) {
-                    $DB->delete_records('local_epure_vocab', ['id' => $record->id]);
+                    $DB->delete_records('theme_epure_vocab', ['id' => $record->id]);
                 }
                 if ($new !== null) {
                     $stats['kept']++;
@@ -99,7 +99,7 @@ class manager {
                     $DB->update_record('tool_customlang', [
                         'id' => $row->id, 'local' => null, 'modified' => 1, 'timecustomized' => null,
                     ]);
-                    $DB->delete_records('local_epure_vocab', ['id' => $record->id]);
+                    $DB->delete_records('theme_epure_vocab', ['id' => $record->id]);
                     $stats['changed']++;
                 }
                 continue;
@@ -113,19 +113,19 @@ class manager {
                 $stats['changed']++;
             }
             if ($record === null) {
-                $DB->insert_record('local_epure_vocab', [
+                $DB->insert_record('theme_epure_vocab', [
                     'lang' => $lang, 'component' => $row->component, 'stringid' => $row->stringid,
                     'value' => $new, 'timemodified' => $now,
                 ]);
             } else if ($record->value !== $new) {
-                $DB->update_record('local_epure_vocab', ['id' => $record->id, 'value' => $new, 'timemodified' => $now]);
+                $DB->update_record('theme_epure_vocab', ['id' => $record->id, 'value' => $new, 'timemodified' => $now]);
             }
         }
         $rows->close();
 
         // Strings of plugins that are no longer installed.
         foreach ($applied as $record) {
-            $DB->delete_records('local_epure_vocab', ['id' => $record->id]);
+            $DB->delete_records('theme_epure_vocab', ['id' => $record->id]);
         }
         $transaction->allow_commit();
 
@@ -134,6 +134,35 @@ class manager {
             \tool_customlang_utils::checkin($lang);
         }
         return $stats;
+    }
+
+    /**
+     * Removes every string written by the vocabulary, in all languages, keeping those the administrator changed since.
+     */
+    public static function revert(): void {
+        global $CFG, $DB;
+        require_once($CFG->dirroot . '/admin/tool/customlang/locallib.php');
+        $langs = $DB->get_fieldset_sql('SELECT DISTINCT lang FROM {theme_epure_vocab}');
+        foreach ($langs as $lang) {
+            $rows = $DB->get_recordset_sql(
+                "SELECT s.id, s.local, v.value
+                   FROM {theme_epure_vocab} v
+                   JOIN {tool_customlang_components} c ON c.name = v.component
+                   JOIN {tool_customlang} s ON s.componentid = c.id AND s.stringid = v.stringid AND s.lang = v.lang
+                  WHERE v.lang = ?",
+                [$lang]
+            );
+            foreach ($rows as $row) {
+                if ($row->local === $row->value) {
+                    $DB->update_record('tool_customlang', [
+                        'id' => $row->id, 'local' => null, 'modified' => 1, 'timecustomized' => null,
+                    ]);
+                }
+            }
+            $rows->close();
+            $DB->delete_records('theme_epure_vocab', ['lang' => $lang]);
+            \tool_customlang_utils::checkin($lang);
+        }
     }
 
     /**
@@ -158,7 +187,7 @@ class manager {
      */
     public static function count(string $lang): int {
         global $DB;
-        return $DB->count_records('local_epure_vocab', ['lang' => $lang]);
+        return $DB->count_records('theme_epure_vocab', ['lang' => $lang]);
     }
 
     /**
@@ -177,7 +206,7 @@ class manager {
         $params = array_merge([$lang, $lang], $params);
         $records = $DB->get_records_sql(
             "SELECT v.id, v.value, s.master, s.original, v.stringid
-               FROM {local_epure_vocab} v
+               FROM {theme_epure_vocab} v
                JOIN {tool_customlang_components} c ON c.name = v.component
                JOIN {tool_customlang} s ON s.componentid = c.id AND s.stringid = v.stringid AND s.lang = ?
               WHERE v.lang = ? AND v.stringid $insql

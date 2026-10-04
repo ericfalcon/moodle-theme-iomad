@@ -14,24 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure;
+namespace theme_epure;
 
-use local_epure\vocabulary\manager;
-use local_epure\vocabulary\terms;
+use theme_epure\vocabulary\manager;
+use theme_epure\vocabulary\terms;
 
 #[\PHPUnit\Framework\Attributes\CoversClass(vocabulary\manager::class)]
 #[\PHPUnit\Framework\Attributes\CoversClass(vocabulary\terms::class)]
 /**
  * Tests for applying the vocabulary through the language customisation tool.
  *
- * @package    local_epure
+ * @package    theme_epure
  * @category   test
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers     \local_epure\vocabulary\manager
- * @covers     \local_epure\vocabulary\terms
+ * @covers     \theme_epure\vocabulary\manager
+ * @covers     \theme_epure\vocabulary\terms
  */
-final class manager_test extends \advanced_testcase {
+final class vocabulary_manager_test extends \advanced_testcase {
     /**
      * Applying writes the strings, keeps the administrator's customisations, and reverting removes only the plugin's strings.
      */
@@ -41,10 +41,10 @@ final class manager_test extends \advanced_testcase {
         $this->resetAfterTest();
         $sm = get_string_manager();
 
-        set_config(terms::setting('en', 'course'), 'program', 'local_epure');
-        set_config(terms::setting('en', 'student'), terms::CUSTOM, 'local_epure');
-        set_config(terms::setting('en', 'student', 'singular'), 'apprentice', 'local_epure');
-        set_config(terms::setting('en', 'student', 'plural'), 'apprentices', 'local_epure');
+        set_config(terms::setting('en', 'course'), 'program', 'theme_epure');
+        set_config(terms::setting('en', 'student'), terms::CUSTOM, 'theme_epure');
+        set_config(terms::setting('en', 'student', 'singular'), 'apprentice', 'theme_epure');
+        set_config(terms::setting('en', 'student', 'plural'), 'apprentices', 'theme_epure');
 
         $stats = manager::apply('en');
         $this->assertGreaterThan(100, $stats['total']);
@@ -63,8 +63,8 @@ final class manager_test extends \advanced_testcase {
         $this->assertSame('My trainings', $sm->get_string('mycourses', 'moodle', null, 'en'));
 
         // Back to Moodle's wording: the plugin's strings go, the administrator's one stays.
-        set_config(terms::setting('en', 'course'), 'course', 'local_epure');
-        set_config(terms::setting('en', 'student'), 'student', 'local_epure');
+        set_config(terms::setting('en', 'course'), 'course', 'theme_epure');
+        set_config(terms::setting('en', 'student'), 'student', 'theme_epure');
         manager::apply('en');
         $this->assertSame(0, manager::count('en'));
         $this->assertSame('Add a new course', $sm->get_string('addnewcourse', 'moodle', null, 'en'));
@@ -77,12 +77,12 @@ final class manager_test extends \advanced_testcase {
      */
     public function test_chosen(): void {
         $this->resetAfterTest();
-        set_config(terms::setting('fr', 'course'), terms::CUSTOM, 'local_epure');
+        set_config(terms::setting('fr', 'course'), terms::CUSTOM, 'theme_epure');
         $this->assertNull(terms::chosen('fr', 'course'));
-        set_config(terms::setting('fr', 'course', 'singular'), 'unité', 'local_epure');
-        set_config(terms::setting('fr', 'course', 'gender'), 'f', 'local_epure');
+        set_config(terms::setting('fr', 'course', 'singular'), 'unité', 'theme_epure');
+        set_config(terms::setting('fr', 'course', 'gender'), 'f', 'theme_epure');
         $this->assertSame(['singular' => 'unité', 'plural' => 'unité', 'gender' => 'f'], terms::chosen('fr', 'course'));
-        set_config(terms::setting('fr', 'course'), 'cours', 'local_epure');
+        set_config(terms::setting('fr', 'course'), 'cours', 'theme_epure');
         $this->assertNull(terms::chosen('fr', 'course'));
         $this->assertSame([], terms::chosen_all('fr'));
     }

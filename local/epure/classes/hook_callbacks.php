@@ -27,7 +27,7 @@ use local_epure\vocabulary\company;
  */
 class hook_callbacks {
     /**
-     * Enables the string manager that applies the vocabulary of the companies, when one has its own words.
+     * Enables the string manager that applies the IOMAD vocabulary, when words were chosen.
      *
      * Moodle reads the custom string manager from config.php; the plugin sets it for the request
      * instead, so that the administrator does not have to edit config.php. A string manager

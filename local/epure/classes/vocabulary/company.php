@@ -16,16 +16,20 @@
 
 namespace local_epure\vocabulary;
 
+use theme_epure\vocabulary\rewriter;
+use theme_epure\vocabulary\terms;
+
 /**
- * Vocabulary of each IOMAD company: the words used for « company » and « department ».
+ * Vocabulary of IOMAD: the words used for « company » and « department ».
  *
- * Language packs are shared by the whole site, so the words of a company cannot be written in
- * them. They are applied when the strings are loaded, by {@see \local_epure\string_manager},
+ * They are chosen for all companies (the platform, stored as company 0) and, if needed, for each
+ * company. Language packs are shared by the whole site, so the words of a company cannot be
+ * written in them: they are applied when the strings are loaded, by {@see \local_epure\string_manager},
  * for the users of the company and for the administrator who selected it.
  *
- * The choices of a company are stored in the plugin settings, as company_<id> (JSON, same
- * setting names as the platform vocabulary), and the list of companies with their own words
- * as companies.
+ * The choices are stored in the plugin settings, as company_<id> (JSON, with the setting names of
+ * the theme vocabulary, see {@see terms::setting()}), and the list of companies with their own
+ * words as companies.
  *
  * @package    local_epure
  * @copyright  2026 Eric Falcon
@@ -36,7 +40,7 @@ class company {
     private static array $rewriters = [];
 
     /**
-     * Whether at least one company has its own words.
+     * Whether words were chosen, for all companies or for one.
      *
      * @return bool
      */
@@ -45,7 +49,7 @@ class company {
     }
 
     /**
-     * Identifiers of the companies that have their own words.
+     * Identifiers of the companies that have their own words (0 for all companies).
      *
      * @return int[]
      */
@@ -57,7 +61,7 @@ class company {
     /**
      * The settings of a company.
      *
-     * @param int $companyid Company.
+     * @param int $companyid Company, 0 for all companies.
      * @return array<string, string> Setting name => value, see {@see terms::setting()}.
      */
     public static function values(int $companyid): array {
@@ -69,7 +73,7 @@ class company {
     /**
      * The words chosen by a company in a language, for the objects whose wording changes.
      *
-     * @param int $companyid Company.
+     * @param int $companyid Company, 0 for all companies.
      * @param string $lang Language.
      * @return array<string, array<string, string>> object => term.
      */
@@ -77,7 +81,8 @@ class company {
         $values = self::values($companyid);
         $targets = [];
         foreach (terms::IOMAD_CONCEPTS as $concept) {
-            if ($values && ($term = terms::chosen($lang, $concept, $values))) {
+            // For a company, the word of the language pack is a choice: it can differ from the word of the platform.
+            if ($values && ($term = terms::chosen($lang, $concept, $values, $companyid === 0))) {
                 $targets[$concept] = $term;
             }
         }
@@ -85,9 +90,9 @@ class company {
     }
 
     /**
-     * Saves the settings of a company, or removes them when the platform words are kept.
+     * Saves the settings of a company, or removes them when the words of the platform are kept.
      *
-     * @param int $companyid Company.
+     * @param int $companyid Company, 0 for all companies.
      * @param array $values Setting name => value.
      */
     public static function save(int $companyid, array $values): void {
@@ -96,7 +101,7 @@ class company {
         $keep = false;
         foreach (terms::LANGUAGES as $lang) {
             foreach (terms::IOMAD_CONCEPTS as $concept) {
-                $keep = $keep || terms::chosen($lang, $concept, $values) !== null;
+                $keep = $keep || terms::chosen($lang, $concept, $values, $companyid === 0) !== null;
             }
         }
         if ($keep) {
@@ -121,23 +126,19 @@ class company {
     }
 
     /**
-     * The rewriter for a company and a language.
+     * The rewriter for a company and a language: the words of the company, else those of all companies.
      *
-     * The words to replace are those of the platform vocabulary when one is chosen, else those of the language pack.
-     *
-     * @param int $companyid Company.
+     * @param int $companyid Company, 0 for a user without company.
      * @param string $lang Language.
-     * @return rewriter|null Null when the company keeps the words of the platform.
+     * @return rewriter|null Null when the words of the language pack are kept.
      */
     public static function rewriter(int $companyid, string $lang): ?rewriter {
         if (!array_key_exists($lang, self::$rewriters[$companyid] ?? [])) {
-            $targets = in_array($lang, terms::LANGUAGES, true) ? self::chosen($companyid, $lang) : [];
-            $sources = [];
-            foreach (array_keys($targets) as $concept) {
-                $platform = terms::chosen($lang, $concept);
-                $sources[$concept] = $platform ? [$platform] : terms::pack_words($lang, $concept);
+            $targets = [];
+            if (in_array($lang, terms::LANGUAGES, true)) {
+                $targets = self::chosen($companyid, $lang) + ($companyid ? self::chosen(0, $lang) : []);
             }
-            self::$rewriters[$companyid][$lang] = $targets ? rewriter::for_language($lang, $targets, $sources) : null;
+            self::$rewriters[$companyid][$lang] = $targets ? rewriter::for_language($lang, $targets) : null;
         }
         return self::$rewriters[$companyid][$lang];
     }

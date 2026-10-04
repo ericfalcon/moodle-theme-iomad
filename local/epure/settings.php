@@ -40,12 +40,6 @@ if ($hassiteconfig) {
     }
     $ADMIN->add('local_epure_category', $settings);
 
-    $ADMIN->add('local_epure_category', new admin_externalpage(
-        'local_epure_vocabulary',
-        get_string('vocabulary', 'local_epure'),
-        new moodle_url('/local/epure/vocabulary.php')
-    ));
-
     if (\local_epure\iomad::is_installed()) {
         $ADMIN->add('local_epure_category', new admin_externalpage(
             'local_epure_companyvocabulary',

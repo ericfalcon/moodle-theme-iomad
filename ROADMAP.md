@@ -23,8 +23,8 @@ Le dépôt contient deux plugins, rangés selon l'arborescence de Moodle :
 
 | Dossier | Composant | Rôle | Obligatoire |
 |---|---|---|---|
-| `theme/epure` | `theme_epure` | Le thème : rendu, réglages, accessibilité, préférences de l'utilisateur | Oui |
-| `local/epure` | `local_epure` | Compléments : vocabulaire appliqué partout, tableau de bord IOMAD, réglages par entreprise | Non |
+| `theme/epure` | `theme_epure` | Le thème : rendu, réglages, accessibilité, préférences de l'utilisateur, vocabulaire de la plateforme | Oui |
+| `local/epure` | `local_epure` | Adaptation à IOMAD : vocabulaire des entreprises (global et par entreprise), tableau de bord IOMAD | Non |
 
 Pourquoi deux plugins :
 

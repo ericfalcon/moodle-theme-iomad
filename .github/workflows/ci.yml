@@ -53,6 +53,14 @@ jobs:
           sudo locale-gen en_AU.UTF-8
           echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
 
+      - name: Add the theme for the companion plugin
+        # local_epure depends on theme_epure (vocabulary engine).
+        if: ${{ matrix.plugin == 'local/epure' }}
+        run: |
+          mkdir -p extra-plugins
+          cp -r repo/theme/epure extra-plugins/theme_epure
+          echo "EXTRA_PLUGINS_DIR=$(pwd)/extra-plugins" >> $GITHUB_ENV
+
       - name: Install Moodle and the plugin
         run: moodle-plugin-ci install --plugin ./repo/${{ matrix.plugin }} --db-host=127.0.0.1
         env:

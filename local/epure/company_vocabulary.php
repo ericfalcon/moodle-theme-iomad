@@ -25,12 +25,13 @@
 require(__DIR__ . '/../../config.php');
 require_once($CFG->libdir . '/adminlib.php');
 
-use local_epure\form\vocabulary_form;
 use local_epure\vocabulary\company;
-use local_epure\vocabulary\manager;
-use local_epure\vocabulary\terms;
+use theme_epure\form\vocabulary_form;
+use theme_epure\vocabulary\manager;
+use theme_epure\vocabulary\terms;
 
-$companyid = optional_param('companyid', 0, PARAM_INT);
+// Company to edit: 0 for all companies (the platform), -1 for none.
+$companyid = optional_param('companyid', -1, PARAM_INT);
 
 admin_externalpage_setup('local_epure_companyvocabulary');
 $pageurl = new moodle_url('/local/epure/company_vocabulary.php');
@@ -43,13 +44,14 @@ if (!\local_epure\iomad::is_installed()) {
     die();
 }
 
-$companies = $DB->get_records_menu('company', null, 'name', 'id, name');
-if ($companyid && !isset($companies[$companyid])) {
-    $companyid = 0;
+$companies = [0 => get_string('companyvocabplatform', 'local_epure')]
+    + array_map('format_string', $DB->get_records_menu('company', null, 'name', 'id, name'));
+if (!isset($companies[$companyid])) {
+    $companyid = -1;
 }
 
 $form = null;
-if ($companyid) {
+if ($companyid >= 0) {
     $form = new vocabulary_form(new moodle_url($pageurl, ['companyid' => $companyid]), [
         'concepts' => terms::IOMAD_CONCEPTS,
         'values' => company::values($companyid),
@@ -88,7 +90,7 @@ foreach (company::ids() as $id) {
             $words[] = $term['plural'];
         }
     }
-    $link = html_writer::link(new moodle_url($pageurl, ['companyid' => $id]), format_string($companies[$id]));
+    $link = html_writer::link(new moodle_url($pageurl, ['companyid' => $id]), $companies[$id]);
     $rows[] = [$link, s(implode(', ', array_unique($words)))];
 }
 if ($rows) {
@@ -111,7 +113,7 @@ $select->set_label(get_string('companyvocabcompany', 'local_epure'));
 echo $OUTPUT->render($select);
 
 if ($form) {
-    echo $OUTPUT->heading(format_string($companies[$companyid]), 3);
+    echo $OUTPUT->heading($companies[$companyid], 3);
     $form->display();
 }
 

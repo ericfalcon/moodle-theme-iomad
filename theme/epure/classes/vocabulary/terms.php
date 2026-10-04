@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace local_epure\vocabulary;
+namespace theme_epure\vocabulary;
 
 /**
  * The words the administrator can choose for the objects of the platform.
  *
  * A term is an array with the keys singular, plural and gender ('m' or 'f', used in French).
  *
- * @package    local_epure
+ * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +29,7 @@ class terms {
     /** @var string[] Objects whose name can be chosen for the whole platform. */
     public const CONCEPTS = ['course', 'student', 'teacher'];
 
-    /** @var string[] IOMAD objects, whose name can be chosen for the platform and for each company. */
+    /** @var string[] IOMAD objects, whose name is set by the companion plugin local_epure. */
     public const IOMAD_CONCEPTS = ['company', 'department'];
 
     /** @var string[] Languages the vocabulary can be rewritten in. */
@@ -51,12 +51,14 @@ class terms {
     ];
 
     /**
-     * Objects whose name can be chosen for the whole platform on this site.
+     * Objects whose name can be chosen for the whole platform with the theme.
+     *
+     * The IOMAD objects are set by the companion plugin local_epure, for the platform and for each company.
      *
      * @return string[]
      */
     public static function concepts(): array {
-        return \local_epure\iomad::is_installed() ? array_merge(self::CONCEPTS, self::IOMAD_CONCEPTS) : self::CONCEPTS;
+        return self::CONCEPTS;
     }
 
     /**
@@ -188,15 +190,16 @@ class terms {
      *
      * @param string $lang Language.
      * @param string $concept Object.
-     * @param array|null $values Settings of a company (name => value), or null for the settings of the platform.
+     * @param array|null $values Settings (name => value), or null for the settings of the theme.
+     * @param bool $packisnone Whether choosing the word of the language pack means no change.
      * @return array<string, string>|null The term, or null to keep the language pack wording.
      */
-    public static function chosen(string $lang, string $concept, ?array $values = null): ?array {
-        $get = fn(string $name) => (string) ($values === null ? get_config('local_epure', $name) : ($values[$name] ?? ''));
+    public static function chosen(string $lang, string $concept, ?array $values = null, bool $packisnone = true): ?array {
+        $get = fn(string $name) => (string) ($values === null ? get_config('theme_epure', $name) : ($values[$name] ?? ''));
         $choice = $get(self::setting($lang, $concept));
-        // For the platform, the word of the language pack means no change. For a company, it is a choice
+        // For the platform, the word of the language pack means no change. For a company, it can be a choice
         // like any other (it can differ from the word of the platform), and no choice means the platform word.
-        if ($choice === '' || ($values === null && $choice === self::DEFAULTS[$lang][$concept])) {
+        if ($choice === '' || ($packisnone && $choice === self::DEFAULTS[$lang][$concept])) {
             return null;
         }
         if ($choice === self::CUSTOM) {
