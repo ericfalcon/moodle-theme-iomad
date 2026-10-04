@@ -90,3 +90,7 @@ jobs:
       - name: PHPUnit tests
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
+
+      - name: Behat accessibility tests (axe)
+        if: ${{ !cancelled() && matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3' }}
+        run: moodle-plugin-ci behat --profile chrome --tags @theme_epure

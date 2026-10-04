@@ -147,12 +147,12 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Liens soulignés dans le texte, pour ne jamais dépendre de la seule couleur
 - [ ] En-tête, navigation et pied de page : reporté en V0.4 avec le parcours de l'apprenant
 
-### V0.3 — Accessibilité
+### V0.3 — Accessibilité (livré en 0.9.0)
 
-- [ ] Préférences de l'utilisateur (bouton Aa) enregistrées dans le profil
-- [ ] Lien d'évitement, focus, cibles minimales
-- [ ] Modèle de déclaration d'accessibilité
-- [ ] Audit axe-core dans l'intégration continue
+- [x] Préférences de l'utilisateur (bouton Aa, raccourci Alt + A) enregistrées dans le profil, appliquées dès l'affichage de la page
+- [x] Lien d'évitement, focus, cibles minimales
+- [x] Modèle de déclaration d'accessibilité (onglet Accessibilité des réglages, page publique, mention en bas de chaque page)
+- [x] Audit axe-core dans l'intégration continue (tests Behat)
 
 ### V0.4 — Parcours de l'apprenant
 
@@ -167,6 +167,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Vocabulaire par entreprise IOMAD (entreprise, département), pour toutes les entreprises et pour chacune, appliqué par un gestionnaire de chaînes activé par le thème, sans modifier config.php — livré en 0.4.0
 - [x] Mise en forme du tableau de bord d'IOMAD : en-tête de l'entreprise, onglets, actions en cartes regroupées par intention — livré en 0.5.0
 - [x] Logo, couleur et vocabulaire de chaque entreprise dans sa fiche IOMAD (Créer / Modifier l'entreprise › Apparence) — livré en 0.6.0
+- [x] Accès direct aux catégories de cours de l'entreprise depuis le tableau de bord — livré en 0.9.0
 - [ ] Chiffres clés de l'entreprise en tête du tableau de bord (utilisateurs, cours, licences)
 
 ### V1.0 — Publication
@@ -177,6 +178,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 
 ## Questions ouvertes
 
-- Traductions : le répertoire moodle.org/plugins n'accepte que l'anglais dans le plugin, les autres langues passent par AMOS. Le français est inclus pendant le développement et sera transféré dans AMOS avant la publication.
+- Traductions : le répertoire moodle.org/plugins n'accepte que l'anglais dans le plugin, les autres langues passent par AMOS. Le français est inclus pendant le développement et sera transféré dans AMOS avant la publication, par Eric Falcon, qui a déjà traduit IOMAD.
+- Nom : « Épure » (`theme_epure`) n'est pas utilisé dans le répertoire des plugins Moodle.
 - Modèle de diffusion : gratuit sur moodle.org, ou gratuit avec services payants (installation, personnalisation, support). La licence est GPL dans tous les cas.
 - Disponibilité du nom « Épure » sur moodle.org/plugins à vérifier avant la publication.

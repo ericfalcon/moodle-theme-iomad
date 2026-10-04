@@ -15,22 +15,23 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for theme_epure.
+ * Accessibility statement of the platform. Public: it must be readable without an account.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+// The statement is public, like the legal notices: no login is required.
+// phpcs:ignore moodle.Files.RequireLogin.Missing
+require(__DIR__ . '/../../config.php');
 
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026101500;
-$plugin->release   = '0.9.0';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 501];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+$PAGE->set_context(context_system::instance());
+$PAGE->set_url(\theme_epure\accessibility_statement::url());
+$PAGE->set_pagelayout('standard');
+$PAGE->set_title(get_string('a11ystatement', 'theme_epure'));
+$PAGE->set_heading(format_string($SITE->fullname));
+
+echo $OUTPUT->header();
+echo $OUTPUT->render_from_template('theme_epure/accessibility_statement', \theme_epure\accessibility_statement::export());
+echo $OUTPUT->footer();
