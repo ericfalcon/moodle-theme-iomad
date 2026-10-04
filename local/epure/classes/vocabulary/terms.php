@@ -26,8 +26,11 @@ namespace local_epure\vocabulary;
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class terms {
-    /** @var string[] Objects whose name can be chosen. */
+    /** @var string[] Objects whose name can be chosen for the whole platform. */
     public const CONCEPTS = ['course', 'student', 'teacher'];
+
+    /** @var string[] IOMAD objects, whose name can be chosen for the platform and for each company. */
+    public const IOMAD_CONCEPTS = ['company', 'department'];
 
     /** @var string[] Languages the vocabulary can be rewritten in. */
     public const LANGUAGES = ['fr', 'en'];
@@ -37,9 +40,42 @@ class terms {
 
     /** @var array<string, array<string, string>> Key of the word used by the language pack, by language and object. */
     public const DEFAULTS = [
-        'fr' => ['course' => 'cours', 'student' => 'etudiant', 'teacher' => 'enseignant'],
-        'en' => ['course' => 'course', 'student' => 'student', 'teacher' => 'teacher'],
+        'fr' => [
+            'course' => 'cours', 'student' => 'etudiant', 'teacher' => 'enseignant',
+            'company' => 'entreprise', 'department' => 'departement',
+        ],
+        'en' => [
+            'course' => 'course', 'student' => 'student', 'teacher' => 'teacher',
+            'company' => 'company', 'department' => 'department',
+        ],
     ];
+
+    /**
+     * Objects whose name can be chosen for the whole platform on this site.
+     *
+     * @return string[]
+     */
+    public static function concepts(): array {
+        return \local_epure\iomad::is_installed() ? array_merge(self::CONCEPTS, self::IOMAD_CONCEPTS) : self::CONCEPTS;
+    }
+
+    /**
+     * Words the language pack uses for an object: the default word, and its synonyms.
+     *
+     * The French translation of IOMAD calls a company « entreprise » or « société ».
+     *
+     * @param string $lang Language.
+     * @param string $concept Object.
+     * @return array[] Terms.
+     */
+    public static function pack_words(string $lang, string $concept): array {
+        $presets = self::presets()[$lang][$concept];
+        $words = [$presets[self::DEFAULTS[$lang][$concept]]];
+        if ($lang === 'fr' && $concept === 'company') {
+            $words[] = $presets['societe'];
+        }
+        return $words;
+    }
 
     /**
      * Words proposed for each object, by language.
@@ -71,6 +107,24 @@ class terms {
                     'professeur' => $t('professeur', 'professeurs'),
                     'coach' => $t('coach', 'coachs'),
                 ],
+                'company' => [
+                    'entreprise' => $t('entreprise', 'entreprises', 'f'),
+                    'societe' => $t('société', 'sociétés', 'f'),
+                    'client' => $t('client', 'clients'),
+                    'etablissement' => $t('établissement', 'établissements'),
+                    'organisation' => $t('organisation', 'organisations', 'f'),
+                    'filiale' => $t('filiale', 'filiales', 'f'),
+                    'agence' => $t('agence', 'agences', 'f'),
+                ],
+                'department' => [
+                    'departement' => $t('département', 'départements'),
+                    'service' => $t('service', 'services'),
+                    'equipe' => $t('équipe', 'équipes', 'f'),
+                    'site' => $t('site', 'sites'),
+                    'pole' => $t('pôle', 'pôles'),
+                    'agence' => $t('agence', 'agences', 'f'),
+                    'unite' => $t('unité', 'unités', 'f'),
+                ],
             ],
             'en' => [
                 'course' => [
@@ -96,6 +150,23 @@ class terms {
                     'facilitator' => $t('facilitator', 'facilitators'),
                     'coach' => $t('coach', 'coaches'),
                 ],
+                'company' => [
+                    'company' => $t('company', 'companies'),
+                    'client' => $t('client', 'clients'),
+                    'organisation' => $t('organisation', 'organisations'),
+                    'organization' => $t('organization', 'organizations'),
+                    'institution' => $t('institution', 'institutions'),
+                    'subsidiary' => $t('subsidiary', 'subsidiaries'),
+                    'agency' => $t('agency', 'agencies'),
+                ],
+                'department' => [
+                    'department' => $t('department', 'departments'),
+                    'team' => $t('team', 'teams'),
+                    'site' => $t('site', 'sites'),
+                    'unit' => $t('unit', 'units'),
+                    'division' => $t('division', 'divisions'),
+                    'branch' => $t('branch', 'branches'),
+                ],
             ],
         ];
     }
@@ -117,17 +188,21 @@ class terms {
      *
      * @param string $lang Language.
      * @param string $concept Object.
+     * @param array|null $values Settings of a company (name => value), or null for the settings of the platform.
      * @return array<string, string>|null The term, or null to keep the language pack wording.
      */
-    public static function chosen(string $lang, string $concept): ?array {
-        $choice = (string) get_config('local_epure', self::setting($lang, $concept));
-        if ($choice === '' || $choice === self::DEFAULTS[$lang][$concept]) {
+    public static function chosen(string $lang, string $concept, ?array $values = null): ?array {
+        $get = fn(string $name) => (string) ($values === null ? get_config('local_epure', $name) : ($values[$name] ?? ''));
+        $choice = $get(self::setting($lang, $concept));
+        // For the platform, the word of the language pack means no change. For a company, it is a choice
+        // like any other (it can differ from the word of the platform), and no choice means the platform word.
+        if ($choice === '' || ($values === null && $choice === self::DEFAULTS[$lang][$concept])) {
             return null;
         }
         if ($choice === self::CUSTOM) {
-            $singular = trim((string) get_config('local_epure', self::setting($lang, $concept, 'singular')));
-            $plural = trim((string) get_config('local_epure', self::setting($lang, $concept, 'plural')));
-            $gender = get_config('local_epure', self::setting($lang, $concept, 'gender')) === 'f' ? 'f' : 'm';
+            $singular = trim($get(self::setting($lang, $concept, 'singular')));
+            $plural = trim($get(self::setting($lang, $concept, 'plural')));
+            $gender = $get(self::setting($lang, $concept, 'gender')) === 'f' ? 'f' : 'm';
             if ($singular === '') {
                 return null;
             }
@@ -144,7 +219,7 @@ class terms {
      */
     public static function chosen_all(string $lang): array {
         $targets = [];
-        foreach (self::CONCEPTS as $concept) {
+        foreach (self::concepts() as $concept) {
             if ($term = self::chosen($lang, $concept)) {
                 $targets[$concept] = $term;
             }

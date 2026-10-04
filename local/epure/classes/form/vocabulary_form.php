@@ -24,7 +24,11 @@ use local_epure\vocabulary\manager;
 use local_epure\vocabulary\terms;
 
 /**
- * Choice of the words used for courses, students and teachers, in each language.
+ * Choice of the words used for the objects of the platform, in each language.
+ *
+ * Custom data: concepts (objects to choose, by default those of the platform), values (setting
+ * name => value, by default the settings of the platform), companyid (for the words of a company)
+ * and resetlabel (label of the button that restores the default words).
  *
  * @package    local_epure
  * @copyright  2026 Eric Falcon
@@ -38,12 +42,21 @@ class vocabulary_form extends \moodleform {
         $mform = $this->_form;
         $translations = get_string_manager()->get_list_of_translations(true);
         $presets = terms::presets();
+        $concepts = $this->_customdata['concepts'] ?? terms::concepts();
+        $values = $this->_customdata['values'] ?? null;
+        $inherit = !empty($this->_customdata['companyid']);
+        $value = fn(string $name) => (string) ($values === null ? get_config('local_epure', $name) : ($values[$name] ?? ''));
+
+        if (!empty($this->_customdata['companyid'])) {
+            $mform->addElement('hidden', 'companyid', $this->_customdata['companyid']);
+            $mform->setType('companyid', PARAM_INT);
+        }
 
         foreach (manager::languages() as $lang) {
             $mform->addElement('header', 'lang_' . $lang, $translations[$lang]);
             $mform->setExpanded('lang_' . $lang);
 
-            foreach (terms::CONCEPTS as $concept) {
+            foreach ($concepts as $concept) {
                 $name = terms::setting($lang, $concept);
                 $options = [];
                 foreach ($presets[$lang][$concept] as $key => $term) {
@@ -52,14 +65,18 @@ class vocabulary_form extends \moodleform {
                         : $term['singular'] . ' / ' . $term['plural'];
                 }
                 $options[terms::CUSTOM] = get_string('vocabcustom', 'local_epure');
+                if ($inherit) {
+                    $platform = terms::chosen($lang, $concept) ?? $presets[$lang][$concept][terms::DEFAULTS[$lang][$concept]];
+                    $options = ['' => get_string('vocabplatform', 'local_epure', $platform['plural'])] + $options;
+                }
                 $mform->addElement('select', $name, get_string('vocab_' . $concept, 'local_epure'), $options);
-                $mform->setDefault($name, get_config('local_epure', $name) ?: terms::DEFAULTS[$lang][$concept]);
+                $mform->setDefault($name, $value($name) ?: ($inherit ? '' : terms::DEFAULTS[$lang][$concept]));
 
                 foreach (['singular', 'plural'] as $form) {
                     $field = terms::setting($lang, $concept, $form);
                     $mform->addElement('text', $field, get_string('vocab' . $form, 'local_epure'), ['size' => 24]);
                     $mform->setType($field, PARAM_TEXT);
-                    $mform->setDefault($field, (string) get_config('local_epure', $field));
+                    $mform->setDefault($field, $value($field));
                     $mform->hideIf($field, $name, 'neq', terms::CUSTOM);
                 }
                 if ($lang === 'fr') {
@@ -68,7 +85,7 @@ class vocabulary_form extends \moodleform {
                         'm' => get_string('vocabmasculine', 'local_epure'),
                         'f' => get_string('vocabfeminine', 'local_epure'),
                     ]);
-                    $mform->setDefault($field, get_config('local_epure', $field) ?: 'm');
+                    $mform->setDefault($field, $value($field) ?: 'm');
                     $mform->hideIf($field, $name, 'neq', terms::CUSTOM);
                 }
             }
@@ -76,7 +93,13 @@ class vocabulary_form extends \moodleform {
 
         $buttons = [
             $mform->createElement('submit', 'submitbutton', get_string('vocabapply', 'local_epure')),
-            $mform->createElement('submit', 'resetbutton', get_string('vocabreset', 'local_epure'), [], false),
+            $mform->createElement(
+                'submit',
+                'resetbutton',
+                $this->_customdata['resetlabel'] ?? get_string('vocabreset', 'local_epure'),
+                [],
+                false
+            ),
         ];
         $mform->addGroup($buttons, 'buttonar', '', ' ', false);
         $mform->closeHeaderBefore('buttonar');
@@ -95,7 +118,7 @@ class vocabulary_form extends \moodleform {
             return $errors;
         }
         foreach (manager::languages() as $lang) {
-            foreach (terms::CONCEPTS as $concept) {
+            foreach ($this->_customdata['concepts'] ?? terms::concepts() as $concept) {
                 $singular = terms::setting($lang, $concept, 'singular');
                 if (($data[terms::setting($lang, $concept)] ?? '') === terms::CUSTOM && trim($data[$singular] ?? '') === '') {
                     $errors[$singular] = get_string('required');
@@ -103,5 +126,31 @@ class vocabulary_form extends \moodleform {
             }
         }
         return $errors;
+    }
+
+    /**
+     * The settings submitted, as setting name => value; the default words when the reset button was used.
+     *
+     * @param \stdClass $data Submitted data.
+     * @param string[] $concepts Objects of the form.
+     * @param bool $inherit Whether the default is the word of the platform (for a company).
+     * @return array<string, string>
+     */
+    public static function values_from(\stdClass $data, array $concepts, bool $inherit = false): array {
+        $reset = !empty($data->resetbutton);
+        $values = [];
+        foreach (manager::languages() as $lang) {
+            foreach ($concepts as $concept) {
+                $name = terms::setting($lang, $concept);
+                $values[$name] = $reset ? ($inherit ? '' : terms::DEFAULTS[$lang][$concept]) : (string) $data->$name;
+                foreach (['singular', 'plural', 'gender'] as $suffix) {
+                    $field = terms::setting($lang, $concept, $suffix);
+                    if (!$reset && isset($data->$field)) {
+                        $values[$field] = trim($data->$field);
+                    }
+                }
+            }
+        }
+        return $values;
     }
 }

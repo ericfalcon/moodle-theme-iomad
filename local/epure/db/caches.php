@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for local_epure.
+ * Cache definitions for local_epure.
  *
  * @package    local_epure
  * @copyright  2026 Eric Falcon
@@ -24,10 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_epure';
-$plugin->version   = 2026100600;
-$plugin->release   = '0.3.0';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 501];
-$plugin->dependencies = ['tool_customlang' => ANY_VERSION];
+$definitions = [
+    // Strings rewritten with the words of an IOMAD company, by company, language and component.
+    'companystrings' => [
+        'mode' => cache_store::MODE_APPLICATION,
+        'simplekeys' => true,
+        'simpledata' => false,
+        'staticacceleration' => true,
+        'staticaccelerationsize' => 30,
+    ],
+];

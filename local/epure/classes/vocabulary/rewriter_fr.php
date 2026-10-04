@@ -30,19 +30,8 @@ namespace local_epure\vocabulary;
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class rewriter_fr extends rewriter {
-    /** @var array<string, string[]> Singular and plural used by the French language pack, by object (all masculine). */
-    public const SOURCES = [
-        'course' => ['cours', 'cours'],
-        'student' => ['étudiant', 'étudiants'],
-        'teacher' => ['enseignant', 'enseignants'],
-    ];
-
-    /** @var array<string, string[]> English singular and plural, to tell whether « cours » is plural. */
-    private const ENGLISH = [
-        'course' => ['course', 'courses'],
-        'student' => ['student', 'students'],
-        'teacher' => ['teacher', 'teachers'],
-    ];
+    /** @var string Language of the strings. */
+    protected const LANG = 'fr';
 
     /** @var string Determiner and adjective just before the word. */
     private const BEFORE = "/(?<![\\p{L}])
@@ -93,35 +82,32 @@ class rewriter_fr extends rewriter {
         'inscrit' => 'inscrite', 'actuel' => 'actuelle', 'suivant' => 'suivante', 'précédent' => 'précédente',
         'ouvert' => 'ouverte', 'complet' => 'complète', 'choisi' => 'choisie', 'fini' => 'finie',
         'défini' => 'définie', 'réussi' => 'réussie', 'suivi' => 'suivie', 'rempli' => 'remplie',
-        'public' => 'publique', 'gratuit' => 'gratuite', 'prévu' => 'prévue',
+        'public' => 'publique', 'gratuit' => 'gratuite', 'parent' => 'parente', 'principal' => 'principale',
     ];
 
     /**
-     * Replaces the word of one object in plain text.
+     * Replaces a word in plain text.
      *
      * @param string $text Plain text.
      * @param string $concept Object.
+     * @param array $source Word to replace (singular, plural, gender).
      * @param array $term New word (singular, plural, gender).
      * @param string $english English version of the whole string.
      * @return string
      */
-    protected function rewrite_concept(string $text, string $concept, array $term, string $english): string {
-        [$singular, $plural] = self::SOURCES[$concept];
-        $forms = array_unique([$plural, $singular]);
-        $pattern = '/(?<![\p{L}])(' . implode('|', $forms) . ')(?![\p{L}])/iu';
-        if (!preg_match_all($pattern, $text, $matches, PREG_OFFSET_CAPTURE)) {
-            return $text;
-        }
+    protected function rewrite_word(string $text, string $concept, array $source, array $term, string $english): string {
+        [$singular, $plural] = [\core_text::strtolower($source['singular']), \core_text::strtolower($source['plural'])];
         $feminine = $term['gender'] === 'f';
+        $genderchanges = ($source['gender'] === 'f') !== $feminine;
 
         // From the end, so that the offsets of the earlier matches stay valid.
-        foreach (array_reverse($matches[1]) as [$word, $offset]) {
+        foreach (self::find($text, $source) as [$word, $offset]) {
             $before = substr($text, 0, $offset);
             $after = substr($text, $offset + strlen($word));
 
             // The phrases « en cours » (in progress) and « au cours de » (during) are not about a course.
             if (
-                $concept === 'course' && (preg_match('/(?<![\p{L}])en\s+$/iu', $before)
+                $singular === 'cours' && (preg_match('/(?<![\p{L}])en\s+$/iu', $before)
                     || (preg_match('/(?<![\p{L}])au\s+$/iu', $before) && preg_match('/^\s+d(?:e|u|es|[\'’])/iu', $after)))
             ) {
                 continue;
@@ -150,11 +136,11 @@ class rewriter_fr extends rewriter {
             // In « Cours non commencés », an adjective that agrees after the word tells its number.
             if (
                 $isplural === null && preg_match('/^\s+(?:(?:non|pas)\s+)?(\p{L}+)/iu', $after, $next)
-                    && self::feminine($next[1]) !== null
+                    && (self::agreed($next[1], true) !== null || self::agreed($next[1], false) !== null)
             ) {
                 $isplural = str_ends_with(\core_text::strtolower($next[1]), 's');
             }
-            $isplural ??= self::english_number($english, ...self::ENGLISH[$concept]) ?? false;
+            $isplural ??= self::english_number($english, $concept) ?? false;
 
             $noun = self::match_case($word, $isplural ? $term['plural'] : $term['singular']);
             $replacement = $noun;
@@ -173,7 +159,7 @@ class rewriter_fr extends rewriter {
             }
 
             $start = strlen($before) - strlen($m[0] ?? '');
-            $text = substr($before, 0, $start) . $replacement . ($feminine ? self::agree($after) : $after);
+            $text = substr($before, 0, $start) . $replacement . ($genderchanges ? self::agree($after, $feminine) : $after);
         }
         return $text;
     }
@@ -259,12 +245,13 @@ class rewriter_fr extends rewriter {
     }
 
     /**
-     * Makes the adjective or participle right after a noun that became feminine agree with it.
+     * Makes the adjective or participle right after a noun agree with its new gender.
      *
      * @param string $after Text after the noun.
+     * @param bool $feminine Whether the noun became feminine (else it became masculine).
      * @return string
      */
-    private static function agree(string $after): string {
+    private static function agree(string $after, bool $feminine): string {
         $patterns = [
             // After être: « est masqué », « a été créé », « n'est pas visible ».
             "/^(\\s+(?:n['’])?(?:est|sont|sera|seront|était|étaient|soit|soient|a\\s+été|ont\\s+été|avait\\s+été|avaient\\s+été)"
@@ -272,32 +259,64 @@ class rewriter_fr extends rewriter {
             // Right after the noun: « masqué », « non commencés ».
             '/^(\s+(?:(?:non|pas|déjà|bien)\s+)?)(\p{L}+)/iu',
         ];
-        foreach ($patterns as $pattern) {
-            if (preg_match($pattern, $after, $m) && ($feminine = self::feminine($m[2])) !== null) {
-                return $m[1] . self::match_case($m[2], $feminine) . substr($after, strlen($m[0]));
+        // Up to two words: « sélectionnée est suspendue ».
+        $done = '';
+        for ($i = 0; $i < 2; $i++) {
+            $found = false;
+            foreach ($patterns as $pattern) {
+                if (preg_match($pattern, $after, $m) && ($agreed = self::agreed($m[2], $feminine)) !== null) {
+                    $done .= $m[1] . self::match_case($m[2], $agreed);
+                    $after = substr($after, strlen($m[0]));
+                    $found = true;
+                    break;
+                }
+            }
+            if (!$found) {
+                break;
             }
         }
-        return $after;
+        return $done . $after;
     }
 
     /**
-     * The feminine of an adjective or past participle.
+     * An adjective or past participle in the other gender.
      *
-     * @param string $word Masculine word.
+     * @param string $word Word.
+     * @param bool $feminine True for the feminine of a masculine word, false for the masculine of a feminine word.
      * @return string|null Null when the word is not an adjective that changes.
      */
-    private static function feminine(string $word): ?string {
+    private static function agreed(string $word, bool $feminine): ?string {
         $lower = \core_text::strtolower($word);
         $plural = str_ends_with($lower, 's');
         $base = $plural ? substr($lower, 0, -1) : $lower;
-        if (isset(self::FEMININES[$base])) {
-            return self::FEMININES[$base] . ($plural ? 's' : '');
+        $s = $plural ? 's' : '';
+        if ($feminine) {
+            if (isset(self::FEMININES[$base])) {
+                return self::FEMININES[$base] . $s;
+            }
+            if (str_ends_with($base, 'é')) {
+                return $base . 'e' . $s;
+            }
+            if (str_ends_with($base, 'if') && \core_text::strlen($base) > 3) {
+                return substr($base, 0, -1) . 've' . $s;
+            }
+            // Participles in -u: suspendu, prévu, rendu.
+            if (str_ends_with($base, 'u') && \core_text::strlen($base) > 4) {
+                return $base . 'e' . $s;
+            }
+            return null;
         }
-        if (str_ends_with($base, 'é')) {
-            return $base . 'e' . ($plural ? 's' : '');
+        if (($masculine = array_search($base, self::FEMININES, true)) !== false) {
+            return $masculine . $s;
         }
-        if (str_ends_with($base, 'if') && \core_text::strlen($base) > 3) {
-            return substr($base, 0, -1) . 've' . ($plural ? 's' : '');
+        if (str_ends_with($base, 'ée')) {
+            return substr($base, 0, -1) . $s;
+        }
+        if (str_ends_with($base, 'ive') && \core_text::strlen($base) > 4) {
+            return substr($base, 0, -2) . 'f' . $s;
+        }
+        if (str_ends_with($base, 'ue') && \core_text::strlen($base) > 5) {
+            return substr($base, 0, -1) . $s;
         }
         return null;
     }

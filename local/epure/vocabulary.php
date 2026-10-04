@@ -38,18 +38,8 @@ $form = new \local_epure\form\vocabulary_form($pageurl);
 $translations = get_string_manager()->get_list_of_translations(true);
 
 if ($data = $form->get_data()) {
-    $reset = !empty($data->resetbutton);
-    foreach (manager::languages() as $lang) {
-        foreach (terms::CONCEPTS as $concept) {
-            $name = terms::setting($lang, $concept);
-            set_config($name, $reset ? terms::DEFAULTS[$lang][$concept] : $data->$name, 'local_epure');
-            foreach (['singular', 'plural', 'gender'] as $suffix) {
-                $field = terms::setting($lang, $concept, $suffix);
-                if (isset($data->$field)) {
-                    set_config($field, trim($data->$field), 'local_epure');
-                }
-            }
-        }
+    foreach (\local_epure\form\vocabulary_form::values_from($data, terms::concepts()) as $name => $value) {
+        set_config($name, $value, 'local_epure');
     }
 
     echo $OUTPUT->header();

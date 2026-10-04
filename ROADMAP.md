@@ -92,7 +92,7 @@ Mise en œuvre, dans le plugin compagnon :
 - un simple remplacement de mots ne suffit pas en français (« le cours » deviendrait « le formation ») : le plugin réécrit chaque chaîne du paquet de langue installé en régénérant les déterminants, l'élision et les accords selon le singulier, le pluriel et le genre du mot choisi. Il couvre ainsi toutes les chaînes de Moodle, de ses plugins et d'IOMAD, sans liste à maintenir ;
 - les personnalisations déjà faites par l'administrateur dans l'outil de personnalisation sont conservées, jamais écrasées ;
 - l'opération est réversible : revenir au vocabulaire par défaut supprime les chaînes ajoutées par le plugin ;
-- le vocabulaire propre à une entreprise IOMAD s'applique aux utilisateurs de cette entreprise. Les paquets de langue étant communs à tout le site, le mécanisme reste à valider : une langue dérivée par entreprise (par exemple `fr_tilleuls`, héritant de `fr`), ou un gestionnaire de chaînes activé dans `config.php`.
+- le vocabulaire propre à une entreprise IOMAD s'applique aux utilisateurs de cette entreprise. Les paquets de langue étant communs à tout le site, il est appliqué au chargement des chaînes par un gestionnaire de chaînes que le plugin active à chaque page (crochet `after_config`), sans modifier `config.php`. Une langue dérivée par entreprise a été écartée : elle serait apparue dans le menu des langues.
 
 Sans le plugin compagnon, le thème applique le vocabulaire à ses propres pages seulement.
 
@@ -173,7 +173,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 
 - [x] Couleur et logo par entreprise, à partir des réglages natifs d'IOMAD (couleur des titres, logo, CSS personnalisé) — livré en 0.2.2
 - [x] Vocabulaire de la plateforme (cours, étudiants, enseignants ; français et anglais), appliqué à tout Moodle par l'outil de personnalisation de la langue — livré dans local_epure 0.2.0
-- [ ] Vocabulaire par entreprise IOMAD
+- [x] Vocabulaire par entreprise IOMAD (entreprise, département), appliqué par un gestionnaire de chaînes activé par le plugin, sans modifier config.php — livré dans local_epure 0.3.0
 - [ ] Tableau de bord IOMAD
 
 ### V1.0 — Publication

@@ -24,36 +24,29 @@ namespace local_epure\vocabulary;
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class rewriter_en extends rewriter {
-    /** @var array<string, string[]> Singular and plural used by Moodle, by object. */
-    public const SOURCES = [
-        'course' => ['course', 'courses'],
-        'student' => ['student', 'students'],
-        'teacher' => ['teacher', 'teachers'],
-    ];
+    /** @var string Language of the strings. */
+    protected const LANG = 'en';
 
     /**
-     * Replaces the word of one object in plain text.
+     * Replaces a word in plain text.
      *
      * @param string $text Plain text.
      * @param string $concept Object.
+     * @param array $source Word to replace (singular, plural, gender).
      * @param array $term New word (singular, plural, gender).
      * @param string $english English version of the whole string.
      * @return string
      */
-    protected function rewrite_concept(string $text, string $concept, array $term, string $english): string {
-        [$singular, $plural] = self::SOURCES[$concept];
-        $pattern = '/(?<![\p{L}])(' . $plural . '|' . $singular . ')(?![\p{L}])/iu';
-        if (!preg_match_all($pattern, $text, $matches, PREG_OFFSET_CAPTURE)) {
-            return $text;
-        }
+    protected function rewrite_word(string $text, string $concept, array $source, array $term, string $english): string {
+        $plural = \core_text::strtolower($source['plural']);
         // From the end, so that the offsets of the earlier matches stay valid.
-        foreach (array_reverse($matches[1]) as [$word, $offset]) {
+        foreach (self::find($text, $source) as [$word, $offset]) {
             $before = substr($text, 0, $offset);
             $after = substr($text, $offset + strlen($word));
             $isplural = \core_text::strtolower($word) === $plural;
 
             // The phrase "of course" is not about a course.
-            if (!$isplural && $concept === 'course' && preg_match('/(?<![\p{L}])of\s+$/iu', $before)) {
+            if (!$isplural && \core_text::strtolower($word) === 'course' && preg_match('/(?<![\p{L}])of\s+$/iu', $before)) {
                 continue;
             }
 

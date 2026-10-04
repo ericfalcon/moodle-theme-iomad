@@ -101,6 +101,40 @@ final class rewriter_test extends \basic_testcase {
     }
 
     /**
+     * IOMAD strings: feminine words of the language pack (entreprise, société) becoming masculine, and the reverse.
+     */
+    public function test_french_iomad(): void {
+        $presets = terms::presets()['fr'];
+        $rewriter = rewriter::for_language('fr', [
+            'company' => $presets['company']['client'],
+            'department' => $presets['department']['equipe'],
+        ]);
+        $this->assertSame('Modifier le client', $rewriter->rewrite("Modifier l'entreprise", 'Edit company'));
+        $this->assertSame('Gérer les clients', $rewriter->rewrite('Gérer les sociétés', 'Manage companies'));
+        $this->assertSame('Ce client', $rewriter->rewrite('Cette société', ''));
+        $this->assertSame('Le client sélectionné est suspendu', $rewriter->rewrite("L'entreprise sélectionnée est suspendue", ''));
+        $this->assertSame('Afficher les clients suspendus ?', $rewriter->rewrite('Afficher les entreprises suspendues ?', ''));
+        $this->assertSame('Nouvelle équipe', $rewriter->rewrite('Nouveau département', ''));
+        $this->assertSame("L'équipe parente", $rewriter->rewrite('Le département parent', ''));
+        // Identifiers are not words.
+        $this->assertNull($rewriter->rewrite('company_users entreprise_id', ''));
+    }
+
+    /**
+     * The words to replace can be given: those of the platform vocabulary, for the vocabulary of a company.
+     */
+    public function test_sources(): void {
+        $presets = terms::presets()['fr'];
+        $rewriter = rewriter::for_language(
+            'fr',
+            ['company' => $presets['company']['agence']],
+            ['company' => [$presets['company']['client']]]
+        );
+        $this->assertSame("Modifier l'agence", $rewriter->rewrite('Modifier le client', 'Edit company'));
+        $this->assertNull($rewriter->rewrite("Modifier l'entreprise", 'Edit company'));
+    }
+
+    /**
      * English strings: plural, capitals, and the article a or an.
      */
     public function test_english(): void {

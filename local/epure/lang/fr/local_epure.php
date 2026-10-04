@@ -24,12 +24,24 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['cachedef_companystrings'] = 'Chaînes avec les mots d\'une entreprise IOMAD';
+$string['companyvocabchoose'] = 'Choisir une entreprise…';
+$string['companyvocabcompany'] = 'Entreprise';
+$string['companyvocabintro'] = 'Chaque entreprise peut avoir ses propres mots pour « entreprise » et « département ». Ils s\'appliquent aux utilisateurs de l\'entreprise, et à l\'administrateur qui l\'a sélectionnée dans le tableau de bord IOMAD, sur toutes les pages. Sans mots propres, une entreprise utilise ceux de la plateforme (page Vocabulaire).';
+$string['companyvocablist'] = 'Entreprises qui ont leurs propres mots';
+$string['companyvocabreset'] = 'Utiliser les mots de la plateforme';
+$string['companyvocabsaved'] = 'Le vocabulaire de {$a} est enregistré.';
+$string['companyvocabulary'] = 'Vocabulaire des entreprises';
+$string['companyvocabunavailable'] = 'config.php définit un autre gestionnaire de chaînes ($CFG->customstringmanager) : le vocabulaire des entreprises ne peut pas s\'appliquer. Retirez cette ligne, ou contactez le développeur de ce gestionnaire.';
+$string['companyvocabwords'] = 'Mots';
 $string['iomaddetected'] = 'IOMAD est installé : les fonctions entreprise (tableau de bord, couleur, logo et vocabulaire par entreprise) seront disponibles.';
 $string['iomadnotdetected'] = 'IOMAD n\'est pas installé : les fonctions entreprise sont masquées. Le vocabulaire fonctionne sur tout site Moodle.';
 $string['pluginname'] = 'Outils Épure';
 $string['privacy:metadata'] = 'Le plugin Outils Épure ne stocke aucune donnée personnelle.';
 $string['status'] = 'État';
+$string['vocab_company'] = 'Les entreprises s\'appellent';
 $string['vocab_course'] = 'Les cours s\'appellent';
+$string['vocab_department'] = 'Les départements s\'appellent';
 $string['vocab_student'] = 'Les étudiants s\'appellent';
 $string['vocab_teacher'] = 'Les enseignants s\'appellent';
 $string['vocabafter'] = 'Avec votre vocabulaire';
@@ -40,11 +52,12 @@ $string['vocabcustom'] = 'Autre mot…';
 $string['vocabexamples'] = '{$a->lang} : {$a->count} chaînes utilisent votre vocabulaire. Exemples :';
 $string['vocabfeminine'] = 'Féminin';
 $string['vocabgender'] = 'Genre';
-$string['vocabintro'] = 'Choisissez les mots qui désignent les cours, les étudiants et les enseignants. Ils remplacent ceux de Moodle partout : menus, tableau de bord, listes de cours, participants, rôles, rapports, notifications, ainsi que les pages des plugins et d\'IOMAD. En français, les articles et les accords suivent le mot choisi. Les chaînes sont écrites avec l\'outil de personnalisation de la langue de Moodle : les personnalisations que vous y avez faites vous-même sont conservées, et chaque chaîne reste modifiable. L\'application prend quelques secondes, et une vingtaine de secondes la première fois pour chaque langue.';
+$string['vocabintro'] = 'Choisissez les mots qui désignent les cours, les étudiants et les enseignants (et, avec IOMAD, les entreprises et les départements). Ils remplacent ceux de Moodle partout : menus, tableau de bord, listes de cours, participants, rôles, rapports, notifications, ainsi que les pages des plugins et d\'IOMAD. En français, les articles et les accords suivent le mot choisi. Les chaînes sont écrites avec l\'outil de personnalisation de la langue de Moodle : les personnalisations que vous y avez faites vous-même sont conservées, et chaque chaîne reste modifiable. L\'application prend quelques secondes, et une vingtaine de secondes la première fois pour chaque langue.';
 $string['vocabkept'] = '{$a} chaînes que vous avez personnalisées vous-même dans l\'outil de personnalisation de la langue n\'ont pas été modifiées.';
 $string['vocabmasculine'] = 'Masculin';
 $string['vocabnolanguage'] = 'Aucune des langues prises en charge (français, anglais) n\'est installée.';
 $string['vocabnone'] = 'La formulation de Moodle est utilisée.';
+$string['vocabplatform'] = 'Comme la plateforme ({$a})';
 $string['vocabplural'] = 'Pluriel';
 $string['vocabreset'] = 'Rétablir la formulation de Moodle';
 $string['vocabsingular'] = 'Singulier';

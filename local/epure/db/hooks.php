@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for local_epure.
+ * Hook callbacks for local_epure.
  *
  * @package    local_epure
  * @copyright  2026 Eric Falcon
@@ -24,10 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_epure';
-$plugin->version   = 2026100600;
-$plugin->release   = '0.3.0';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 501];
-$plugin->dependencies = ['tool_customlang' => ANY_VERSION];
+$callbacks = [
+    [
+        'hook' => \core\hook\after_config::class,
+        'callback' => [\local_epure\hook_callbacks::class, 'after_config'],
+    ],
+];
