@@ -169,7 +169,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Mise en forme du tableau de bord d'IOMAD : en-tête de l'entreprise, onglets, actions en cartes regroupées par intention — livré en 0.5.0
 - [x] Logo, couleur et vocabulaire de chaque entreprise dans sa fiche IOMAD (Créer / Modifier l'entreprise › Apparence) — livré en 0.6.0
 - [x] Accès direct aux catégories de cours de l'entreprise depuis le tableau de bord — livré en 0.9.0
-- [ ] Chiffres clés de l'entreprise en tête du tableau de bord (utilisateurs, cours, licences)
+- [x] Chiffres clés de l'entreprise en tête du tableau de bord (utilisateurs et actifs de la semaine, cours, licences utilisées, achèvements sur 30 jours) — livré en 0.13.0
 
 ### V1.0 — Publication
 
