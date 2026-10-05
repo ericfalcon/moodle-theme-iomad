@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for theme_epure.
+ * Web services of theme_epure.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
@@ -24,13 +24,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026102500;
-$plugin->release   = '0.19.0';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 501];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
+$functions = [
+    'theme_epure_quick_search' => [
+        'classname' => \theme_epure\external\quick_search::class,
+        'description' => 'Courses, activities and administration pages matching a text, for the quick search (Ctrl+K).',
+        'type' => 'read',
+        'ajax' => true,
+        'loginrequired' => true,
+    ],
 ];
