@@ -1,25 +1,28 @@
 # Épure
 
-Thème Moodle moderne, sobre et accessible, compatible **Moodle 4.5 LTS et 5.x**, avec ou sans **IOMAD**.
+A modern, clean and accessible Moodle theme for **Moodle 4.5 LTS and 5.x**, with or without **IOMAD**.
 
-![Aperçu du thème](theme/epure/pix/screenshot.png)
+![Theme preview](theme/epure/pix/screenshot.png)
 
-## Contenu du dépôt
+Documentation: [English (theme README)](theme/epure/README.md) · [Français (wiki)](https://github.com/ericfalcon/moodle-theme-iomad/wiki) · [README en français](theme/epure/README.fr.md)
 
-| Dossier | Composant | Rôle |
+## Repository contents
+
+| Folder | Component | Role |
 |---|---|---|
-| [`theme/epure`](theme/epure) | `theme_epure` | Le thème : apparence, accessibilité, vocabulaire, adaptation à IOMAD |
+| [`theme/epure`](theme/epure) | `theme_epure` | The theme: appearance, accessibility, vocabulary, IOMAD integration |
+| [`docs/wiki`](docs/wiki) | — | Sources of the French wiki pages |
 
-Copiez `theme/epure` dans le dossier `theme` de votre Moodle (`public/theme` à partir de Moodle 5.1). IOMAD est détecté automatiquement : il n'y a pas d'autre plugin à installer.
+Copy `theme/epure` into the `theme` folder of your Moodle site (`public/theme` from Moodle 5.1 onwards), or install the ZIP file from Site administration › Plugins › Install plugins. IOMAD is detected automatically: there is no other plugin to install.
 
-Si vous aviez installé le plugin « Outils Épure » (`local_epure`) des versions 0.1 à 0.3 : mettez d'abord le thème à jour (il reprend vos réglages de vocabulaire), puis désinstallez ce plugin.
+If you installed the "Épure tools" plugin (`local_epure`) of versions 0.1 to 0.3: first upgrade the theme (it takes over your vocabulary settings), then uninstall that plugin.
 
-La feuille de route et les décisions de conception sont dans [ROADMAP.md](ROADMAP.md).
+The roadmap and design decisions (in French) are in [ROADMAP.md](ROADMAP.md); the changes of each version in [CHANGES.md](CHANGES.md).
 
-## Compatibilité
+## Compatibility
 
-Moodle 4.5 LTS, 5.0 et 5.1, PHP 8.1 à 8.3, avec ou sans IOMAD. Chaque modification est vérifiée par l'intégration continue sur ces versions.
+Moodle 4.5 LTS, 5.0 and 5.1, PHP 8.1 to 8.3, with or without IOMAD. Every change is checked by continuous integration on these versions (PHPUnit, Behat with an axe-core accessibility audit, code checks).
 
 ## Licence
 
-GNU GPL v3 ou ultérieure, comme Moodle. Voir [LICENSE](LICENSE). Les polices fournies sont sous SIL Open Font License 1.1.
+GNU GPL v3 or later, like Moodle. See [LICENSE](LICENSE). The bundled fonts are under the SIL Open Font License 1.1.
