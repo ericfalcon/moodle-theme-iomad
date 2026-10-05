@@ -14,23 +14,29 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
+namespace theme_epure\output;
+
 /**
- * Version information for theme_epure.
+ * HTML e-mails in the colours of the brand, for the renderers of the pages and of the command line
+ * (the scheduled tasks send most e-mails).
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026102600;
-$plugin->release   = '0.20.0';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 501];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+trait email_renderer {
+    /**
+     * Renders a template; the HTML e-mails get the logo, the colour and the footer of the brand.
+     *
+     * @param string $templatename Template.
+     * @param array|\stdClass $context Context.
+     * @return string HTML.
+     */
+    public function render_from_template($templatename, $context) {
+        if ($templatename === 'core/email_html' && \theme_epure\email::enabled()) {
+            $context = (array) $context;
+            $context['epure'] = \theme_epure\email::export((int) ($context['touserid'] ?? 0));
+        }
+        return parent::render_from_template($templatename, $context);
+    }
+}
