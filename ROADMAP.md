@@ -178,8 +178,10 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 
 ### V1.0 — Publication
 
-- [ ] Audit d'accessibilité manuel
-- [ ] Documentation d'installation et d'utilisation
+- [x] Pré-audit d'accessibilité automatisé et au clavier (240 pages, Moodle 4.5, 5.1 et IOMAD), défauts corrigés, rapport dans le wiki — livré en 0.21.0
+- [ ] Audit d'accessibilité manuel (RGAA) par un auditeur
+- [x] Documentation : README en anglais, wiki en français — livré en 0.21.0
+- [x] Passage en bêta — 0.21.0
 - [ ] Publication sur moodle.org/plugins
 
 ## Questions ouvertes
