@@ -14,23 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
+namespace theme_epure\output;
+
 /**
- * Version information for theme_epure.
+ * Renderer of the command line and the scheduled tasks, which send most e-mails.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026102600;
-$plugin->release   = '0.20.0';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 501];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+class core_renderer_cli extends \core_renderer_cli {
+    use email_renderer;
+}
