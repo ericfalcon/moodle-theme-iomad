@@ -125,6 +125,22 @@ if ($ADMIN->fulltree) {
         1
     ));
 
+    // Navigation bar at the bottom of the screen on phones.
+    $page->add(new admin_setting_configcheckbox(
+        'theme_epure/mobilenav',
+        get_string('mobilenav', 'theme_epure'),
+        get_string('mobilenav_desc', 'theme_epure'),
+        1
+    ));
+
+    // Catalogue of the courses, and presentation of a course on its enrolment page.
+    $page->add(new admin_setting_configcheckbox(
+        'theme_epure/catalogue',
+        get_string('catalogue', 'theme_epure'),
+        get_string('catalogue_desc', 'theme_epure'),
+        1
+    ));
+
     // Pages of the activities: strip with the position and the progress, previous and next activities.
     $page->add(new admin_setting_configcheckbox(
         'theme_epure/activitynav',

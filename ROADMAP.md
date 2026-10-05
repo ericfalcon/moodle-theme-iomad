@@ -161,6 +161,8 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Tableau de bord de l'apprenant : cours à reprendre, cours en cours, échéances, cours terminés et attestations, au-dessus des blocs — livré en 0.11.0
 - [x] Mode sombre : jamais, automatique selon l'appareil ou toujours, pour le site et par entreprise IOMAD, et au choix de chaque utilisateur (bouton Aa) — livré en 0.12.0
 - [x] Pages d'activité : activité précédente et suivante en cartes, bande avec le cours, la position et la progression, mode lecture sans panneaux latéraux, bouton « Marquer comme terminé » plus visible — livré en 0.16.0
+- [x] Catalogue des cours : sous-catégories en pastilles, cours en cartes (image, résumé, enseignants, inscrit / inscription libre / accès invité), recherche en cartes ; présentation du cours avant inscription (résumé, programme, enseignants, dates, contenu) — livré en 0.17.0
+- [x] Barre de navigation mobile : tableau de bord, mes cours, catalogue, messages (non lus), profil ; pour le site et par entreprise IOMAD — livré en 0.18.0
 
 ### V0.5 — Vocabulaire et IOMAD
 
