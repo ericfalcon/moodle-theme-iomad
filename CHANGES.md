@@ -1,5 +1,9 @@
 # Changes
 
+## 0.22.1 (beta)
+
+- IOMAD company form: when another theme is chosen for the company, the Épure settings are hidden (and kept for a return to Épure) and only IOMAD's fields for that theme remain (logos, IOMAD colours, custom CSS and menu), with the vocabulary, which applies whatever the theme. The steps are renumbered.
+
 ## 0.22.0 (beta)
 
 - Theme settings in a clearer order: **Brand identity** (the logos first, then the brand colour, which proposes their colours, and the header colour), **Typography and display** (font, corners, dark mode), **Pages and navigation** (what the theme adds to Moodle's pages, grouped by Navigation, Pages, Vocabulary, E-mails), then the login page, footer, accessibility and advanced tabs. The values already saved are kept. A logo just uploaded proposes its colours before it is saved.
