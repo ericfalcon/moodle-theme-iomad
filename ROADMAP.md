@@ -27,10 +27,10 @@ Un plugin compagnon `local_epure` a existé dans les versions 0.1 à 0.3 ; il a 
 
 ## Compatibilité
 
-| | Moodle 4.5 LTS | Moodle 5.0 | Moodle 5.1+ |
+| | Moodle 4.5 LTS | Moodle 5.0 | Moodle 5.1 à 5.3 |
 |---|---|---|---|
-| Statut | Cible principale | Supporté | Supporté |
-| PHP | 8.1 à 8.3 | 8.2 à 8.4 | 8.2 et plus |
+| Statut | Cible principale | Supporté | Supporté (5.2 et 5.3 testés depuis 0.21.1) |
+| PHP | 8.1 à 8.3 | 8.2 à 8.4 | 8.2 à 8.4 (8.3 minimum dès 5.2) |
 | Bootstrap | 4.6 | 5.3 (couche de compatibilité BS4) | 5.3 |
 | Particularité | — | — | Code de Moodle sous `public/` |
 
@@ -137,6 +137,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] En-tête blanc ou couleur de marque, logo avec transparence et variante pour l'en-tête en couleur
 - [x] Détection d'IOMAD
 - [x] Intégration continue sur Moodle 4.5, 5.0 et 5.1
+- [x] Intégration continue sur Moodle 5.2 et 5.3, et sur MariaDB 11.4 — livré en 0.21.1
 
 ### V0.2 — Identité et connexion (terminé)
 
