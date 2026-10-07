@@ -56,7 +56,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.include-moodle.php }}
-          extensions: pgsql, zip, gd, xmlrpc, soap
+          extensions: pgsql, mysqli, zip, gd, xmlrpc, soap
           ini-values: max_input_vars=5000
           coverage: none
 
