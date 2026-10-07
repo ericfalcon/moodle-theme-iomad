@@ -19,6 +19,16 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
+      # MariaDB 11.4 meets the requirements of Moodle 4.5 to 5.3 (5.3 requires 11.4).
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'yes'
+          MARIADB_CHARACTER_SET_SERVER: utf8mb4
+          MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
+        ports:
+          - 3306:3306
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval 10s --health-timeout 5s --health-retries 5
 
     strategy:
       fail-fast: false
@@ -31,8 +41,10 @@ jobs:
           - { branch: MOODLE_501_STABLE, php: '8.3' }
           - { branch: MOODLE_502_STABLE, php: '8.3' }
           - { branch: MOODLE_503_STABLE, php: '8.4', pg: '17' }
+          - { branch: MOODLE_405_STABLE, php: '8.3', db: mariadb }
+          - { branch: MOODLE_503_STABLE, php: '8.4', db: mariadb }
 
-    name: ${{ matrix.plugin }} — ${{ matrix.include-moodle.branch }} — PHP ${{ matrix.include-moodle.php }}
+    name: ${{ matrix.plugin }} — ${{ matrix.include-moodle.branch }} — PHP ${{ matrix.include-moodle.php }} — ${{ matrix.include-moodle.db || 'pgsql' }}
 
     steps:
       - name: Check out repository code
@@ -59,7 +71,7 @@ jobs:
       - name: Install Moodle and the plugin
         run: moodle-plugin-ci install --plugin ./repo/${{ matrix.plugin }} --db-host=127.0.0.1
         env:
-          DB: pgsql
+          DB: ${{ matrix.include-moodle.db || 'pgsql' }}
           MOODLE_BRANCH: ${{ matrix.include-moodle.branch }}
 
       - name: PHP lint
@@ -95,5 +107,5 @@ jobs:
         run: moodle-plugin-ci phpunit --fail-on-warning
 
       - name: Behat accessibility tests (axe)
-        if: ${{ !cancelled() && ((matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3') || matrix.include-moodle.branch == 'MOODLE_503_STABLE') }}
+        if: ${{ !cancelled() && !matrix.include-moodle.db && ((matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3') || matrix.include-moodle.branch == 'MOODLE_503_STABLE') }}
         run: moodle-plugin-ci behat --profile chrome --tags @theme_epure
