@@ -28,6 +28,8 @@ jobs:
           - { branch: MOODLE_405_STABLE, php: '8.3' }
           - { branch: MOODLE_500_STABLE, php: '8.3' }
           - { branch: MOODLE_501_STABLE, php: '8.3' }
+          - { branch: MOODLE_502_STABLE, php: '8.3' }
+          - { branch: MOODLE_503_STABLE, php: '8.4' }
 
     name: ${{ matrix.plugin }} — ${{ matrix.include-moodle.branch }} — PHP ${{ matrix.include-moodle.php }}
 
@@ -92,5 +94,5 @@ jobs:
         run: moodle-plugin-ci phpunit --fail-on-warning
 
       - name: Behat accessibility tests (axe)
-        if: ${{ !cancelled() && matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3' }}
+        if: ${{ !cancelled() && ((matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3') || matrix.include-moodle.branch == 'MOODLE_503_STABLE') }}
         run: moodle-plugin-ci behat --profile chrome --tags @theme_epure
