@@ -1,5 +1,15 @@
 # Changes
 
+## 0.22.2 (beta)
+
+- IOMAD: a company can choose Épure whatever the theme of the site. When the site uses another theme (Iomad, for example), the company form now shows the Épure settings as soon as Épure is chosen for the company, with their own styles.
+- A change of theme of an IOMAD company applies at once to its users already logged in: IOMAD writes the new theme on them, but Moodle kept the former one in their session until they logged in again, so they kept seeing Épure (dashboards, course pages…).
+- Phones: the quick search button is a round icon like the others, and replaces Moodle's search in the header (two magnifying glasses side by side); a long company name is cut instead of pushing the user menu out.
+- Mobile navigation bar: labels on up to two lines instead of being cut (« Tableau de bord », « Mes formations »), and « Messages » as a short label.
+- Another theme stays as it is without Épure. In the IOMAD company form, choosing another theme for the company shows IOMAD's form exactly as IOMAD shows it (order, fields, note), without any Épure field; choosing Épure again restores the steps. The Épure settings of the company are kept for a return to Épure.
+- The words of the IOMAD companies (vocabulary) only apply to the users who see the pages with Épure: with another theme (for the site, the company or the session), the words of the language pack are kept.
+- The e-mails in the colours of the brand are not sent to the users of a company that uses another theme: they get the e-mails of Moodle.
+
 ## 0.22.0 (beta)
 
 - Theme settings in a clearer order: **Brand identity** (the logos first, then the brand colour, which proposes their colours, and the header colour), **Typography and display** (font, corners, dark mode), **Pages and navigation** (what the theme adds to Moodle's pages, grouped by Navigation, Pages, Vocabulary, E-mails), then the login page, footer, accessibility and advanced tabs. The values already saved are kept. A logo just uploaded proposes its colours before it is saved.
