@@ -1,0 +1,52 @@
+name: Release
+
+# Publishes a GitHub release (tag, notes from CHANGES.md and installable ZIP)
+# for each new theme version that reaches main.
+on:
+  push:
+    branches: [main]
+    paths: [theme/epure/version.php]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Read the version
+        id: version
+        run: |
+          release=$(sed -n "s/^\$plugin->release *= *'\([^']*\)'.*/\1/p" theme/epure/version.php)
+          maturity=$(sed -n 's/^\$plugin->maturity *= *\([A-Z_]*\).*/\1/p' theme/epure/version.php)
+          echo "release=$release" >> "$GITHUB_OUTPUT"
+          if [ "$maturity" != "MATURITY_STABLE" ]; then echo "prerelease=--prerelease" >> "$GITHUB_OUTPUT"; fi
+          if gh release view "v$release" > /dev/null 2>&1; then echo "exists=1" >> "$GITHUB_OUTPUT"; fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build the ZIP and the notes
+        if: ${{ !steps.version.outputs.exists }}
+        env:
+          RELEASE: ${{ steps.version.outputs.release }}
+        run: |
+          (cd theme && zip -qr "../theme_epure-$RELEASE.zip" epure -x 'epure/node_modules/*')
+          awk -v v="$RELEASE" '
+            /^## / { if (found) exit; if (index($0, "## " v) == 1) { found = 1; next } }
+            found { print }
+          ' CHANGES.md > notes.md
+          printf '\nInstall: Site administration › Plugins › Install plugins, then upload `theme_epure-%s.zip`.\n' "$RELEASE" >> notes.md
+          cat notes.md
+
+      - name: Publish the release
+        if: ${{ !steps.version.outputs.exists }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE: ${{ steps.version.outputs.release }}
+        run: |
+          gh release create "v$RELEASE" "theme_epure-$RELEASE.zip" --target "$GITHUB_SHA" \
+            --title "Épure $RELEASE" --notes-file notes.md ${{ steps.version.outputs.prerelease }}

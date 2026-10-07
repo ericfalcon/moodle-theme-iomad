@@ -780,20 +780,78 @@ body.epure-header-brand .navbar.fixed-top .divider {
     line-height: 1.35;
 }
 
-// Vocabulary fields added to the IOMAD company form, inside its Appearance section.
+// Épure fields of the IOMAD company form, in numbered sections inside its Appearance section,
+// which also hold IOMAD's own appearance fields (theme_epure/company_vocabulary).
 .epure-company-vocabulary {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--epure-border);
-}
-
-.epure-company-vocabulary-title {
-    font-size: 1.125rem;
-    font-weight: 600;
+    margin-top: .5rem;
+    counter-reset: epure-company-step;
 }
 
 .epure-company-vocabulary-desc {
     color: var(--epure-ink-muted);
+}
+
+.epure-company-section {
+    margin: 0 0 1.5rem;
+    padding: 1.25rem 1.25rem .25rem;
+    border: 1px solid var(--epure-border);
+    border-radius: .75rem;
+    background: var(--epure-surface);
+}
+
+.epure-company-section-title {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    margin-bottom: .25rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+
+    &::before {
+        counter-increment: epure-company-step;
+        content: counter(epure-company-step);
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        background: var(--epure-brand);
+        color: var(--epure-on-brand);
+        font-size: .875rem;
+    }
+}
+
+.epure-company-section-desc {
+    margin-bottom: 1rem;
+    color: var(--epure-ink-muted);
+}
+
+// Groups of a section, as the headings of the tabs of the theme settings (Logos, Colours…).
+.epure-company-group + .epure-company-group {
+    margin-top: .5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--epure-border);
+}
+
+.epure-company-group-title {
+    margin-bottom: .25rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.epure-company-group-desc {
+    margin-bottom: .75rem;
+    color: var(--epure-ink-muted);
+}
+
+.epure-company-menuhelp {
+    margin-bottom: 1rem;
+
+    pre {
+        white-space: pre-wrap;
+    }
 }
 
 .epure-company-vocabulary-lang {
@@ -3460,6 +3518,53 @@ html.epure-dark {
 .epure-busy-detail {
     margin: 0;
     color: var(--epure-ink-muted);
+}
+
+// While the server sends the page, as during an upgrade: a message in a corner, which leaves the
+// progress readable, and only appears after a second so that it never flashes.
+.epure-busy-loading {
+    inset: auto 1rem 1rem auto;
+    padding: 0;
+    background-color: transparent;
+    animation: epure-busy-appear .2s 1s both;
+
+    .epure-busy-box {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0 .875rem;
+        align-items: center;
+        max-width: 24rem;
+        padding: 1rem 1.25rem;
+        text-align: start;
+    }
+
+    .epure-busy-spinner {
+        grid-row: span 2;
+        width: 1.75rem;
+        height: 1.75rem;
+        margin: 0;
+    }
+
+    .epure-busy-title {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .epure-busy-detail {
+        font-size: .875rem;
+    }
+}
+
+@keyframes epure-busy-appear {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 @keyframes epure-busy-spin {

@@ -1,6 +1,6 @@
 # Épure, thème Moodle et IOMAD
 
-**Épure** est un thème moderne, sobre et accessible pour **Moodle 4.5 LTS, 5.0 et 5.1**, avec ou sans **IOMAD**. C'est un thème enfant de Boost : il suit les mises à jour de Moodle et n'en modifie aucun fichier.
+**Épure** est un thème moderne, sobre et accessible pour **Moodle 4.5 LTS à 5.3**, avec ou sans **IOMAD**. C'est un thème enfant de Boost : il suit les mises à jour de Moodle et n'en modifie aucun fichier.
 
 ## En bref
 

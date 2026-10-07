@@ -21,7 +21,7 @@ The roadmap and design decisions (in French) are in [ROADMAP.md](ROADMAP.md); th
 
 ## Compatibility
 
-Moodle 4.5 LTS, 5.0 and 5.1, PHP 8.1 to 8.3, with or without IOMAD. Every change is checked by continuous integration on these versions (PHPUnit, Behat with an axe-core accessibility audit, code checks).
+Moodle 4.5 LTS to 5.3, PHP 8.1 to 8.4, with or without IOMAD, on PostgreSQL, MariaDB or MySQL (the theme only uses Moodle's database API). Every change is checked by continuous integration on Moodle 4.5, 5.0, 5.1, 5.2 and 5.3 with PostgreSQL, and on Moodle 4.5 and 5.3 with MariaDB 11.4 (PHPUnit, Behat with an axe-core accessibility audit, code checks). MySQL is not tested separately.
 
 ## Licence
 
