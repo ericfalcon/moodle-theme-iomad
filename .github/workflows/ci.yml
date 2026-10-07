@@ -11,7 +11,8 @@ jobs:
 
     services:
       postgres:
-        image: postgres:16
+        # Moodle 5.3 requires PostgreSQL 17; the earlier versions run on 16.
+        image: postgres:${{ matrix.include-moodle.pg || '16' }}
         env:
           POSTGRES_USER: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
@@ -29,7 +30,7 @@ jobs:
           - { branch: MOODLE_500_STABLE, php: '8.3' }
           - { branch: MOODLE_501_STABLE, php: '8.3' }
           - { branch: MOODLE_502_STABLE, php: '8.3' }
-          - { branch: MOODLE_503_STABLE, php: '8.4' }
+          - { branch: MOODLE_503_STABLE, php: '8.4', pg: '17' }
 
     name: ${{ matrix.plugin }} — ${{ matrix.include-moodle.branch }} — PHP ${{ matrix.include-moodle.php }}
 
