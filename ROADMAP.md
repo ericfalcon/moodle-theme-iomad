@@ -183,6 +183,11 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [ ] Audit d'accessibilité manuel (RGAA) par un auditeur
 - [x] Documentation : README en anglais, wiki en français — livré en 0.21.0
 - [x] Passage en bêta — 0.21.0
+- [x] Releases GitHub publiées automatiquement (tag, notes, zip) à chaque nouvelle version — 0.22.0
+- [x] Réglages du thème et formulaire entreprise d'IOMAD organisés de la même façon, logos avant couleurs — 0.22.0
+- [x] Indicateur « Moodle travaille » sur les pages de maintenance (validation d'un zip, mise à jour) — 0.22.0
+- [x] Un autre thème reste tel qu'il est sans Épure (formulaire IOMAD d'origine, vocabulaire, e-mails) ; Épure disponible pour une entreprise quel que soit le thème du site — 0.22.2
+- [x] Changement de thème d'une entreprise appliqué tout de suite, et pages dans le thème de l'entreprise sélectionnée, y compris pour l'administrateur — 0.22.2 et 0.22.3
 - [ ] Publication sur moodle.org/plugins
 
 ## Questions ouvertes
