@@ -17,23 +17,23 @@
 namespace theme_epure\output;
 
 /**
- * Renderer of IOMAD's « My courses » block (block_mycourses, up to IOMAD 5.0), replaced by Épure's page by role
+ * Renderer of IOMAD's « My courses » block (block_iomad_mycourses, from IOMAD 5.1), replaced by Épure's page by role
  * ({@see iomad_mycourses}). This class is only loaded on IOMAD sites.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_mycourses_renderer extends \block_mycourses\output\renderer {
+class block_iomad_mycourses_renderer extends \block_iomad_mycourses\output\renderer {
     use iomad_mycourses;
 
     /**
      * Renders IOMAD's « My courses » block.
      *
-     * @param \block_mycourses\output\main $main The block.
+     * @param \block_iomad_mycourses\output\main $main The block.
      * @return string HTML.
      */
-    public function render_main(\block_mycourses\output\main $main) {
+    public function render_main(\block_iomad_mycourses\output\main $main) {
         if (get_config('theme_epure', 'mycoursesbyrole') === '0') {
             return parent::render_main($main);
         }

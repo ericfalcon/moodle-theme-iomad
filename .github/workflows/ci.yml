@@ -43,6 +43,10 @@ jobs:
           - { branch: MOODLE_503_STABLE, php: '8.4', pg: '17' }
           - { branch: MOODLE_405_STABLE, php: '8.3', db: mariadb }
           - { branch: MOODLE_503_STABLE, php: '8.4', db: mariadb }
+          # IOMAD, whose tables and classes were renamed in 5.1 (theme_epure\iomad knows both).
+          - { branch: IOMAD_405_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git' }
+          - { branch: IOMAD_501_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git' }
+          - { branch: IOMAD_502_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git' }
 
     name: ${{ matrix.plugin }} — ${{ matrix.include-moodle.branch }} — PHP ${{ matrix.include-moodle.php }} — ${{ matrix.include-moodle.db || 'pgsql' }}
 
@@ -73,6 +77,7 @@ jobs:
         env:
           DB: ${{ matrix.include-moodle.db || 'pgsql' }}
           MOODLE_BRANCH: ${{ matrix.include-moodle.branch }}
+          MOODLE_REPO: ${{ matrix.include-moodle.repo || 'https://github.com/moodle/moodle.git' }}
 
       - name: PHP lint
         if: ${{ !cancelled() }}
