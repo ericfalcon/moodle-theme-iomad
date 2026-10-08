@@ -23,11 +23,17 @@
  */
 
 /**
- * Removes the strings written by the vocabulary, before the theme's tables are dropped.
+ * Removes the strings written by the vocabulary, before the theme's tables are dropped, and the style sheet of the
+ * Moodle app set by the theme.
  *
  * @return bool
  */
 function xmldb_theme_epure_uninstall() {
+    global $CFG;
     \theme_epure\vocabulary\manager::revert();
+    \theme_epure\certificate_frame::clean_up(true);
+    if (\theme_epure\mobile_app::is_ours($CFG->mobilecssurl ?? '')) {
+        set_config('mobilecssurl', '');
+    }
     return true;
 }
