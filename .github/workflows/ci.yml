@@ -72,17 +72,28 @@ jobs:
           sudo locale-gen en_AU.UTF-8
           echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
 
-      # IOMAD: theme_iomad declares a third-party directory it does not ship (amd/src/bootstrap), which stops
-      # moodle-plugin-ci (grunt ignorefiles); the directory is added to a local clone, installed from there.
+      # IOMAD: its themes declare third-party files they do not ship (amd/src/bootstrap/, amd/src/index.js), which
+      # stops moodle-plugin-ci (grunt ignorefiles); they are added, empty, to a local clone, installed from there.
       - name: Prepare IOMAD
         if: ${{ matrix.include-moodle.repo }}
         run: |
           git clone -q --depth 1 --branch "${{ matrix.include-moodle.branch }}" "${{ matrix.include-moodle.repo }}" iomad-src
-          for dir in iomad-src/theme/iomad iomad-src/public/theme/iomad; do
-            if [ -d "$dir" ] && [ ! -d "$dir/amd/src/bootstrap" ]; then
-              mkdir -p "$dir/amd/src/bootstrap" && touch "$dir/amd/src/bootstrap/.gitkeep"
-            fi
-          done
+          python3 - <<'PY'
+          import glob, os, re
+          for xml in glob.glob('iomad-src/**/thirdpartylibs.xml', recursive=True):
+              base = os.path.dirname(xml)
+              for location in re.findall(r'<location>\s*([^<]+?)\s*</location>', open(xml, encoding='utf-8').read()):
+                  path = os.path.join(base, location)
+                  if '*' in location or os.path.exists(path):
+                      continue
+                  print('Missing in IOMAD, added empty:', path)
+                  if location.endswith('/'):
+                      os.makedirs(path, exist_ok=True)
+                      open(os.path.join(path, '.gitkeep'), 'w').close()
+                  else:
+                      os.makedirs(os.path.dirname(path), exist_ok=True)
+                      open(path, 'w').close()
+          PY
           git -C iomad-src add -A
           git -C iomad-src -c user.name=CI -c user.email=ci@example.com commit -q -m "CI: directory of theme_iomad" || true
           echo "IOMAD_LOCAL=file://$GITHUB_WORKSPACE/iomad-src" >> "$GITHUB_ENV"
