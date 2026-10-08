@@ -1,5 +1,9 @@
 # Changes
 
+## 0.22.4 (beta)
+
+- Header: on computers too, the quick search replaces Moodle's search button (two magnifying glasses side by side). When Moodle's global search is enabled, the results of the quick search end with « Search … in the whole site », which opens it.
+
 ## 0.22.3 (beta)
 
 - IOMAD: the pages take the theme of the company being worked on, for administrators too. An administrator who selects a company in IOMAD sees the pages as its users see them, in its theme (from the page where the company is chosen); without a company, the theme of the site. A theme that IOMAD sets from the address of a company is kept.
