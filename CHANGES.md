@@ -1,5 +1,17 @@
 # Changes
 
+## 0.24.0 (beta)
+
+- Activity icons can be hidden, for the site and, with IOMAD, for each company: no icons on the course page, the dashboard blocks, the calendar and the activity pages; the activity chooser of the teachers keeps them.
+- Moodle app in the colours of the brand: a setting (Pages and navigation) gives the app the style sheet of the theme, with the brand colour, the header and the font, in light and dark mode; with IOMAD, those of the company of the user. The theme sets Moodle's « CSS » of the mobile appearance and gives it a new address at each change of the appearance, for the apps to download it again.
+- Forums (posts as cards, the thread shown by a line), glossaries (index as buttons, entries as cards), assignments (status as a card), SCORM (description and information as boxes, table of contents of the player in the brand colour), books and pages (current chapter, chapter arrows and quotations in the brand colour, text at a readable length).
+- The sections and activities of the course page, and the squares of the activity icons, follow the corner style of the theme (Moodle gave them fixed corners).
+- IOMAD certificates: in the company form, a frame in the brand colour of the company can be used for its certificates. When the company (or the site) leaves Épure, the frame it had before and its « Use border » setting come back.
+- Badges: the badges of the user as cards, the page of a badge with its image on a tint of the brand.
+- Reports: the row under the pointer highlighted in the grader report, the completion report and the IOMAD reports; IOMAD's tree of departments as a box of the theme.
+- With IOMAD, the pages and initials of the tables, the pills, the active items of the lists and the buttons that expand the sections of the forms take the colour of the company (they kept the colour of the site).
+- Accessibility: the links among text of the completion report and of the badges page are underlined, and the downloads of the completion report are large enough targets.
+
 ## 0.23.0 (beta)
 
 - Colours of the activity icons: in the brand colour (the default) or in Moodle's colours by kind of activity, for the site and, with IOMAD, for each company.
