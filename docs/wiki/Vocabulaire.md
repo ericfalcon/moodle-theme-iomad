@@ -1,4 +1,4 @@
-Administration du site › Présentation › Thèmes › Épure : vocabulaire (lien aussi dans l'onglet Pages et navigation du thème).
+Administration du site › Présentation › Thèmes › Épure : vocabulaire (lien aussi dans l'onglet Identité du thème).
 
 Choisissez, pour le français et l'anglais, les mots qui désignent :
 

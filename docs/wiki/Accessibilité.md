@@ -8,7 +8,11 @@ Le thème vise les WCAG 2.2 niveau AA, le RGAA 4.1.2 et l'EN 301 549 : contraste
 - une police de lecture : celle du site, Atkinson Hyperlegible ou OpenDyslexic ;
 - un texte plus espacé (valeurs du critère WCAG 1.4.12), un contraste renforcé, des liens soulignés, des animations réduites.
 
-Le changement est immédiat, puis enregistré dans les préférences de son profil Moodle : il vaut sur toutes les pages et tous ses appareils, dès le premier affichage. Les visiteurs non connectés et les invités ont l'affichage par défaut. Ces préférences sont déclarées à l'API de confidentialité et exportées avec les données de l'utilisateur.
+Le changement est immédiat, puis enregistré dans les préférences de son profil Moodle : il vaut sur toutes les pages et tous ses appareils, dès le premier affichage. Ces préférences sont déclarées à l'API de confidentialité et exportées avec les données de l'utilisateur.
+
+**Affichage par défaut.** Les visiteurs non connectés, les invités et les utilisateurs qui n'ont pas choisi leur affichage ont celui du site. Il se règle dans l'onglet **Accessibilité** des réglages du thème, partie Préférences d'affichage : taille du texte, police de lecture, texte plus espacé, contraste renforcé, liens soulignés, animations réduites. Une préférence choisie par l'utilisateur l'emporte sur celle du site.
+
+**Bouton « Aa ».** Il se désactive dans le même onglet : les utilisateurs ne peuvent plus changer leur affichage, et les préférences déjà choisies continuent de s'appliquer.
 
 **Déclaration d'accessibilité.** L'onglet **Accessibilité** des réglages du thème la remplit au format français (RGAA) : état de conformité, entité, taux de conformité, auditeur et date de l'audit, non-conformités, dérogations, contenus non soumis, contact (par défaut, le courriel du support). Tant qu'aucun état n'est choisi, rien n'est publié. Une fois l'état choisi :
 

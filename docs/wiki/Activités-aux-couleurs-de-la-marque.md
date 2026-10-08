@@ -2,7 +2,7 @@ Les icônes d'activités, les contenus H5P, les tests, les leçons, les forums, 
 
 ## Icônes d'activités
 
-Réglage « Icônes d'activités » (Identité visuelle › Couleurs) : dans la couleur de marque (par défaut), dans les couleurs de Moodle, une par type d'activité (évaluation, contenu, communication…), ou masquées, pour des pages de cours plus sobres. Masquées, elles disparaissent de la page de cours, des blocs du tableau de bord, du calendrier et des pages d'activité ; le sélecteur d'activités des formateurs les garde. Avec IOMAD, chaque entreprise peut faire un autre choix dans sa fiche (Identité visuelle › Couleurs).
+Réglage « Icônes d'activités » (onglet Cours, partie Activités) : dans la couleur de marque (par défaut), dans les couleurs de Moodle, une par type d'activité (évaluation, contenu, communication…), ou masquées, pour des pages de cours plus sobres. Masquées, elles disparaissent de la page de cours, des blocs du tableau de bord, du calendrier et des pages d'activité ; le sélecteur d'activités des formateurs les garde. Avec IOMAD, chaque entreprise peut faire un autre choix dans sa fiche (Identité › Couleurs).
 
 ## Contenus et activités
 
@@ -20,10 +20,12 @@ Réglage « Icônes d'activités » (Identité visuelle › Couleurs) : dans la 
 
 ## Attestations IOMAD
 
-Dans la fiche entreprise (Identité visuelle › Attestations), la case « Utiliser ce cadre pour les attestations de l'entreprise » remplace le cadre des attestations IOMAD de l'entreprise (Modifier l'entreprise › Certificat) par un cadre dans sa couleur de marque, et active « Utiliser un cadre ». À cocher de nouveau après un changement de couleur.
+Dans la fiche entreprise (Identité › Attestations), la case « Utiliser ce cadre pour les attestations de l'entreprise » remplace le cadre des attestations IOMAD de l'entreprise (Modifier l'entreprise › Certificat) par un cadre dans sa couleur de marque, et active « Utiliser un cadre ». À cocher de nouveau après un changement de couleur.
 
-Rien n'en reste quand l'entreprise quitte Épure : son ancien cadre et son réglage « Utiliser un cadre » sont mis de côté, et reviennent dès que l'entreprise, ou le site pour une entreprise sans thème propre, n'utilise plus Épure, avant toute création d'attestation.
+Rien n'en reste quand l'entreprise quitte Épure : son ancien cadre et son réglage « Utiliser un cadre » sont mis de côté, et reviennent dès que l'entreprise, ou le site pour une entreprise sans thème propre, n'utilise plus Épure, avant toute création d'attestation. Avec IOMAD 5.1, qui a déplacé le suivi des achèvements dans `local_iomad`, c'est aussi le cas sur ses nouvelles pages et dans les tâches planifiées (voir [[IOMAD]]).
 
 ## Application Moodle
 
-Réglage « Application Moodle aux couleurs de la marque » (Pages et navigation) : l'application Moodle prend la couleur de marque, l'en-tête et la police du thème, en mode clair et sombre ; avec IOMAD, ceux de l'entreprise de l'utilisateur, et ceux du site sur l'écran de connexion. Le thème règle la feuille de style de l'application (Administration du site › Application mobile › Apparence mobile › CSS) et lui donne une nouvelle adresse à chaque changement d'apparence, pour que les applications la téléchargent de nouveau ; désactivé, il la retire. Un utilisateur qui voit le site avec un autre thème reçoit une feuille vide.
+Réglage « Application Moodle aux couleurs de la marque » (onglet Mobile, partie Applications) : l'application Moodle prend la couleur de marque, l'en-tête et la police du thème, en mode clair et sombre ; avec IOMAD, ceux de l'entreprise de l'utilisateur, et ceux du site sur l'écran de connexion. Le thème règle la feuille de style de l'application (Administration du site › Application mobile › Apparence mobile › CSS) et lui donne une nouvelle adresse à chaque changement d'apparence, pour que les applications la téléchargent de nouveau ; désactivé, il la retire. Un utilisateur qui voit le site avec un autre thème reçoit une feuille vide.
+
+Le même onglet propose une [[application web installable|Navigation-et-recherche]], ajoutée à l'écran d'accueil depuis le navigateur.

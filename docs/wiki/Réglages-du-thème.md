@@ -1,6 +1,8 @@
 Les réglages se trouvent dans Administration du site › Présentation › Thèmes › Épure.
 
-## Identité visuelle
+Les réglages sont rangés par sujet en onglets : Identité, Navigation, Cours, Accessibilité, Apparence, Mobile, Page de connexion, Pied de page et Réglages avancés. La version 0.26.0 les a déplacés dans ces onglets sans les renommer : les valeurs déjà enregistrées sont conservées.
+
+## Identité
 
 Les logos viennent en premier : leurs couleurs sont ensuite proposées pour la couleur de marque, juste en dessous.
 
@@ -8,31 +10,62 @@ Les logos viennent en premier : leurs couleurs sont ensuite proposées pour la c
 |---|---|
 | Logo | Affiché dans l'en-tête et sur la page de connexion. Les fonds transparents sont pris en charge (SVG, PNG, WebP). Sans logo, ceux d'Apparence › Logos sont utilisés. |
 | Logo pour l'en-tête en couleur | Facultatif : une version lisible sur la couleur de marque, souvent blanche sur fond transparent. |
+| Logo pour téléphone | Facultatif : une version petite ou carrée du logo, affichée dans l'en-tête des téléphones à côté du bouton de menu, là où Moodle n'affiche aucun logo. |
+| Favicon | Facultatif : l'icône du site dans les onglets des navigateurs et les favoris (ICO, PNG ou SVG). Sans elle, celle de Présentation › Logos. |
 | Couleur de marque | Toute la palette en est déduite : survols, fonds teintés, couleur des liens. Les couleurs sont ajustées automatiquement pour respecter les contrastes AA des WCAG 2.2, et le contraste obtenu est affiché sous le réglage. |
+| Couleur d'accent | Facultative : la couleur des barres de progression et des sections terminées, pour les distinguer de la couleur de marque. Vide : la couleur de marque. Avec IOMAD, une entreprise qui a sa propre couleur la garde partout. |
 | Couleur de l'en-tête | Blanc avec soulignement de la couleur de marque, ou rempli de la couleur de marque. Les textes et icônes prennent la couleur la plus lisible. |
-| Couleurs des icônes d'activités | Dans la couleur de marque (par défaut), ou dans les couleurs de Moodle, une par type d'activité (évaluation, contenu, communication…). Avec IOMAD, chaque entreprise peut faire un autre choix. |
 
 Sous la couleur de marque, le thème propose les **couleurs du logo**, y compris les couleurs d'accent qui occupent peu de place (lettrage fin, petit emblème), et celles d'un logo tout juste déposé plus haut, avant même l'enregistrement : cliquez sur une pastille, ou directement sur un point du logo (pipette), puis enregistrez. Seuls les codes hexadécimaux sont acceptés, car la palette accessible en est calculée.
 
-## Typographie et affichage
+L'onglet se termine par les **e-mails** aux couleurs de la marque (voir [[Mode sombre et e-mails|Mode-sombre-et-e-mails]]) et un lien vers la page « Épure : vocabulaire ».
+
+## Navigation
+
+| Réglage | Effet |
+|---|---|
+| Barre principale | Le menu principal de Moodle et les éléments du menu personnalisé, réglés dans Présentation › Réglages thème avancés (l'onglet y mène). |
+| Recherche rapide | La fenêtre de recherche de l'en-tête, Ctrl+K (voir [[Navigation et recherche|Navigation-et-recherche]]). |
+| Fil d'Ariane | Le chemin de la page au-dessus de son titre : affiché, affiché sur les grands écrans seulement, ou masqué. |
+| Menu utilisateur | Des liens s'ajoutent dans Présentation › Réglages thème avancés (Éléments du menu utilisateur) ; l'onglet y mène. |
+
+## Cours
+
+| Réglage | Effet |
+|---|---|
+| Mes cours par rôle | Voir Page Mes cours, ci-dessous. |
+| Catalogue des cours | Voir [[Parcours de l'apprenant|Parcours-de-l’apprenant]]. |
+| Bannière des cours | Voir [[Parcours de l'apprenant|Parcours-de-l’apprenant]]. |
+| Progression des sections | Sur la page du cours, combien de ses activités l'apprenant a terminées dans chaque section et sous-section. |
+| Aperçu de l'apprenant sur le tableau de bord | Voir [[Parcours de l'apprenant|Parcours-de-l’apprenant]]. |
+| Icônes d'activités | Dans la couleur de marque (par défaut), dans les couleurs de Moodle, une par type d'activité (évaluation, contenu, communication…), ou masquées pour des pages de cours plus sobres (le sélecteur d'activités les garde). Avec IOMAD, chaque entreprise peut faire un autre choix. |
+| Pages d'activité | La bande en haut et les activités précédente et suivante (voir [[Parcours de l'apprenant|Parcours-de-l’apprenant]]). |
+
+## Accessibilité
+
+Les **préférences d'affichage** : le bouton « Aa » de l'en-tête peut être désactivé, et l'affichage par défaut du site se règle pour les visiteurs et pour les utilisateurs qui n'ont pas choisi le leur (voir [[Accessibilité]]). Puis la **déclaration d'accessibilité**.
+
+## Apparence
 
 | Réglage | Effet |
 |---|---|
 | Police | Polices fournies : IBM Plex Sans, Inter, Source Sans 3, Figtree, Lato, et pour la lisibilité Atkinson Hyperlegible, Lexend, OpenDyslexic. Ou votre propre police téléversée. |
 | Police téléversée | Nom de la police et fichiers `.woff2` ou `.woff` (normal obligatoire, gras facultatif). Vérifiez que la licence de la police autorise l'usage sur un site web. |
-| Arrondis | Net, doux ou arrondi : cartes, boutons et champs. |
+| Arrondis | Net, doux ou arrondi : cartes, boutons, champs, et sections et activités des pages de cours. |
+| Densité | Confortable, ou compacte : moins d'espace autour et entre les éléments, pour plus de contenu à l'écran. |
 | Mode sombre | Jamais, automatique comme l'appareil, ou toujours. |
 
 Toutes les polices sont servies par votre propre site. Le thème ne fait **aucun appel à Google Fonts** ni à un autre service externe.
 
-## Pages et navigation
+## Mobile
 
-Ce que le thème ajoute aux pages de Moodle, chaque élément pouvant être désactivé :
-
-- **Navigation** : recherche rapide (Ctrl+K), barre de navigation mobile, pages d'activité ;
-- **Pages** : bannière de cours, catalogue des cours, aperçu de l'apprenant sur le tableau de bord, Mes cours par rôle ;
-- **Vocabulaire** : lien vers la page « Épure : vocabulaire » ;
-- **E-mails** : e-mails aux couleurs de la marque.
+| Réglage | Effet |
+|---|---|
+| Barre de navigation mobile | Voir [[Navigation et recherche|Navigation-et-recherche]]. |
+| Blocs sur téléphone | Dans leur tiroir, ouvert par un bouton sur le côté de l'écran, ou masqués, pour des pages réduites à leur contenu. |
+| Tableau de bord sur téléphone | La vue d'ensemble de l'apprenant et les blocs, ou la vue d'ensemble seule. |
+| Application Moodle aux couleurs de la marque | Voir [[Activités aux couleurs de la marque|Activités-aux-couleurs-de-la-marque]]. |
+| Application web installable | Désactivée par défaut ; avec son nom et son icône (voir [[Navigation et recherche|Navigation-et-recherche]]). |
 
 ## Page Mes cours
 
@@ -42,7 +75,7 @@ Les cours que vous **animez** et ceux que vous **suivez** sont présentés en de
 |---|---|
 | Progression, prochaine activité à faire, prochaine échéance, bouton Commencer / Continuer / Revoir, mention Terminé | Bandeau et badge de rôle, participants, apprenants actifs cette semaine, devoirs à corriger, accès directs Participants, Notes, Paramètres |
 
-Une recherche (insensible aux accents) et des filtres En cours, À venir, Passés complètent la page. Les cours favoris viennent en premier, puis les plus récemment consultés ; les cours que vous avez masqués restent masqués. Un enseignant est reconnu à sa capacité de voir toutes les notes du cours (`moodle/grade:viewall`). Avec IOMAD, qui remplace le bloc de Moodle par le sien (« Mes cours » avec les onglets disponibles, en cours, terminés), la même présentation s'applique, avec en plus une section « Formations disponibles » et le bouton de téléchargement des certificats d'IOMAD. Réglage « Mes cours par rôle » (onglet Pages et navigation) : décochez pour retrouver le bloc de Moodle ou d'IOMAD.
+Une recherche (insensible aux accents) et des filtres En cours, À venir, Passés complètent la page. Les cours favoris viennent en premier, puis les plus récemment consultés ; les cours que vous avez masqués restent masqués. Un enseignant est reconnu à sa capacité de voir toutes les notes du cours (`moodle/grade:viewall`). Avec IOMAD, qui remplace le bloc de Moodle par le sien (« Mes cours » avec les onglets disponibles, en cours, terminés), la même présentation s'applique, avec en plus une section « Formations disponibles » et le bouton de téléchargement des certificats d'IOMAD. Réglage « Mes cours par rôle » (onglet Cours) : décochez pour retrouver le bloc de Moodle ou d'IOMAD.
 
 ## Page de connexion
 
