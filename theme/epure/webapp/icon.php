@@ -15,22 +15,27 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for theme_epure.
+ * Icon of the web app, as a square PNG.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+// The icon is the same for everybody: no session.
+define('NO_MOODLE_COOKIES', true);
 
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026103114;
-$plugin->release   = '0.26.0';
-$plugin->maturity  = MATURITY_BETA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 503];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+// phpcs:ignore moodle.Files.RequireLogin.Missing -- The icon is read by the browsers and the systems, without a session.
+require_once(__DIR__ . '/../../../config.php');
+
+$size = optional_param('size', 512, PARAM_INT);
+$colour = optional_param('colour', '', PARAM_ALPHANUM);
+
+if (!get_config('theme_epure', 'webapp') || !function_exists('imagecreatetruecolor')) {
+    send_file_not_found();
+}
+$png = \theme_epure\web_app::icon($size, $colour !== '' ? '#' . $colour : null);
+header('Content-Type: image/png');
+header('Cache-Control: public, max-age=' . YEARSECS . ', immutable');
+header('Content-Length: ' . strlen($png));
+echo $png;
