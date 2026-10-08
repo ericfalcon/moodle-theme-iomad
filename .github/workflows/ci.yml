@@ -138,8 +138,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci mustache
 
+      # Not on IOMAD: its themes copy Boost's Behat features under the same names, which gherkinlint refuses; the
+      # code of Épure is linted on the Moodle jobs.
       - name: Grunt
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && !matrix.include-moodle.repo }}
         run: moodle-plugin-ci grunt --max-lint-warnings 0
 
       - name: PHPUnit tests
