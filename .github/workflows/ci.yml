@@ -74,6 +74,8 @@ jobs:
 
       # IOMAD: its themes declare third-party files they do not ship (amd/src/bootstrap/, amd/src/index.js), which
       # stops moodle-plugin-ci (grunt ignorefiles); they are added, empty, to a local clone, installed from there.
+      # Two Behat contexts of IOMAD stop Behat altogether, and are left out: auth_iomadsaml2's (not compatible with
+      # Behat on IOMAD 4.5) and tool_iomadpolicy's (it defines again a step of tool_policy).
       - name: Prepare IOMAD
         if: ${{ matrix.include-moodle.repo }}
         run: |
@@ -94,21 +96,15 @@ jobs:
                       os.makedirs(os.path.dirname(path), exist_ok=True)
                       open(path, 'w').close()
           PY
+          for dir in auth/iomadsaml2/tests/behat admin/tool/iomadpolicy/tests/behat; do
+            rm -rf "iomad-src/$dir" "iomad-src/public/$dir"
+          done
           git -C iomad-src add -A
           git -C iomad-src -c user.name=CI -c user.email=ci@example.com commit -q -m "CI: directory of theme_iomad" || true
           echo "IOMAD_LOCAL=file://$GITHUB_WORKSPACE/iomad-src" >> "$GITHUB_ENV"
 
-      # IOMAD: Behat is not initialised (its auth_iomadsaml2 context is not compatible with Behat on 4.5, and the
-      # Behat tests run on Moodle); PHPUnit is initialised on its own.
       - name: Install Moodle and the plugin
-        run: |
-          moodle-plugin-ci install --plugin ./repo/${{ matrix.plugin }} --db-host=127.0.0.1 ${{ matrix.include-moodle.repo && '--no-init' || '' }}
-          if [ -n "${{ matrix.include-moodle.repo }}" ]; then
-            # From 5.1, the code of Moodle is under public/.
-            init=moodle/admin/tool/phpunit/cli/init.php
-            [ -f "$init" ] || init=moodle/public/admin/tool/phpunit/cli/init.php
-            php "$init" > /dev/null
-          fi
+        run: moodle-plugin-ci install --plugin ./repo/${{ matrix.plugin }} --db-host=127.0.0.1
         env:
           DB: ${{ matrix.include-moodle.db || 'pgsql' }}
           MOODLE_BRANCH: ${{ matrix.include-moodle.branch }}
@@ -148,6 +144,7 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      - name: Behat accessibility tests (axe)
-        if: ${{ !cancelled() && !matrix.include-moodle.db && ((matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3') || matrix.include-moodle.branch == 'MOODLE_503_STABLE') }}
-        run: moodle-plugin-ci behat --profile chrome --tags @theme_epure
+      # Behat, with the accessibility checks (axe): the IOMAD scenarios on IOMAD, the others on Moodle.
+      - name: Behat tests
+        if: ${{ !cancelled() && !matrix.include-moodle.db && (matrix.include-moodle.repo || (matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3') || matrix.include-moodle.branch == 'MOODLE_503_STABLE') }}
+        run: moodle-plugin-ci behat --profile chrome --tags '${{ matrix.include-moodle.repo && '@theme_epure_iomad' || '@theme_epure&&~@theme_epure_iomad' }}'
