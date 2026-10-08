@@ -13,7 +13,7 @@ Documentation: [English (theme README)](theme/epure/README.md) · [Français (wi
 | [`theme/epure`](theme/epure) | `theme_epure` | The theme: appearance, accessibility, vocabulary, IOMAD integration |
 | [`docs/wiki`](docs/wiki) | — | Sources of the French wiki pages |
 
-Copy `theme/epure` into the `theme` folder of your Moodle site (`public/theme` from Moodle 5.1 onwards), or install the ZIP file from Site administration › Plugins › Install plugins. IOMAD is detected automatically: there is no other plugin to install.
+Copy `theme/epure` into the `theme` folder of your Moodle site (`public/theme` from Moodle 5.1 onwards), or install the ZIP file from Site administration › Plugins › Install plugins: download `theme_epure-x.y.z.zip` from the Assets of the latest [release](https://github.com/ericfalcon/moodle-theme-iomad/releases), not the « Source code » archives that GitHub adds to every release (they hold the whole repository, which Moodle does not recognise as a theme). IOMAD is detected automatically: there is no other plugin to install.
 
 If you installed the "Épure tools" plugin (`local_epure`) of versions 0.1 to 0.3: first upgrade the theme (it takes over your vocabulary settings), then uninstall that plugin.
 

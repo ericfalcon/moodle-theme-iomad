@@ -35,11 +35,17 @@ jobs:
           RELEASE: ${{ steps.version.outputs.release }}
         run: |
           (cd theme && zip -qr "../theme_epure-$RELEASE.zip" epure -x 'epure/node_modules/*')
-          awk -v v="$RELEASE" '
-            /^## / { if (found) exit; if (index($0, "## " v) == 1) { found = 1; next } }
-            found { print }
-          ' CHANGES.md > notes.md
-          printf '\nInstall: Site administration › Plugins › Install plugins, then upload `theme_epure-%s.zip`.\n' "$RELEASE" >> notes.md
+          # The file to install first: GitHub adds « Source code » archives of the whole repository to every
+          # release, which Moodle does not recognise as a theme.
+          {
+            printf '**To install: download `theme_epure-%s.zip`** in the Assets below (not « Source code »), then Site administration › Plugins › Install plugins.\n\n' "$RELEASE"
+            printf '**Pour installer : téléchargez `theme_epure-%s.zip`** dans les Assets ci-dessous (pas « Source code »), puis Administration du site › Plugins › Installer des plugins.\n\n' "$RELEASE"
+            printf '## Changes\n'
+            awk -v v="$RELEASE" '
+              /^## / { if (found) exit; if (index($0, "## " v) == 1) { found = 1; next } }
+              found { print }
+            ' CHANGES.md
+          } > notes.md
           cat notes.md
 
       - name: Publish the release
