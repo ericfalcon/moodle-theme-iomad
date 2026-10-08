@@ -5,6 +5,7 @@
 - [[Réglages du thème|Réglages-du-thème]]
 - [[Parcours de l'apprenant|Parcours-de-l’apprenant]]
 - [[Navigation et recherche|Navigation-et-recherche]]
+- [[Activités aux couleurs de la marque|Activités-aux-couleurs-de-la-marque]]
 - [[Mode sombre, e-mails et mises à jour|Mode-sombre-et-e-mails]]
 - [[Vocabulaire]]
 - [[IOMAD]]

@@ -25,7 +25,7 @@ Ces réglages s'appliquent aux utilisateurs rattachés à l'entreprise, et à l'
 **Tout se règle dans la fiche de l'entreprise** (Tableau de bord IOMAD › Créer une entreprise ou Modifier l'entreprise › Apparence). Épure range cette partie en étapes numérotées, organisées comme les onglets des réglages du thème, et y regroupe les champs d'IOMAD :
 
 1. **Thème** : le thème de l'entreprise.
-2. **Identité visuelle** : *Logos* (logo, logo compact et favicon d'IOMAD, puis le logo pour l'en-tête en couleur), puis *Couleurs* (couleur de marque, couleur de l'en-tête). Les logos viennent avant les couleurs, car leurs couleurs sont proposées pour la couleur de marque.
+2. **Identité visuelle** : *Logos* (logo, logo compact et favicon d'IOMAD, puis le logo pour l'en-tête en couleur), puis *Couleurs* (couleur de marque, couleur de l'en-tête, couleurs des icônes d'activités). Les logos viennent avant les couleurs, car leurs couleurs sont proposées pour la couleur de marque.
 3. **Typographie et affichage** : police, mode sombre.
 4. **Pages et navigation** : *Navigation* (barre de navigation mobile), *Pages* (bannière de cours, aperçu de l'apprenant).
 5. **Pied de page**.

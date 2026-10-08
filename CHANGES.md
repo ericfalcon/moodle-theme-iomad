@@ -1,5 +1,11 @@
 # Changes
 
+## 0.23.0 (beta)
+
+- Colours of the activity icons: in the brand colour (the default) or in Moodle's colours by kind of activity, for the site and, with IOMAD, for each company.
+- H5P in the colours of the brand (of the company with IOMAD): buttons, chosen answers, score and progress bars, for the recent content types (H5P theme variables) and the older ones; the green and red of the answers are kept.
+- Quizzes: question on a light tint of the brand, feedback in a neutral box, clearer quiz navigation. Lessons: answers as cards one under the other, progress bar in the brand colour. Radio buttons and check boxes in the brand colour. The summary of a quiz attempt is readable in dark mode, and the progress bar of the lessons has a name for screen readers.
+
 ## 0.22.4 (beta)
 
 - Header: on computers too, the quick search replaces Moodle's search button (two magnifying glasses side by side). When Moodle's global search is enabled, the results of the quick search end with « Search … in the whole site », which opens it.
