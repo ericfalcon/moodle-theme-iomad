@@ -15,22 +15,25 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for theme_epure.
+ * Style sheet of the H5P contents in the colour of a brand (see theme_epure\h5p).
+ *
+ * The CSS only depends on the colour in the address: no session, so that it can be cached.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+// phpcs:disable moodle.Files.RequireLogin.Missing
+define('NO_MOODLE_COOKIES', true);
+define('NO_DEBUG_DISPLAY', true);
 
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026103110;
-$plugin->release   = '0.23.0';
-$plugin->maturity  = MATURITY_BETA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 503];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+require(__DIR__ . '/../../config.php');
+
+$brand = theme_epure\palette::normalise(optional_param('brand', '', PARAM_ALPHANUM));
+$css = theme_epure\h5p::css($brand);
+
+header('Content-Type: text/css; charset=utf-8');
+header('Cache-Control: public, max-age=31536000, immutable');
+header('Content-Length: ' . strlen($css));
+echo $css;

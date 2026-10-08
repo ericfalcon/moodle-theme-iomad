@@ -7,7 +7,7 @@
 
 ## Installer
 
-1. Téléchargez le fichier ZIP du thème (dossier `epure`).
+1. Téléchargez le fichier `theme_epure-x.y.z.zip` de la dernière version, dans la liste « Assets » de la page [Releases](https://github.com/ericfalcon/moodle-theme-iomad/releases). N'utilisez pas les archives « Source code » que GitHub ajoute à chaque version : elles contiennent tout le dépôt, et Moodle ne les reconnaît pas comme un thème (« Impossible de détecter le type de plugin »).
 2. Deux possibilités :
    - **depuis Moodle** : Administration du site › Plugins › Installer des plugins, déposez le ZIP, puis suivez les étapes ;
    - **sur le serveur** : décompressez le ZIP dans le dossier `theme` de Moodle (`public/theme` à partir de Moodle 5.1), puis ouvrez la page Administration du site › Notifications.

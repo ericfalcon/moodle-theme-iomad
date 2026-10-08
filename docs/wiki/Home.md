@@ -17,12 +17,13 @@
 2. [[Réglages du thème|Réglages-du-thème]]
 3. [[Parcours de l'apprenant|Parcours-de-l’apprenant]]
 4. [[Navigation et recherche|Navigation-et-recherche]]
-5. [[Mode sombre, e-mails et mises à jour|Mode-sombre-et-e-mails]]
-6. [[Vocabulaire]]
-7. [[IOMAD]]
-8. [[Accessibilité]] et [[rapport de pré-audit|Pré-audit-d’accessibilité]]
-9. [[Questions fréquentes|FAQ]]
-10. [[Développement]]
+5. [[Activités aux couleurs de la marque|Activités-aux-couleurs-de-la-marque]]
+6. [[Mode sombre, e-mails et mises à jour|Mode-sombre-et-e-mails]]
+7. [[Vocabulaire]]
+8. [[IOMAD]]
+9. [[Accessibilité]] et [[rapport de pré-audit|Pré-audit-d’accessibilité]]
+10. [[Questions fréquentes|FAQ]]
+11. [[Développement]]
 
 La documentation en anglais est dans le [README du thème](https://github.com/ericfalcon/moodle-theme-iomad/blob/main/theme/epure/README.md).
 

@@ -188,6 +188,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Indicateur « Moodle travaille » sur les pages de maintenance (validation d'un zip, mise à jour) — 0.22.0
 - [x] Un autre thème reste tel qu'il est sans Épure (formulaire IOMAD d'origine, vocabulaire, e-mails) ; Épure disponible pour une entreprise quel que soit le thème du site — 0.22.2
 - [x] Changement de thème d'une entreprise appliqué tout de suite, et pages dans le thème de l'entreprise sélectionnée, y compris pour l'administrateur — 0.22.2 et 0.22.3
+- [x] Couleurs des icônes d'activités au choix (marque ou Moodle), par site et par entreprise ; H5P, tests et leçons aux couleurs de la marque — 0.23.0
 - [ ] Publication sur moodle.org/plugins
 
 ## Questions ouvertes

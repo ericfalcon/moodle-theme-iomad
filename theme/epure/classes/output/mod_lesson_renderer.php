@@ -14,23 +14,30 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
+namespace theme_epure\output;
+
+defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot . '/mod/lesson/renderer.php');
+
 /**
- * Version information for theme_epure.
+ * Renderer of the lessons: the progress bar gets a name for assistive technologies (Moodle gives it none).
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026103110;
-$plugin->release   = '0.23.0';
-$plugin->maturity  = MATURITY_BETA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 503];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+class mod_lesson_renderer extends \mod_lesson_renderer {
+    /**
+     * Progress bar of the lesson, named.
+     *
+     * @param \lesson $lesson The lesson.
+     * @param int|null $progress Progress, in percent.
+     * @return string HTML.
+     */
+    public function progress_bar(\lesson $lesson, $progress = null) {
+        $html = parent::progress_bar($lesson, $progress);
+        $label = s(get_string('progressbar', 'lesson'));
+        return str_replace('role="progressbar"', 'role="progressbar" aria-label="' . $label . '"', $html);
+    }
+}
