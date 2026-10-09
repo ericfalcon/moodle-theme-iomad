@@ -233,7 +233,7 @@ Pages encore « Moodle habillé » après l'audit de 0.27.0 (couleur et arrondis
 
 ### Plus tard ou à décider
 
-- [ ] **Vue semaine du calendrier**, demandée par des clients : Moodle n'a que le mois, le jour et les événements à venir, tous pilotés par son JavaScript ; une quatrième vue demande une page du thème et un sélecteur de vue modifié sur trois versions de Moodle.
+- [ ] **Vue semaine du calendrier**, demandée par des clients : Moodle n'a que le mois, le jour et les événements à venir, tous pilotés par son JavaScript. Piste retenue : un plugin à part, éventuellement payant, plutôt que le thème. Il marcherait avec n'importe quel thème, garderait Épure léger, et Épure afficherait son lien quand il est installé (comme il détecte IOMAD). Le plugin reste sous licence GPL : on vend le téléchargement, les mises à jour et le support, mais un acheteur peut le redistribuer, et le répertoire moodle.org/plugins ne liste que des plugins téléchargeables gratuitement.
 - [ ] **Validité et recyclage des formations** dans la grille apprenants × cours (durée de validité par un champ personnalisé de cours), pour les habilitations et formations réglementaires.
 - [ ] **Historique des achèvements** conservé après une réinitialisation de cours (table d'archive alimentée à chaque achèvement, comme IOMAD) : plutôt dans un plugin local compagnon que dans le thème.
 - [ ] **Temps passé** estimé depuis les journaux, souvent demandé pour prouver l'assiduité en formation à distance financée ; aucun rapport d'IOMAD ne le mesure.
