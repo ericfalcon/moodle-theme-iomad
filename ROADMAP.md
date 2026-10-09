@@ -270,7 +270,8 @@ Non repris (propres à IOMAD) : licences, entreprises, e-mails sortants, présen
 - [ ] **Notifications hiérarchisées** : ce qui demande une action d'abord (« test à terminer avant demain » avant « 3 nouveaux messages »), puis une **communication unifiée** (messagerie, forums, commentaires, annonces, notifications) qui montre ce qui demande l'attention.
 - [ ] **Formulaires de Moodle repensés** au-delà de l'apparence (0.27.0) : regroupement, champs conditionnels, aide, erreurs, options essentielles d'abord.
 - [ ] **Tableaux de Moodle et d'IOMAD utilisables sur téléphone** : tri, filtres, pagination et actions cohérents, sans tableaux de douze colonnes.
-- [ ] **Petites finitions** : pages d'erreur (page introuvable, accès refusé, session expirée, activité inaccessible) aux couleurs d'Épure ; visites guidées de Moodle restylées ; identité de marque dans les exports PDF, les rapports et les pages imprimées ; modèle d'attestation aux couleurs de la marque pour `tool_certificate` (seules les attestations IOMAD l'ont).
+- [x] **Petites finitions** (0.28.6) : pages d'erreur (page introuvable, accès refusé, session expirée, contenu inaccessible) aux couleurs d'Épure ; visites guidées de Moodle restylées ; identité de marque sur les pages imprimées et leur PDF.
+- [ ] **Modèle d'attestation aux couleurs de la marque pour `tool_certificate`** (seules les attestations IOMAD l'ont) : à décider avec le devenir de l'option « cadre d'attestation ».
 
 ### IOMAD
 
