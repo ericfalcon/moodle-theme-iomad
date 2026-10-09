@@ -9,6 +9,9 @@
   - the details of an activity and the footer of the window are no longer white in dark mode.
 - Tabs on phones: Moodle turns them into buttons on a grey strip, the active one in its blue and the others white, also in dark mode. They take the colours of the theme, the active one the brand colour.
 - Dark mode: the links of the dialogue windows (« More help »…) are readable, and the close button of the windows of Moodle 4.5 no longer disappears.
+- Activity chooser of Moodle 4.5: the icon of the details of an activity follows the « Activity icons » setting, in the brand colour when it is chosen, light in dark mode otherwise.
+- Text editor (TinyMCE): the active buttons and menus, the chosen items, the frame of the text and the focus take the brand colour instead of TinyMCE's blue. The editor stays white in dark mode, so it takes the light version of the brand colour, of the company with IOMAD.
+- Checked: on Moodle 4.5 and 5.1, about sixty pages (course, activities, calendar, messaging, profile, grades, reports, settings, forms, menus and drawers open), on computer and phone, light and dark, under the pointer and with the keyboard, no longer show Moodle's blue. The information messages and the colour of the user events of the calendar keep their own colours.
 
 ## 0.28.0 (beta)
 
