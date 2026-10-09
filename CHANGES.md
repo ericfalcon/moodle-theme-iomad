@@ -1,5 +1,9 @@
 # Changes
 
+## 0.28.2 (beta)
+
+- Quick search button of the header (« Search Ctrl K »): it took the whole height of the header in a grey box that made it look disabled. It is now a search field at the height of the other controls of the header, on the surface with a light border, in light and dark mode and in the brand-coloured header.
+
 ## 0.28.1 (beta)
 
 - Activity chooser, in the colours of the theme, in light and dark mode, on Moodle 4.5 (tabs and cards) and 5.x (categories and list):
