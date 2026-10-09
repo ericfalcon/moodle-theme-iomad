@@ -14,6 +14,9 @@ Principes :
 2. **Accessible par construction.** Les contrastes, le focus, la navigation au clavier et les préférences d'affichage ne dépendent pas de la bonne volonté de l'administrateur.
 3. **Le moins de templates surchargés possible.** Chaque template surchargé est un coût à chaque mise à jour de Moodle. On privilégie le SCSS et les variables.
 4. **Un seul plugin**, qui fonctionne sur Moodle et s'adapte à IOMAD lorsqu'il le détecte.
+5. **Très personnalisable, mais pas trop.** Une évolution n'entre dans Épure que si elle supprime un vrai irritant de Moodle ou d'IOMAD.
+6. **Rien ne reste quand le thème n'est plus utilisé.** Les réglages et les effets d'Épure (vocabulaire, e-mails, attestations IOMAD, application web) cessent dès que le site ou l'entreprise quitte le thème.
+7. **Qualiopi par les traces de Moodle.** Épure rend exploitables les traces pédagogiques que Moodle enregistre déjà (progression, assiduité, achèvements, résultats) ; il ne devient pas un logiciel qualité.
 
 Public visé : organismes de formation, entreprises et établissements qui veulent une plateforme présentable à leurs apprenants et à leurs clients.
 
@@ -192,7 +195,49 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Icônes d'activités masquables ; application Moodle aux couleurs de la marque ; forums, glossaires, devoirs, SCORM, livres, badges, attestations IOMAD et rapports aux couleurs de la marque — 0.24.0
 - [x] Consolidation : compatibilité IOMAD 5.1 et 5.2 (classe `theme_epure\iomad`), formats de cours sur Moodle 5.1 à 5.3, SCSS découpé, erreurs signalées en débogage, mesures de performance — 0.25.0
 - [x] Réglages rangés par sujet (Identité, Navigation, Cours, Accessibilité, Apparence, Mobile) et nouveaux réglages d'affichage ; application web installable ; sous-sections à leur place dans le parcours et dans la progression ; progression de l'apprenant en cache ; Behat sur IOMAD 4.5, 5.1 et 5.2 — 0.26.0
-- [ ] Publication sur moodle.org/plugins
+- [x] Couverture graphique et UX : arrondis cohérents d'un niveau à l'autre (sections, sous-sections, activités, pastilles), calendrier lisible, formulaires de paramètres allégés, atelier, feedback, messagerie et profil, carnet de notes en mode sombre — 0.27.0
+- [ ] Publication sur moodle.org/plugins (après le transfert du français dans AMOS, voir Questions ouvertes)
+
+### V0.28 — Rapports pour Moodle sans IOMAD
+
+Repris des rapports d'IOMAD (`local/report_*`), lus dans les données de Moodle (`course_completions`, `user_lastaccess`, `grade_grades`, `user_enrolments`) au lieu de l'historique propre à IOMAD. Sur un site IOMAD, les pages renvoient vers les rapports d'IOMAD. Par ordre de priorité :
+
+- [ ] **Synthèse d'achèvement par cours**, avec graphique : inscrits, jamais venus, en cours, terminés, taux d'achèvement, note moyenne ; un clic mène au détail natif (`report/completion`, `report/progress`). C'est le tableau de bord du responsable de formation, absent du cœur de Moodle.
+- [ ] **Grille apprenants × cours**, filtrée par catégorie ou cohorte, pour repérer d'un coup d'œil qui décroche sur un parcours de plusieurs cours.
+- [ ] **Connexions et inactifs** : première et dernière connexion, jamais connectés, inactifs depuis N jours, dernier accès par cours.
+- [ ] **Achèvements par mois** : histogramme pour le bilan annuel.
+- [ ] **Relevé de formation d'un apprenant** : tous ses cours (inscription, premier et dernier accès, progression, achèvement, note), exportable en PDF et CSV.
+- [ ] Une page « Rapports » d'Épure qui les regroupe.
+
+Choix techniques :
+
+- pages du thème pour les synthèses et la grille (graphiques `core\chart_*`, exports `\core\dataformat`), le Report builder de Moodle ne sachant faire ni graphique ni grille croisée ; pour les listes, un rapport personnalisé préconfiguré sur la source « Participants » ou une source Report builder du thème ;
+- mêmes définitions que les écrans d'Épure (« actif », « commencé », « terminé », progression et son cache) ;
+- capacités de Moodle (`report/completion:view`, `moodle/site:viewreports`) en respectant les groupes séparés, ou capacités propres au thème (`db/access.php`) ;
+- requêtes groupées, pagination et cache : pas une requête par cellule comme IOMAD ;
+- RGPD : accès par capacité, champs d'identité de Moodle, fournisseur de confidentialité complété pour toute table ajoutée ;
+- prévenir à l'écran que les connexions dépendent des journaux (durée de conservation) et qu'une réinitialisation de cours efface les achèvements.
+
+Non repris (propres à IOMAD) : licences, entreprises, e-mails sortants, présence aux séances (`trainingevent`) ; la liste des utilisateurs, qui existe déjà dans Moodle.
+
+### V0.29 — Fin de la couverture graphique et UX
+
+Pages encore « Moodle habillé » après l'audit de 0.27.0 (couleur et arrondis en place, structure d'origine) :
+
+- [ ] **Profil et préférences** : une vraie hiérarchie au lieu de listes de liens (0.27.0 n'a mis en gras que les titres des cartes du profil).
+- [ ] **Sondage (choix)** : les réponses en cartes, au niveau du forum et du test, au lieu de simples boutons radio.
+- [ ] **Base de données, wiki et feedback** : même niveau de finition que le forum ou le test (0.27.0 n'a repris que les titres du feedback).
+- [ ] **Messagerie** : au-delà du cadre unique de 0.27.0, la liste des conversations et la conversation elle-même.
+- [ ] **Atelier en mode sombre** : les icônes noires des tâches à faire, images de fond fixes de Moodle, restent peu visibles.
+- [ ] **Administration du site** : propre mais telle quelle, vue des seuls administrateurs ; à reprendre seulement si un irritant précis apparaît.
+
+### Plus tard ou à décider
+
+- [ ] **Vue semaine du calendrier**, demandée par des clients : Moodle n'a que le mois, le jour et les événements à venir, tous pilotés par son JavaScript. Piste retenue : un plugin à part, éventuellement payant, plutôt que le thème. Il marcherait avec n'importe quel thème, garderait Épure léger, et Épure afficherait son lien quand il est installé (comme il détecte IOMAD). Le plugin reste sous licence GPL : on vend le téléchargement, les mises à jour et le support, mais un acheteur peut le redistribuer, et le répertoire moodle.org/plugins ne liste que des plugins téléchargeables gratuitement.
+- [ ] **Validité et recyclage des formations** dans la grille apprenants × cours (durée de validité par un champ personnalisé de cours), pour les habilitations et formations réglementaires.
+- [ ] **Historique des achèvements** conservé après une réinitialisation de cours (table d'archive alimentée à chaque achèvement, comme IOMAD) : plutôt dans un plugin local compagnon que dans le thème.
+- [ ] **Temps passé** estimé depuis les journaux, souvent demandé pour prouver l'assiduité en formation à distance financée ; aucun rapport d'IOMAD ne le mesure.
+- [ ] **Qualiopi** : relier les rapports aux indicateurs du référentiel (critère 1, indicateur 2 : taux de résultats ; critère 3, indicateurs 11 et 12 : atteinte des objectifs et prévention des abandons ; critère 7 : appréciations et réclamations, plutôt par un questionnaire de satisfaction avec le feedback de Moodle). Numéros à vérifier sur la version officielle du référentiel.
 
 ## Questions ouvertes
 

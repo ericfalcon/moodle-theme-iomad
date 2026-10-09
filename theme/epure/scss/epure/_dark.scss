@@ -165,6 +165,12 @@
         background-color: transparent !important; // stylelint-disable-line declaration-no-important
     }
 
+    // Days and events of the calendar in the colour of the text, not of the links.
+    #page .maincalendar .calendarmonth td.day a.day.aalink,
+    #page .maincalendar .calendarmonth li[data-region="event-item"] > a[data-action="view-event"] {
+        color: var(--epure-ink);
+    }
+
     .calendarmonth td.clickable:hover,
     .calendarmonth td.today,
     .calendarmonth td.weekend {
@@ -540,7 +546,7 @@
     }
 
     // Badges on light colours keep their dark text.
-    .badge.text-dark,
+    .badge.text-dark:not([role="option"]),
     .badge.bg-warning,
     .badge-warning,
     .badge.bg-light,
@@ -548,10 +554,9 @@
         color: #1d2125 !important; // stylelint-disable-line declaration-no-important
     }
 
-    // Grey badges, such as the items chosen in an autocomplete field.
-    .badge-secondary,
-    .badge.bg-secondary,
-    .form-autocomplete-selection [role="option"] {
+    // Grey badges.
+    .badge-secondary:not([role="option"]),
+    .badge.bg-secondary:not([role="option"]) {
         color: var(--epure-ink) !important; // stylelint-disable-line declaration-no-important
         background-color: #3a4250 !important; // stylelint-disable-line declaration-no-important
     }
@@ -625,6 +630,62 @@
     .path-mod-assign .gradingtable thead th {
         color: var(--epure-ink);
         background-color: var(--epure-surface-raised);
+    }
+
+    // Grades of a user and setup of the gradebook: white and light grey cells of Moodle, with its selectors.
+    .path-grade-report-user,
+    .grade-report-user {
+        .user-report-container {
+            background-color: var(--epure-surface-muted);
+        }
+
+        .user-grade {
+            thead th,
+            td,
+            td.item,
+            tbody tr,
+            tbody tr:hover,
+            .baggt,
+            .baggb,
+            th.category,
+            th.column-itemname:not(.header, .category, .baggt, .baggb) {
+                color: var(--epure-ink);
+                background-color: var(--epure-surface);
+                border-color: var(--epure-border);
+            }
+
+            .levelodd,
+            th.levelodd,
+            td.levelodd {
+                background-color: var(--epure-surface-raised);
+            }
+
+            th.category a.toggle-category i {
+                color: var(--epure-ink);
+            }
+        }
+    }
+
+    .path-grade-edit-tree .gradetree-wrapper {
+        background-color: var(--epure-surface-muted);
+
+        .setup-grades.table th,
+        .setup-grades.table tr.category td,
+        .setup-grades.table tr.item td {
+            color: var(--epure-ink);
+            background-color: var(--epure-surface-raised);
+            border-color: var(--epure-border);
+        }
+
+        .setup-grades.table tr.item td {
+            background-color: var(--epure-surface);
+        }
+    }
+
+    .badge.bg-light.text-dark,
+    .badge.text-dark.number {
+        color: var(--epure-ink) !important; // stylelint-disable-line declaration-no-important
+        background-color: var(--epure-surface-raised) !important; // stylelint-disable-line declaration-no-important
     }
 
     // « More » menu of the tabs of the course, light grey on hover and focus.
