@@ -1,5 +1,9 @@
 # Changes
 
+## 0.28.3 (beta)
+
+- Display preferences panel (« Aa ») on phones and small tablets: aligned on its button, which is not at the right of the screen there, it went out of the screen on the left. It now opens under the header with the same margin on both sides, and stops above the navigation bar at the bottom of the screen. Unchanged on computers.
+
 ## 0.28.2 (beta)
 
 - Edit mode switch on phones: Moodle hides its label for lack of room, which left a switch without a word. A pencil, Moodle's icon to edit, now stands before it, in the brand colour once the edit mode is on; tapping it toggles the switch, and screen readers still read « Edit mode ». The header keeps fitting 360 pixels.
