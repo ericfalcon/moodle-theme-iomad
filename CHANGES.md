@@ -1,5 +1,15 @@
 # Changes
 
+## 0.25.0 (beta)
+
+- IOMAD 5.1 and 5.2: IOMAD 5.1 renamed its tables and classes, and Épure did not see IOMAD on it at all. Everything Épure uses of IOMAD now goes through one class, which knows IOMAD before and after 5.1; IOMAD's « My courses » block of 5.1 (block_iomad_mycourses) gets the page by role too. Verified on IOMAD 4.5 and 5.1; the continuous integration tests IOMAD 4.5, 5.1 and 5.2.
+- Moodle 5.3: the button of the side drawer of the blocks was drawn over the content, on the left (Moodle 5.3 places the drawers from the width of the content, which Épure set to « none »). The drawers and their buttons are against the edges of the screen again.
+- Format « Single activity »: no strip nor previous and next activities, as the activity is the course (« Back to the course » led to the same page).
+- With IOMAD, today in the calendars and the chosen company of the selector take the colour of the company.
+- Unexpected errors (theme of a company, loading of a theme) are reported in developer debugging mode instead of being silent.
+- Code: the styles are split by subject in scss/epure/ (the compiled style sheet is the same).
+- Tests: Behat scenarios of the course formats Topics, Weeks with a subsection, Single activity and Social, with axe-core. Performance measured against Boost (wiki, Développement).
+
 ## 0.24.0 (beta)
 
 - Activity icons can be hidden, for the site and, with IOMAD, for each company: no icons on the course page, the dashboard blocks, the calendar and the activity pages; the activity chooser of the teachers keeps them.

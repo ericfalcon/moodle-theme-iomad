@@ -190,6 +190,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Changement de thème d'une entreprise appliqué tout de suite, et pages dans le thème de l'entreprise sélectionnée, y compris pour l'administrateur — 0.22.2 et 0.22.3
 - [x] Couleurs des icônes d'activités au choix (marque ou Moodle), par site et par entreprise ; H5P, tests et leçons aux couleurs de la marque — 0.23.0
 - [x] Icônes d'activités masquables ; application Moodle aux couleurs de la marque ; forums, glossaires, devoirs, SCORM, livres, badges, attestations IOMAD et rapports aux couleurs de la marque — 0.24.0
+- [x] Consolidation : compatibilité IOMAD 5.1 et 5.2 (classe `theme_epure\iomad`), formats de cours sur Moodle 5.1 à 5.3, SCSS découpé, erreurs signalées en débogage, mesures de performance — 0.25.0
 - [ ] Publication sur moodle.org/plugins
 
 ## Questions ouvertes
