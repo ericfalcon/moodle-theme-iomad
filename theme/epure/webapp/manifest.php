@@ -15,22 +15,19 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for theme_epure.
+ * Web app manifest of the platform, for the current user (with IOMAD, in the colour of their company).
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+// phpcs:ignore moodle.Files.RequireLogin.Missing -- The manifest is read by the browsers, logged in or not.
+require_once(__DIR__ . '/../../../config.php');
 
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026103114;
-$plugin->release   = '0.26.0';
-$plugin->maturity  = MATURITY_BETA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 503];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+if (!\theme_epure\web_app::enabled()) {
+    send_file_not_found();
+}
+header('Content-Type: application/manifest+json; charset=utf-8');
+header('Cache-Control: private, max-age=3600');
+echo json_encode(\theme_epure\web_app::manifest(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

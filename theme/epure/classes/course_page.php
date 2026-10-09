@@ -44,6 +44,26 @@ class course_page {
     }
 
     /**
+     * Whether the course page shows the progress of each section: to a learner of the course, outside the edit mode.
+     *
+     * @param \moodle_page $page Page.
+     * @param int $userid User.
+     * @return bool
+     */
+    public static function section_progress_applies(\moodle_page $page, int $userid): bool {
+        if (
+            !str_starts_with((string) $page->pagetype, 'course-view-') || empty($page->course->id)
+                || (int) $page->course->id === (int) SITEID || get_config('theme_epure', 'sectionprogress') === '0'
+                || !isloggedin() || isguestuser() || $page->user_is_editing()
+        ) {
+            return false;
+        }
+        $context = \context_course::instance($page->course->id);
+        return !mycourses::is_teaching($context, $userid)
+            && (is_enrolled($context, $userid, '', true) || is_role_switched($page->course->id));
+    }
+
+    /**
      * Context of the template theme_epure/course_banner.
      *
      * @param \renderer_base $output Renderer, for the generated course image.
@@ -83,6 +103,9 @@ class course_page {
     /**
      * Progress of each section of a course for a learner: the activities with completion they completed.
      *
+     * A section counts the activities of its subsections too, as they are shown inside it; each subsection gets its
+     * own progress as well.
+     *
      * @param \stdClass $course Course.
      * @param int $userid Learner.
      * @return array[] Sections with completion, each with id, done and total.
@@ -94,10 +117,16 @@ class course_page {
         }
         $modinfo = get_fast_modinfo($course, $userid);
         $sections = [];
-        foreach ($modinfo->get_section_info_all() as $section) {
+        $count = function (\section_info $section) use (&$count, &$sections, $modinfo, $completion, $userid): array {
             $done = $total = 0;
             foreach ($modinfo->sections[$section->section] ?? [] as $cmid) {
                 $cm = $modinfo->cms[$cmid];
+                if ($delegated = $cm->get_delegated_section_info()) {
+                    [$subdone, $subtotal] = $cm->uservisible ? $count($delegated) : [0, 0];
+                    $done += $subdone;
+                    $total += $subtotal;
+                    continue;
+                }
                 if (!$cm->uservisible || $cm->deletioninprogress || $completion->is_enabled($cm) == COMPLETION_TRACKING_NONE) {
                     continue;
                 }
@@ -115,6 +144,10 @@ class course_page {
                     'label' => get_string('coursesectionprogress', 'theme_epure', (object) ['done' => $done, 'total' => $total]),
                 ];
             }
+            return [$done, $total];
+        };
+        foreach ($modinfo->get_listed_section_info_all() as $section) {
+            $count($section);
         }
         return $sections;
     }

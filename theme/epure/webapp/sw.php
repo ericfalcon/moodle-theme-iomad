@@ -15,22 +15,19 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for theme_epure.
+ * Service worker of the web app, for the whole site: it shows a page « You are offline » without network, and removes
+ * itself once the web app is turned off or the user no longer sees Épure.
  *
  * @package    theme_epure
  * @copyright  2026 Eric Falcon
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+// phpcs:ignore moodle.Files.RequireLogin.Missing -- The browsers check the service worker, logged in or not.
+require_once(__DIR__ . '/../../../config.php');
 
-$plugin->component = 'theme_epure';
-$plugin->version   = 2026103114;
-$plugin->release   = '0.26.0';
-$plugin->maturity  = MATURITY_BETA;
-$plugin->requires  = 2024100700; // Moodle 4.5.
-$plugin->supported = [405, 503];
-$plugin->dependencies = [
-    'theme_boost' => 2024100700,
-    'tool_customlang' => ANY_VERSION,
-];
+header('Content-Type: text/javascript; charset=utf-8');
+// Served from the theme, the service worker covers the whole site.
+header('Service-Worker-Allowed: ' . \theme_epure\web_app::scope());
+header('Cache-Control: no-cache, no-store, must-revalidate');
+echo \theme_epure\web_app::service_worker();

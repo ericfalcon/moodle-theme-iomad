@@ -191,6 +191,7 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Couleurs des icônes d'activités au choix (marque ou Moodle), par site et par entreprise ; H5P, tests et leçons aux couleurs de la marque — 0.23.0
 - [x] Icônes d'activités masquables ; application Moodle aux couleurs de la marque ; forums, glossaires, devoirs, SCORM, livres, badges, attestations IOMAD et rapports aux couleurs de la marque — 0.24.0
 - [x] Consolidation : compatibilité IOMAD 5.1 et 5.2 (classe `theme_epure\iomad`), formats de cours sur Moodle 5.1 à 5.3, SCSS découpé, erreurs signalées en débogage, mesures de performance — 0.25.0
+- [x] Réglages rangés par sujet (Identité, Navigation, Cours, Accessibilité, Apparence, Mobile) et nouveaux réglages d'affichage ; application web installable ; sous-sections à leur place dans le parcours et dans la progression ; progression de l'apprenant en cache ; Behat sur IOMAD 4.5, 5.1 et 5.2 — 0.26.0
 - [ ] Publication sur moodle.org/plugins
 
 ## Questions ouvertes

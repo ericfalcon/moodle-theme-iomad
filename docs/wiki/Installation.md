@@ -27,4 +27,6 @@ Si vous aviez installé `local_epure` (versions 0.1 à 0.3) : mettez d'abord le 
 
 ## Désinstaller
 
+Si l'[[application web installable|Navigation-et-recherche]] a été activée, désactivez-la d'abord et laissez aux utilisateurs le temps de revenir sur le site : une fois le thème désinstallé, les navigateurs gardent son dernier service worker, qui n'affiche la page « Vous êtes hors ligne » que sans réseau.
+
 Choisissez un autre thème, puis désinstallez Épure depuis la vue d'ensemble des plugins. Les chaînes de vocabulaire écrites par le thème sont retirées ; celles que vous aviez personnalisées vous-même sont conservées.

@@ -6,10 +6,10 @@
 
 - **Une couleur de marque**, dont toute la palette est déduite avec des contrastes conformes WCAG 2.2 AA, en clair comme en sombre.
 - **Un parcours de l'apprenant repensé** : tableau de bord, mes cours, page de cours, pages d'activité, catalogue.
-- **Des outils de navigation** : recherche rapide Ctrl+K, barre de navigation mobile.
+- **Des outils de navigation** : recherche rapide Ctrl+K, barre de navigation mobile, application web installable.
 - **Le vocabulaire de votre organisation** (formation, stagiaire, formateur…) appliqué à tout Moodle.
 - **IOMAD** : apparence, vocabulaire, pied de page et options par entreprise, tableau de bord IOMAD réorganisé.
-- **L'accessibilité** : préférences d'affichage de chaque utilisateur, déclaration d'accessibilité RGAA, tests axe-core automatiques.
+- **L'accessibilité** : préférences d'affichage de chaque utilisateur et affichage par défaut du site, déclaration d'accessibilité RGAA, tests axe-core automatiques.
 
 ## Sommaire
 

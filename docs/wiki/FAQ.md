@@ -12,7 +12,7 @@ Non. Les polices sont servies par votre propre site ; aucun appel à Google Font
 
 ## Comment revenir à l'affichage de Moodle pour une fonction ?
 
-Chaque ajout se désactive dans l'onglet Pages et navigation du thème : Mes cours par rôle, bannière des cours, aperçu de l'apprenant, pages d'activité, catalogue des cours, recherche rapide, barre de navigation mobile, e-mails aux couleurs de la marque, pied de page. Avec IOMAD, plusieurs d'entre eux se règlent aussi par entreprise.
+Chaque ajout se désactive dans les réglages du thème : Mes cours par rôle, bannière des cours, progression des sections, aperçu de l'apprenant, pages d'activité et catalogue des cours (onglet Cours), recherche rapide (onglet Navigation), barre de navigation mobile (onglet Mobile), e-mails aux couleurs de la marque (onglet Identité), bouton « Aa » (onglet Accessibilité), pied de page (onglet Pied de page). Avec IOMAD, plusieurs d'entre eux se règlent aussi par entreprise.
 
 ## Un utilisateur a choisi « Clair », mais l'entreprise est en mode sombre
 

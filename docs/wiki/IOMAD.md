@@ -7,7 +7,7 @@
 | Réglage IOMAD de l'entreprise | Effet dans Épure |
 |---|---|
 | Couleur des titres (à défaut, couleur des liens) | Devient la couleur de marque de l'entreprise : la palette accessible est recalculée pour elle (en-tête, boutons, liens, contrastes AA). |
-| Logo de l'entreprise | Remplace le logo d'Épure pour les utilisateurs de l'entreprise. |
+| Logo de l'entreprise | Remplace le logo d'Épure pour les utilisateurs de l'entreprise, dans l'en-tête des téléphones aussi. |
 | CSS personnalisé | Ajouté aux pages des utilisateurs de l'entreprise. |
 
 Ces réglages s'appliquent aux utilisateurs rattachés à l'entreprise, et à l'administrateur qui a sélectionné l'entreprise dans le tableau de bord IOMAD. Seuls les codes couleur hexadécimaux sont pris en compte. La couleur principale (fond de page) d'IOMAD n'est pas appliquée, pour préserver la lisibilité.
@@ -25,12 +25,14 @@ Ces réglages s'appliquent aux utilisateurs rattachés à l'entreprise, et à l'
 **Tout se règle dans la fiche de l'entreprise** (Tableau de bord IOMAD › Créer une entreprise ou Modifier l'entreprise › Apparence). Épure range cette partie en étapes numérotées, organisées comme les onglets des réglages du thème, et y regroupe les champs d'IOMAD :
 
 1. **Thème** : le thème de l'entreprise.
-2. **Identité visuelle** : *Logos* (logo, logo compact et favicon d'IOMAD, puis le logo pour l'en-tête en couleur), puis *Couleurs* (couleur de marque, couleur de l'en-tête, couleurs des icônes d'activités). Les logos viennent avant les couleurs, car leurs couleurs sont proposées pour la couleur de marque.
-3. **Typographie et affichage** : police, mode sombre.
+2. **Identité** : *Logos* (logo, logo compact et favicon d'IOMAD, puis le logo pour l'en-tête en couleur), puis *Couleurs* (couleur de marque, couleur de l'en-tête, couleurs des icônes d'activités), puis *Attestations*. Les logos viennent avant les couleurs, car leurs couleurs sont proposées pour la couleur de marque.
+3. **Apparence** : police, mode sombre.
 4. **Pages et navigation** : *Navigation* (barre de navigation mobile), *Pages* (bannière de cours, aperçu de l'apprenant).
 5. **Pied de page**.
 6. **Vocabulaire**.
 7. **Réglages avancés** : CSS personnalisé et menu personnalisé d'IOMAD.
+
+Dans les réglages du thème, les réglages de l'étape 4 sont rangés dans les onglets Cours (bannière, aperçu de l'apprenant) et Mobile (barre de navigation mobile).
 
 Si l'entreprise choisit un autre thème qu'Épure, il ne reste rien d'Épure : le formulaire d'IOMAD s'affiche tel qu'IOMAD le présente (ordre, champs, remarque), et les utilisateurs de l'entreprise voient ce thème tel qu'il est sans Épure (mots d'origine du paquet de langue, e-mails de Moodle). Les réglages d'Épure de l'entreprise sont conservés et s'appliquent de nouveau si elle revient à Épure.
 
@@ -42,7 +44,7 @@ Les réglages propres à Épure :
 
 | Réglage de l'entreprise | Effet |
 |---|---|
-| Couleur de marque | Code couleur libre, sélecteur de couleur, ou couleurs du logo de l'entreprise (pastilles et pipette, y compris pour un logo tout juste téléversé). Vide : la couleur du titre d'IOMAD, sinon celle du site. La palette accessible est recalculée. |
+| Couleur de marque | Code couleur libre, sélecteur de couleur, ou couleurs du logo de l'entreprise (pastilles et pipette, y compris pour un logo tout juste téléversé). Vide : la couleur du titre d'IOMAD, sinon celle du site. La palette accessible est recalculée. Elle remplace aussi la couleur d'accent du site. |
 | Couleur de l'en-tête | Comme le site, blanc, ou couleur de marque. |
 | Bannière des cours | Comme le site, affichée ou masquée, pour les utilisateurs de l'entreprise. |
 | Aperçu de l'apprenant sur le tableau de bord | Comme le site, affiché ou masqué. |
@@ -59,3 +61,9 @@ Les paquets de langue étant communs à tout le site, ces mots sont appliqués a
 ## Chiffres clés
 
 Sur un Moodle sans IOMAD, le tableau de bord des gestionnaires de la plateforme commence par ses chiffres clés : utilisateurs (et actifs cette semaine), cours (et cours visibles), inscriptions actives, achèvements des 30 derniers jours. Avec IOMAD, ce sont ceux de l'entreprise sélectionnée, en tête du tableau de bord IOMAD.
+
+## Versions d'IOMAD
+
+Épure fonctionne avec IOMAD 4.5, 5.1 et 5.2. IOMAD 5.1 a renommé ses tables et ses classes, et déplacé le suivi des achèvements de `local_iomad_track` dans `local_iomad` : le cadre des attestations d'une entreprise qui a quitté Épure lui est rendu sur les pages d'IOMAD qui créent des attestations dans les deux versions (`local/iomad`, `local/iomad_track`, `local/report_completion`, `local/report_users`, `admin/tool/redocerts`, `mod/iomadcertificate`, blocs « Mes cours »), et dans les scripts en ligne de commande (tâches planifiées).
+
+L'intégration continue teste IOMAD 4.5, 5.1 et 5.2, avec les tests Behat : un apprenant d'une entreprise voit la couleur et le logo de son entreprise, un utilisateur sans entreprise garde la couleur du site, et la page « Mes cours » d'IOMAD est la page par rôle d'Épure, avec l'audit axe-core. Voir [[Développement]].
