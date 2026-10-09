@@ -74,7 +74,8 @@ jobs:
 
       # IOMAD: its themes declare third-party files they do not ship (amd/src/bootstrap/, amd/src/index.js), which
       # stops moodle-plugin-ci (grunt ignorefiles); they are added, empty, to a local clone, installed from there.
-      # The index of auth_iomadoidc (IOMAD 5.2) gets the prefix of the tables, for PHPUnit and Behat to install side by side.
+      # The index of auth_iomadoidc (IOMAD 5.2) gets the prefix of the tables, for PHPUnit and Behat to install side by side,
+      # and tool_checklearningrecords (IOMAD 5.1, 5.2) the string it uses without defining it.
       # Two Behat contexts of IOMAD stop Behat altogether, and are left out: auth_iomadsaml2's (not compatible with
       # Behat on IOMAD 4.5) and tool_iomadpolicy's (it defines again a step of tool_policy).
       - name: Prepare IOMAD
@@ -104,6 +105,12 @@ jobs:
               if fixed != code:
                   print('Index of auth_iomadoidc prefixed:', php)
                   open(php, 'w', encoding='utf-8').write(fixed)
+          # IOMAD 5.1 and 5.2: tool_checklearningrecords uses a string it does not define, during the install of Behat.
+          for lang in glob.glob('iomad-src/**/tool/checklearningrecords/lang/en/tool_checklearningrecords.php', recursive=True):
+              code = open(lang, encoding='utf-8').read()
+              if "'brokendetails'" not in code:
+                  print('String brokendetails added:', lang)
+                  open(lang, 'a', encoding='utf-8').write("$string['brokendetails'] = 'Records still broken: {$a}';\n")
           PY
           for dir in auth/iomadsaml2/tests/behat admin/tool/iomadpolicy/tests/behat; do
             rm -rf "iomad-src/$dir" "iomad-src/public/$dir"
