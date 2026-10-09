@@ -17,11 +17,16 @@ Réglage « Icônes d'activités » (onglet Cours, partie Activités) : dans la 
 - **Livres et pages** : le chapitre en cours, les flèches des chapitres et les citations dans la couleur de marque, le texte à une largeur lisible.
 - **Badges** : les badges de l'utilisateur en cartes ; la page d'un badge avec son image sur une teinte de la marque.
 - **Rapports** : la ligne sous le pointeur mise en valeur dans le carnet de notes, le rapport d'achèvement et les rapports IOMAD ; la cellule mise en avant des résultats d'un test dans une teinte de la marque.
-- **Ateliers** : les phases aux couleurs du thème, celle en cours dans une teinte de la marque au lieu du vert anis.
-- **Feedback** : les titres de la vue d'ensemble plus petits et détachés de ce qui précède.
+- **Ateliers** : les phases aux couleurs du thème, celle en cours dans une teinte de la marque au lieu du vert anis ; en mode sombre, des icônes de tâches claires.
+- **Feedback** : les titres de la vue d'ensemble plus petits ; les questions en cartes numérotées, les réponses d'un choix multiple en lignes cliquables.
 - **Calendrier** : les événements du mois en étiquettes teintées de la couleur de leur type (site, cours, catégorie, groupe, utilisateur), sur deux lignes, au lieu d'un nom coupé derrière une petite pastille ; les week-ends teintés ; les cartes du jour et des événements à venir marquées de la couleur de leur type. Sur téléphone, les mois précédent et suivant tiennent sur une ligne.
 - **Formulaires de paramètres** : l'aide en gris (couleur de marque au survol) au lieu du bleu-vert de Moodle, des titres de sections plus petits, des listes de date plus étroites, les éléments choisis d'un champ à complétion en étiquettes teintées de la marque.
-- **Messagerie et profil** : la page de messagerie dans un seul cadre arrondi ; les titres des cartes du profil en gras.
+- **Messagerie** : les messages en bulles (les miens teintés de la marque à droite, ceux des autres neutres à gauche), les jours en intertitres, la conversation survolée teintée de la marque, le champ de saisie arrondi ; sur téléphone, la conversation ouverte au-dessus de la liste des conversations.
+- **Profil et préférences** : la personne dans un en-tête teinté de la marque, les liens des cartes en lignes de menu (toute la ligne est cliquable, une flèche à droite), « Modifier le profil » en petit bouton.
+- **Sondage (choix)** : chaque réponse en carte cliquable, la réponse choisie marquée de la marque.
+- **Graphiques** : les graphiques des pages (résultats d'un sondage, rapports…) dans des nuances de la couleur de marque, lisibles en clair comme en sombre, sauf si le site a défini ses propres couleurs de graphiques (`$CFG->chart_colorset`).
+- **Base de données** : les fiches en cartes compactes, les noms des champs en petits titres gris, la recherche et le tri regroupés dans un encadré.
+- **Wiki** : le sommaire en encadré marqué de la marque, le texte à une largeur lisible.
 
 ## Attestations IOMAD
 

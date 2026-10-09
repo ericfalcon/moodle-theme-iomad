@@ -202,9 +202,10 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Consolidation : compatibilité IOMAD 5.1 et 5.2 (classe `theme_epure\iomad`), formats de cours sur Moodle 5.1 à 5.3, SCSS découpé, erreurs signalées en débogage, mesures de performance — 0.25.0
 - [x] Réglages rangés par sujet (Identité, Navigation, Cours, Accessibilité, Apparence, Mobile) et nouveaux réglages d'affichage ; application web installable ; sous-sections à leur place dans le parcours et dans la progression ; progression de l'apprenant en cache ; Behat sur IOMAD 4.5, 5.1 et 5.2 — 0.26.0
 - [x] Couverture graphique et UX : arrondis cohérents d'un niveau à l'autre (sections, sous-sections, activités, pastilles), calendrier lisible, formulaires de paramètres allégés, atelier, feedback, messagerie et profil, carnet de notes en mode sombre — 0.27.0
+- [x] Fin de la couverture graphique et UX : messagerie en bulles, sondage en cartes, graphiques aux couleurs de la marque, profil et préférences en menus, base de données, wiki et feedback au niveau du forum et du test, icônes de l'atelier en mode sombre — 0.28.0
 - [ ] Publication sur moodle.org/plugins (après le transfert du français dans AMOS, voir Questions ouvertes)
 
-### V0.28 — Rapports pour Moodle sans IOMAD
+### V0.29 — Rapports pour Moodle sans IOMAD
 
 Repris des rapports d'IOMAD (`local/report_*`), lus dans les données de Moodle (`course_completions`, `user_lastaccess`, `grade_grades`, `user_enrolments`) au lieu de l'historique propre à IOMAD. Sur un site IOMAD, les pages renvoient vers les rapports d'IOMAD. Par ordre de priorité :
 
@@ -226,29 +227,18 @@ Choix techniques :
 
 Non repris (propres à IOMAD) : licences, entreprises, e-mails sortants, présence aux séances (`trainingevent`) ; la liste des utilisateurs, qui existe déjà dans Moodle.
 
-### V0.29 — Fin de la couverture graphique et UX
-
-Pages encore « Moodle habillé » après l'audit de 0.27.0 (couleur et arrondis en place, structure d'origine) :
-
-- [ ] **Profil et préférences** : une vraie hiérarchie au lieu de listes de liens (0.27.0 n'a mis en gras que les titres des cartes du profil).
-- [ ] **Sondage (choix)** : les réponses en cartes, au niveau du forum et du test, au lieu de simples boutons radio.
-- [ ] **Base de données, wiki et feedback** : même niveau de finition que le forum ou le test (0.27.0 n'a repris que les titres du feedback).
-- [ ] **Messagerie** : au-delà du cadre unique de 0.27.0, la liste des conversations et la conversation elle-même.
-- [ ] **Atelier en mode sombre** : les icônes noires des tâches à faire, images de fond fixes de Moodle, restent peu visibles.
-- [ ] **Administration du site** : propre mais telle quelle, vue des seuls administrateurs ; à reprendre seulement si un irritant précis apparaît.
-
 ### Méthode pour la suite (versions 1.x)
 
 - [ ] **Audit UX par parcours** : apprenant, formateur, administrateur et IOMAD, qualité. Pour chacun : ce que fait Moodle, ce qu'Épure fait déjà, ce qui reste frustrant, ce qui apporterait de la valeur, ce qui serait inutile. Il en sort un cahier des charges UX et les 10 à 15 dernières améliorations ; cette feuille de route sert de grille au lieu d'empiler des idées.
 - [ ] **Matrice Qualiopi × Moodle × IOMAD × Épure**, indicateur par indicateur : l'exigence du nouveau référentiel, ce que Moodle produit déjà, ce qu'IOMAD ajoute, ce qu'Épure fait et pourrait faire, la priorité, et si la valeur est pédagogique ou seulement documentaire.
-- [ ] **Audit des rapports existants** avant tout nouvel indicateur : rapports de Moodle (notes, achèvement, participation, journaux), d'IOMAD (fait, voir V0.28) et Kopere Dashboard (fork ericfalcon/moodle-local-kopere_dashboard), pour ne pas refaire ce qu'un plugin couvre déjà.
+- [ ] **Audit des rapports existants** avant tout nouvel indicateur : rapports de Moodle (notes, achèvement, participation, journaux), d'IOMAD (fait, voir V0.29) et Kopere Dashboard (fork ericfalcon/moodle-local-kopere_dashboard), pour ne pas refaire ce qu'un plugin couvre déjà.
 - [ ] **Comparaison avec les thèmes concurrents** (Boost Union, Moove, Adaptable…) : accessibilité, modernité, Moodle natif, IOMAD, mobile, irritants résolus.
 - [ ] **Un service de suivi pédagogique commun** : extraire peu à peu les calculs partagés (« actif », « commencé », « terminé », progression, corrections) pour que la bannière, Mes cours, le tableau de bord et les rapports donnent toujours les mêmes chiffres.
 
 ### Pilotage pédagogique et qualité
 
 - [ ] **Nouveau référentiel Qualiopi** : d'après nos échanges, un décret du 1er août 2026 l'applique à partir du 1er novembre 2026, avec 7 critères et 33 indicateurs ; l'indicateur 12 ajoute la prévention des violences, du harcèlement et des discriminations, l'indicateur 19 demande de vérifier que les modules à distance sont effectivement suivis, l'indicateur 32 ajoute une analyse des risques. **À vérifier sur le texte officiel** (et sur le guide de lecture, pas encore paru) avant de s'y appuyer.
-- [ ] **Synthèse pédagogique d'un cours**, depuis la bannière ou les raccourcis du formateur, en complément de la synthèse d'achèvement de la V0.28 : corrections en attente, apprenants sans activité depuis une durée réglable selon le rythme de la formation, progression médiane, activités problématiques (taux d'échec), chaque chiffre menant au rapport détaillé.
+- [ ] **Synthèse pédagogique d'un cours**, depuis la bannière ou les raccourcis du formateur, en complément de la synthèse d'achèvement de la V0.29 : corrections en attente, apprenants sans activité depuis une durée réglable selon le rythme de la formation, progression médiane, activités problématiques (taux d'échec), chaque chiffre menant au rapport détaillé.
 - [ ] **Évaluations en attente distinguées** : corrections manuelles (devoirs et tests), notées automatiquement, non réalisées, tentatives qui demandent une action ; aujourd'hui seuls les devoirs sont comptés.
 - [ ] **Tableau de bord « À surveiller » du formateur**, qui nomme les apprenants : sans activité depuis 7 jours, en retard sur le parcours, progression bloquée, évaluations et messages en attente (indicateurs 11, 12 et 19).
 - [ ] **État du groupe** : dans le rythme, en retard, bloqués, inactifs.
