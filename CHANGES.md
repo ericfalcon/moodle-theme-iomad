@@ -1,5 +1,11 @@
 # Changes
 
+## 0.28.6 (beta)
+
+- Error pages: instead of Moodle's red box, a card in the colours of the brand says in plain words what happened (page not found, access denied, content not available, session expired, other error), keeps Moodle's message and leads to the dashboard, or to the login page. Moodle's « page not found » page gets the same card.
+- User tours: their steps in the colours of the theme, in light and dark mode, with the element shown outlined in the brand colour.
+- Printed pages and their PDF: the logo and name of the site, or of the IOMAD company, over a line of the brand colour, then the title of the page (which Boost leaves out) and its content, without the menus, panels and buttons of the screen. Dark mode is now for screens only: printed pages stay light.
+
 ## 0.28.5 (beta)
 
 - Corner style: the choices are named for what they do, « Slightly rounded (almost square corners) », « Moderately rounded » and « Very rounded », instead of « Sharp », « Soft » and « Round » (« Net », « Doux », « Arrondi » in French, where « Net » could be read as clearly rounded). A help text gives the size of the corners, in the settings of the site and in the form of the IOMAD companies.
