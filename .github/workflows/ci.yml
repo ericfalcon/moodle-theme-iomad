@@ -74,6 +74,7 @@ jobs:
 
       # IOMAD: its themes declare third-party files they do not ship (amd/src/bootstrap/, amd/src/index.js), which
       # stops moodle-plugin-ci (grunt ignorefiles); they are added, empty, to a local clone, installed from there.
+      # The index of auth_iomadoidc (IOMAD 5.2) gets the prefix of the tables, for PHPUnit and Behat to install side by side.
       # Two Behat contexts of IOMAD stop Behat altogether, and are left out: auth_iomadsaml2's (not compatible with
       # Behat on IOMAD 4.5) and tool_iomadpolicy's (it defines again a step of tool_policy).
       - name: Prepare IOMAD
@@ -95,6 +96,14 @@ jobs:
                   else:
                       os.makedirs(os.path.dirname(path), exist_ok=True)
                       open(path, 'w').close()
+          # IOMAD 5.2: auth_iomadoidc names an index without the prefix of the tables, which PHPUnit and Behat share.
+          for php in glob.glob('iomad-src/**/auth/iomadoidc/db/*.php', recursive=True):
+              code = open(php, encoding='utf-8').read()
+              fixed = code.replace("CREATE UNIQUE INDEX idx_iomadoidc_unique ON",
+                                   "CREATE UNIQUE INDEX ' . $DB->get_prefix() . 'iomadoidc_uniq ON")
+              if fixed != code:
+                  print('Index of auth_iomadoidc prefixed:', php)
+                  open(php, 'w', encoding='utf-8').write(fixed)
           PY
           for dir in auth/iomadsaml2/tests/behat admin/tool/iomadpolicy/tests/behat; do
             rm -rf "iomad-src/$dir" "iomad-src/public/$dir"
