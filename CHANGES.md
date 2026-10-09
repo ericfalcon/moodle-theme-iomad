@@ -1,5 +1,10 @@
 # Changes
 
+## 0.28.5 (beta)
+
+- Corner style: the choices are named for what they do, « Slightly rounded (almost square corners) », « Moderately rounded » and « Very rounded », instead of « Sharp », « Soft » and « Round » (« Net », « Doux », « Arrondi » in French, where « Net » could be read as clearly rounded). A help text gives the size of the corners, in the settings of the site and in the form of the IOMAD companies.
+- IOMAD: a company can use a font of its own, uploaded in its form (name, normal and bold files, woff2 or woff), or the font uploaded for the site, besides the 8 bundled fonts. Without a normal file, the font of the site is kept.
+
 ## 0.28.4 (beta)
 
 - IOMAD: a company can set in its form (Edit company › Appearance) more of the settings of the site, each « As the site » by default:
