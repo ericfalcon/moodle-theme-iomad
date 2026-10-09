@@ -14,9 +14,15 @@ Principes :
 2. **Accessible par construction.** Les contrastes, le focus, la navigation au clavier et les préférences d'affichage ne dépendent pas de la bonne volonté de l'administrateur.
 3. **Le moins de templates surchargés possible.** Chaque template surchargé est un coût à chaque mise à jour de Moodle. On privilégie le SCSS et les variables.
 4. **Un seul plugin**, qui fonctionne sur Moodle et s'adapte à IOMAD lorsqu'il le détecte.
-5. **Très personnalisable, mais pas trop.** Une évolution n'entre dans Épure que si elle supprime un vrai irritant de Moodle ou d'IOMAD.
+5. **Très personnalisable, mais pas trop.** Chaque évolution passe trois questions : résout-elle un vrai irritant de Moodle ou d'IOMAD ? Apporte-t-elle une valeur pédagogique ou métier ? Mérite-t-elle vraiment d'être dans Épure ? Le but n'est pas d'être le thème qui a le plus de fonctions, mais celui qui résout le plus de problèmes de Moodle sans paraître compliqué : « l'administrateur configure son identité, Épure s'occupe du reste ».
 6. **Rien ne reste quand le thème n'est plus utilisé.** Les réglages et les effets d'Épure (vocabulaire, e-mails, attestations IOMAD, application web) cessent dès que le site ou l'entreprise quitte le thème.
-7. **Qualiopi par les traces de Moodle.** Épure rend exploitables les traces pédagogiques que Moodle enregistre déjà (progression, assiduité, achèvements, résultats) ; il ne devient pas un logiciel qualité.
+7. **Qualiopi par les traces de Moodle.** Épure rend exploitables les traces pédagogiques que Moodle enregistre déjà (progression, assiduité, achèvements, résultats) ; il ne devient pas un logiciel qualité. La chaîne est : exigence qualité → trace nécessaire → donnée de Moodle → présentation exploitable. Épure est un outil de pilotage pédagogique dont les données peuvent aussi servir de preuves.
+8. **Moodle reste Moodle.** Épure ne supprime ni activités, ni rôles, ni capacités, ni compatibilité avec l'écosystème. Il modernise la façon d'interagir, pas seulement l'apparence, sans chercher à imiter 360Learning.
+9. **Ne pas obliger l'utilisateur à comprendre Moodle.** Chaque question technique devient une question d'utilisateur (« Calendrier » devient « Qu'est-ce qui se passe cette semaine ? »). Les options essentielles d'abord, les options avancées ensuite, pour l'administrateur comme pour le formateur.
+10. **La couleur de marque identifie, ses dérivés structurent.** Moodle, IOMAD, H5P, les tests et les cartes utilisent les mêmes jetons calculés depuis la couleur de marque (fond teinté, bordure, survol, focus, texte), jamais des styles indépendants.
+11. **Des indicateurs nommés honnêtement.** Un chiffre ne dit pas plus que ce qu'il mesure : « actifs cette semaine » n'est pas « engagés », la progression ne prouve pas l'atteinte des objectifs, et les indicateurs d'Épure ne prouvent pas seuls la conformité Qualiopi.
+
+Quatre axes : l'expérience de l'apprenant, du formateur et de l'administrateur ; l'accessibilité et une personnalisation raisonnée ; un Moodle et un IOMAD cohérents ; le pilotage pédagogique et la qualité, notamment le nouveau référentiel Qualiopi.
 
 Public visé : organismes de formation, entreprises et établissements qui veulent une plateforme présentable à leurs apprenants et à leurs clients.
 
@@ -231,16 +237,68 @@ Pages encore « Moodle habillé » après l'audit de 0.27.0 (couleur et arrondis
 - [ ] **Atelier en mode sombre** : les icônes noires des tâches à faire, images de fond fixes de Moodle, restent peu visibles.
 - [ ] **Administration du site** : propre mais telle quelle, vue des seuls administrateurs ; à reprendre seulement si un irritant précis apparaît.
 
-### Plus tard ou à décider
+### Méthode pour la suite (versions 1.x)
 
-- [ ] **Vue semaine du calendrier**, demandée par des clients : Moodle n'a que le mois, le jour et les événements à venir, tous pilotés par son JavaScript. Piste retenue : un plugin à part, éventuellement payant, plutôt que le thème. Il marcherait avec n'importe quel thème, garderait Épure léger, et Épure afficherait son lien quand il est installé (comme il détecte IOMAD). Le plugin reste sous licence GPL : on vend le téléchargement, les mises à jour et le support, mais un acheteur peut le redistribuer, et le répertoire moodle.org/plugins ne liste que des plugins téléchargeables gratuitement.
+- [ ] **Audit UX par parcours** : apprenant, formateur, administrateur et IOMAD, qualité. Pour chacun : ce que fait Moodle, ce qu'Épure fait déjà, ce qui reste frustrant, ce qui apporterait de la valeur, ce qui serait inutile. Il en sort un cahier des charges UX et les 10 à 15 dernières améliorations ; cette feuille de route sert de grille au lieu d'empiler des idées.
+- [ ] **Matrice Qualiopi × Moodle × IOMAD × Épure**, indicateur par indicateur : l'exigence du nouveau référentiel, ce que Moodle produit déjà, ce qu'IOMAD ajoute, ce qu'Épure fait et pourrait faire, la priorité, et si la valeur est pédagogique ou seulement documentaire.
+- [ ] **Audit des rapports existants** avant tout nouvel indicateur : rapports de Moodle (notes, achèvement, participation, journaux), d'IOMAD (fait, voir V0.28) et Kopere Dashboard (fork ericfalcon/moodle-local-kopere_dashboard), pour ne pas refaire ce qu'un plugin couvre déjà.
+- [ ] **Comparaison avec les thèmes concurrents** (Boost Union, Moove, Adaptable…) : accessibilité, modernité, Moodle natif, IOMAD, mobile, irritants résolus.
+- [ ] **Un service de suivi pédagogique commun** : extraire peu à peu les calculs partagés (« actif », « commencé », « terminé », progression, corrections) pour que la bannière, Mes cours, le tableau de bord et les rapports donnent toujours les mêmes chiffres.
+
+### Pilotage pédagogique et qualité
+
+- [ ] **Nouveau référentiel Qualiopi** : d'après nos échanges, un décret du 1er août 2026 l'applique à partir du 1er novembre 2026, avec 7 critères et 33 indicateurs ; l'indicateur 12 ajoute la prévention des violences, du harcèlement et des discriminations, l'indicateur 19 demande de vérifier que les modules à distance sont effectivement suivis, l'indicateur 32 ajoute une analyse des risques. **À vérifier sur le texte officiel** (et sur le guide de lecture, pas encore paru) avant de s'y appuyer.
+- [ ] **Synthèse pédagogique d'un cours**, depuis la bannière ou les raccourcis du formateur, en complément de la synthèse d'achèvement de la V0.28 : corrections en attente, apprenants sans activité depuis une durée réglable selon le rythme de la formation, progression médiane, activités problématiques (taux d'échec), chaque chiffre menant au rapport détaillé.
+- [ ] **Évaluations en attente distinguées** : corrections manuelles (devoirs et tests), notées automatiquement, non réalisées, tentatives qui demandent une action ; aujourd'hui seuls les devoirs sont comptés.
+- [ ] **Tableau de bord « À surveiller » du formateur**, qui nomme les apprenants : sans activité depuis 7 jours, en retard sur le parcours, progression bloquée, évaluations et messages en attente (indicateurs 11, 12 et 19).
+- [ ] **État du groupe** : dans le rythme, en retard, bloqués, inactifs.
+- [ ] **Suivi du distanciel** (indicateur 19) : par apprenant, progression, dernière activité, évaluation et situation en vert, orange ou rouge.
+- [ ] **Vue de coordination** des intervenants d'une formation (indicateur 18).
+- [ ] **Pilotage sur plusieurs cours** pour les responsables : apprenants à risque, échéances, évaluations en retard, progression par groupe, dans le respect du cloisonnement des entreprises IOMAD ; après validation de la synthèse d'un cours.
+- [ ] **Comparaison des sessions et des périodes** : « les résultats s'améliorent-ils ? ».
+- [ ] **Satisfaction structurée et consolidée** (indicateur 30) : questionnaires par apprenant, formation, session et formateur, consolidés automatiquement.
+- [ ] **Évaluation pédagogique distincte de la satisfaction** : objectifs atteints, ressources, cohérence des évaluations, rythme, clarté ; résultats partagés avec l'équipe selon la boucle analyse → décision → modification → nouvelle mesure.
+- [ ] **« Signaler une difficulté »** (indicateur 31) : catégorie, description, date, personne concernée, statut, traitement, résolution.
+- [ ] **Tableau d'amélioration continue** (indicateur 32) : constat → analyse → action → responsable → échéance → mesure → efficacité ; puis une **analyse des risques qualité**.
+- [ ] Plus tard : certifications et blocs de compétences (indicateurs 3, 7 et 16), formation en situation de travail, insertion et veille (25, 28, 29), fonctions propres aux CFA (20).
 - [ ] **Validité et recyclage des formations** dans la grille apprenants × cours (durée de validité par un champ personnalisé de cours), pour les habilitations et formations réglementaires.
-- [ ] **Historique des achèvements** conservé après une réinitialisation de cours (table d'archive alimentée à chaque achèvement, comme IOMAD) : plutôt dans un plugin local compagnon que dans le thème.
 - [ ] **Temps passé** estimé depuis les journaux, souvent demandé pour prouver l'assiduité en formation à distance financée ; aucun rapport d'IOMAD ne le mesure.
-- [ ] **Qualiopi** : relier les rapports aux indicateurs du référentiel (critère 1, indicateur 2 : taux de résultats ; critère 3, indicateurs 11 et 12 : atteinte des objectifs et prévention des abandons ; critère 7 : appréciations et réclamations, plutôt par un questionnaire de satisfaction avec le feedback de Moodle). Numéros à vérifier sur la version officielle du référentiel.
+- [ ] **Historique des achèvements** conservé après une réinitialisation de cours (table d'archive alimentée à chaque achèvement, comme IOMAD). À arbitrer : tout garder dans le thème, comme voulu, ou un plugin compagnon.
+- L'accessibilité native d'Épure est un argument pour l'indicateur 26 (handicap) ; rien à développer.
+
+### Expérience de l'apprenant
+
+- [ ] **États normalisés** des cours, activités et ressources : à faire, en cours, terminé, verrouillé, échéance proche ou dépassée, réussite ou score, facultatif ; même couleur, même icône et même action partout (test, H5P, devoir, inscription, disponibilité).
+- [ ] **État du parcours détaillé** : « 67 % → 8 activités terminées, 2 en cours, 1 en retard, 3 évaluations réussies, 1 à refaire ».
+- [ ] **Chaîne objectifs → ressources → activités → évaluations**, avec un état « objectif atteint » (indicateurs 5, 6, 8 et 11).
+- [ ] **Fiche formation complète** (indicateur 1) : objectifs, public, prérequis, durée, modalités, méthodes, programme, évaluation, accessibilité et handicap, certification, financement, délais d'accès, tarifs, résultats, contact ; la présentation du cours n'en a aujourd'hui qu'une partie.
+- [ ] **Page « Comment va se dérouler ma formation ? »** (indicateur 9).
+- [ ] **Positionnement initial** et analyse du besoin, puis exploitation du résultat (indicateurs 4 et 8).
+- [ ] **Parcours individualisés** et adaptations, sans exposer les données sensibles liées au handicap (indicateurs 10, 13 à 15).
+- [ ] **« Qu'est-ce que j'ai cette semaine ? »** : cours, échéances, devoirs, tests, sessions et activités de la semaine réunis.
+- [ ] **Vue semaine du calendrier**, demandée par des clients : Moodle n'a que le mois, le jour et les événements à venir, tous pilotés par son JavaScript. Piste retenue : un plugin à part, éventuellement payant, plutôt que le thème. Il marcherait avec n'importe quel thème, garderait Épure léger, et Épure afficherait son lien quand il est installé (comme il détecte IOMAD). Le plugin reste sous licence GPL : on vend le téléchargement, les mises à jour et le support, mais un acheteur peut le redistribuer, et le répertoire moodle.org/plugins ne liste que des plugins téléchargeables gratuitement.
+- [ ] **Notifications hiérarchisées** : ce qui demande une action d'abord (« test à terminer avant demain » avant « 3 nouveaux messages »), puis une **communication unifiée** (messagerie, forums, commentaires, annonces, notifications) qui montre ce qui demande l'attention.
+- [ ] **Formulaires de Moodle repensés** au-delà de l'apparence (0.27.0) : regroupement, champs conditionnels, aide, erreurs, options essentielles d'abord.
+- [ ] **Tableaux de Moodle et d'IOMAD utilisables sur téléphone** : tri, filtres, pagination et actions cohérents, sans tableaux de douze colonnes.
+- [ ] **Petites finitions** : pages d'erreur (page introuvable, accès refusé, session expirée, activité inaccessible) aux couleurs d'Épure ; visites guidées de Moodle restylées ; identité de marque dans les exports PDF, les rapports et les pages imprimées ; modèle d'attestation aux couleurs de la marque pour `tool_certificate` (seules les attestations IOMAD l'ont).
+
+### IOMAD
+
+- [ ] **Chaîne entreprise → formation → groupe → apprenants → progression → résultats** dans une même vue, que les administrateurs reconstituent aujourd'hui à la main.
+- [ ] **Rapports d'entreprise avec graphiques** aux couleurs de la marque de l'entreprise.
+- Règle : les liens vers les rapports d'IOMAD n'apparaissent que si IOMAD est présent, selon les capacités et le périmètre de l'entreprise.
+
+### Écarté
+
+- Un « module Qualiopi », un « rapport » ou un « PDF Qualiopi » ; les dossiers administratifs (contrats, facturation, conventions, sous-traitants, CV des formateurs, veille réglementaire, RH, comptabilité) : « sinon on finit par recréer un ERP ». Les indicateurs Qualiopi organisationnels (21 à 25, 27, l'essentiel des 28 et 29) restent hors du thème.
+- Éclater Épure en plusieurs plugins : tout reste dans un seul thème (la vue semaine, complément optionnel, fait exception).
+- Les rapports propres à IOMAD (licences, entreprises, e-mails sortants, présence aux séances) pour Moodle seul.
+- Un nouveau moteur de rapports qui concurrencerait Kopere ou remplacerait d'emblée les rapports de Moodle : on porte le contenu utile des rapports d'IOMAD et on renvoie vers les rapports existants.
+- Les fonctions ajoutées « pour remplir le thème », un thème trop configurable (« 25 couleurs »), transformer Moodle en 360Learning.
 
 ## Questions ouvertes
 
+- Rapports : s'adressent-ils d'abord aux formateurs et responsables pédagogiques, ou aussi aux directions d'organismes ?
 - Traductions : le répertoire moodle.org/plugins n'accepte que l'anglais dans le plugin, les autres langues passent par AMOS. Le français est inclus pendant le développement et sera transféré dans AMOS avant la publication, par Eric Falcon, qui a déjà traduit IOMAD.
 - Nom : « Épure » (`theme_epure`) n'est pas utilisé dans le répertoire des plugins Moodle.
 - Modèle de diffusion : gratuit sur moodle.org, ou gratuit avec services payants (installation, personnalisation, support). La licence est GPL dans tous les cas.
