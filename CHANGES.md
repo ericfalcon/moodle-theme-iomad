@@ -1,5 +1,15 @@
 # Changes
 
+## 0.28.4 (beta)
+
+- IOMAD: a company can set in its form (Edit company › Appearance) more of the settings of the site, each « As the site » by default:
+  - identity: accent colour (with a colour picker) and corner style; on Moodle 4.5 the corners compiled into Bootstrap 4 keep those of the site;
+  - e-mails in the colours of the brand, by the company of the recipient;
+  - navigation: breadcrumb, quick search, activity pages, blocks and dashboard on phones;
+  - pages: course catalogue, progress of the sections, My courses by role;
+  - login page: layout, headline and supporting text.
+- IOMAD login page of a company (its own address or its link login/index.php?id=…&code=…): it now takes the colours, logo, font, name and footer of the company, as its pages do once logged in, instead of those of the site.
+
 ## 0.28.3 (beta)
 
 - Display preferences panel (« Aa ») on phones and small tablets: aligned on its button, which is not at the right of the screen there, it went out of the screen on the left. It now opens under the header with the same margin on both sides, and stops above the navigation bar at the bottom of the screen. Unchanged on computers.
