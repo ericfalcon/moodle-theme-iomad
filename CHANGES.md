@@ -1,5 +1,10 @@
 # Changes
 
+## 0.28.2 (beta)
+
+- Edit mode switch on phones: Moodle hides its label for lack of room, which left a switch without a word. A pencil, Moodle's icon to edit, now stands before it, in the brand colour once the edit mode is on; tapping it toggles the switch, and screen readers still read « Edit mode ». The header keeps fitting 360 pixels.
+- Quick search button of the header (« Search Ctrl K »): it took the whole height of the header in a grey box that made it look disabled. It is now a search field at the height of the other controls of the header, on the surface with a light border, in light and dark mode and in the brand-coloured header.
+
 ## 0.28.1 (beta)
 
 - Activity chooser, in the colours of the theme, in light and dark mode, on Moodle 4.5 (tabs and cards) and 5.x (categories and list):
