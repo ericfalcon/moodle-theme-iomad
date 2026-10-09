@@ -1,5 +1,22 @@
 # Changes
 
+## 0.28.0 (beta)
+
+- Messaging, on its page and in its drawer:
+  - the messages are bubbles, mine in a tint of the brand on the right, the others' neutral on the left;
+  - the days are small titles between two lines;
+  - the conversation under the pointer or reached with the keyboard takes a tint of the brand instead of the brand colour;
+  - the field to write is rounded and the send button takes the brand colour.
+  On phones, the list of the conversations and the conversation open are shown one under the other, the conversation first, instead of two narrow columns side by side.
+- Choice: each answer is a card that can be clicked as a whole, the chosen one marked with the brand, as the answers of the quizzes and lessons. The chart of the results keeps a readable size.
+- Charts: the charts of the pages of Épure (results of a choice and others) are drawn in shades of the brand colour, of the user's company with IOMAD, readable on the light and the dark surfaces, instead of Moodle's yellow and purple. A site that sets its own colours for the charts (`$CFG->chart_colorset`) keeps them.
+- Profile and preferences: the person is shown in a header on a tint of the brand. The links of the cards become the rows of a menu, with the whole row as the target and an arrow on the right, and « Edit profile » is a small button in the title of its card.
+- Database: the entries are compact cards, with the names of the fields as small grey titles and the empty tags hidden. The search and sort options are grouped in a light box, and on phones the author and the dates of an entry stay readable.
+- Wiki: the table of contents is a light box marked with the brand, the text keeps a readable width and the « edit » links of the sections are discreet.
+- Feedback: each question is a numbered card, and the answers of a multiple choice are rows that can be clicked as a whole, the chosen one marked with the brand.
+- Workshop in dark mode: the icons of the tasks (to do, done, failed, information) have light versions, readable on the dark surfaces.
+- Accessibility (axe-core, WCAG 2.2 AA, light and dark): the « Clear all » link of the database search is underlined.
+
 ## 0.27.1 (beta)
 
 - H5P: the older versions of the course presentation (before 1.26) and of the audio player (before 1.5.24), still installed on many sites, wrote their blue in their own style sheets and did not use the H5P theme colours. The progress bar of the slides, the buttons that open an element (image, text…) and the audio buttons now take the brand colour, of the company with IOMAD.
