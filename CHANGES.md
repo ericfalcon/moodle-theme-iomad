@@ -1,5 +1,15 @@
 # Changes
 
+## 0.28.1 (beta)
+
+- Activity chooser, in the colours of the theme, in light and dark mode, on Moodle 4.5 (tabs and cards) and 5.x (categories and list):
+  - the names of the activities are in the colour of the text, instead of a grey that could not be read in dark mode;
+  - the active tab or category takes the brand colour instead of Moodle's blue, and the others are no longer white in dark mode;
+  - the activity under the pointer or reached with the keyboard is outlined with the brand, the chosen one tinted with it;
+  - the details of an activity and the footer of the window are no longer white in dark mode.
+- Tabs on phones: Moodle turns them into buttons on a grey strip, the active one in its blue and the others white, also in dark mode. They take the colours of the theme, the active one the brand colour.
+- Dark mode: the links of the dialogue windows (« More help »…) are readable, and the close button of the windows of Moodle 4.5 no longer disappears.
+
 ## 0.28.0 (beta)
 
 - Messaging, on its page and in its drawer:
