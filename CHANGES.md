@@ -1,5 +1,9 @@
 # Changes
 
+## 0.27.1 (beta)
+
+- H5P: the older versions of the course presentation (before 1.26) and of the audio player (before 1.5.24), still installed on many sites, wrote their blue in their own style sheets and did not use the H5P theme colours. The progress bar of the slides, the buttons that open an element (image, text…) and the audio buttons now take the brand colour, of the company with IOMAD.
+
 ## 0.27.0 (beta)
 
 - Corners: each level of the course page is a step less rounded than the one holding it. Sections have the large radius, their activities and subsections the medium one, and the activities of a subsection the small one. Chips, counters, badges and the search field follow the corner style too: pills with « Soft » and « Round », rounded rectangles with « Sharp » (they kept fixed corners before).
