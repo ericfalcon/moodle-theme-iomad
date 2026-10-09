@@ -1,5 +1,14 @@
 # Changes
 
+## 0.27.0 (beta)
+
+- Corners: each level of the course page is a step less rounded than the one holding it. Sections have the large radius, their activities and subsections the medium one, and the activities of a subsection the small one. Chips, counters, badges and the search field follow the corner style too: pills with « Soft » and « Round », rounded rectangles with « Sharp » (they kept fixed corners before).
+- Calendar: the events of the month are labels in a tint of the colour of their type (site, course, category, group, user) over two lines, instead of a name cut after a few letters behind a small circle. The day numbers keep the colour of the text in dark mode, and the weekends are tinted. On phones, the names of the previous and next months stay on one line and the dots under the days take the brand colour. The cards of the day and upcoming events are marked with the colour of their type, with a smaller title and the details next to their icons.
+- Settings forms, lighter: the help question marks are grey instead of Moodle's teal and take the brand colour under the pointer. Section titles are smaller and their fold button has no grey square. The five lists of a date are narrower. The items chosen in an autocomplete field are labels tinted with the brand, outlined only while the list has the focus.
+- Workshop: the phases in the colours of the theme, the current one in a tint of the brand instead of lime green, with task links large enough to tap. Feedback: the titles of the overview are smaller and set apart. Messaging page: a single rounded frame instead of a grey box inside the card. Profile: the titles of the cards are in bold.
+- Dark mode: the user report and the gradebook setup no longer show white rows and headers. The light badges and the plugin counters are readable.
+- Accessibility (axe-core, WCAG 2.2 AA, light and dark): the class names of the scheduled tasks have enough contrast. So does the highlighted cell of the quiz results, now in a tint of the brand instead of light blue. The check box next to a field of the same group (« Enable » of the word limit) is a target of 24 pixels.
+
 ## 0.26.0 (beta)
 
 - Theme settings grouped by subject: **Identity** (logos, colours, e-mails, vocabulary), **Navigation** (main bar, quick search, breadcrumb, user menu), **Courses** (cards, progress, activities), **Accessibility** (display preferences, accessibility statement), **Appearance** (typography, shapes and density, dark mode), **Mobile** (phones, applications), then the login page, footer and advanced tabs. The names of the settings do not change: the values already saved are kept, there is nothing to migrate. The main bar and the user menu link to Moodle's custom menu items and user menu items.

@@ -192,6 +192,9 @@ Contrôle continu : chaque modification passe un audit automatique axe-core dans
 - [x] Icônes d'activités masquables ; application Moodle aux couleurs de la marque ; forums, glossaires, devoirs, SCORM, livres, badges, attestations IOMAD et rapports aux couleurs de la marque — 0.24.0
 - [x] Consolidation : compatibilité IOMAD 5.1 et 5.2 (classe `theme_epure\iomad`), formats de cours sur Moodle 5.1 à 5.3, SCSS découpé, erreurs signalées en débogage, mesures de performance — 0.25.0
 - [x] Réglages rangés par sujet (Identité, Navigation, Cours, Accessibilité, Apparence, Mobile) et nouveaux réglages d'affichage ; application web installable ; sous-sections à leur place dans le parcours et dans la progression ; progression de l'apprenant en cache ; Behat sur IOMAD 4.5, 5.1 et 5.2 — 0.26.0
+- [x] Couverture graphique et UX : arrondis cohérents d'un niveau à l'autre (sections, sous-sections, activités, pastilles), calendrier lisible, formulaires de paramètres allégés, atelier, feedback, messagerie et profil, carnet de notes en mode sombre — 0.27.0
+- [ ] Rapports de Moodle sans IOMAD, repris d'IOMAD : synthèse d'achèvement des cours avec graphique, grille apprenants × cours, connexions et inactifs, achèvements par mois, relevé de l'apprenant — 0.28.0
+- [ ] Vue semaine du calendrier : Moodle n'a que le mois, le jour et les événements à venir ; une quatrième vue demande une page du thème et un sélecteur de vue modifié sur trois versions de Moodle (à décider)
 - [ ] Publication sur moodle.org/plugins
 
 ## Questions ouvertes
