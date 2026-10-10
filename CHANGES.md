@@ -1,5 +1,16 @@
 # Changes
 
+## 0.28.9 (beta)
+
+- Display preferences panel (« Aa ») on phones in landscape and other short screens: the header, the navigation bar at the bottom, the title and the reset button left almost no room for the choices, which could hardly be reached. On screens under 500 pixels high the panel now scrolls as a whole, above the navigation bar.
+
+## 0.28.8 (beta)
+
+- IOMAD on phones and small tablets: with several companies, the company menu of the header pushed the user menu (preferences, logout) and the edit mode switch out of the screen. The header has no room for it there: it is left out below 768 pixels, and the company is changed from the IOMAD dashboard, which has its own selector.
+- Notifications of the header (bell), in the colours of the theme: the unread ones were on a light grey background also in dark mode, under light text that could not be read; they are now on the soft brand colour, in light and dark mode. Under the pointer, a light background instead of white text on the brand colour.
+- Dark mode: the Font Awesome 6 icons (fa-solid, fa-regular) were inverted like image icons and turned dark on the dark surface (the icons of the notifications, among others). They keep the colour of the text.
+- Calendar: the eye of the filters of the event types, on their pastel labels, in dark grey instead of Moodle's blue, also in the block and in dark mode.
+
 ## 0.28.7 (beta)
 
 - Dark mode, Moodle 4.5: the help bubbles of the forms (the « ? » buttons) and the other popovers showed dark text on a dark background, with a white arrow. Their text, title and arrow now follow the dark colours, on Moodle 4.5 and 5.x.
