@@ -1,5 +1,9 @@
 # Changes
 
+## 0.28.7 (beta)
+
+- Dark mode, Moodle 4.5: the help bubbles of the forms (the « ? » buttons) and the other popovers showed dark text on a dark background, with a white arrow. Their text, title and arrow now follow the dark colours, on Moodle 4.5 and 5.x.
+
 ## 0.28.6 (beta)
 
 - Error pages: instead of Moodle's red box, a card in the colours of the brand says in plain words what happened (page not found, access denied, content not available, session expired, other error), keeps Moodle's message and leads to the dashboard, or to the login page. Moodle's « page not found » page gets the same card.
