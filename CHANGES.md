@@ -1,5 +1,9 @@
 # Changes
 
+## 0.28.10 (beta)
+
+- IOMAD companies with a colour of their own: a small frame in the colour of the site stayed around a tab once clicked (the focus ring of Bootstrap, written at build time). The focus rings of the tabs, fields, buttons, pagination and badges, and the outlines of the edit mode, now follow the colours of the page, those of the company when it has its own. On phones, the active tab no longer gets Moodle's blue ring.
+
 ## 0.28.9 (beta)
 
 - Display preferences panel (« Aa ») on phones in landscape and other short screens: the header, the navigation bar at the bottom, the title and the reset button left almost no room for the choices, which could hardly be reached. On screens under 500 pixels high the panel now scrolls as a whole, above the navigation bar.
