@@ -1,5 +1,9 @@
 # Changes
 
+## 0.28.9 (beta)
+
+- Display preferences panel (« Aa ») on phones in landscape and other short screens: the header, the navigation bar at the bottom, the title and the reset button left almost no room for the choices, which could hardly be reached. On screens under 500 pixels high the panel now scrolls as a whole, above the navigation bar.
+
 ## 0.28.8 (beta)
 
 - IOMAD on phones and small tablets: with several companies, the company menu of the header pushed the user menu (preferences, logout) and the edit mode switch out of the screen. The header has no room for it there: it is left out below 768 pixels, and the company is changed from the IOMAD dashboard, which has its own selector.
