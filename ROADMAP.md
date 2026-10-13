@@ -155,12 +155,15 @@ La suite reprend les écrans de Moodle que le thème ne traite pas encore, ou se
 - [ ] **Passage d'un test** : panneau de navigation des questions lisible (répondue, marquée, en cours), minuteur visible sans être anxiogène, page récapitulative avant de terminer, page de relecture (bonne réponse, rétroaction, note).
 - [ ] **Mes notes** (rapport « Utilisateur » du carnet) : lecture par cours, note et barème, commentaire du formateur mis en avant, cartes sur téléphone.
 - [ ] **Évaluations en attente distinguées** dans les raccourcis du formateur : tests à corriger à la main en plus des devoirs.
+- [ ] **Profil** : bouton « Modifier le profil » bien placé sur téléphone (sous l'en-tête, pleine largeur) ; sur son propre profil seulement, un résumé en haut (cours en cours, attestations, dernière connexion), repris des chiffres du tableau de bord ; regroupement des cartes revu d'après les irritants relevés.
 
 ### 0.30 — Un parcours lisible
 
 - [ ] **Index du cours** (panneau des sections) : progression par section, états lisibles, activité en cours mise en évidence.
 - [ ] **États normalisés** des activités et ressources : à faire, en cours, terminé, verrouillé, échéance proche ou dépassée, réussi, facultatif ; même couleur, même icône et même action partout.
 - [ ] **État du parcours détaillé** : « 67 % → 8 activités terminées, 2 en cours, 1 en retard ».
+- [ ] **Carte « Continuer » plus intelligente**, sur le tableau de bord et la bannière du cours : une phrase actionnable (« 3 activités restantes · échéance dans 2 jours ») ; l'activité suivante est celle qui suit la dernière terminée, ou la dernière commencée et pas finie ; une échéance à moins de 48 heures passe devant (« À rendre demain »). Mêmes calculs partout, grâce au service de suivi commun.
+- [ ] **Vue simplifiée de l'apprenant** : un seul réglage, pour le site et par entreprise IOMAD, désactivé par défaut. Dans un cours où l'utilisateur ne peut pas gérer les activités (`moodle/course:manageactivities`), et hors des cours s'il n'édite aucun cours : navigation du cours réduite à « Cours » et « Notes » (le reste dans un menu discret), menu utilisateur réduit (Profil, Notes, Préférences, Déconnexion), tiroir des blocs fermé, bouton « ? » du pied de page replié, options secondaires des activités sous « Plus ». Tout est regroupé ou masqué, jamais retiré : chaque page reste accessible par son adresse et au clavier. L'aide du réglage prévient les formateurs que leurs apprenants ne voient plus tout.
 - [ ] **Tableaux sur téléphone** : participants, rapports et carnet en cartes plutôt qu'en tableaux à faire défiler.
 - [ ] **États vides** : « aucun cours », « aucun devoir », « aucune notification » avec un message utile et l'action suivante.
 
