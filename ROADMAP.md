@@ -148,40 +148,74 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ## Épure, le thème (gratuit)
 
-La suite reprend les écrans de Moodle que le thème ne traite pas encore, ou seulement en mode sombre. Aucun nouveau réglage : des écrans plus clairs. Chaque version est testée sur Moodle 4.5 à 5.3 et IOMAD, en clair et en sombre, sur ordinateur et sur téléphone.
+### Comment on avance
 
-### 0.29 — Tests et notes de l'apprenant
+- **Un petit chantier par version.** Chaque version apporte un seul bénéfice visible, tient en une à deux semaines et peut être publiée seule. Un chantier trop gros est découpé.
+- **L'apprenant d'abord, puis le formateur, puis l'administrateur.** On commence par ce qui aide à apprendre : savoir où l'on en est, quoi faire ensuite, comprendre ses résultats. L'apparence seule passe après.
+- **Pas de nouveau réglage, sauf exception justifiée.** Un réglage au plus par version, désactivé par défaut.
+- **Le technique se fait en continu** dans les versions de correctif (0.x.y), jamais comme une version à part.
+- **Fini veut dire testé** sur Moodle 4.5 à 5.3 et IOMAD, en clair et en sombre, sur ordinateur et sur téléphone, avec l'audit axe-core vert.
+- L'ordre compte plus que les numéros : une demande de client peut faire passer un chantier devant.
 
-- [ ] **Passage d'un test** : panneau de navigation des questions lisible (répondue, marquée, en cours), minuteur visible sans être anxiogène, page récapitulative avant de terminer, page de relecture (bonne réponse, rétroaction, note).
-- [ ] **Mes notes** (rapport « Utilisateur » du carnet) : lecture par cours, note et barème, commentaire du formateur mis en avant, cartes sur téléphone.
-- [ ] **Évaluations en attente distinguées** dans les raccourcis du formateur : tests à corriger à la main en plus des devoirs.
+### 1. Savoir où j'en suis (apprenant)
 
-### 0.30 — Un parcours lisible
+- [ ] **0.29 — États des activités unifiés** : à faire, en cours, terminé, verrouillé, échéance proche ou dépassée, réussi, facultatif. Même couleur, même icône et même libellé partout (page de cours, index, tableau de bord). C'est la base des chantiers suivants.
+- [ ] **0.30 — Progression par section** : dans l'index du cours et en tête de chaque section, une barre et « 3 sur 5 terminées » ; l'activité en cours et la section recommandée sont mises en évidence.
+- [ ] **0.31 — Carte « Continuer » plus intelligente**, sur le tableau de bord et la bannière du cours : une phrase actionnable (« 3 activités restantes · échéance dans 2 jours »). L'activité suivante est celle qui suit la dernière terminée, ou la dernière commencée et pas finie ; une échéance à moins de 48 heures passe devant (« À rendre demain »). Mêmes calculs que la progression par section.
+- [ ] **0.32 — État du parcours détaillé** : « 67 % → 8 activités terminées, 2 en cours, 1 en retard », sous la barre de progression du cours ; sur téléphone, bouton « Continuer » toujours visible en bas de la page de cours.
+- [ ] **0.33 — « Qu'est-ce que j'ai cette semaine ? »** dans le tableau de bord de l'apprenant : échéances, devoirs, tests et sessions des 7 prochains jours.
 
-- [ ] **Index du cours** (panneau des sections) : progression par section, états lisibles, activité en cours mise en évidence.
-- [ ] **États normalisés** des activités et ressources : à faire, en cours, terminé, verrouillé, échéance proche ou dépassée, réussi, facultatif ; même couleur, même icône et même action partout.
-- [ ] **État du parcours détaillé** : « 67 % → 8 activités terminées, 2 en cours, 1 en retard ».
-- [ ] **Tableaux sur téléphone** : participants, rapports et carnet en cartes plutôt qu'en tableaux à faire défiler.
-- [ ] **États vides** : « aucun cours », « aucun devoir », « aucune notification » avec un message utile et l'action suivante.
+### 2. Comprendre mes résultats (apprenant)
 
-### 0.31 — Le formateur
+- [ ] **0.34 — Passer un test sereinement** : panneau des questions lisible (répondue, marquée, en cours), minuteur visible sans être anxiogène, récapitulatif clair avant de terminer.
+- [ ] **0.35 — Relire un test** : bonne réponse, rétroaction et note lisibles, question par question.
+- [ ] **0.36 — Mes notes** (rapport « Utilisateur » du carnet) : lecture par cours, note et barème, commentaire du formateur mis en avant, cartes sur téléphone.
+- [ ] **0.37 — Mes réussites** : sur le tableau de bord, une carte avec les derniers badges en vignettes et les attestations obtenues ; sur son propre profil, la même galerie. Sur le profil d'un autre, seuls ses badges publics.
 
-- [ ] **Mode édition du cours** : menus d'actions allégés, édition groupée visible, ajout d'activités entre les sections, zones de dépôt. Délicat : il touche au JavaScript de Moodle, à tester soigneusement.
-- [ ] **Correction des devoirs** : panneau de notes, navigation entre apprenants et commentaires plus lisibles.
-- [ ] **Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
+### 3. Une plateforme plus simple (apprenant)
 
-### 0.32 — Information et administration
+- [ ] **0.38 — États vides utiles** : « aucun cours », « aucun devoir », « aucune notification » avec un message clair et l'action suivante.
+- [ ] **0.39 — Notifications hiérarchisées** : ce qui demande une action d'abord.
+- [ ] **0.40 — Lecture confortable** : pages, livres et leçons sur une largeur de lecture d'environ 70 caractères, interlignage adapté ; polices variables quand elles existent, pour des fichiers plus légers.
+- [ ] **0.41 — Profil** : bouton « Modifier le profil » bien placé sur téléphone ; sur son propre profil, un résumé en haut (cours en cours, attestations, dernière connexion) ; cartes regroupées d'après les irritants relevés.
+- [ ] **0.42 — Vue simplifiée de l'apprenant** : un seul réglage, pour le site et par entreprise IOMAD, désactivé par défaut. Pour qui ne peut pas gérer les activités (`moodle/course:manageactivities`) : navigation du cours réduite à « Cours » et « Notes » (le reste dans un menu discret), menu utilisateur réduit (Profil, Notes, Préférences, Déconnexion), tiroir des blocs fermé, bouton « ? » replié, options secondaires des activités sous « Plus ». Tout est regroupé, jamais retiré : chaque page reste accessible par son adresse et au clavier. L'aide du réglage prévient les formateurs que leurs apprenants ne voient plus tout.
+- [ ] **0.43 — Tableaux sur téléphone** : participants, rapports et carnet en cartes plutôt qu'en tableaux à faire défiler.
 
-- [ ] **« Qu'est-ce que j'ai cette semaine ? »** dans le tableau de bord de l'apprenant : échéances, devoirs, tests et sessions des 7 prochains jours.
-- [ ] **Notifications hiérarchisées** : ce qui demande une action d'abord.
-- [ ] **Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9), à partir de champs personnalisés de cours, sur la présentation du cours.
-- [ ] **Accueil de l'administration en cartes** (Utilisateurs, Cours, Apparence, IOMAD…) avec les tâches courantes, sans rien retirer à l'arborescence.
-- [ ] **Modèle d'attestation aux couleurs de la marque pour `tool_certificate`** ; l'option « cadre d'attestation à la couleur de la marque » des entreprises IOMAD est conservée.
+### 4. Le formateur
+
+- [ ] **0.44 — Évaluations en attente** : les tests à corriger à la main rejoignent les devoirs dans les raccourcis du formateur.
+- [ ] **0.45 — Correction des devoirs** : panneau de notes, navigation entre apprenants et commentaires plus lisibles.
+- [ ] **0.46 — Accessibilité des contenus** : la boîte à outils Brickfield de Moodle, quand elle est activée, mise en avant dans le cours et à nos couleurs. Pas de scanner maison.
+- [ ] **0.47 — Mode édition du cours** : menus d'actions allégés, édition groupée visible, ajout d'activités entre les sections. Délicat : il touche au JavaScript de Moodle, à tester soigneusement.
+- [ ] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
+
+### 5. S'informer et prendre en main
+
+- [ ] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9), à partir de champs personnalisés de cours, sur la présentation du cours.
+- [ ] **0.50 — Prise en main par rôle** : un message d'accueil et une visite guidée courte pour l'apprenant, le formateur et le gestionnaire, uniquement quand Épure est le thème actif.
+- [ ] **0.51 — Ma synthèse** : une page imprimable en PDF par l'apprenant (cours suivis, progression, notes, attestations). Un réglage, désactivé par défaut. Le relevé officiel au format PDF reste dans Épure Pro.
+- [ ] **0.52 — Recherche rapide** : recherches récentes dans Ctrl+K.
+
+### 6. L'administrateur
+
+- [ ] **0.53 — Accueil de l'administration en cartes** (Utilisateurs, Cours, Apparence, IOMAD…) avec les tâches courantes, sans rien retirer à l'arborescence.
+- [ ] **0.54 — Déclaration d'accessibilité guidée** : un formulaire pas à pas et une version imprimable. Aucun état de conformité calculé automatiquement : c'est l'audit qui le donne.
+- [ ] **0.55 — Modèle d'attestation aux couleurs de la marque pour `tool_certificate`** ; l'option « cadre d'attestation à la couleur de la marque » des entreprises IOMAD est conservée.
+
+### En continu (versions de correctif)
+
+- [ ] **Moins de surcharges** : déplacer ce qui peut l'être de `core_renderer` vers les hooks de Moodle (haut de page, pied de page, reste de l'en-tête), chacun limité au thème Épure et couvert par un test ; réduire les `!important` du SCSS.
+- [ ] **Micro-interactions harmonisées** : mêmes durées et mêmes transitions partout, coupées par « réduire les animations ».
+- [ ] Corrections remontées par les utilisateurs, en priorité celles qui gênent l'apprentissage.
 
 ### V1.0 — Publication
 
 - [ ] Audit d'accessibilité manuel (RGAA) par un auditeur.
 - [ ] Transfert du français dans AMOS, puis publication sur moodle.org/plugins.
+
+### Après la V1.0
+
+- [ ] **Vocabulaire dans d'autres langues**, une langue à la fois et à la demande de clients : espagnol, italien ou portugais d'abord (grammaire proche du français), allemand plus tard (déclinaisons, mots composés). Chaque langue demande un relecteur natif et un jeu de phrases de test.
 
 ## Épure Pro (plugins payants)
 
@@ -193,6 +227,8 @@ Modèle :
 - inclus d'office dans nos offres hébergées ;
 - marque : ni logo ni nom « Moodle » dans le nom du produit ou sur les pages de vente ; « pour Moodle » en texte descriptif seulement ;
 - à étudier pour ce qui doit rester réservé : un plugin connecteur sous GPL et un service en ligne (rapports consolidés, PDF), qui n'est pas distribué.
+
+Ordre : le même principe que pour le thème, des petits plugins et la pédagogie d'abord. Le premier est le **pilotage pédagogique du formateur** (« À surveiller », suivi du distanciel) ; viennent ensuite les rapports, le calendrier semaine et les vues IOMAD.
 
 ### Rapports
 
@@ -236,7 +272,7 @@ Choix techniques : graphiques `core\chart_*` et exports `\core\dataformat` ; mê
 - [ ] **Audit des rapports existants** (Moodle, IOMAD, Kopere Dashboard) avant de lancer les rapports d'Épure Pro.
 - [ ] **Matrice Qualiopi × Moodle × IOMAD × Épure**, indicateur par indicateur, une fois le texte officiel vérifié.
 - [ ] **Comparaison avec les thèmes concurrents** (Boost Union, Moove, Adaptable, RemUI…) : accessibilité, modernité, IOMAD, mobile, irritants résolus, et ce qu'ils vendent dans leur version payante.
-- [ ] **Un service de suivi pédagogique commun** au thème et à Épure Pro, pour que la bannière, Mes cours, le tableau de bord et les rapports donnent toujours les mêmes chiffres.
+- [ ] **Un service de suivi pédagogique commun** au thème et à Épure Pro, pour que la bannière, Mes cours, le tableau de bord et les rapports donnent toujours les mêmes chiffres. Il naît avec les chantiers 0.29 à 0.32.
 
 ## Écarté
 
@@ -245,6 +281,7 @@ Choix techniques : graphiques `core\chart_*` et exports `\core\dataformat` ; mê
 - Les rapports propres à IOMAD (licences, entreprises, e-mails sortants, présence aux séances) pour Moodle seul.
 - Un nouveau moteur de rapports qui concurrencerait Kopere ou remplacerait d'emblée ceux de Moodle.
 - Du code PHP chiffré ou sous licence propriétaire pour Épure Pro : juridiquement fragile, mal vu des hébergeurs et des établissements publics.
+- Les cartes partout, l'aperçu au survol et la recherche dans le contenu des cours : peu utiles, coûteux à maintenir.
 - Les fonctions ajoutées « pour remplir le thème », un thème trop configurable (« 25 couleurs »), transformer Moodle en 360Learning.
 
 ## Questions ouvertes
