@@ -1,5 +1,9 @@
 # Changes
 
+## 0.28.12 (beta)
+
+- IOMAD, a company whose address is that of the whole site (for a link with another software, for example): IOMAD gave its theme to every page, for the users of all the companies, and an administrator who chose another company in the IOMAD dashboard got it back on the next page (« My courses »...). The users of the other companies, and an administrator working on another company, now get the theme of their company; the users of the company of the address keep its theme, and IOMAD keeps using the address as before (company of new accounts, links).
+
 ## 0.28.11 (beta)
 
 - Brand colour setting: the two squares next to the colour gradient kept showing the previous colour when a colour of the logo was chosen, a point of the logo picked, or a code typed in the field (Moodle only updates them on a click in the gradient). They now follow the field.
