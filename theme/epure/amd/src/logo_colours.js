@@ -218,6 +218,25 @@ export const extractColours = (img) => {
 };
 
 /**
+ * Shows a colour in the two squares of Moodle's colour picker, next to the gradient.
+ *
+ * Moodle only updates them on a click in the gradient, so a colour typed in the field, or
+ * chosen from the logo, would leave the squares showing the previous colour.
+ *
+ * @param {HTMLInputElement} input The colour field.
+ */
+const syncPicker = (input) => {
+    const colour = input.value.trim();
+    if (!window.CSS?.supports('color', colour)) {
+        return;
+    }
+    input.parentElement?.querySelectorAll('.admin_colourpicker .previewcolour, .admin_colourpicker .currentcolour')
+        .forEach((square) => {
+            square.style.backgroundColor = colour;
+        });
+};
+
+/**
  * Fills the colour field and announces the change.
  *
  * @param {HTMLElement} region The logo colours region.
@@ -258,9 +277,20 @@ const renderSwatches = async(region, colours) => {
         button.setAttribute('aria-label', labels[index]);
         const dot = document.createElement('span');
         dot.className = 'epure-logocolours-dot';
-        dot.style.backgroundColor = colour;
+        // Inline sizes: the setting can be shown under another theme, without the styles of Épure.
+        Object.assign(dot.style, {
+            display: 'inline-block',
+            flex: 'none',
+            width: '22px',
+            height: '22px',
+            verticalAlign: 'middle',
+            borderRadius: '50%',
+            boxShadow: 'inset 0 0 0 1px rgba(0, 0, 0, .15)',
+            backgroundColor: colour,
+        });
         dot.setAttribute('aria-hidden', 'true');
-        button.append(dot, document.createTextNode(colour));
+        // The space separates the dot from the code without the styles of Épure; Épure's flex gap replaces it.
+        button.append(dot, document.createTextNode(' ' + colour));
         return button;
     }));
 };
@@ -303,6 +333,8 @@ export const init = (selector) => {
         return;
     }
     region.dataset.initialised = '1';
+    const input = document.getElementById(region.dataset.input);
+    input?.addEventListener('input', () => syncPicker(input));
     const logo = () => region.querySelector('[data-region="logo"]');
 
     const start = async() => {
@@ -363,6 +395,8 @@ export const setLogo = (selector, url) => {
         img = document.createElement('img');
         img.alt = '';
         img.className = 'epure-logocolours-logo';
+        img.style.maxWidth = '100%';
+        img.style.maxHeight = '160px';
         img.dataset.region = 'logo';
         region.querySelector('[data-region="swatches"]').before(img);
     }

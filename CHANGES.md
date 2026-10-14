@@ -1,5 +1,11 @@
 # Changes
 
+## 0.28.11 (beta)
+
+- Brand colour setting: the two squares next to the colour gradient kept showing the previous colour when a colour of the logo was chosen, a point of the logo picked, or a code typed in the field (Moodle only updates them on a click in the gradient). They now follow the field.
+- Colours of the logo, when the settings page is shown under another theme (an IOMAD company with a theme of its own, for example): the colours were missing next to their codes, and the logo was shown full size. The swatches and the logo now carry their own sizes.
+- « My courses » and the dashboard: the courses were read without their revision, which keys the progress kept in the caches. Since Moodle 5.2.4 and 5.3.1, which keep the progress of a course for the request, a progress read before a new activity was added in the same request could be shown again; the revision is now read with the courses.
+
 ## 0.28.10 (beta)
 
 - IOMAD companies with a colour of their own: a small frame in the colour of the site stayed around a tab once clicked (the focus ring of Bootstrap, written at build time). The focus rings of the tabs, fields, buttons, pagination and badges, and the outlines of the edit mode, now follow the colours of the page, those of the company when it has its own. On phones, the active tab no longer gets Moodle's blue ring.
