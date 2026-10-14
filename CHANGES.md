@@ -3,6 +3,7 @@
 ## 0.28.11 (beta)
 
 - Brand colour setting: the two squares next to the colour gradient kept showing the previous colour when a colour of the logo was chosen, a point of the logo picked, or a code typed in the field (Moodle only updates them on a click in the gradient). They now follow the field.
+- Colours of the logo, when the settings page is shown under another theme (an IOMAD company with a theme of its own, for example): the colours were missing next to their codes, and the logo was shown full size. The swatches and the logo now carry their own sizes.
 
 ## 0.28.10 (beta)
 
