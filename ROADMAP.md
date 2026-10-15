@@ -144,6 +144,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 - **V0.4 — Parcours de l'apprenant** : Mes cours par rôle, bannière et progression du cours, tableau de bord de l'apprenant, mode sombre, pages d'activité, catalogue, barre de navigation mobile, recherche rapide Ctrl+K, e-mails aux couleurs de la marque.
 - **V0.5 — Vocabulaire et IOMAD** : vocabulaire réglable appliqué à tout Moodle et par entreprise, tableau de bord d'IOMAD, logo, couleur et vocabulaire dans la fiche de l'entreprise, chiffres clés.
 - **0.21 à 0.28 — Bêta et couverture graphique** : pré-audit d'accessibilité (240 pages), documentation, releases automatiques, réglages rangés par sujet, application web installable, icônes d'activités, H5P, tests, forums, devoirs, SCORM, livres, badges, attestations, carnet de notes, calendrier, formulaires, messagerie en bulles, sondage, profil, base de données, wiki, feedback, sélecteur d'activités, audit du bleu Moodle restant.
+- **0.34 — Passer un test sereinement** : questions en cartes (bandeau en haut, choix en lignes faciles à toucher), récapitulatif avec « Avant d’envoyer » en haut (questions sans réponse, marquées, boutons), confirmation d’envoi en bas de l’écran, légende du panneau des questions, minuteur calme toujours visible.
 - **0.33 — Cette semaine** : sur le tableau de bord de l'apprenant, la semaine jour par jour dans tous ses cours (échéances avec leur état, séances et événements du calendrier), les activités en retard d'abord.
 - **0.32 — État du parcours détaillé** : « 3 terminées · 1 en cours · 1 en retard » sous la barre de progression ; « Continuer » toujours à portée de pouce sur téléphone.
 - **0.31 — « Continuer » plus intelligent** : échéance dans les 48 heures d'abord, puis l'activité commencée, puis celle qui suit la dernière terminée ; « 4 activités restantes · à rendre demain » ; le même choix sur le tableau de bord, la bannière et la page de cours.
@@ -172,7 +173,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ### 2. Comprendre mes résultats (apprenant)
 
-- [ ] **0.34 — Passer un test sereinement** : panneau des questions lisible (répondue, marquée, en cours), minuteur visible sans être anxiogène, récapitulatif clair avant de terminer.
+- [x] **0.34 — Passer un test sereinement** : panneau des questions lisible (répondue, marquée, en cours), minuteur visible sans être anxiogène, récapitulatif clair avant de terminer.
 - [ ] **0.35 — Relire un test** : bonne réponse, rétroaction et note lisibles, question par question.
 - [ ] **0.36 — Mes notes** (rapport « Utilisateur » du carnet) : lecture par cours, note et barème, commentaire du formateur mis en avant, cartes sur téléphone.
 - [ ] **0.37 — Mes réussites** : sur le tableau de bord, une carte avec les derniers badges en vignettes et les attestations obtenues ; sur son propre profil, la même galerie. Sur le profil d'un autre, seuls ses badges publics.

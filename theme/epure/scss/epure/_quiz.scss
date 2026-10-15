@@ -1,0 +1,334 @@
+// Taking a quiz calmly: what is left before submitting, at the top of the summary of the attempt; the meaning of
+// the marks of the panel of the questions; a timer that stays readable without alarming; the confirmation of the
+// submission at the bottom of the screen, near the button just pressed.
+
+// Top of the summary of an attempt: what is left, and the buttons to go back and to submit.
+.epure-quiz-check {
+    margin: 0 0 1.5rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--epure-surface);
+    border: 1px solid var(--epure-border);
+    border-radius: var(--epure-radius-lg);
+    box-shadow: var(--epure-shadow);
+}
+
+.epure-quiz-check-title {
+    margin: 0 0 .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.epure-quiz-check-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem 1.25rem;
+    margin: 0 0 .875rem;
+    padding: 0;
+    list-style: none;
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: .375rem;
+    }
+
+    .icon {
+        margin: 0;
+        color: var(--epure-state-done);
+    }
+
+    .epure-quiz-check-warning,
+    .epure-quiz-check-warning .icon {
+        color: var(--epure-state-soon);
+        font-weight: 600;
+    }
+
+    .fa-flag {
+        color: var(--epure-ink-muted);
+    }
+}
+
+.epure-quiz-check-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+// Meaning of the marks of the panel of the questions, under its buttons.
+.path-mod-quiz #mod_quiz_navblock .epure-quiz-legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .375rem .75rem;
+    margin: .5rem 0 .75rem;
+    padding: .625rem 0 0;
+    color: var(--epure-ink-muted);
+    font-size: .8125rem;
+    list-style: none;
+    border-top: 1px solid var(--epure-border);
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: .375rem;
+        min-width: 0;
+    }
+}
+
+.epure-quiz-legend-mark {
+    flex: none;
+    width: .875rem;
+    height: .875rem;
+    background-color: var(--epure-surface);
+    border: 1px solid var(--epure-border);
+    border-radius: calc(var(--epure-radius) / 2);
+}
+
+.epure-quiz-legend-answered {
+    background-color: var(--epure-brand-soft-2);
+}
+
+.epure-quiz-legend-current {
+    border: 2px solid var(--epure-brand);
+}
+
+.epure-quiz-legend-flag {
+    flex: none;
+    width: .875rem;
+    margin: 0;
+    color: #d0342c;
+}
+
+// The timer: a calm chip with figures that do not jump; the last seconds, which Moodle paints red, in the colour of
+// a deadline coming, not of an alarm.
+#quiz-timer-wrapper #quiz-timer {
+    color: var(--epure-ink);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    background-color: var(--epure-surface-muted);
+    border: 1px solid var(--epure-border);
+    border-radius: var(--epure-radius-pill);
+}
+
+// During the attempt, the timer stays in sight while scrolling the questions; on the summary, under the button to go
+// back, in the middle.
+#page-mod-quiz-attempt #quiz-timer-wrapper {
+    position: sticky;
+    top: calc(#{$navbar-height} + .5rem);
+    z-index: 3;
+    // The row is as wide as the page: only the timer and its button catch the clicks.
+    pointer-events: none;
+
+    > * {
+        pointer-events: auto;
+    }
+}
+
+#page-mod-quiz-summary #quiz-timer-wrapper {
+    justify-content: center;
+
+    #quiz-timer {
+        margin-left: 0 !important; // stylelint-disable-line declaration-no-important
+    }
+}
+
+#quiz-timer-wrapper #quiz-timer[class*="timeleft"] {
+    color: var(--epure-state-soon);
+    background-color: var(--epure-state-soon-soft);
+    border-color: var(--epure-state-soon);
+}
+
+// The confirmation before submitting comes up at the bottom of the screen, near the button, above the navigation bar
+// of the phones.
+@keyframes epure-quiz-confirm {
+    from {
+        opacity: 0;
+        transform: translate(-50%, .75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+#page-mod-quiz-summary,
+#page-mod-quiz-attempt {
+    .modal-dialog {
+        position: fixed;
+        bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--epure-mobilenav-height, 0px));
+        left: 50%;
+        width: calc(100vw - 2rem);
+        max-width: 40rem;
+        min-height: 0;
+        margin: 0;
+        transform: translateX(-50%);
+        animation: epure-quiz-confirm .18s ease-out;
+    }
+
+    .modal-content {
+        border-radius: var(--epure-radius-lg);
+        box-shadow: 0 12px 40px rgba(16, 22, 32, .28);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #page-mod-quiz-summary .modal-dialog,
+    #page-mod-quiz-attempt .modal-dialog {
+        animation: none;
+    }
+}
+
+// Each question as a card: its number, state, mark and flag in a band at the top instead of Moodle's grey column on
+// the left; the text a little larger; the choices as rows easy to hit, in the brand colour once chosen. The colours
+// of the right and wrong answers of the review are kept, in the colours of the states.
+.path-mod-quiz .que {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+    background-color: var(--epure-surface);
+    border: 1px solid var(--epure-border);
+    border-radius: var(--epure-radius-lg);
+    box-shadow: var(--epure-shadow);
+
+    .info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .25rem 1rem;
+        float: none;
+        width: auto;
+        margin: 0;
+        padding: .75rem 1.25rem;
+        font-size: .875rem;
+        background-color: var(--epure-surface-muted);
+        border: 0;
+        border-bottom: 1px solid var(--epure-border);
+        border-radius: 0;
+
+        h3.no {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .qno {
+            font-size: inherit;
+        }
+
+        .state,
+        .grade,
+        .editquestion {
+            margin: 0;
+            color: var(--epure-ink-muted);
+        }
+
+        .questionflag {
+            margin: 0 0 0 auto;
+        }
+    }
+
+    .content {
+        margin: 0;
+        padding: 1.25rem;
+    }
+
+    .formulation {
+        margin: 0;
+        padding: 0;
+        color: var(--epure-ink);
+        background-color: transparent;
+        border: 0;
+    }
+
+    .qtext {
+        margin-bottom: 1rem;
+        font-size: 1.0625rem;
+    }
+
+    .ablock {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    &:is(.multichoice, .truefalse, .calculatedmulti, .multichoiceset) .answer {
+        width: 100%;
+        max-width: 42rem;
+    }
+
+    &:is(.multichoice, .truefalse, .calculatedmulti, .multichoiceset) .answer > div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: .625rem;
+        margin: 0 0 .5rem;
+        padding: .75rem 1rem;
+        cursor: pointer;
+        background-color: var(--epure-surface);
+        border: 1px solid var(--epure-border);
+        border-radius: var(--epure-radius);
+        transition: border-color .15s ease, background-color .15s ease;
+
+        &:hover {
+            border-color: var(--epure-brand);
+        }
+
+        &:has(input:checked) {
+            background-color: var(--epure-brand-soft);
+            border-color: var(--epure-brand);
+            box-shadow: inset 0 0 0 1px var(--epure-brand);
+        }
+
+        // One ring around the row for the keyboard, instead of the ring of the button inside.
+        &:has(input:focus-visible) {
+            outline: 2px solid var(--epure-focus);
+            outline-offset: 2px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            flex: none;
+            width: 1.125rem;
+            height: 1.125rem;
+            margin: 0;
+
+            &:focus {
+                outline: 0;
+                box-shadow: none;
+            }
+        }
+
+        label,
+        [data-region="answer-label"] {
+            flex: 1;
+            margin: 0 !important; // stylelint-disable-line declaration-no-important
+            cursor: pointer;
+        }
+
+        &.correct,
+        &.correct:has(input:checked) {
+            background-color: var(--epure-state-done-soft);
+            border-color: var(--epure-state-done);
+            box-shadow: none;
+        }
+
+        &.incorrect,
+        &.incorrect:has(input:checked) {
+            background-color: var(--epure-state-late-soft);
+            border-color: var(--epure-state-late);
+            box-shadow: none;
+        }
+    }
+
+    .outcome {
+        margin: 1rem 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .path-mod-quiz .que .answer > div {
+        transition: none;
+    }
+}

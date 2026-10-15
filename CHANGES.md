@@ -1,5 +1,12 @@
 # Changes
 
+## 0.34.0 (beta)
+
+- Taking a quiz calmly. On the summary of the attempt, a block « Before submitting » at the top of the page: the questions not answered and flagged (when the learner can go back to them), with the buttons « Return to attempt » and « Submit all and finish », as at the bottom of the page, so that a long quiz can be submitted without scrolling down. The confirmation of the submission comes up at the bottom of the screen, near the button, above the navigation bar of the phones (no animation when the device asks for less motion).
+- Each question as a card: its number, state, mark and flag in a band at the top instead of the grey column on the left, the text a little larger, the choices (multiple choice, true/false) as rows easy to hit, chosen by a click anywhere on the row and in the brand colour once chosen; in the review, the right and wrong answers in the colours of the states.
+- The panel of the questions explains its marks: answered, not answered, this page, flagged.
+- The timer stays in sight while scrolling the questions, as a calm chip with figures that do not jump; its last seconds, which Moodle paints red, take the colour of a deadline coming. On the summary, it is in the middle, under the button to go back. No setting.
+
 ## 0.33.1 (beta)
 
 - IOMAD, a user of several companies: « My courses » and the dashboard showed the courses of all their companies, whatever the company they were logged in, and a course of another company opened in the company of the session (its colours, its activity counted for it). By default, as IOMAD's « My courses », only the courses of the company the user is logged in are shown. New setting « All the companies in My courses (IOMAD) » (Courses tab), off by default: a learner sees all their courses, those of their other companies with the name of the company, and a course opens in its company, the one they were enrolled in it through, as if they had logged in there. Not for the managers and the administrators, who choose their company in the IOMAD dashboard.
