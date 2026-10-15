@@ -34,6 +34,7 @@ L'onglet se termine par les **e-mails** aux couleurs de la marque (voir [[Mode s
 | Réglage | Effet |
 |---|---|
 | Mes cours par rôle | Voir Page Mes cours, ci-dessous. |
+| Toutes les entreprises dans Mes cours (IOMAD) | Décoché : comme IOMAD, seulement les cours de l’entreprise où l’utilisateur est connecté. Coché : un apprenant de plusieurs entreprises voit tous ses cours, ceux de ses autres entreprises avec le nom de l’entreprise, et chaque cours s’ouvre dans son entreprise (à ses couleurs, son activité comptée pour elle). Pas pour les gestionnaires ni les administrateurs. |
 | Catalogue des cours | Voir [[Parcours de l'apprenant|Parcours-de-l’apprenant]]. |
 | Bannière des cours | Voir [[Parcours de l'apprenant|Parcours-de-l’apprenant]]. |
 | Progression des sections | Sur la page du cours, combien de ses activités l'apprenant a terminées dans chaque section et sous-section. |

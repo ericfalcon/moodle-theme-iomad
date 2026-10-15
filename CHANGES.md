@@ -1,5 +1,9 @@
 # Changes
 
+## 0.33.1 (beta)
+
+- IOMAD, a user of several companies: « My courses » and the dashboard showed the courses of all their companies, whatever the company they were logged in, and a course of another company opened in the company of the session (its colours, its activity counted for it). By default, as IOMAD's « My courses », only the courses of the company the user is logged in are shown. New setting « All the companies in My courses (IOMAD) » (Courses tab), off by default: a learner sees all their courses, those of their other companies with the name of the company, and a course opens in its company, the one they were enrolled in it through, as if they had logged in there. Not for the managers and the administrators, who choose their company in the IOMAD dashboard.
+
 ## 0.33.0 (beta)
 
 - « This week » on the dashboard of the learner, in place of « Coming up »: from today to the same day next week, in all the courses they take, grouped by day (Today, Tomorrow, then the name of the day). The deadlines of the activities, with their state (due soon, in progress, done or passed once finished) and the name the calendar gives them (« Report is due »); the sessions and other events of the calendar of the courses, of the groups of the learner and their own, with their time. Above, the activities overdue still to do, the most recent first, with their date. When nothing is planned: « Nothing planned this week », with the link to the calendar. No setting.
