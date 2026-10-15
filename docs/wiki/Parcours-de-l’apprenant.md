@@ -6,7 +6,7 @@ Pour un utilisateur qui suit des cours, le tableau de bord commence par un aper�
 
 - **Reprendre où vous en étiez** : le dernier cours visité et pas encore terminé, avec son image, sa progression, sa prochaine activité et un bouton pour continuer ;
 - **En cours** : les autres cours en cours, avec leur progression, et un lien vers « Mes cours » ;
-- **À venir** : les prochaines échéances de tous ses cours (devoirs à rendre, tests qui ferment…) ;
+- **Cette semaine** : sa semaine jour par jour dans tous ses cours (échéances des activités avec leur état, séances et événements du calendrier), les activités en retard d'abord ;
 - **Terminé** : les cours terminés, avec leur date, et un lien vers ses attestations quand la plateforme en délivre (IOMAD, Certificate, Custom certificate).
 
 L'aperçu se désactive dans l'onglet Cours du thème (« Aperçu de l'apprenant sur le tableau de bord ») ; avec IOMAD, chaque entreprise peut faire un autre choix dans sa fiche. Sur téléphone, le tableau de bord peut ne montrer que l'aperçu, sans les blocs (onglet Mobile, « Tableau de bord sur téléphone »).
