@@ -3,6 +3,7 @@
 ## 0.33.0 (beta)
 
 - « This week » on the dashboard of the learner, in place of « Coming up »: from today to the same day next week, in all the courses they take, grouped by day (Today, Tomorrow, then the name of the day). The deadlines of the activities, with their state (due soon, in progress, done or passed once finished) and the name the calendar gives them (« Report is due »); the sessions and other events of the calendar of the courses, of the groups of the learner and their own, with their time. Above, the activities overdue still to do, the most recent first, with their date. When nothing is planned: « Nothing planned this week », with the link to the calendar. No setting.
+- Moodle 5.0: the label of the state « Locked » of an activity was missing (a string of Moodle that 5.0 does not have); the theme now has its own.
 
 ## 0.32.0 (beta)
 
