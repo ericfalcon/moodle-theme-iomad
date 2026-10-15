@@ -1,5 +1,9 @@
 # Changes
 
+## 0.31.0 (beta)
+
+- A smarter « Continue », the same on the dashboard, the banner of the course and its page: an activity due in the next two days comes first (the closest deadline); else the activity started and not finished; else the one after the last activity completed, rather than the first one left behind; else the first one still to do. Under it, what is left: « 4 activities left · due tomorrow » (due today, tomorrow, in a few days, or on a date).
+
 ## 0.30.0 (beta)
 
 - Progress of the sections: in the title of each section on the course page, a bar beside « 2/4 »; in the course index, a thin bar under the name of each section, green once all is done.
