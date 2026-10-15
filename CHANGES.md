@@ -1,5 +1,10 @@
 # Changes
 
+## 0.35.0 (beta)
+
+- Reviewing a quiz attempt. At the top, its result when the marks can be seen: the grade in large, « Passed » or « Not passed » when the quiz has a grade to pass, a bar, and how many questions are right, partly right, wrong and not answered; on a page with several questions, « To look at again » shows only the questions not right. The details of the attempt (status, dates, duration, marks) as tiles instead of a table.
+- In each question reviewed, its state as a chip in the colour of the result (right, partly right, wrong), the feedback in the same colour, the general feedback set apart, and the right answer highlighted. No setting.
+
 ## 0.34.0 (beta)
 
 - Taking a quiz calmly. On the summary of the attempt, a block « Before submitting » at the top of the page: the questions not answered and flagged (when the learner can go back to them), with the buttons « Return to attempt » and « Submit all and finish », as at the bottom of the page, so that a long quiz can be submitted without scrolling down. The confirmation of the submission comes up at the bottom of the screen, near the button, above the navigation bar of the phones (no animation when the device asks for less motion).
