@@ -1,5 +1,10 @@
 # Changes
 
+## 0.32.0 (beta)
+
+- Detail of the progress of a course, under its bar in the banner of the course and on the dashboard: « 3 completed · 1 in progress · 1 overdue · 1 not passed ».
+- On phones, the button « Continue » of the course stays at the bottom of the screen, above the navigation bar, with the name of the activity, once the banner is scrolled away; the end of the page and the help buttons go above it.
+
 ## 0.31.0 (beta)
 
 - A smarter « Continue », the same on the dashboard, the banner of the course and its page: an activity due in the next two days comes first (the closest deadline); else the activity started and not finished; else the one after the last activity completed, rather than the first one left behind; else the first one still to do. Under it, what is left: « 4 activities left · due tomorrow » (due today, tomorrow, in a few days, or on a date).
