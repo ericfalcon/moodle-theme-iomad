@@ -144,6 +144,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 - **V0.4 — Parcours de l'apprenant** : Mes cours par rôle, bannière et progression du cours, tableau de bord de l'apprenant, mode sombre, pages d'activité, catalogue, barre de navigation mobile, recherche rapide Ctrl+K, e-mails aux couleurs de la marque.
 - **V0.5 — Vocabulaire et IOMAD** : vocabulaire réglable appliqué à tout Moodle et par entreprise, tableau de bord d'IOMAD, logo, couleur et vocabulaire dans la fiche de l'entreprise, chiffres clés.
 - **0.21 à 0.28 — Bêta et couverture graphique** : pré-audit d'accessibilité (240 pages), documentation, releases automatiques, réglages rangés par sujet, application web installable, icônes d'activités, H5P, tests, forums, devoirs, SCORM, livres, badges, attestations, carnet de notes, calendrier, formulaires, messagerie en bulles, sondage, profil, base de données, wiki, feedback, sélecteur d'activités, audit du bleu Moodle restant.
+- **0.29 — États des activités** : un état par activité pour l'apprenant (en retard, échéance proche, en cours, réussi ou non, terminé, à faire, verrouillé, facultatif), avec le même libellé, la même icône et la même couleur sur la page de cours, dans l'index et pour l'activité suivante du tableau de bord.
 - **0.28.1 à 0.28.12 — Finitions** : réglages d'entreprise IOMAD complets (identité, connexion, fonctions, e-mails), police par entreprise, pages d'erreur, visites guidées, impression aux couleurs de la marque, bulles d'aide et notifications en mode sombre, en-tête IOMAD et panneau Aa sur téléphone, anneaux de focus aux couleurs de l'entreprise, aperçu de la couleur de marque fidèle au champ, thème de l'entreprise de l'utilisateur quand une autre entreprise a l'adresse du site.
 
 ## Épure, le thème (gratuit)
@@ -159,7 +160,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ### 1. Savoir où j'en suis (apprenant)
 
-- [ ] **0.29 — États des activités unifiés** : à faire, en cours, terminé, verrouillé, échéance proche ou dépassée, réussi, facultatif. Même couleur, même icône et même libellé partout (page de cours, index, tableau de bord). C'est la base des chantiers suivants.
+- [x] **0.29 — États des activités unifiés** : à faire, en cours, terminé, verrouillé, échéance proche ou dépassée, réussi, facultatif. Même couleur, même icône et même libellé partout (page de cours, index, tableau de bord). C'est la base des chantiers suivants.
 - [ ] **0.30 — Progression par section** : dans l'index du cours et en tête de chaque section, une barre et « 3 sur 5 terminées » ; l'activité en cours et la section recommandée sont mises en évidence.
 - [ ] **0.31 — Carte « Continuer » plus intelligente**, sur le tableau de bord et la bannière du cours : une phrase actionnable (« 3 activités restantes · échéance dans 2 jours »). L'activité suivante est celle qui suit la dernière terminée, ou la dernière commencée et pas finie ; une échéance à moins de 48 heures passe devant (« À rendre demain »). Mêmes calculs que la progression par section.
 - [ ] **0.32 — État du parcours détaillé** : « 67 % → 8 activités terminées, 2 en cours, 1 en retard », sous la barre de progression du cours ; sur téléphone, bouton « Continuer » toujours visible en bas de la page de cours.

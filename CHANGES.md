@@ -1,5 +1,10 @@
 # Changes
 
+## 0.29.0 (beta)
+
+- States of the activities for the learner, the same everywhere: Moodle told « To do » or « Done », and a failed test showed « To do ». Each activity now has one state, with its label, icon and colour: overdue, due soon (in the two days before its deadline), in progress (a condition met, not all), not passed, passed, done, to do, locked, optional. On the course page, the states Moodle does not tell show under the name of the activity, with the date when it matters (« Overdue · 13 October »); the course index shows the icon of each state, in its colour; the next activity of a course, on the dashboard, « My courses » and the banner of the course, carries its state when it is late, due soon, started or not passed. The deadline is the closing date of the activity (due date, closing of a quiz…), else the date its completion is expected. A completion marked on the course page changes the state at once. Colours AA in light and dark mode. No setting.
+- Dark mode: the activities not available yet in the course index were in a grey below the AA contrast.
+
 ## 0.28.12 (beta)
 
 - IOMAD, a company whose address is that of the whole site (for a link with another software, for example): IOMAD gave its theme to every page, for the users of all the companies, and an administrator who chose another company in the IOMAD dashboard got it back on the next page (« My courses »...). The users of the other companies, and an administrator working on another company, now get the theme of their company; the users of the company of the address keep its theme, and IOMAD keeps using the address as before (company of new accounts, links).
