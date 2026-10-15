@@ -138,4 +138,32 @@ final class mycourses_test extends \advanced_testcase {
             'completion' => COMPLETION_TRACKING_MANUAL]);
         $this->assertSame(33, $card()['progress']);
     }
+
+    /**
+     * The role in the course decides, also for a site administrator: enrolled as a learner, they take the course;
+     * as a teacher, or not enrolled, they teach it.
+     */
+    public function test_is_teaching_admin(): void {
+        global $DB, $USER;
+        $this->resetAfterTest();
+        $this->setAdminUser();
+        $generator = $this->getDataGenerator();
+        $learning = $generator->create_course();
+        $teaching = $generator->create_course();
+        $other = $generator->create_course();
+        $generator->enrol_user($USER->id, $learning->id, 'student');
+        $generator->enrol_user($USER->id, $teaching->id, 'editingteacher');
+        $this->assertFalse(mycourses::is_teaching(\context_course::instance($learning->id), (int) $USER->id));
+        $this->assertTrue(mycourses::is_teaching(\context_course::instance($teaching->id), (int) $USER->id));
+        $this->assertTrue(mycourses::is_teaching(\context_course::instance($other->id), (int) $USER->id));
+        // Switched to the role of a student in a course they are not enrolled in.
+        $student = $DB->get_field('role', 'id', ['shortname' => 'student']);
+        role_switch($student, \context_course::instance($other->id));
+        $this->assertFalse(mycourses::is_teaching(\context_course::instance($other->id), (int) $USER->id));
+
+        $teacher = $generator->create_user();
+        $generator->enrol_user($teacher->id, $teaching->id, 'teacher');
+        $this->assertTrue(mycourses::is_teaching(\context_course::instance($teaching->id), (int) $teacher->id));
+        $this->assertFalse(mycourses::is_teaching(\context_course::instance($other->id), (int) $teacher->id));
+    }
 }

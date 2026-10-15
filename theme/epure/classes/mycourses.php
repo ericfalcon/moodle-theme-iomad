@@ -38,14 +38,26 @@ class mycourses {
     public const LEARNING = 'learning';
 
     /**
-     * Whether the user teaches a course: they can see the grades of all the participants.
+     * Whether the user teaches a course: their roles let them see the grades of all the participants.
+     *
+     * A site administrator has every capability everywhere: they teach a course unless they take it as a learner, so
+     * that an administrator enrolled as a learner, or who switched to the role of a learner, sees the course as the
+     * learners do.
      *
      * @param \context_course $context Course context.
      * @param int $userid User.
      * @return bool
      */
     public static function is_teaching(\context_course $context, int $userid): bool {
-        return has_capability('moodle/grade:viewall', $context, $userid);
+        global $USER;
+        if (has_capability('moodle/grade:viewall', $context, $userid, false)) {
+            return true;
+        }
+        // A role switched to in the course (« Switch role to… ») is the role of the user there, as it is for Moodle.
+        if ((int) $USER->id === $userid && is_role_switched($context->instanceid)) {
+            return false;
+        }
+        return is_siteadmin($userid) && !is_enrolled($context, $userid, '', true);
     }
 
     /**
@@ -290,6 +302,8 @@ class mycourses {
             'deadline' => $deadline,
             // What is left to do (« 3 activities left · due tomorrow »), under the activity to continue.
             'summary' => activity_state::summary((int) ($data['remaining'] ?? 0), $data['due'] ?? null),
+            // Detail of the progress (« 8 completed · 2 in progress · 1 overdue »), under its bar.
+            'detail' => activity_state::detail((int) ($data['completedcount'] ?? 0), $data['pending'] ?? []),
             'urgent' => $urgent,
             // The state of the activity to continue when it is due soon or late, for the lists of courses.
             'urgentstate' => in_array($next['state']['state'] ?? '', ['soon', 'late'], true) ? $next['state'] : null,
@@ -334,10 +348,19 @@ class mycourses {
         $next = null;
         $remaining = ['remaining' => 0, 'due' => null];
         $started = false;
+        $completedcount = 0;
+        $pending = [];
         if ($completion->is_enabled() && !$completed) {
             $items = activity_state::items($course, (int) $user->id);
             $remaining = activity_state::remaining($items);
             $started = (bool) array_filter($items, fn($item) => !in_array($item['base'], ['todo', 'locked', 'optional'], true));
+            // The activities completed, and those still to do with their deadline, for the detail of the progress.
+            $completedcount = count(array_filter($items, fn($item) => in_array($item['base'], ['done', 'passed'], true)));
+            foreach ($items as $item) {
+                if (in_array($item['base'], ['todo', 'progress', 'failed'], true)) {
+                    $pending[] = [$item['base'], $item['due']];
+                }
+            }
             if (($key = activity_state::next($items)) !== null) {
                 $cm = $items[$key]['cm'];
                 $next = ['name' => $cm->get_formatted_name(), 'url' => $cm->url->out(false), 'base' => $items[$key]['base'],
@@ -362,6 +385,6 @@ class mycourses {
             debugging('Épure: could not read the deadlines: ' . $e->getMessage(), DEBUG_DEVELOPER);
         }
         return ['progress' => $progress, 'completed' => $completed, 'next' => $next, 'deadline' => $deadline,
-            'started' => $started] + $remaining;
+            'started' => $started, 'completedcount' => $completedcount, 'pending' => $pending] + $remaining;
     }
 }
