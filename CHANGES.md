@@ -3,6 +3,7 @@
 ## 0.34.0 (beta)
 
 - Taking a quiz calmly. On the summary of the attempt, a block « Before submitting » at the top of the page: the questions not answered and flagged (when the learner can go back to them), with the buttons « Return to attempt » and « Submit all and finish », as at the bottom of the page, so that a long quiz can be submitted without scrolling down. The confirmation of the submission comes up at the bottom of the screen, near the button, above the navigation bar of the phones (no animation when the device asks for less motion).
+- Each question as a card: its number, state, mark and flag in a band at the top instead of the grey column on the left, the text a little larger, the choices (multiple choice, true/false) as rows easy to hit, chosen by a click anywhere on the row and in the brand colour once chosen; in the review, the right and wrong answers in the colours of the states.
 - The panel of the questions explains its marks: answered, not answered, this page, flagged.
 - The timer stays in sight while scrolling the questions, as a calm chip with figures that do not jump; its last seconds, which Moodle paints red, take the colour of a deadline coming. On the summary, it is in the middle, under the button to go back. No setting.
 
