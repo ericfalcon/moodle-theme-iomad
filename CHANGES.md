@@ -4,6 +4,7 @@
 
 - Detail of the progress of a course, under its bar in the banner of the course and on the dashboard: « 3 completed · 1 in progress · 1 overdue · 1 not passed ».
 - On phones, the button « Continue » of the course stays at the bottom of the screen, above the navigation bar, with the name of the activity, once the banner is scrolled away; the end of the page and the help buttons go above it.
+- A site administrator enrolled in a course as a learner now sees it as a learner (« My courses », dashboard, course page): Moodle gives the administrators every capability everywhere, which made them teachers of all their courses. The roles in the course decide; a course they are not enrolled in as a learner is still shown to them as to a teacher.
 
 ## 0.31.0 (beta)
 
