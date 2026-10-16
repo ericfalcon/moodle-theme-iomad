@@ -1,5 +1,9 @@
 # Changes
 
+## 0.36.0 (beta)
+
+- My grades (user report of the gradebook). Above the table, the course total in a card: the grade in large, out of its range, its percentage with a bar, and how many items are graded; its values are read from the table, so that what the gradebook hides stays hidden. The comment of the teacher in a bubble marked with the brand. On phones, each grade as a card with its values named by their column (weight, grade, range, percentage, comment, contribution), the empty values left out, the grade kept (« - » until graded): no more table to scroll sideways. No setting.
+
 ## 0.35.0 (beta)
 
 - Reviewing a quiz attempt. At the top, its result when the marks can be seen: the grade in large, « Passed » or « Not passed » when the quiz has a grade to pass, a bar, and how many questions are right, partly right, wrong and not answered; on a page with several questions, « To look at again » shows only the questions not right. The details of the attempt (status, dates, duration, marks) as tiles instead of a table.

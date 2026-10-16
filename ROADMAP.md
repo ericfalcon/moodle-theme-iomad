@@ -144,6 +144,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 - **V0.4 — Parcours de l'apprenant** : Mes cours par rôle, bannière et progression du cours, tableau de bord de l'apprenant, mode sombre, pages d'activité, catalogue, barre de navigation mobile, recherche rapide Ctrl+K, e-mails aux couleurs de la marque.
 - **V0.5 — Vocabulaire et IOMAD** : vocabulaire réglable appliqué à tout Moodle et par entreprise, tableau de bord d'IOMAD, logo, couleur et vocabulaire dans la fiche de l'entreprise, chiffres clés.
 - **0.21 à 0.28 — Bêta et couverture graphique** : pré-audit d'accessibilité (240 pages), documentation, releases automatiques, réglages rangés par sujet, application web installable, icônes d'activités, H5P, tests, forums, devoirs, SCORM, livres, badges, attestations, carnet de notes, calendrier, formulaires, messagerie en bulles, sondage, profil, base de données, wiki, feedback, sélecteur d'activités, audit du bleu Moodle restant.
+- **0.36 — Mes notes** : total du cours en carte (note, barème, pourcentage, éléments notés), commentaire du formateur en bulle, une carte par note sur téléphone.
 - **0.35 — Relire un test** : résultat en tête (note, réussi ou non, réponses correctes, fausses, sans réponse), « À revoir » pour ne garder que les questions ratées, détails en tuiles, état de chaque question en pastille, bonne réponse mise en avant.
 - **0.34 — Passer un test sereinement** : questions en cartes (bandeau en haut, choix en lignes faciles à toucher), récapitulatif avec « Avant d’envoyer » en haut (questions sans réponse, marquées, boutons), confirmation d’envoi en bas de l’écran, légende du panneau des questions, minuteur calme toujours visible.
 - **0.33 — Cette semaine** : sur le tableau de bord de l'apprenant, la semaine jour par jour dans tous ses cours (échéances avec leur état, séances et événements du calendrier), les activités en retard d'abord.
@@ -176,7 +177,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 - [x] **0.34 — Passer un test sereinement** : panneau des questions lisible (répondue, marquée, en cours), minuteur visible sans être anxiogène, récapitulatif clair avant de terminer.
 - [x] **0.35 — Relire un test** : bonne réponse, rétroaction et note lisibles, question par question.
-- [ ] **0.36 — Mes notes** (rapport « Utilisateur » du carnet) : lecture par cours, note et barème, commentaire du formateur mis en avant, cartes sur téléphone.
+- [x] **0.36 — Mes notes** (rapport « Utilisateur » du carnet) : lecture par cours, note et barème, commentaire du formateur mis en avant, cartes sur téléphone.
 - [ ] **0.37 — Mes réussites** : sur le tableau de bord, une carte avec les derniers badges en vignettes et les attestations obtenues ; sur son propre profil, la même galerie. Sur le profil d'un autre, seuls ses badges publics.
 
 ### 3. Une plateforme plus simple (apprenant)
