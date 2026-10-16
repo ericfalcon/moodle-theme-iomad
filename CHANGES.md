@@ -1,5 +1,15 @@
 # Changes
 
+## 0.38.0 (beta)
+
+- Useful empty states: an icon, what is empty in a clear sentence, what will show there, and the next step. « My courses » without courses: « No courses yet », with « Browse the catalogue »; the dashboard of a learner who completed all their courses: « You have completed all your courses », with the catalogue. Moodle's blocks: Timeline with nothing to hand in (« No activities require action », the next deadlines will show here, « See the calendar ») or without courses in progress (« My courses »), Recently accessed items (« My courses »), Recently accessed and Starred courses (creating a course when the user can, else the catalogue). The empty list of the notifications under a bell. These sentences take the vocabulary.
+- The vocabulary is applied again after each upgrade of Épure, so that its new strings take it too. No setting.
+
+## 0.37.1 (beta)
+
+- IOMAD: each company chooses its words for « course », « student » and « teacher » too, in the Vocabulary section of its form, besides « company » and « department ». By default, those of the platform (Épure: vocabulary); a word chosen by the company replaces that of the platform, already written in the strings, for its users only. No new setting.
+- Upgrade and installation: the message « Moodle is working », while the page loads, is centred at the bottom of the screen, under the progress, instead of a corner where it covered the help button.
+
 ## 0.37.0 (beta)
 
 - My achievements. On the dashboard of the learner, a card « My achievements » under « Completed »: the latest badges they earned as thumbnails with their name (public or not, they are seen by the learner only), « All my badges » or how many more, then their latest certificates (Certificate, Custom certificate, IOMAD certificates of the completions tracked) with their date; the button « My certificates » moves there. Hidden when there is nothing to show.

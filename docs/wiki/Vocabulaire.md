@@ -23,4 +23,4 @@ Fonctionnement :
 
 Après l'installation d'une nouvelle version de Moodle ou d'un paquet de langue, appliquez à nouveau le vocabulaire pour couvrir les nouvelles chaînes.
 
-Avec IOMAD, la même page propose les mots « entreprise » et « département » pour toutes les entreprises ; chaque entreprise peut choisir les siens dans sa fiche (voir la section IOMAD).
+Avec IOMAD, la même page propose les mots « entreprise » et « département » pour toutes les entreprises ; chaque entreprise peut choisir les siens dans sa fiche, ainsi que ses mots pour « cours », « étudiant » et « enseignant » (voir la section IOMAD).
