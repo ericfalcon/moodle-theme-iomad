@@ -1,5 +1,12 @@
 # Changes
 
+## 0.37.0 (beta)
+
+- My achievements. On the dashboard of the learner, a card « My achievements » under « Completed »: the latest badges they earned as thumbnails with their name (public or not, they are seen by the learner only), « All my badges » or how many more, then their latest certificates (Certificate, Custom certificate, IOMAD certificates of the completions tracked) with their date; the button « My certificates » moves there. Hidden when there is nothing to show.
+- On their own profile, the same gallery in a card « My achievements », in place of the list of their public badges of Moodle. The profile of another user is unchanged: their public badges only. No setting.
+- Vocabulary: the strings of Épure take the words chosen too (« Search my programs »), except those that describe the vocabulary itself (« Courses are called »); applied again on upgrade where a vocabulary is used. IOMAD's « My courses » block takes the title of Moodle's « My courses », translated and in the words of the vocabulary, instead of its own string, which the language packs often leave in English; its button « Download my certificates » is translated.
+- Visitors: « Log in » in the header was in the brand colour, unreadable on a header in the brand colour; it is now a button outlined in the colour of the text of the header.
+
 ## 0.36.0 (beta)
 
 - My grades (user report of the gradebook). Above the table, the course total in a card: the grade in large, out of its range, its percentage with a bar, and how many items are graded; its values are read from the table, so that what the gradebook hides stays hidden. The comment of the teacher in a bubble marked with the brand. On phones, each grade as a card with its values named by their column (weight, grade, range, percentage, comment, contribution), the empty values left out, the grade kept (« - » until graded): no more table to scroll sideways. No setting.
