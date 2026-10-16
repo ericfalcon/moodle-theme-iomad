@@ -144,6 +144,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 - **V0.4 — Parcours de l'apprenant** : Mes cours par rôle, bannière et progression du cours, tableau de bord de l'apprenant, mode sombre, pages d'activité, catalogue, barre de navigation mobile, recherche rapide Ctrl+K, e-mails aux couleurs de la marque.
 - **V0.5 — Vocabulaire et IOMAD** : vocabulaire réglable appliqué à tout Moodle et par entreprise, tableau de bord d'IOMAD, logo, couleur et vocabulaire dans la fiche de l'entreprise, chiffres clés.
 - **0.21 à 0.28 — Bêta et couverture graphique** : pré-audit d'accessibilité (240 pages), documentation, releases automatiques, réglages rangés par sujet, application web installable, icônes d'activités, H5P, tests, forums, devoirs, SCORM, livres, badges, attestations, carnet de notes, calendrier, formulaires, messagerie en bulles, sondage, profil, base de données, wiki, feedback, sélecteur d'activités, audit du bleu Moodle restant.
+- **0.38 — États vides utiles** : « Pas encore de cours » avec le catalogue, « Aucune activité ne requiert d'action » avec le calendrier, cours tous terminés, éléments récents, notifications ; une phrase claire et l'étape suivante, dans le vocabulaire choisi. Vocabulaire par entreprise étendu aux cours, étudiants et enseignants (0.37.1).
 - **0.37 — Mes réussites** : sur le tableau de bord, carte « Mes réussites » (derniers badges en vignettes, dernières attestations : Certificate, Custom certificate, IOMAD) ; la même galerie sur son propre profil, avec tous ses badges, publics ou non. Le profil des autres garde leurs badges publics.
 - **0.36 — Mes notes** : total du cours en carte (note, barème, pourcentage, éléments notés), commentaire du formateur en bulle, une carte par note sur téléphone.
 - **0.35 — Relire un test** : résultat en tête (note, réussi ou non, réponses correctes, fausses, sans réponse), « À revoir » pour ne garder que les questions ratées, détails en tuiles, état de chaque question en pastille, bonne réponse mise en avant.
@@ -183,7 +184,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ### 3. Une plateforme plus simple (apprenant)
 
-- [ ] **0.38 — États vides utiles** : « aucun cours », « aucun devoir », « aucune notification » avec un message clair et l'action suivante.
+- [x] **0.38 — États vides utiles** : « aucun cours », « aucun devoir », « aucune notification » avec un message clair et l'action suivante.
 - [ ] **0.39 — Notifications hiérarchisées** : ce qui demande une action d'abord.
 - [ ] **0.40 — Lecture confortable** : pages, livres et leçons sur une largeur de lecture d'environ 70 caractères, interlignage adapté ; polices variables quand elles existent, pour des fichiers plus légers.
 - [ ] **0.41 — Profil** : bouton « Modifier le profil » bien placé sur téléphone ; sur son propre profil, un résumé en haut (cours en cours, attestations, dernière connexion) ; cartes regroupées d'après les irritants relevés.
