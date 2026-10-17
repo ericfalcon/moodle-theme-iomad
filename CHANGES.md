@@ -1,5 +1,19 @@
 # Changes
 
+## 0.51.1 (beta) — security
+
+An audit of the security of the theme (entry points, output, access to the data, IOMAD companies). Updating is recommended, in particular with IOMAD.
+
+- Vocabulary of an IOMAD company (high): the words typed by a company manager went unchanged into the strings of Moodle, which are trusted HTML, also in attributes; a word with quotes could inject script into the pages of the users of the company, and of a site administrator working on it. The words now keep letters, digits, spaces, apostrophes, hyphens and dots only, 40 characters at most, when saved and when read (a word saved before is cleaned too).
+- Files of an IOMAD company (medium): the logo and the fonts are kept and served only with the extensions of their area (svg, png, webp, jpg; woff2, woff). An HTML page uploaded there by a company manager (the types of the file picker are not checked by the server) would have opened from the site itself.
+- Key figures of the IOMAD dashboard (medium): shown only to the managers of the company and to whoever sees all the companies, no longer to its learners, its department managers or the users of other companies (IOMAD's dashboard opens to every user).
+- Hidden courses (medium): no longer shown to the learners enrolled in them in My courses and on the dashboard, as in Moodle's own « My courses »; those who can see hidden courses still do.
+- IOMAD dashboard (low): its company selector changes the theme of the page only for a company the user may choose.
+- Quick search (low): an administration page is offered only to whoever may open it.
+- The cache of the learner's week is forgotten when their progress changes.
+- Separate groups: a teacher who cannot see all the groups gets the figures of their own groups only (participants, active this week, submissions and quiz answers to grade), on the course page and in My courses.
+- Catalogue with IOMAD: the courses are counted and paged once IOMAD kept those of the company of the user (it filtered them after taking the page): the number of courses, of each category, and the pages hold the courses of the company only.
+
 ## 0.51.0 (beta)
 
 - Site administration in cards. On its home, « Common tasks »: a card for Users, Courses, Appearance, Plugins, Reports and Server and, with IOMAD, for IOMAD, each with its common tasks (browse the users, add a course, the settings of Épure, the logs, the scheduled tasks…); the title of a card leads to the whole part. Under them, every tab of Moodle's administration (General, Users, Courses, Grades, Plugins, Appearance, Server, Reports, Development) shows its parts as cards in columns rather than rows separated by lines. Nothing is removed: the tabs and all their links stay. A task whose page does not exist in the version of Moodle, or that the user cannot open, is left out. On phones, the search of the administration goes under the title instead of cutting it. No setting.
