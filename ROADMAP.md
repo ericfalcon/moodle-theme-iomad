@@ -208,7 +208,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 ### 5. S'informer et prendre en main
 
 - [-] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9). Déplacée : elle fera partie d'un plugin Qualiopi séparé (voir « Plugins complémentaires › Pilotage pédagogique et Qualiopi »).
-- [ ] **0.50 — Prise en main par rôle** : un message d'accueil et une visite guidée courte pour l'apprenant, le formateur et le gestionnaire, uniquement quand Épure est le thème actif.
+- [x] **0.50 — Prise en main par rôle** : un message d'accueil et une visite guidée courte pour l'apprenant (tableau de bord), le formateur (page de cours) et le gestionnaire (tableau de bord), uniquement quand Épure est le thème actif. Ce sont des visites guidées de Moodle, créées une fois avec le thème et modifiables par l'administrateur, avec un filtre « Public d'Épure ».
 - [ ] **0.51 — Ma synthèse** : une page imprimable en PDF par l'apprenant (cours suivis, progression, notes, attestations). Un réglage, désactivé par défaut. Un relevé de formation plus complet relèverait d'un plugin de rapports.
 - [ ] **0.52 — Recherche rapide** : recherches récentes dans Ctrl+K.
 

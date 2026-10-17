@@ -1,5 +1,10 @@
 # Changes
 
+## 0.50.0 (beta)
+
+- Getting started by role: three short guided tours, each opening with a welcome message and ending with how to take it again. The learner's on the dashboard (pick up where you left off, this week, quick search, display, profile); the teacher's on the course page (the course in figures, edit mode, managing the course); the manager's on the dashboard (site administration, IOMAD dashboard, quick search, account). They are user tours of Moodle, created once with the theme: the administrators can edit, disable or delete them (Site administration › Appearance › User tours); they go with the theme when it is uninstalled. They show only with Épure (filter « Theme ») and to their audience, through a new filter « Épure audience » of the tours (learner, teacher, manager). Their texts are strings of the theme, in the language and with the vocabulary of the user. A step whose element is not on the page is skipped (on phones, the menus folded away). No setting.
+- User tours: the steps without a target (welcome and end messages) in the middle of the screen; on phones, after scrolling, Moodle placed them out of sight.
+
 ## 0.49.0 (beta)
 
 - Course page in edit mode (roadmap item 0.47): a bar under the header of the course says that the edit mode is on, with a button « Finish editing » that leaves it like the switch of the header. The buttons to add content and sections outlined in the colour of the brand, filled when pointed at; on touch screens, the « + » between the activities and between the sections always shown (Moodle shows them only when pointed at). The menus of the sections and the activities with a larger button and their actions easier to read, « Delete » apart and in red. « Bulk edit » a button rather than a link, larger boxes to tick and the bar of the bulk actions in the style of the theme. « Add section » and the restrictions of access readable (contrasts AA, also in dark mode). Moodle's course editor works as before. No setting.
