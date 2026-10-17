@@ -2,9 +2,9 @@
 
 ## 0.52.0 (beta) — long forms, lists of links
 
-- Long settings forms (settings of a course, of an activity, of a section, IOMAD's course creation): the sections as cards, as on the preferences; the buttons to save stay at the bottom of the screen while the form goes on, above the navigation bar of the phones.
+- Long settings forms (settings of a course, of an activity, of a section, the forms of IOMAD's dashboard: company, user, course, licence, department…): the sections as cards, the fields before the first section in a card of their own, as on the preferences; the buttons to save stay at the bottom of the screen while the form goes on, above the navigation bar of the phones.
 - On wide screens, a list of the sections beside the form, as the rows of a menu in a card: a click opens the section and shows it, the section being read is marked, and a section with an error gets a red dot (and the word « Error » for the screen readers). The fields, their order and the saving stay Moodle's.
-- Lists of links presented everywhere as on the preferences and the profile (rows of a menu, a line between them, an arrow on the right, the colour of the text): common tasks and tabs of the site administration, pages of a category of the administration (as a card), administration of a course (its parts as cards, as the site administration) and reports of a course. A part of a tab without pages of its own no longer shows as an empty card; the cards of the tabs go on two columns, then one, on narrower screens.
+- Lists of links presented everywhere as on the preferences and the profile (rows of a menu, a line between them, an arrow on the right, the colour of the text): common tasks and tabs of the site administration, pages of a category of the administration (as a card), administration of a course (its parts as cards, as the site administration), reports of a course, and the IOMAD dashboard (its groups Create, Configure, Manage… as cards of rows, with their icons). A part of a tab without pages of its own no longer shows as an empty card; the cards of the tabs go on two columns, then one, on narrower screens.
 - Text editor in dark mode: the link of its status bar takes the colour of the links of the light palette, readable on its white.
 
 ## 0.51.1 (beta) — security
