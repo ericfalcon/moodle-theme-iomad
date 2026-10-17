@@ -1,6 +1,8 @@
 # Changes
 
-## 0.52.0 (beta) — long forms, lists of links
+## 0.52.0 (RC) — long forms, lists of links
+
+The theme moves from beta to release candidate (MATURITY_RC).
 
 - Long settings forms (settings of a course, of an activity, of a section, the forms of IOMAD's dashboard: company, user, course, licence, department…): the sections as cards, the fields before the first section in a card of their own, as on the preferences; the buttons to save stay at the bottom of the screen while the form goes on, above the navigation bar of the phones.
 - On wide screens, a list of the sections beside the form, as the rows of a menu in a card: a click opens the section and shows it, the section being read is marked, and a section with an error gets a red dot (and the word « Error » for the screen readers). The fields, their order and the saving stay Moodle's.
