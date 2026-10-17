@@ -203,11 +203,11 @@ Le détail de chaque version est dans `CHANGES.md`.
 - [x] **0.45 — Correction des devoirs** : panneau de notes, navigation entre apprenants et commentaires plus lisibles.
 - [x] **0.46 — Accessibilité des contenus** : le vérificateur d'accessibilité de l'éditeur TinyMCE (intégré à Moodle, sans compte ni inscription) mis en avant pour les formateurs, avec des rappels des erreurs courantes (image sans texte alternatif, titres, contrastes, tableaux sans en-têtes). Brickfield, qui demande une inscription, reste une option s'il est déjà activé. Pas de scanner maison.
 - [ ] **0.47 — Mode édition du cours** : menus d'actions allégés, édition groupée visible, ajout d'activités entre les sections. Délicat : il touche au JavaScript de Moodle, à tester soigneusement.
-- [ ] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
+- [x] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
 
 ### 5. S'informer et prendre en main
 
-- [ ] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9), à partir de champs personnalisés de cours, sur la présentation du cours.
+- [-] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9). Déplacée : elle fera partie d'un plugin Qualiopi d'Épure Pro (voir « Pilotage pédagogique et Qualiopi »).
 - [ ] **0.50 — Prise en main par rôle** : un message d'accueil et une visite guidée courte pour l'apprenant, le formateur et le gestionnaire, uniquement quand Épure est le thème actif.
 - [ ] **0.51 — Ma synthèse** : une page imprimable en PDF par l'apprenant (cours suivis, progression, notes, attestations). Un réglage, désactivé par défaut. Le relevé officiel au format PDF reste dans Épure Pro.
 - [ ] **0.52 — Recherche rapide** : recherches récentes dans Ctrl+K.
@@ -263,6 +263,7 @@ Choix techniques : graphiques `core\chart_*` et exports `\core\dataformat` ; mê
 ### Pilotage pédagogique et Qualiopi
 
 - [ ] **Nouveau référentiel Qualiopi** : d'après nos échanges, un décret du 1er août 2026 l'applique à partir du 1er novembre 2026, avec 7 critères et 33 indicateurs (12 : prévention des violences et discriminations ; 19 : suivi effectif des modules à distance ; 32 : analyse des risques). **À vérifier sur le texte officiel** et sur le guide de lecture avant de s'y appuyer.
+- [ ] **Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs 1 et 9), à partir de champs personnalisés de cours, sur la présentation du cours ; reprise de la 0.49 du thème. Épure l'affiche quand le plugin est installé.
 - [ ] **Synthèse pédagogique d'un cours** : corrections en attente, apprenants sans activité depuis une durée réglable, progression médiane, activités problématiques.
 - [ ] **Tableau de bord « À surveiller » du formateur** et **état du groupe** : sans activité, en retard, bloqués (indicateurs 11, 12 et 19).
 - [ ] **Suivi du distanciel** (indicateur 19) : par apprenant, situation en vert, orange ou rouge.

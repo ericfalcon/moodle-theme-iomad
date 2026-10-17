@@ -1,5 +1,10 @@
 # Changes
 
+## 0.48.0 (beta)
+
+- File picker and file manager: the window with rounded corners; the repositories as a side menu, the open one marked like the current page of the menus (as chips above the files on phones, instead of filling the screen); the buttons of the toolbars square and quiet, the switch of the views as a segmented control; the files as tiles with rounded corners, their names in the colour of the text; the table of the details and the tree readable in dark mode (light rows and black icons of the types of files before); the area to drop files and the button « Choose file » in the style of the theme. The windows of the details of a file and of a new folder follow. Only the look changes: the file picker of Moodle works as before. No setting.
+- Roadmap: 0.49 (course sheet, Qualiopi indicators 1 and 9) moves to a Qualiopi plugin of Épure Pro.
+
 ## 0.46.0 (beta)
 
 - Accessibility of the contents, for the teachers (whoever can manage the activities): when a form is saved, the contents of its editors are read for the common mistakes, images without a text alternative, tables without headers, links whose text does not say where they go (« click here »), levels of titles skipped. When some are found, a window lists them field by field, with « Fix », « Open the accessibility checker » (the one of the editor TinyMCE, in Moodle) and « Save anyway »: nothing is ever blocked. Without mistakes, the form is saved as before. No account nor registration needed (Brickfield is not used). No setting.
