@@ -144,6 +144,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 - **V0.4 — Parcours de l'apprenant** : Mes cours par rôle, bannière et progression du cours, tableau de bord de l'apprenant, mode sombre, pages d'activité, catalogue, barre de navigation mobile, recherche rapide Ctrl+K, e-mails aux couleurs de la marque.
 - **V0.5 — Vocabulaire et IOMAD** : vocabulaire réglable appliqué à tout Moodle et par entreprise, tableau de bord d'IOMAD, logo, couleur et vocabulaire dans la fiche de l'entreprise, chiffres clés.
 - **0.21 à 0.28 — Bêta et couverture graphique** : pré-audit d'accessibilité (240 pages), documentation, releases automatiques, réglages rangés par sujet, application web installable, icônes d'activités, H5P, tests, forums, devoirs, SCORM, livres, badges, attestations, carnet de notes, calendrier, formulaires, messagerie en bulles, sondage, profil, base de données, wiki, feedback, sélecteur d'activités, audit du bleu Moodle restant.
+- **0.44 et 0.45 — Corriger** : « À corriger » compte aussi les tests à noter à la main et mène à la bonne page (liste des activités à corriger dans le bandeau du cours) ; interface de notation des devoirs plus lisible (statuts en pastilles, devoir et note en carte, navigation entre apprenants en boutons).
 - **0.43 — Tableaux sur téléphone** : participants, vue d'ensemble des notes, journaux, rapports du générateur de rapports et rapports IOMAD en cartes, chaque valeur nommée par sa colonne.
 - **0.42 — Vue simplifiée de l'apprenant** (réglage, site et entreprise, désactivé par défaut) : navigation du cours réduite à Cours, Notes et Badges, le reste sous « Plus » ; menu utilisateur allégé ; tiroir des blocs fermé ; aide discrète. « Badges » seulement quand le cours en a.
 - **0.40 et 0.41 — Lecture et profil** : leçons lues comme un texte (environ 70 caractères par ligne, titres hiérarchisés) ; polices variables, deux fois plus légères ; profil ouvert par un résumé (cours, badges, attestations, connexion précédente, « Modifier le profil » bien visible), cartes secondaires sous « Plus d'informations ».
@@ -197,8 +198,8 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ### 4. Le formateur
 
-- [ ] **0.44 — Évaluations en attente** : les tests à corriger à la main rejoignent les devoirs dans les raccourcis du formateur.
-- [ ] **0.45 — Correction des devoirs** : panneau de notes, navigation entre apprenants et commentaires plus lisibles.
+- [x] **0.44 — Évaluations en attente** : les tests à corriger à la main rejoignent les devoirs dans les raccourcis du formateur.
+- [x] **0.45 — Correction des devoirs** : panneau de notes, navigation entre apprenants et commentaires plus lisibles.
 - [ ] **0.46 — Accessibilité des contenus** : le vérificateur d'accessibilité de l'éditeur TinyMCE (intégré à Moodle, sans compte ni inscription) mis en avant pour les formateurs, avec des rappels des erreurs courantes (image sans texte alternatif, titres, contrastes, tableaux sans en-têtes). Brickfield, qui demande une inscription, reste une option s'il est déjà activé. Pas de scanner maison.
 - [ ] **0.47 — Mode édition du cours** : menus d'actions allégés, édition groupée visible, ajout d'activités entre les sections. Délicat : il touche au JavaScript de Moodle, à tester soigneusement.
 - [ ] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
