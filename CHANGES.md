@@ -1,5 +1,10 @@
 # Changes
 
+## 0.51.0 (beta)
+
+- Site administration in cards. On its home, « Common tasks »: a card for Users, Courses, Appearance, Plugins, Reports and Server and, with IOMAD, for IOMAD, each with its common tasks (browse the users, add a course, the settings of Épure, the logs, the scheduled tasks…); the title of a card leads to the whole part. Under them, every tab of Moodle's administration (General, Users, Courses, Grades, Plugins, Appearance, Server, Reports, Development) shows its parts as cards in columns rather than rows separated by lines. Nothing is removed: the tabs and all their links stay. A task whose page does not exist in the version of Moodle, or that the user cannot open, is left out. On phones, the search of the administration goes under the title instead of cutting it. No setting.
+- Roadmap: 0.52 (recent searches) dropped; the administration in cards becomes 0.51, « My summary » 0.53.
+
 ## 0.50.0 (beta)
 
 - Getting started by role: three short guided tours, each opening with a welcome message and ending with how to take it again. The learner's on the dashboard (pick up where you left off, this week, quick search, display, profile); the teacher's on the course page (the course in figures, edit mode, managing the course); the manager's on the dashboard (site administration, IOMAD dashboard, quick search, account). They are user tours of Moodle, created once with the theme: the administrators can edit, disable or delete them (Site administration › Appearance › User tours); they go with the theme when it is uninstalled. They show only with Épure (filter « Theme ») and to their audience, through a new filter « Épure audience » of the tours (learner, teacher, manager). Their texts are strings of the theme, in the language and with the vocabulary of the user. A step whose element is not on the page is skipped (on phones, the menus folded away). No setting.
