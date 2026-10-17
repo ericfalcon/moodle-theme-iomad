@@ -13,7 +13,7 @@ Principes :
 1. **Peu de réglages, mais chacun change beaucoup de choses.** L'administrateur fait des choix ; le thème calcule le reste (palette, contrastes, variantes).
 2. **Accessible par construction.** Les contrastes, le focus, la navigation au clavier et les préférences d'affichage ne dépendent pas de la bonne volonté de l'administrateur.
 3. **Le moins de templates surchargés possible.** Chaque template surchargé est un coût à chaque mise à jour de Moodle. On privilégie le SCSS et les variables.
-4. **Un thème complet et gratuit**, qui fonctionne sur Moodle et s'adapte à IOMAD lorsqu'il le détecte. Les fonctions de pilotage (rapports, suivi Qualiopi, calendrier semaine) vont dans **Épure Pro**, des plugins séparés et payants que le thème détecte.
+4. **Un thème complet et gratuit**, qui fonctionne sur Moodle et s'adapte à IOMAD lorsqu'il le détecte. Les fonctions de pilotage (rapports, suivi Qualiopi, calendrier semaine) pourront faire l'objet de **plugins séparés**, gratuits et sous GPL comme le thème, que le thème détecte.
 5. **Très personnalisable, mais pas trop.** Chaque évolution passe trois questions : résout-elle un vrai irritant de Moodle ou d'IOMAD ? Apporte-t-elle une valeur pédagogique ou métier ? Mérite-t-elle vraiment d'être dans Épure ? Le but n'est pas d'être le thème qui a le plus de fonctions, mais celui qui résout le plus de problèmes de Moodle sans paraître compliqué : « l'administrateur configure son identité, Épure s'occupe du reste ».
 6. **Rien ne reste quand le thème n'est plus utilisé.** Les réglages et les effets d'Épure (vocabulaire, e-mails, attestations IOMAD, application web) cessent dès que le site ou l'entreprise quitte le thème.
 7. **Qualiopi par les traces de Moodle.** Épure rend exploitables les traces pédagogiques que Moodle enregistre déjà (progression, assiduité, achèvements, résultats) ; il ne devient pas un logiciel qualité. La chaîne est : exigence qualité → trace nécessaire → donnée de Moodle → présentation exploitable. Épure est un outil de pilotage pédagogique dont les données peuvent aussi servir de preuves.
@@ -34,7 +34,7 @@ IOMAD est détecté par le thème lui-même (présence de `local/iomad`) : sans 
 
 Un plugin compagnon `local_epure` a existé dans les versions 0.1 à 0.3 ; il a été fusionné dans le thème en 0.4, qui reprend ses réglages à la mise à jour.
 
-Épure Pro (à venir) : des plugins séparés, sous GPL comme tout code lié à Moodle, vendus avec une clé par site qui ouvre les mises à jour et le support. Ils fonctionnent avec n'importe quel thème ; Épure les détecte, comme IOMAD, et affiche leurs liens quand ils sont installés. Leurs données (rapports, historique) ne dépendent pas de l'apparence et restent quand on change de thème.
+Plugins complémentaires (possibles, pas d'offre payante) : des plugins séparés, gratuits et sous GPL comme tout code lié à Moodle. Ils fonctionnent avec n'importe quel thème ; Épure les détecte, comme IOMAD, et affiche leurs liens quand ils sont installés. Leurs données (rapports, historique) ne dépendent pas de l'apparence et restent quand on change de thème.
 
 ## Compatibilité
 
@@ -207,9 +207,9 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ### 5. S'informer et prendre en main
 
-- [-] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9). Déplacée : elle fera partie d'un plugin Qualiopi d'Épure Pro (voir « Pilotage pédagogique et Qualiopi »).
+- [-] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9). Déplacée : elle fera partie d'un plugin Qualiopi séparé (voir « Plugins complémentaires › Pilotage pédagogique et Qualiopi »).
 - [ ] **0.50 — Prise en main par rôle** : un message d'accueil et une visite guidée courte pour l'apprenant, le formateur et le gestionnaire, uniquement quand Épure est le thème actif.
-- [ ] **0.51 — Ma synthèse** : une page imprimable en PDF par l'apprenant (cours suivis, progression, notes, attestations). Un réglage, désactivé par défaut. Le relevé officiel au format PDF reste dans Épure Pro.
+- [ ] **0.51 — Ma synthèse** : une page imprimable en PDF par l'apprenant (cours suivis, progression, notes, attestations). Un réglage, désactivé par défaut. Un relevé de formation plus complet relèverait d'un plugin de rapports.
 - [ ] **0.52 — Recherche rapide** : recherches récentes dans Ctrl+K.
 
 ### 6. L'administrateur
@@ -233,16 +233,9 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 - [ ] **Vocabulaire dans d'autres langues**, une langue à la fois et à la demande de clients : espagnol, italien ou portugais d'abord (grammaire proche du français), allemand plus tard (déclinaisons, mots composés). Chaque langue demande un relecteur natif et un jeu de phrases de test.
 
-## Épure Pro (plugins payants)
+## Plugins complémentaires (possibles)
 
-Le thème gratuit fait connaître le produit ; Épure Pro vend ce qui fait gagner du temps aux responsables de formation et aux organismes certifiés Qualiopi. Avant chaque fonction, on vérifie ce que Moodle, IOMAD et Kopere Dashboard font déjà, pour ne pas le refaire.
-
-Modèle :
-
-- plugins sous GPL, vendus sur notre site avec une **clé par site** qui ouvre les mises à jour et le support (repère : WooIOMAD, le plugin payant d'IOMAD, vendu environ 90 £ par site, licence à vie) ; abonnement annuel ou licence à vie à arbitrer ;
-- inclus d'office dans nos offres hébergées ;
-- marque : ni logo ni nom « Moodle » dans le nom du produit ou sur les pages de vente ; « pour Moodle » en texte descriptif seulement ;
-- à étudier pour ce qui doit rester réservé : un plugin connecteur sous GPL et un service en ligne (rapports consolidés, PDF), qui n'est pas distribué.
+Il n'y aura pas d'offre payante (« Épure Pro » est abandonné). Ce qui dépasse le thème (rapports, pilotage pédagogique, Qualiopi, calendrier semaine) pourra devenir des **plugins séparés**, gratuits et sous GPL, créés au besoin. Le thème les détecte et affiche leurs liens quand ils sont installés ; ils fonctionnent aussi avec un autre thème. Avant chaque fonction, on vérifie ce que Moodle, IOMAD et Kopere Dashboard font déjà, pour ne pas le refaire.
 
 Ordre : le même principe que pour le thème, des petits plugins et la pédagogie d'abord. Le premier est le **pilotage pédagogique du formateur** (« À surveiller », suivi du distanciel) ; viennent ensuite les rapports, le calendrier semaine et les vues IOMAD.
 
@@ -286,10 +279,10 @@ Choix techniques : graphiques `core\chart_*` et exports `\core\dataformat` ; mê
 
 ## Méthode
 
-- [ ] **Audit des rapports existants** (Moodle, IOMAD, Kopere Dashboard) avant de lancer les rapports d'Épure Pro.
+- [ ] **Audit des rapports existants** (Moodle, IOMAD, Kopere Dashboard) avant de créer un plugin de rapports.
 - [ ] **Matrice Qualiopi × Moodle × IOMAD × Épure**, indicateur par indicateur, une fois le texte officiel vérifié.
 - [ ] **Comparaison avec les thèmes concurrents** (Boost Union, Moove, Adaptable, RemUI…) : accessibilité, modernité, IOMAD, mobile, irritants résolus, et ce qu'ils vendent dans leur version payante.
-- [ ] **Un service de suivi pédagogique commun** au thème et à Épure Pro, pour que la bannière, Mes cours, le tableau de bord et les rapports donnent toujours les mêmes chiffres. Il naît avec les chantiers 0.29 à 0.32.
+- [ ] **Un service de suivi pédagogique commun** au thème et aux plugins complémentaires, pour que la bannière, Mes cours, le tableau de bord et les rapports donnent toujours les mêmes chiffres. Il naît avec les chantiers 0.29 à 0.32.
 
 ## Écarté
 
@@ -297,13 +290,12 @@ Choix techniques : graphiques `core\chart_*` et exports `\core\dataformat` ; mê
 - Un « module Qualiopi », un « PDF Qualiopi » ou les dossiers administratifs (contrats, facturation, conventions, CV des formateurs, veille réglementaire) : « sinon on finit par recréer un ERP ». Les indicateurs organisationnels (21 à 25, 27, l'essentiel des 28 et 29) restent hors d'Épure.
 - Les rapports propres à IOMAD (licences, entreprises, e-mails sortants, présence aux séances) pour Moodle seul.
 - Un nouveau moteur de rapports qui concurrencerait Kopere ou remplacerait d'emblée ceux de Moodle.
-- Du code PHP chiffré ou sous licence propriétaire pour Épure Pro : juridiquement fragile, mal vu des hébergeurs et des établissements publics.
+- Une offre payante « Épure Pro » (clé par site, abonnement ou licence à vie) : abandonnée au profit de plugins gratuits sous GPL, créés au besoin.
 - Les cartes partout, l'aperçu au survol et la recherche dans le contenu des cours : peu utiles, coûteux à maintenir.
 - Les fonctions ajoutées « pour remplir le thème », un thème trop configurable (« 25 couleurs »), transformer Moodle en 360Learning.
 
 ## Questions ouvertes
 
-- Épure Pro : licence à vie ou abonnement annuel ; prix par site ; un seul plugin ou plusieurs (rapports, calendrier) ; service en ligne ou tout dans le plugin. À faire valider par un juriste avant la vente.
 - Rapports : s'adressent-ils d'abord aux formateurs et responsables pédagogiques, ou aussi aux directions d'organismes ?
 - Traductions : le répertoire moodle.org/plugins n'accepte que l'anglais dans le plugin, les autres langues passent par AMOS. Le français est inclus pendant le développement et sera transféré dans AMOS avant la publication, par Eric Falcon, qui a déjà traduit IOMAD.
 - Nom : « Épure » (`theme_epure`) n'est pas utilisé dans le répertoire des plugins Moodle.
