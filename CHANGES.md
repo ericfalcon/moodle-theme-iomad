@@ -3,7 +3,7 @@
 ## 0.45.0 (beta)
 
 - To grade (0.44): the figure « To grade » of the teachers, on the course page and in My courses, counts the quiz attempts with answers to grade by hand (essays…) besides the submissions of the assignments. With one activity to grade, it leads to its grading page (the grader of the assignment, the manual grading report of the quiz); with several, the course page lists them under its figures (« Activities to grade »), each with its count and leading to its grading page.
-- Grading of the assignments (0.45): a sober header (the learner in ink with their picture round, the assignment and its due date in grey), the arrows to the previous and next learners as round buttons, the states of the submission as chips in the colours of the states (submitted, not graded, late), the submission and the grade in a card on the colour of the page, a larger grade field, the actions in a bar at the bottom. Only the look changes: the grader of Moodle works as before. No setting.
+- Grading of the assignments (0.45): a button « Back to the course » at the top of the header, in place of the link of the course; a sober header (the learner in ink with their picture round, the assignment and its due date in grey), the arrows to the previous and next learners as round buttons, the states of the submission as chips in the colours of the states (submitted, not graded, late), the submission and the grade in a card on the colour of the page, a larger grade field, the actions in a bar at the bottom. Only the look changes: the grader of Moodle works as before. No setting.
 
 ## 0.43.0 (beta)
 
