@@ -26,6 +26,10 @@ namespace theme_epure\output;
 class core_renderer extends \theme_boost\output\core_renderer {
     use email_renderer;
 
+    /** @var string Tables read as cards on phones ({@see full_header()}). */
+    public const CARD_TABLES = '#participants, #overview-grade, table.reportlog, #outlinereport, table.reportbuilder-table, '
+        . '.path-local-report_users table.generaltable, .path-local-report_completion_overview table.generaltable';
+
     /** @var string Code of the error being shown by fatal_error(), for its card. */
     protected $epureerrorcode = '';
 
@@ -163,6 +167,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 json_encode(\theme_epure\iomad_courses::data(), JSON_HEX_TAG | JSON_HEX_AMP),
                 ['type' => 'application/json', 'id' => 'epure-iomad-course-categories']
             );
+        }
+        // Tables read as cards on phones: participants, grades overview, logs, outline, the reports of the report builder.
+        if (isloggedin()) {
+            $this->page->requires->js_call_amd('theme_epure/table_cards', 'init', [self::CARD_TABLES]);
         }
         // The user report of the gradebook: the course total first, the comments of the teachers set apart, cards on phones.
         if ($this->page->pagetype === 'grade-report-user-index') {
