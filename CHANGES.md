@@ -1,5 +1,10 @@
 # Changes
 
+## 0.42.0 (beta)
+
+- Simplified view of the learner, a new setting (Navigation tab), for the site and for each IOMAD company, off by default. For whoever manages no activities (in a course: there; elsewhere: in no course): the navigation of a course reduced to « Course », « Grades » and « Badges », the other pages under « More »; in an activity, its other pages under « More »; the user menu without calendar, private files and reports (the items added by the administrator stay); the drawer of the blocks closed when a page opens; the help button discreet until pointed at. Nothing is removed: every page keeps its address and stays reachable with the keyboard. The help of the setting warns the teachers that their learners no longer see everything.
+- With Épure, whatever the view: « Badges » is in the navigation of a course only when the course has an active badge (Moodle shows it even empty), or for whoever can create badges there.
+
 ## 0.41.0 (beta)
 
 - The own profile starts with a summary: the courses in progress and completed (and those taught), the badges and the certificates as figures, each a link to its page; the previous login; « Edit profile » as a button in sight, the whole width on phones (instead of a small button in the corner of a card). On every profile, the cards that matter come first (user details, achievements, courses, administration); the others (privacy, miscellaneous, reports, login activity) are grouped under « More information », folded, none removed.
