@@ -28,6 +28,7 @@ L'onglet se termine par les **e-mails** aux couleurs de la marque (voir [[Mode s
 | Recherche rapide | La fenêtre de recherche de l'en-tête, Ctrl+K (voir [[Navigation et recherche|Navigation-et-recherche]]). |
 | Fil d'Ariane | Le chemin de la page au-dessus de son titre : affiché, affiché sur les grands écrans seulement, ou masqué. |
 | Menu utilisateur | Des liens s'ajoutent dans Présentation › Réglages thème avancés (Éléments du menu utilisateur) ; l'onglet y mène. |
+| Vue simplifiée de l'apprenant | Désactivée par défaut ; réglable par entreprise IOMAD. Pour qui ne gère aucune activité : la navigation d'un cours réduite à Cours, Notes et Badges (les autres pages sous « Plus »), les autres pages d'une activité sous « Plus », le menu utilisateur sans calendrier, fichiers personnels ni rapports, le tiroir des blocs fermé à l'ouverture d'une page, un bouton d'aide discret. Rien n'est retiré. Quel que soit le réglage, « Badges » n'apparaît dans un cours que s'il a un badge actif, ou pour qui peut y créer des badges. |
 
 ## Cours
 
