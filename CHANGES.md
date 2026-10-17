@@ -1,5 +1,12 @@
 # Changes
 
+## 0.41.0 (beta)
+
+- The own profile starts with a summary: the courses in progress and completed (and those taught), the badges and the certificates as figures, each a link to its page; the previous login; « Edit profile » as a button in sight, the whole width on phones (instead of a small button in the corner of a card). On every profile, the cards that matter come first (user details, achievements, courses, administration); the others (privacy, miscellaneous, reports, login activity) are grouped under « More information », folded, none removed.
+- Lessons read as a text: the title of each page as a heading rather than a fold of a form; its content at a reading width of about 70 characters, which follows the size of the text chosen in the display preferences, with room between paragraphs, lists and titles, the titles of the content under that of the page; images and wide tables kept within the page; the score so far as a discreet line.
+- Lighter fonts: IBM Plex Sans, Inter, Source Sans 3, Figtree and Lexend are now variable fonts, one file for all their weights instead of four, about half the weight. Lato, Atkinson Hyperlegible and OpenDyslexic, which have no variable version, are unchanged. No setting.
+- 0.39 (notifications by priority) is left out: the dashboard already shows what the learner has to do.
+
 ## 0.38.0 (beta)
 
 - Useful empty states: an icon, what is empty in a clear sentence, what will show there, and the next step. « My courses » without courses: « No courses yet », with « Browse the catalogue »; the dashboard of a learner who completed all their courses: « You have completed all your courses », with the catalogue. Moodle's blocks: Timeline with nothing to hand in (« No activities require action », the next deadlines will show here, « See the calendar ») or without courses in progress (« My courses »), Recently accessed items (« My courses »), Recently accessed and Starred courses (creating a course when the user can, else the catalogue). The empty list of the notifications under a bell. These sentences take the vocabulary.
