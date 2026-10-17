@@ -202,7 +202,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 - [x] **0.44 — Évaluations en attente** : les tests à corriger à la main rejoignent les devoirs dans les raccourcis du formateur.
 - [x] **0.45 — Correction des devoirs** : panneau de notes, navigation entre apprenants et commentaires plus lisibles.
 - [x] **0.46 — Accessibilité des contenus** : le vérificateur d'accessibilité de l'éditeur TinyMCE (intégré à Moodle, sans compte ni inscription) mis en avant pour les formateurs, avec des rappels des erreurs courantes (image sans texte alternatif, titres, contrastes, tableaux sans en-têtes). Brickfield, qui demande une inscription, reste une option s'il est déjà activé. Pas de scanner maison.
-- [ ] **0.47 — Mode édition du cours** : menus d'actions allégés, édition groupée visible, ajout d'activités entre les sections. Délicat : il touche au JavaScript de Moodle, à tester soigneusement.
+- [x] **0.47 — Mode édition du cours** (publiée en 0.49.0) : bandeau « Mode édition activé » avec « Terminer l'édition », boutons d'ajout bien visibles (toujours affichés entre les activités et les sections sur écran tactile), menus d'actions plus lisibles avec « Supprimer » à part, édition groupée mise en avant. Seul l'aspect change : le JavaScript de Moodle n'est pas touché.
 - [x] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
 
 ### 5. S'informer et prendre en main

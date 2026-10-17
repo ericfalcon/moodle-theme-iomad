@@ -1,5 +1,9 @@
 # Changes
 
+## 0.49.0 (beta)
+
+- Course page in edit mode (roadmap item 0.47): a bar under the header of the course says that the edit mode is on, with a button « Finish editing » that leaves it like the switch of the header. The buttons to add content and sections outlined in the colour of the brand, filled when pointed at; on touch screens, the « + » between the activities and between the sections always shown (Moodle shows them only when pointed at). The menus of the sections and the activities with a larger button and their actions easier to read, « Delete » apart and in red. « Bulk edit » a button rather than a link, larger boxes to tick and the bar of the bulk actions in the style of the theme. « Add section » and the restrictions of access readable (contrasts AA, also in dark mode). Moodle's course editor works as before. No setting.
+
 ## 0.48.0 (beta)
 
 - File picker and file manager: the window with rounded corners; the repositories as a side menu, the open one marked like the current page of the menus (as chips above the files on phones, instead of filling the screen); the buttons of the toolbars square and quiet, the switch of the views as a segmented control; the files as tiles with rounded corners, their names in the colour of the text; the table of the details and the tree readable in dark mode (light rows and black icons of the types of files before); the area to drop files and the button « Choose file » in the style of the theme. The windows of the details of a file and of a new folder follow. Only the look changes: the file picker of Moodle works as before. No setting.
