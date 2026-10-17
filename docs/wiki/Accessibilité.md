@@ -20,3 +20,7 @@ Le changement est immédiat, puis enregistré dans les préférences de son prof
 - la mention « Accessibilité : partiellement conforme » (selon l'état) apparaît en bas de chaque page, et un lien dans le pied de page.
 
 Un thème ne rend pas une plateforme conforme à lui seul : les contenus des cours comptent aussi, et un audit manuel reste nécessaire avant de déclarer la conformité.
+
+## Accessibilité des contenus
+
+Quand un formateur enregistre un formulaire, Épure relit le contenu de ses éditeurs et repère les erreurs courantes : images sans texte alternatif, tableaux sans en-têtes, liens du type « cliquez ici », niveaux de titres sautés. S'il en trouve, une fenêtre les liste champ par champ, avec trois choix : « Corriger », « Ouvrir le vérificateur d'accessibilité » (celui de l'éditeur TinyMCE, intégré à Moodle) et « Enregistrer quand même ». Rien n'est jamais bloqué, et aucun compte ni aucune inscription ne sont nécessaires.

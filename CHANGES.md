@@ -1,5 +1,9 @@
 # Changes
 
+## 0.46.0 (beta)
+
+- Accessibility of the contents, for the teachers (whoever can manage the activities): when a form is saved, the contents of its editors are read for the common mistakes, images without a text alternative, tables without headers, links whose text does not say where they go (« click here »), levels of titles skipped. When some are found, a window lists them field by field, with « Fix », « Open the accessibility checker » (the one of the editor TinyMCE, in Moodle) and « Save anyway »: nothing is ever blocked. Without mistakes, the form is saved as before. No account nor registration needed (Brickfield is not used). No setting.
+
 ## 0.45.0 (beta)
 
 - To grade (0.44): the figure « To grade » of the teachers, on the course page and in My courses, counts the quiz attempts with answers to grade by hand (essays…) besides the submissions of the assignments. With one activity to grade, it leads to its grading page (the grader of the assignment, the manual grading report of the quiz); with several, the course page lists them under its figures (« Activities to grade »), each with its count and leading to its grading page.
