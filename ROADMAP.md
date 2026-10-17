@@ -204,13 +204,14 @@ Le détail de chaque version est dans `CHANGES.md`.
 - [x] **0.46 — Accessibilité des contenus** : le vérificateur d'accessibilité de l'éditeur TinyMCE (intégré à Moodle, sans compte ni inscription) mis en avant pour les formateurs, avec des rappels des erreurs courantes (image sans texte alternatif, titres, contrastes, tableaux sans en-têtes). Brickfield, qui demande une inscription, reste une option s'il est déjà activé. Pas de scanner maison.
 - [x] **0.47 — Mode édition du cours** (publiée en 0.49.0) : bandeau « Mode édition activé » avec « Terminer l'édition », boutons d'ajout bien visibles (toujours affichés entre les activités et les sections sur écran tactile), menus d'actions plus lisibles avec « Supprimer » à part, édition groupée mise en avant. Seul l'aspect change : le JavaScript de Moodle n'est pas touché.
 - [x] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
+- [x] **0.52 — Formulaires longs** (paramètres du cours, des activités et des sections, création de cours IOMAD) : les boutons d'enregistrement restent en bas de l'écran ; sur grand écran, un sommaire des sections à côté du formulaire ouvre et affiche chacune, les sections en erreur signalées. Les champs, leur ordre et l'enregistrement restent ceux de Moodle. Les sections deviennent des cartes, et les listes de liens (administration du site et du cours, catégories, rapports du cours) prennent partout la présentation des préférences.
 
 ### 5. S'informer et prendre en main
 
 - [-] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9). Déplacée : elle fera partie d'un plugin Qualiopi séparé (voir « Plugins complémentaires › Pilotage pédagogique et Qualiopi »).
 - [x] **0.50 — Prise en main par rôle** : un message d'accueil et une visite guidée courte pour l'apprenant (tableau de bord), le formateur (page de cours) et le gestionnaire (tableau de bord), uniquement quand Épure est le thème actif. Ce sont des visites guidées de Moodle, créées une fois avec le thème et modifiables par l'administrateur, avec un filtre « Public d'Épure ».
 - [ ] **0.53 — Ma synthèse** : une page imprimable en PDF par l'apprenant (cours suivis, progression, notes, attestations). Un réglage, désactivé par défaut. Un relevé de formation plus complet relèverait d'un plugin de rapports.
-- [-] **0.52 — Recherche rapide** : recherches récentes dans Ctrl+K. Écartée : peu utile, la recherche rapide trouve déjà les cours, les activités et les pages d'administration en quelques lettres.
+- [-] **Recherche rapide** : recherches récentes dans Ctrl+K. Écartée : peu utile, la recherche rapide trouve déjà les cours, les activités et les pages d'administration en quelques lettres.
 
 ### 6. L'administrateur
 
