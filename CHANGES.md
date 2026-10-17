@@ -11,6 +11,8 @@ An audit of the security of the theme (entry points, output, access to the data,
 - IOMAD dashboard (low): its company selector changes the theme of the page only for a company the user may choose.
 - Quick search (low): an administration page is offered only to whoever may open it.
 - The cache of the learner's week is forgotten when their progress changes.
+- Separate groups: a teacher who cannot see all the groups gets the figures of their own groups only (participants, active this week, submissions and quiz answers to grade), on the course page and in My courses.
+- Catalogue with IOMAD: the courses are counted and paged once IOMAD kept those of the company of the user (it filtered them after taking the page): the number of courses, of each category, and the pages hold the courses of the company only.
 
 ## 0.51.0 (beta)
 
