@@ -1,5 +1,10 @@
 # Changes
 
+## 0.43.0 (beta)
+
+- Tables read as cards on phones: the participants of a course, the grades overview, the logs, the activity report (outline), the reports of the report builder (badges, custom reports…) and the users and completion reports of IOMAD. Each row a card, its first value as the title (the name of a participant, the name of a course), then each value with the name of its column; the empty values are not shown; the tables Moodle reloads in place (filters and pages of the participants) are shown as cards again. Nothing to scroll sideways any more. On larger screens, nothing changes. No setting.
+- On phones, the bar of the types of report no longer goes beyond the page.
+
 ## 0.42.0 (beta)
 
 - Simplified view of the learner, a new setting (Navigation tab), for the site and for each IOMAD company, off by default. For whoever manages no activities (in a course: there; elsewhere: in no course): the navigation of a course reduced to « Course », « Grades » and « Badges », the other pages under « More »; in an activity, its other pages under « More »; the user menu without calendar, private files and reports (the items added by the administrator stay); the drawer of the blocks closed when a page opens; the help button discreet until pointed at. Nothing is removed: every page keeps its address and stays reachable with the keyboard. The help of the setting warns the teachers that their learners no longer see everything.
