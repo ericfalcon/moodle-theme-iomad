@@ -1,5 +1,9 @@
 # Changes
 
+## 0.52.1 (RC)
+
+- Edit mode: the banner no longer says that every change is saved as you go. Moves, hiding and renaming are saved at once by Moodle; adding an activity and its settings are saved with their form.
+
 ## 0.52.0 (RC) — long forms, lists of links
 
 The theme moves from beta to release candidate (MATURITY_RC).
