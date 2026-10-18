@@ -1,5 +1,11 @@
 # Changes
 
+## 0.52.2 (RC) — several deadlines at once
+
+- Dashboard of a learner, activity to continue: with no activity due in the next two days, an activity overdue now comes before the one started (the most recently overdue, the likeliest still to be accepted). The same on the banner and the page of the course.
+- Dashboard, « In progress »: the courses with an activity overdue come first, then those due soon, so that a course with a deadline is never left out of the list by the others.
+- Dashboard: the lists that leave items out say how many (« 2 more overdue », « 3 more this week » with a link to the calendar, « 2 more courses in progress » with a link to My courses), rather than looking complete.
+
 ## 0.52.1 (RC)
 
 - Edit mode: the banner no longer says that every change is saved as you go. Moves, hiding and renaming are saved at once by Moodle; adding an activity and its settings are saved with their form.
