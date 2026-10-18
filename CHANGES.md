@@ -3,6 +3,7 @@
 ## 0.52.1 (RC)
 
 - Edit mode: the banner no longer says that every change is saved as you go. Moves, hiding and renaming are saved at once by Moodle; adding an activity and its settings are saved with their form.
+- Vocabulary in French: a participle after « peut être », « doivent être »… agrees with the new word too (« Des formations peuvent être ouvertes », not « ouverts »). The vocabulary is applied again on upgrade.
 
 ## 0.52.0 (RC) — long forms, lists of links
 
