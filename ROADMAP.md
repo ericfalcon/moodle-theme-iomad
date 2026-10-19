@@ -206,6 +206,9 @@ Le détail de chaque version est dans `CHANGES.md`.
 - [x] **0.48 — Sélecteur de fichiers** : fenêtre, arborescence et boutons modernisés.
 - [x] **0.52 — Formulaires longs** (paramètres du cours, des activités et des sections, formulaires du tableau de bord IOMAD) : les boutons d'enregistrement restent en bas de l'écran ; sur grand écran, un sommaire des sections à côté du formulaire ouvre et affiche chacune, les sections en erreur signalées. Les champs, leur ordre et l'enregistrement restent ceux de Moodle. Les sections deviennent des cartes, et les listes de liens (administration du site et du cours, catégories, rapports du cours, tableau de bord IOMAD) prennent partout la présentation des préférences. Le thème passe en maturité RC (version candidate).
 
+- [ ] **0.56 — Ajouter un bloc** : la fenêtre « Ajouter un bloc » avec une recherche en haut, une icône par bloc et un bouton « Ajouter » sur chaque ligne, présentée comme les listes des préférences (Moodle en fait une longue liste de liens sans recherche) ; en mode édition, un emplacement « Ajouter un bloc » en pointillés dans le tiroir des blocs, avec une phrase d'aide (« Chronologie, calendrier, badges… »), comme les boutons d'ajout du mode édition du cours. Sans nouveau réglage. Idée reprise du thème Retani Studio, vu sur r/moodle.
+- [ ] **0.57 — Résumé du cours sous son titre** : « 5 sections · 26 activités » dans la bannière du cours, pour le formateur, à côté de ses chiffres (participants, actifs, à corriger). Sans nouveau réglage.
+
 ### 5. S'informer et prendre en main
 
 - [-] **0.49 — Fiche formation et « Comment va se dérouler ma formation ? »** (indicateurs Qualiopi 1 et 9). Déplacée : elle fera partie d'un plugin Qualiopi séparé (voir « Plugins complémentaires › Pilotage pédagogique et Qualiopi »).
