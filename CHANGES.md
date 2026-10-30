@@ -1,5 +1,11 @@
 # Changes
 
+## 0.53.0 (RC) — adding a block
+
+- Edit mode: the place to add a block (dashboard, block drawer of the course and of the other pages) becomes a dashed card in the colour of the brand, with « Add a block » and a sentence of what can be added (« Timeline, calendar, badges and more »); the whole card can be clicked.
+- The window « Add a block »: a search at the top, which stays in view while the list scrolls and keeps the blocks whose name holds the words typed (without minding the accents nor the capitals); each block as the row of a menu, as on the preferences, with its icon and « Add ». The links that add the blocks, and the form of those that ask for settings first, stay Moodle's. In light and dark mode, on Moodle 4.5 to 5.3, IOMAD blocks included.
+- Roadmap: 0.56 (adding a block) published in 0.53.0.
+
 ## 0.52.2 (RC) — several deadlines at once
 
 - Dashboard of a learner, activity to continue: with no activity due in the next two days, an activity overdue now comes before the one started (the most recently overdue, the likeliest still to be accepted). The same on the banner and the page of the course.
