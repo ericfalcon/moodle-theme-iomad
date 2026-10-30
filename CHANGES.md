@@ -1,7 +1,8 @@
 # Changes
 
-## 0.56.1 (RC) — logo of the certificate template
+## 0.56.1 (RC) — text on the brand colour at 4.5:1, logo of the certificate template
 
+- Contrast: the text on the brand colour (buttons, header, badges, application) reads at 4.5:1 at least, as normal text (WCAG 1.4.3), on the colour and on its hover, in light and dark mode, whatever the brand colour. Before, white or the dark ink only had to reach 3:1: on some mid tones (as #2D78E1 or #E13C2D) the text was at 4.3:1, and on the hover of many colours below 4.5:1. When neither reaches 4.5:1, the brand colour of the fills is moved as little as needed (on 258 of 5832 colours measured in light mode, by 31 of 255 at most on a channel); the hover goes the other way when it would lose contrast. The tests sweep the colours and fail below 4.5:1 (reported by an external audit of the 0.56).
 - Certificate template: the logo of the site fits a box of 60 × 24 mm above the title, whatever its shape; a square logo no longer covers the title. Checked on the PDF of a certificate issued to a learner.
 - The page of the certificate template no longer shows a notice of debugging with Moodle 4.5 and later (button), and its button no longer sits beside the preview.
 - From 1200 pixels, at the end of the page, the links of the footer stop above the help button « ? », which covered one of them (WCAG 2.4.11).
