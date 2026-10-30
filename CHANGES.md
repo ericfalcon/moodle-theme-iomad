@@ -1,5 +1,18 @@
 # Changes
 
+## 0.55.0 (RC) — accessibility statement step by step, shorter lines, nothing over the content
+
+- Accessibility statement, step by step (roadmap 0.54): a guided form in five steps (who publishes it, the audit, the compliance status, the contents not accessible, the contact), with what the RGAA asks for at each step. It fills the same settings as the Accessibility tab. The status step recalls the rate of the audit and the rule of the RGAA; the theme does not compute the status. Previous step and « Save and continue » keep what was typed; the steps are links to come back to any of them.
+- The statement: a button « Print the statement » (also to save it as PDF), and for the administrators a button « Fill in the statement ».
+- Display preferences (button « Aa »): a new switch « Shorter lines », saved in the profile like the others: the long texts of the courses (pages, books, lessons, descriptions and instructions of the activities, summaries of the sections, posts of the forums) at 70 characters per line at most. Measured on a page of text: at most 65 characters per line at a zoom of 100 %, 200 % and 400 %, with the text at 100 % or 130 %, and never a scroll across. The administrator can set it by default for all, as the other preferences (Accessibility tab). The accessibility statement lists it among the measures of the theme.
+- Nothing fixed over the content (WCAG 1.4.10, 2.4.11 and 2.4.12), on phones, tablets and with a zoom of 200 %:
+  - below 1200 pixels, the help button « ? » no longer floats over the text: its contents (help of the page, support, login, data retention) show at the end of the page, as Moodle does on the smallest screens;
+  - below 992 pixels, the buttons of the drawers (index of the course, blocks) go at the top of the content, in its flow, instead of at the edges of the screen over the text;
+  - an element reached with the keyboard is never hidden, even in part, under the bars fixed at the top and at the bottom of the screen (header, navigation of the phones, « Continue » of the course page, buttons to save of the long forms), the text editor included: the page scrolls it into the clear (script theme_epure/focus_clear);
+  - from 1200 pixels, on a long form, the help button goes above the bar of the buttons to save.
+  Checked with the keyboard on an activity, a course, the dashboard and the settings of a course, at 390, 720, 1000 and 1440 pixels.
+- No new setting of the site besides the default of this preference.
+
 ## 0.54.0 (RC) — My summary
 
 - My summary (roadmap 0.53): a page each learner prints or saves as PDF, from the « Completed » part of their dashboard: the courses they take with their progress, the date of completion, their grade (when the course shows the grades to the learners, and the grade is not hidden from them) and the activities completed with their date, then their certificates (Certificate, Custom certificate, IOMAD). Their own data only. On paper, the header in the colours of the brand and no button; a note says that the summary shows what the platform recorded, and does not prove on its own attendance nor the achievement of the objectives.
