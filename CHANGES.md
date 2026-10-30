@@ -1,10 +1,11 @@
 # Changes
 
-## 0.55.0 (RC) — accessibility statement step by step
+## 0.55.0 (RC) — accessibility statement step by step, shorter lines
 
 - Accessibility statement, step by step (roadmap 0.54): a guided form in five steps (who publishes it, the audit, the compliance status, the contents not accessible, the contact), with what the RGAA asks for at each step. It fills the same settings as the Accessibility tab. The status step recalls the rate of the audit and the rule of the RGAA; the theme does not compute the status. Previous step and « Save and continue » keep what was typed; the steps are links to come back to any of them.
 - The statement: a button « Print the statement » (also to save it as PDF), and for the administrators a button « Fill in the statement ».
-- No new setting.
+- Display preferences (button « Aa »): a new switch « Shorter lines », saved in the profile like the others: the long texts of the courses (pages, books, lessons, descriptions and instructions of the activities, summaries of the sections, posts of the forums) at 70 characters per line at most. Measured on a page of text: at most 65 characters per line at a zoom of 100 %, 200 % and 400 %, with the text at 100 % or 130 %, and never a scroll across. The administrator can set it by default for all, as the other preferences (Accessibility tab). The accessibility statement lists it among the measures of the theme.
+- No new setting of the site besides the default of this preference.
 
 ## 0.54.0 (RC) — My summary
 
