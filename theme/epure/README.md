@@ -220,6 +220,7 @@ On installation and upgrade pages (Moodle upgrade, new settings, plugins, instal
 - **Administration in cards**: the home of the site administration opens with « Common tasks » in cards (Users, Courses, Appearance, Plugins, Reports, Server and, with IOMAD, IOMAD); every tab of the administration shows its parts as cards. Nothing is removed: all the tabs and their links stay.
 - **Getting started by role**: three short guided tours, each opening with a welcome message: the learner on the dashboard, the teacher on the course page, the manager on the dashboard. They are user tours of Moodle, created once with the theme: the administrator can edit, disable or delete them (Site administration › Appearance › User tours). They show only with Épure, and to their audience through the filter « Épure audience » (learner, teacher, manager).
 - **Course edit mode**: a bar « Edit mode on » with a button « Finish editing »; the buttons to add content and sections easy to see (the « + » between the activities always shown on touch screens); the menus of the sections and activities easier to read, « Delete » apart and in red; « Bulk edit » as a button. Moodle's course editor works as before.
+- **Adding a block**: in edit mode, a dashed card « Add a block » with a sentence of what can be added (timeline, calendar, badges…); the window lists the blocks with their icon and « Add », and a search keeps those whose name holds the words typed. The links that add the blocks stay Moodle's.
 - **File picker**: the window with rounded corners, the repositories as a side menu (chips on phones), quiet toolbar buttons, the files as tiles, the details and the tree readable in dark mode, the drop area and the « Choose file » button in the style of the theme. Moodle's behaviour is unchanged.
 - **Badges**: the badges of the user as cards; the page of a badge with its image on a tint of the brand.
 - **Reports**: the row under the pointer highlighted in the grader report, the completion report and the IOMAD reports.
@@ -268,7 +269,7 @@ The overview can be turned off in the theme's Courses tab ("Learner overview on 
 At the top of each course, a **banner** shows the course image (or a generated pattern), its category and its title, with the breadcrumb and Moodle's usual actions. Then, depending on the role:
 
 - **learner**: their progress, the next activity to do, the next deadline, and a **Continue** button that leads there;
-- **teacher**: participants, learners active this week, assignments to grade, and shortcuts (participants, grades, settings);
+- **teacher**: what the course holds under its title ("5 sections · 26 activities"), participants, learners active this week, assignments to grade, and shortcuts (participants, grades, settings);
 - **visitor** (guest, non-enrolled user): the image, category and title only.
 
 For learners, the title of each section shows how many of its activities they have completed ("2/5", with a tick once the section is complete). The banner can be turned off in the theme's Courses tab ("Course banner"); with IOMAD, each company can make a different choice in its profile. The progress of the sections stays without the banner, and can be turned off on its own ("Progress of the sections"). The progress bars and the completed sections take the accent colour, when one is set (Identity tab).
