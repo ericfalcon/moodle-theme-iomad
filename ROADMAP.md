@@ -222,15 +222,29 @@ Le détail de chaque version est dans `CHANGES.md`.
 - [x] **0.54 — Déclaration d'accessibilité guidée** (publiée en 0.55.0) : un formulaire pas à pas et une version imprimable. Aucun état de conformité calculé automatiquement : c'est l'audit qui le donne.
 - [x] **0.55 — Modèle d'attestation aux couleurs de la marque pour `tool_certificate`** (publiée en 0.56.0) ; l'option « cadre d'attestation à la couleur de la marque » des entreprises IOMAD est conservée.
 
-### En continu (versions de correctif)
+### Consolidation avant la 1.0
 
-- [ ] **Moins de surcharges** : déplacer ce qui peut l'être de `core_renderer` vers les hooks de Moodle (haut de page, pied de page, reste de l'en-tête), chacun limité au thème Épure et couvert par un test ; réduire les `!important` du SCSS.
+Les chantiers du thème prévus ci-dessus (0.29 à 0.57) sont livrés. Avant la 1.0, plus de nouvelle fonctionnalité : on consolide, on apporte les preuves d'accessibilité de la version courante, puis on publie. Les cases ci-dessous sont des conditions de qualité et de publication, pas des fonctionnalités manquantes.
+
+#### Preuves d'accessibilité
+
+- [x] **Texte sur la couleur de marque à 4,5:1** (0.56.1), sur la couleur et au survol, en clair et en sombre, quelle que soit la couleur de marque ; les tests balaient les couleurs et échouent sous 4,5:1. Relevé par un audit externe de la 0.56.
+- [ ] **Pré-audit refait sur la version courante** : le rapport publié porte sur la 0.21 et ne vaut pas pour la 0.56. Même méthode (axe-core WCAG 2.2 A et AA, contrôles clavier, 320 px), sur Moodle 4.5, Moodle 5.3 et IOMAD, avec les pages ajoutées depuis (formulaires longs, Ma synthèse, déclaration pas à pas, ajout de bloc, modèle d'attestation).
+- [ ] **Matrice de non-régression** des fonctions d'accessibilité entre elles : clair et sombre ; couleurs de marque claires, sombres et intermédiaires ; zoom à 200 % et 320 px ; tout au clavier, sans piège ; aucun élément focalisé caché sous une barre fixe ; « réduire les animations » ; panneaux, menus et fenêtres (nom, ouverture, fermeture, retour du focus) ; couleurs des entreprises IOMAD ; tests chronométrés ; préférences d'affichage gardées d'une page à l'autre.
+- [ ] **Raccourci Alt + A** : vérifier qu'il n'entre pas en conflit avec les navigateurs, les lecteurs d'écran et la saisie dans les champs et l'éditeur ; le documenter.
+- [ ] **Préférences d'affichage changées très vite** (taille, contraste, mode) puis page rechargée : c'est le dernier choix qui est enregistré.
+- [ ] **Vérificateur de contenu** des formateurs, sans fausses alertes : images décoratives, tableaux à plusieurs lignes d'en-tête, liens courts mais clairs dans leur contexte, contenus en plusieurs langues, plusieurs éditeurs dans un formulaire, enregistrements successifs.
+- [ ] **Attestation** : PDF vérifié avec des logos de formes différentes et sans logo (fait en 0.56.1) ; reste un nom de cours très long et l'activité Attestation de formation (`mod_coursecertificate`) installée.
+
+#### Code
+
+- [ ] **Moins de surcharges** : déplacer ce qui peut l'être de `core_renderer` vers les hooks de Moodle (haut de page, pied de page, reste de l'en-tête), chacun limité au thème Épure et couvert par un test ; réduire les `!important` du SCSS. Par petites étapes, sur Moodle 4.5 et 5.x ; on garde les surcharges vraiment nécessaires.
 - [ ] **Micro-interactions harmonisées** : mêmes durées et mêmes transitions partout, coupées par « réduire les animations ».
 - [ ] Corrections remontées par les utilisateurs, en priorité celles qui gênent l'apprentissage.
 
-### V1.0 — Publication
+#### Publication (V1.0)
 
-- [ ] Audit d'accessibilité manuel (RGAA) par un auditeur.
+- [ ] Audit d'accessibilité manuel (RGAA) par un auditeur, sur la version qui sera publiée.
 - [ ] Transfert du français dans AMOS, puis publication sur moodle.org/plugins.
 
 ### Après la V1.0
@@ -239,7 +253,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 ## Plugins complémentaires (possibles)
 
-Il n'y aura pas d'offre payante (« Épure Pro » est abandonné). Ce qui dépasse le thème (rapports, pilotage pédagogique, Qualiopi, calendrier semaine) pourra devenir des **plugins séparés**, gratuits et sous GPL, créés au besoin. Le thème les détecte et affiche leurs liens quand ils sont installés ; ils fonctionnent aussi avec un autre thème. Avant chaque fonction, on vérifie ce que Moodle, IOMAD et Kopere Dashboard font déjà, pour ne pas le refaire.
+Il n'y aura pas d'offre payante (« Épure Pro » est abandonné). Ce qui dépasse le thème (rapports, pilotage pédagogique, Qualiopi, calendrier semaine) pourra devenir des **plugins séparés**, gratuits et sous GPL, créés au besoin. Le thème les détecte et affiche leurs liens quand ils sont installés ; ils fonctionnent aussi avec un autre thème. Avant chaque fonction, on vérifie ce que Moodle, IOMAD et Kopere Dashboard font déjà, pour ne pas le refaire. Ces plugins ne conditionnent pas la 1.0 du thème.
 
 Ordre : le même principe que pour le thème, des petits plugins et la pédagogie d'abord. Le premier est le **pilotage pédagogique du formateur** (« À surveiller », suivi du distanciel) ; viennent ensuite les rapports, le calendrier semaine et les vues IOMAD.
 
