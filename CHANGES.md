@@ -1,5 +1,12 @@
 # Changes
 
+## 0.56.0 (RC) — certificate template in the colours of the brand
+
+- Certificate template (roadmap 0.55): for the plugin Certificate (tool_certificate), a page of the administration (Appearance › Themes › « Certificate template in the colours of the brand ») creates, on a click, a template: a landscape A4 page with the frame in the colour of the brand (the one drawn for the IOMAD companies), the logo of the site, the title in the colour of the brand, the name of the learner, the name of the course, the date of issue, the QR code to check it and the name of the site. The template is then the administrator's, like any other: edited, duplicated, used in the courses with the Course certificate activity, kept if the site leaves the theme. Each click makes a new one. Without the plugin, the page says how to install it.
+- The option « frame of the certificates in the colour of the brand » of the IOMAD companies is kept.
+- CI: the plugin Certificate is installed on Moodle 4.5 and 5.3, to test the template.
+- No new setting.
+
 ## 0.55.0 (RC) — accessibility statement step by step, shorter lines, nothing over the content
 
 - Accessibility statement, step by step (roadmap 0.54): a guided form in five steps (who publishes it, the audit, the compliance status, the contents not accessible, the contact), with what the RGAA asks for at each step. It fills the same settings as the Accessibility tab. The status step recalls the rate of the audit and the rule of the RGAA; the theme does not compute the status. Previous step and « Save and continue » keep what was typed; the steps are links to come back to any of them.

@@ -220,7 +220,7 @@ Le détail de chaque version est dans `CHANGES.md`.
 
 - [x] **0.51 — Administration en cartes** : sur l'accueil, des cartes de tâches courantes (Utilisateurs, Cours, Apparence, Plugins, Rapports, Serveur, IOMAD) ; dans chaque onglet de l'administration, les rubriques en cartes. Rien n'est retiré de l'arborescence.
 - [x] **0.54 — Déclaration d'accessibilité guidée** (publiée en 0.55.0) : un formulaire pas à pas et une version imprimable. Aucun état de conformité calculé automatiquement : c'est l'audit qui le donne.
-- [ ] **0.55 — Modèle d'attestation aux couleurs de la marque pour `tool_certificate`** ; l'option « cadre d'attestation à la couleur de la marque » des entreprises IOMAD est conservée.
+- [x] **0.55 — Modèle d'attestation aux couleurs de la marque pour `tool_certificate`** (publiée en 0.56.0) ; l'option « cadre d'attestation à la couleur de la marque » des entreprises IOMAD est conservée.
 
 ### En continu (versions de correctif)
 
