@@ -36,11 +36,11 @@ jobs:
         plugin: [theme/epure]
         include-moodle:
           - { branch: MOODLE_405_STABLE, php: '8.1' }
-          - { branch: MOODLE_405_STABLE, php: '8.3' }
+          - { branch: MOODLE_405_STABLE, php: '8.3', certificate: MOODLE_400_STABLE }
           - { branch: MOODLE_500_STABLE, php: '8.3' }
           - { branch: MOODLE_501_STABLE, php: '8.3' }
           - { branch: MOODLE_502_STABLE, php: '8.3' }
-          - { branch: MOODLE_503_STABLE, php: '8.4', pg: '17' }
+          - { branch: MOODLE_503_STABLE, php: '8.4', pg: '17', certificate: MOODLE_500_STABLE }
           - { branch: MOODLE_405_STABLE, php: '8.3', db: mariadb }
           - { branch: MOODLE_503_STABLE, php: '8.4', db: mariadb }
           # IOMAD, whose tables and classes were renamed in 5.1 (theme_epure\iomad knows both).
@@ -121,6 +121,11 @@ jobs:
           git -C iomad-src add -A
           git -C iomad-src -c user.name=CI -c user.email=ci@example.com commit -q -m "CI: directory of theme_iomad" || true
           echo "IOMAD_LOCAL=file://$GITHUB_WORKSPACE/iomad-src" >> "$GITHUB_ENV"
+
+      # The plugin Certificate (tool_certificate), for the template of certificate in the colours of the brand.
+      - name: Add the plugin Certificate
+        if: ${{ matrix.include-moodle.certificate }}
+        run: moodle-plugin-ci add-plugin --branch ${{ matrix.include-moodle.certificate }} moodleworkplace/moodle-tool_certificate
 
       - name: Install Moodle and the plugin
         run: moodle-plugin-ci install --plugin ./repo/${{ matrix.plugin }} --db-host=127.0.0.1
