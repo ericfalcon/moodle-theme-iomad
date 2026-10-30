@@ -1,5 +1,13 @@
 # Changes
 
+## 0.56.1 (RC) — text on the brand colour at 4.5:1, logo of the certificate template
+
+- Contrast: the text on the brand colour (buttons, header, badges, application) reads at 4.5:1 at least, as normal text (WCAG 1.4.3), on the colour and on its hover, in light and dark mode, whatever the brand colour. Before, white or the dark ink only had to reach 3:1: on some mid tones (as #2D78E1 or #E13C2D) the text was at 4.3:1, and on the hover of many colours below 4.5:1. When neither reaches 4.5:1, the brand colour of the fills is moved as little as needed (on 258 of 5832 colours measured in light mode, by 31 of 255 at most on a channel); the hover goes the other way when it would lose contrast. The tests sweep the colours and fail below 4.5:1 (reported by an external audit of the 0.56).
+- Certificate template: the logo of the site fits a box of 60 × 24 mm above the title, whatever its shape; a square logo no longer covers the title. Checked on the PDF of a certificate issued to a learner.
+- The page of the certificate template no longer shows a notice of debugging with Moodle 4.5 and later (button), and its button no longer sits beside the preview.
+- From 1200 pixels, at the end of the page, the links of the footer stop above the help button « ? », which covered one of them (WCAG 2.4.11).
+- Checked with the plugin Certificate installed: the template made from the administration page and the PDF of a certificate issued to a learner. The name of the course comes from the activity Course certificate (mod_coursecertificate), as in the demo template of the plugin.
+
 ## 0.56.0 (RC) — certificate template in the colours of the brand
 
 - Certificate template (roadmap 0.55): for the plugin Certificate (tool_certificate), a page of the administration (Appearance › Themes › « Certificate template in the colours of the brand ») creates, on a click, a template: a landscape A4 page with the frame in the colour of the brand (the one drawn for the IOMAD companies), the logo of the site, the title in the colour of the brand, the name of the learner, the name of the course, the date of issue, the QR code to check it and the name of the site. The template is then the administrator's, like any other: edited, duplicated, used in the courses with the Course certificate activity, kept if the site leaves the theme. Each click makes a new one. Without the plugin, the page says how to install it.
