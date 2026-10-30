@@ -1,5 +1,10 @@
 # Changes
 
+## 0.54.0 (RC) — My summary
+
+- My summary (roadmap 0.53): a page each learner prints or saves as PDF, from the « Completed » part of their dashboard: the courses they take with their progress, the date of completion, their grade (when the course shows the grades to the learners, and the grade is not hidden from them) and the activities completed with their date, then their certificates (Certificate, Custom certificate, IOMAD). Their own data only. On paper, the header in the colours of the brand and no button; a note says that the summary shows what the platform recorded, and does not prove on its own attendance nor the achievement of the objectives.
+- A setting « My summary » (Courses tab), off by default.
+
 ## 0.53.0 (RC) — adding a block, summary of the course
 
 - Edit mode: the place to add a block (dashboard, block drawer of the course and of the other pages) becomes a dashed card in the colour of the brand, with « Add a block » and a sentence of what can be added (« Timeline, calendar, badges and more »); the whole card can be clicked.
