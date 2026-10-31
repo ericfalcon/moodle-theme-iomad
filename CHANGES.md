@@ -1,5 +1,17 @@
 # Changes
 
+## 0.56.2 (RC) — pre-audit of accessibility of the current version, on every version
+
+- Pre-audit (replaces that of the 0.21): the same 40 pages of a visitor, a learner, a teacher and an administrator, each in four displays (light and dark at 1300 px, light at 390 and 320 px), with axe (WCAG 2.2 A and AA) and no scroll across on phones: 160 checks on every job of the CI, Moodle 4.5 to 5.3 with PHP 8.1 to 8.4, PostgreSQL and MariaDB; on IOMAD 4.5, 5.1 and 5.2, those and 24 pages of IOMAD in addition (416 checks). Behat and the plugin Certificate now run on every job. Report in the wiki (Pré-audit d'accessibilité).
+- Dark mode: overdue assignments, passed and failed grades, dates of the activities and days of the calendar, « Collapse all », « Log in » of the visitors, the fields of the login page (Moodle 5.2 and 5.3), the design system of Moodle 5.3 (navigation pills, edit switch), the overview of completion of IOMAD.
+- Course index: the page being read in the fill of the brand with its readable text; hidden and locked activities readable on hover; the tree of the subsections corrected on Moodle 5.0 (script theme_epure/courseindex_tree, as Moodle 5.1).
+- Phones (390 and 320 px): nothing past the edge of the screen: rows, lists of choices, text fields, buttons, fieldsets, the bar of actions of Moodle 5.3, long words, the header at 320 px (the messages stay in the bottom bar), the figures of My summary; the tables of the submissions, of the emoticons and of IOMAD scroll in their own frame; the days of the weekend as boxes with their day.
+- Setting of the emoticons: each of its 155 fields named. Autocomplete fields: the invalid attribute list removed, so their role combobox is allowed. Examples of the help of the settings wrap.
+- Targets of 24 px: boxes of the settings of the administration, category names of the course management, action buttons in the rows of tables (companies of IOMAD), « Download submissions in folders », reset of the tables. Links of the notice boxes underlined.
+- Script theme_epure/aria_repair: aria-hidden="1" becomes "true", aria-controls keeps the elements that exist, the department list of IOMAD gets its name.
+- Aa panel: Alt + A no longer taken while typing in a field (Option + A writes « å » on a Mac); the preferences saved one request at a time, the last choice kept.
+- Roadmap: « Consolidation before the 1.0 ».
+
 ## 0.56.1 (RC) — text on the brand colour at 4.5:1, logo of the certificate template
 
 - Contrast: the text on the brand colour (buttons, header, badges, application) reads at 4.5:1 at least, as normal text (WCAG 1.4.3), on the colour and on its hover, in light and dark mode, whatever the brand colour. Before, white or the dark ink only had to reach 3:1: on some mid tones (as #2D78E1 or #E13C2D) the text was at 4.3:1, and on the hover of many colours below 4.5:1. When neither reaches 4.5:1, the brand colour of the fills is moved as little as needed (on 258 of 5832 colours measured in light mode, by 31 of 255 at most on a channel); the hover goes the other way when it would lose contrast. The tests sweep the colours and fail below 4.5:1 (reported by an external audit of the 0.56).
