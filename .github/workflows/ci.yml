@@ -168,8 +168,9 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      # Behat, with the accessibility checks (axe), on every version of Moodle and IOMAD (once per version: not again
-      # with PHP 8.1 or MariaDB): all the scenarios on IOMAD, all but those of IOMAD on Moodle.
+      # Behat, with the accessibility checks (axe) and the pre-audit (the same pages, each in light, dark and on phones),
+      # on every job: every version of Moodle and IOMAD, every version of PHP, PostgreSQL and MariaDB. All the scenarios
+      # on IOMAD, all but those of IOMAD on Moodle.
       - name: Behat tests
-        if: ${{ !cancelled() && !matrix.include-moodle.db && matrix.include-moodle.php != '8.1' }}
+        if: ${{ !cancelled() }}
         run: moodle-plugin-ci behat --profile chrome --tags '${{ matrix.include-moodle.repo && '@theme_epure' || '@theme_epure&&~@theme_epure_iomad' }}'
