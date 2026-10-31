@@ -1,9 +1,10 @@
 # Changes
 
-## 0.56.3 (RC) — My summary from the menu and the profile, links of the dashboard and of the user menu as lists of links
+## 0.56.3 (RC) — My summary from the menu and the profile, one style for the links that stand on their own
 
 - My summary, once enabled, is reached from the dashboard, the user menu (after the grades) and the reports of the profile of the user. Before, only from the overview of the learner on the dashboard: a user taking no course as a learner (managers of IOMAD, administrators) or with the overview turned off had no link to it.
-- The links of the blocks of the dashboard (« My courses », « Calendar », « My summary », what a list leaves out) and those of the user menu read as the lists of links of the theme: the colour of the text and an arrow on the right; the link to the languages has the same arrow.
+- The links that stand on their own follow one rule, that of Épure: the colour of the brand and an arrow on the right, in a card when needed. The lists of links (administration, profile, preferences, IOMAD), the links of the blocks of the dashboard (« My courses », « Calendar », « My summary », what a list leaves out), the user menu (the link to the languages has the same arrow), the activities of the course page, the previous and next activities and the courses of My summary. Links inside text stay underlined.
+- The icons of the previous and next activities take the colour of the activities, the brand or Moodle's (the H5P logo kept its own blue).
 - Behat pre-audit: axe is loaded and waited for before each check (on the first page after the caches are purged, the web server of the tests served it late).
 
 ## 0.56.2 (RC) — pre-audit of accessibility of the current version, on every version
