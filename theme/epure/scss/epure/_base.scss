@@ -76,7 +76,8 @@ p a:not(.btn),
 dd a:not(.btn),
 .footer-section a:not(.btn),
 .epure-a11y-statement a:not(.btn),
-.text_to_html a:not(.btn) {
+.text_to_html a:not(.btn),
+.noticebox a:not(.btn) {
     text-decoration: underline;
     text-underline-offset: .15em;
 }
@@ -91,11 +92,34 @@ table th a[data-bs-toggle="popover"],
 .generaltable th a[data-sortable],
 .action-menu-trigger .dropdown-toggle,
 #page-admin-search .list-unstyled > li > a,
-#page-admin-category .list-unstyled > li > a {
+#page-admin-category .list-unstyled > li > a,
+#course-category-listings .categoryname,
+.resettable > a,
+table td a[role="button"] {
     display: inline-flex;
     align-items: center;
     min-width: 24px;
     min-height: 24px;
+}
+
+// The boxes of the settings of the administration (course contacts, for one): 20 px, apart from each other.
+#adminsettings input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: .125rem .25rem .125rem 0;
+    vertical-align: middle;
+}
+
+// The box « Download submissions in folders » of the assignments, clear of its label.
+.path-mod-assign .form-check:has(> .form-check-input[id^="downloadasfolders"]) {
+    padding-left: 2.25rem;
+
+    .form-check-input {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-top: 0;
+        margin-left: -2.25rem;
+    }
 }
 
 // The help icons of the headers of the tables touch the links around them.
@@ -322,4 +346,13 @@ a.badge-primary.focus {
 .progress-bar {
     color: var(--epure-on-accent);
     background-color: var(--epure-accent);
+}
+
+// Today in the calendars: the fill of the brand and the colour of the text on it, those of the IOMAD company too.
+.calendarmonth .today .day-number-circle {
+    background-color: var(--epure-brand);
+
+    .day-number {
+        color: var(--epure-on-brand);
+    }
 }

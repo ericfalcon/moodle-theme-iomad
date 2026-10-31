@@ -1,16 +1,16 @@
 Voir aussi le [[rapport de pré-audit|Pré-audit-d’accessibilité]].
 
-Le thème vise les WCAG 2.2 niveau AA, le RGAA 4.1.2 et l'EN 301 549 : contrastes calculés, focus clavier toujours visible, lien d'évitement, cibles d'au moins 24 × 24 px, liens soulignés dans le texte, respect du réglage « réduire les animations ».
+Le thème vise les WCAG 2.2 niveau AA, le RGAA 4.1.2 et l'EN 301 549 : contrastes calculés (le texte sur la couleur de marque à 4,5:1 au moins, quelle qu'elle soit, au survol compris), focus clavier toujours visible, lien d'évitement, cibles d'au moins 24 × 24 px, liens soulignés dans le texte, respect du réglage « réduire les animations ».
 
-**Préférences d'affichage.** Le bouton **Aa** de l'en-tête (raccourci Alt + A) ouvre un panneau où chaque utilisateur connecté choisit :
+**Préférences d'affichage.** Le bouton **Aa** de l'en-tête (raccourci Alt + A, sauf pendant la saisie dans un champ : sur Mac, Option + A écrit « å ») ouvre un panneau où chaque utilisateur connecté choisit :
 
 - la taille du texte : petite, normale, grande ou très grande (90, 100, 115 ou 130 %) ;
 - une police de lecture : celle du site, Atkinson Hyperlegible ou OpenDyslexic ;
-- un texte plus espacé (valeurs du critère WCAG 1.4.12), un contraste renforcé, des liens soulignés, des animations réduites.
+- un texte plus espacé (valeurs du critère WCAG 1.4.12), des lignes courtes (70 caractères au plus, WCAG 1.4.8), un contraste renforcé, des liens soulignés, des animations réduites.
 
-Le changement est immédiat, puis enregistré dans les préférences de son profil Moodle : il vaut sur toutes les pages et tous ses appareils, dès le premier affichage. Ces préférences sont déclarées à l'API de confidentialité et exportées avec les données de l'utilisateur.
+Le changement est immédiat, puis enregistré dans les préférences de son profil Moodle, une requête à la fois, pour que le dernier choix soit celui gardé même quand plusieurs sont changés très vite : il vaut sur toutes les pages et tous ses appareils, dès le premier affichage. Ces préférences sont déclarées à l'API de confidentialité et exportées avec les données de l'utilisateur.
 
-**Affichage par défaut.** Les visiteurs non connectés, les invités et les utilisateurs qui n'ont pas choisi leur affichage ont celui du site. Il se règle dans l'onglet **Accessibilité** des réglages du thème, partie Préférences d'affichage : taille du texte, police de lecture, texte plus espacé, contraste renforcé, liens soulignés, animations réduites. Une préférence choisie par l'utilisateur l'emporte sur celle du site.
+**Affichage par défaut.** Les visiteurs non connectés, les invités et les utilisateurs qui n'ont pas choisi leur affichage ont celui du site. Il se règle dans l'onglet **Accessibilité** des réglages du thème, partie Préférences d'affichage : taille du texte, police de lecture, texte plus espacé, lignes courtes, contraste renforcé, liens soulignés, animations réduites. Une préférence choisie par l'utilisateur l'emporte sur celle du site.
 
 **Bouton « Aa ».** Il se désactive dans le même onglet : les utilisateurs ne peuvent plus changer leur affichage, et les préférences déjà choisies continuent de s'appliquer.
 

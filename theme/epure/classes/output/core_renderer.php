@@ -152,7 +152,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return string HTML.
      */
     public function full_header() {
-        global $USER;
+        global $CFG, $USER;
         $header = parent::full_header();
         if (\theme_epure\iomad_figures::site_applies($this->page)) {
             $header .= \html_writer::div($this->render_from_template('theme_epure/figures', [
@@ -170,6 +170,14 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         // Focus never hidden under the bars fixed at the top and at the bottom of the screen.
         $this->page->requires->js_call_amd('theme_epure/focus_clear', 'init');
+        // ARIA attributes that Moodle and IOMAD write wrongly; the fields of IOMAD with an empty label.
+        $names = \theme_epure\iomad::installed()
+            ? ['deptid' => get_string('department', 'block_iomad_company_admin')] : [];
+        $this->page->requires->js_call_amd('theme_epure/aria_repair', 'init', [$names]);
+        // Moodle 5.0 nests the tree items of the subsections in the course index; Moodle 5.1 corrected it.
+        if ($CFG->branch == 500) {
+            $this->page->requires->js_call_amd('theme_epure/courseindex_tree', 'init');
+        }
         // Tables read as cards on phones: participants, grades overview, logs, outline, the reports of the report builder.
         if (isloggedin()) {
             $this->page->requires->js_call_amd('theme_epure/table_cards', 'init', [self::CARD_TABLES]);

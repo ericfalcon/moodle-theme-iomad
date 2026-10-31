@@ -8,6 +8,7 @@ Feature: Accessibility of the Épure theme
     Given the following "users" exist:
       | username | firstname | lastname | email                |
       | learner1 | Lea       | Learner  | learner1@example.com |
+    And the users belong to an IOMAD company when IOMAD is installed
     And the following config values are set as admin:
       | theme | epure |
 
@@ -143,8 +144,7 @@ Feature: Accessibility of the Épure theme
 
   Scenario: The window to add a block searches the blocks and meets accessibility standards
     Given I log in as "admin"
-    And I am on homepage
-    And I follow "Dashboard"
+    And I visit "/my/"
     And I turn editing mode on
     Then I should see "Timeline, calendar, badges and more" in the "[data-region='add-block-button']" "css_element"
     And I click on "a[data-key='addblock'][data-blockregion='content']" "css_element"
@@ -190,3 +190,8 @@ Feature: Accessibility of the Épure theme
     And I should see "The statement is saved and published."
     And I should see "Clinique des Tilleuls is committed"
     And "Print the statement" "button" should exist
+
+  Scenario: The fields of the setting of the emoticons have a name
+    Given I log in as "admin"
+    When I visit "/admin/settings.php?section=htmlsettings"
+    Then the page should meet accessibility standards

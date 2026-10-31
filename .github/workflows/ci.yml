@@ -37,16 +37,16 @@ jobs:
         include-moodle:
           - { branch: MOODLE_405_STABLE, php: '8.1' }
           - { branch: MOODLE_405_STABLE, php: '8.3', certificate: MOODLE_400_STABLE }
-          - { branch: MOODLE_500_STABLE, php: '8.3' }
-          - { branch: MOODLE_501_STABLE, php: '8.3' }
-          - { branch: MOODLE_502_STABLE, php: '8.3' }
+          - { branch: MOODLE_500_STABLE, php: '8.3', certificate: MOODLE_500_STABLE }
+          - { branch: MOODLE_501_STABLE, php: '8.3', certificate: MOODLE_500_STABLE }
+          - { branch: MOODLE_502_STABLE, php: '8.3', certificate: MOODLE_500_STABLE }
           - { branch: MOODLE_503_STABLE, php: '8.4', pg: '17', certificate: MOODLE_500_STABLE }
           - { branch: MOODLE_405_STABLE, php: '8.3', db: mariadb }
           - { branch: MOODLE_503_STABLE, php: '8.4', db: mariadb }
           # IOMAD, whose tables and classes were renamed in 5.1 (theme_epure\iomad knows both).
-          - { branch: IOMAD_405_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git' }
-          - { branch: IOMAD_501_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git' }
-          - { branch: IOMAD_502_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git' }
+          - { branch: IOMAD_405_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git', certificate: MOODLE_400_STABLE }
+          - { branch: IOMAD_501_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git', certificate: MOODLE_500_STABLE }
+          - { branch: IOMAD_502_STABLE, php: '8.3', repo: 'https://github.com/iomad/iomad.git', certificate: MOODLE_500_STABLE }
 
     name: ${{ matrix.plugin }} — ${{ matrix.include-moodle.branch }} — PHP ${{ matrix.include-moodle.php }} — ${{ matrix.include-moodle.db || 'pgsql' }}
 
@@ -168,7 +168,9 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      # Behat, with the accessibility checks (axe): the IOMAD scenarios on IOMAD, the others on Moodle.
+      # Behat, with the accessibility checks (axe) and the pre-audit (the same pages, each in light, dark and on phones),
+      # on every job: every version of Moodle and IOMAD, every version of PHP, PostgreSQL and MariaDB. All the scenarios
+      # on IOMAD, all but those of IOMAD on Moodle.
       - name: Behat tests
-        if: ${{ !cancelled() && !matrix.include-moodle.db && (matrix.include-moodle.repo || (matrix.include-moodle.branch == 'MOODLE_405_STABLE' && matrix.include-moodle.php == '8.3') || matrix.include-moodle.branch == 'MOODLE_503_STABLE') }}
-        run: moodle-plugin-ci behat --profile chrome --tags '${{ matrix.include-moodle.repo && '@theme_epure_iomad' || '@theme_epure&&~@theme_epure_iomad' }}'
+        if: ${{ !cancelled() }}
+        run: moodle-plugin-ci behat --profile chrome --tags '${{ matrix.include-moodle.repo && '@theme_epure' || '@theme_epure&&~@theme_epure_iomad' }}'
