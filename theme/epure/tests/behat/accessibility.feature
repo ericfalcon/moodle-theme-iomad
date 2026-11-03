@@ -200,3 +200,49 @@ Feature: Accessibility of the Épure theme
     Given I log in as "admin"
     When I visit "/admin/settings.php?section=htmlsettings"
     Then the page should meet accessibility standards
+
+  Scenario: Before saving, the content checker warns of a link alone that says nothing, never of what is right
+    Given the following "courses" exist:
+      | fullname | shortname |
+      | Hygiene  | HYG       |
+    And the following "activities" exist:
+      | activity | course | name  | idnumber |
+      | page     | HYG    | Rules | rules1   |
+    When I am on the "Rules" "page activity editing" page logged in as admin
+    # A short link clear in its sentence, a decorative image, a table of layout and headers on two rows: all right.
+    And I set the field "Page content" to "<p>The programme is <a href=\"https://example.com\">here</a>.</p><p><img src=\"https://example.com/a.png\" alt=\"\"></p><table role=\"presentation\"><tr><td>Layout</td></tr></table><table><thead><tr><th colspan=\"2\">Week</th></tr><tr><th>Day</th><th>Topic</th></tr></thead><tbody><tr><td>Monday</td><td>Gloves</td></tr></tbody></table>"
+    And I press "Save and display"
+    Then "Before saving: accessibility" "dialogue" should not exist
+    And I should see "Monday"
+    And I am on the "Rules" "page activity editing" page
+    And I set the field "Page content" to "<p><a href=\"https://example.com\">here</a></p>"
+    And I press "Save and display"
+    And "Before saving: accessibility" "dialogue" should exist
+    And I should see "Links whose text does not say where they go" in the "Before saving: accessibility" "dialogue"
+    And I click on "Save anyway" "button" in the "Before saving: accessibility" "dialogue"
+    And I should see "here" in the "region-main" "region"
+
+  Scenario: A certificate of the activity Course certificate, on the template of Épure, meets accessibility standards
+    Given the certificate template of Épure exists
+    And the following "users" exist:
+      | username | firstname | lastname | email                |
+      | teacher1 | Paul      | Durand   | teacher1@example.com |
+    And the following "courses" exist:
+      | fullname                                                                                                   | shortname |
+      | Prevention of the risks linked to physical activity in health and social care establishments, initial session | PRAP      |
+    And the following "course enrolments" exist:
+      | user     | course | role           |
+      | learner1 | PRAP   | student        |
+      | teacher1 | PRAP   | editingteacher |
+    And the following "activities" exist:
+      | activity          | course | name        | idnumber | template                              |
+      | coursecertificate | PRAP   | Certificate | cert1    | Certificate — Acceptance test site |
+    When I log in as "learner1"
+    Then the following pages should meet accessibility standards in the four displays:
+      | path                                            |
+      | /mod/coursecertificate/view.php?id={cm cert1}   |
+    And I log out
+    And I log in as "teacher1"
+    And the following pages should meet accessibility standards in the four displays:
+      | path                                            | except     |
+      | /mod/coursecertificate/view.php?id={cm cert1}   | wide table |

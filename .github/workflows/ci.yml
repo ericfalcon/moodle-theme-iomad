@@ -127,6 +127,13 @@ jobs:
         if: ${{ matrix.include-moodle.certificate }}
         run: moodle-plugin-ci add-plugin --branch ${{ matrix.include-moodle.certificate }} moodleworkplace/moodle-tool_certificate
 
+      # The activity Course certificate (mod_coursecertificate), from the fork of the maintainer of Épure: the
+      # certificates issued in the courses, with the template of Épure. On the versions it supports (4.5 to 5.2): on
+      # Moodle 5.3, its page for a learner stops on an exception of the plugin, and the scenario is skipped.
+      - name: Add the activity Course certificate
+        if: ${{ matrix.include-moodle.certificate && matrix.include-moodle.branch != 'MOODLE_503_STABLE' }}
+        run: moodle-plugin-ci add-plugin --branch ${{ matrix.include-moodle.certificate }} ericfalcon/moodle-mod_coursecertificate
+
       - name: Install Moodle and the plugin
         run: moodle-plugin-ci install --plugin ./repo/${{ matrix.plugin }} --db-host=127.0.0.1
         env:

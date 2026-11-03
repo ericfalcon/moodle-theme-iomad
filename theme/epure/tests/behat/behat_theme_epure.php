@@ -57,6 +57,11 @@ class behat_theme_epure extends behat_base {
         foreach ($data->getHash() as $row) {
             $company = (object) ($row + ['city' => 'Lyon', 'country' => 'FR', 'theme' => 'epure', 'headingcolor' => '',
                 'linkcolor' => '', 'maincolor' => '', 'customcss' => '']);
+            // Its category of courses, as IOMAD makes one for each company: with several companies, IOMAD lists them
+            // by their category and warns of two companies in the same one.
+            $category = \core_course_category::create(['name' => $company->name]);
+            $columns = $DB->get_columns(iomad::table('company'));
+            $company->{isset($columns['coursecategoryid']) ? 'coursecategoryid' : 'category'} = $category->id;
             $company->id = $DB->insert_record(iomad::table('company'), $company);
             $department = ['name' => $company->name, 'shortname' => $company->shortname];
             $department += iomad::renamed() ? ['companyid' => $company->id, 'parentid' => 0]
@@ -194,7 +199,42 @@ class behat_theme_epure extends behat_base {
                     $script = 'return document.scrollingElement.scrollWidth - window.innerWidth;';
                     $across = $this->getSession()->evaluateScript($script);
                     if ($across > 1) {
-                        $failures[] = "{$row['path']} ({$label}): the page scrolls across, by {$across} px";
+                        // The elements past the edge, not clipped by a frame: the deepest ones, to find the cause.
+                        $wide = $this->getSession()->evaluateScript(<<<'JS'
+                            return (() => {
+                                const edge = document.documentElement.clientWidth + 1;
+                                // Inside a frame that clips it, or inside a fixed element (a drawer, a bar), an element
+                                // does not make the page scroll.
+                                const clipped = (element) => {
+                                    for (let node = element; node; node = node.parentElement) {
+                                        const style = getComputedStyle(node);
+                                        if (style.position === 'fixed' || style.visibility === 'hidden') {
+                                            return true;
+                                        }
+                                        if (node !== element && style.overflowX !== 'visible') {
+                                            return node !== document.body && node !== document.documentElement;
+                                        }
+                                    }
+                                    return false;
+                                };
+                                return Array.from(document.querySelectorAll('body *')).filter((element) =>
+                                    element.getBoundingClientRect().right > edge && !clipped(element)
+                                    && !Array.from(element.children).some((child) =>
+                                        child.getBoundingClientRect().right > edge)
+                                ).slice(0, 3).map((element) => {
+                                    // The element and the containers around it, to find where it is.
+                                    const names = [];
+                                    for (let node = element; node && node !== document.body && names.length < 5;
+                                            node = node.parentElement) {
+                                        names.push(node.tagName.toLowerCase() + (node.id ? '#' + node.id : '')
+                                            + (node.className ? '.' + String(node.className).trim().split(/\s+/)
+                                                .slice(0, 2).join('.') : ''));
+                                    }
+                                    return names.join(' < ');
+                                }).join(', ');
+                            })();
+                        JS);
+                        $failures[] = "{$row['path']} ({$label}): the page scrolls across, by {$across} px ({$wide})";
                     }
                 }
             }
@@ -218,6 +258,101 @@ class behat_theme_epure extends behat_base {
                 ? (string) $DB->get_field('course', 'id', ['shortname' => $m[2]], MUST_EXIST)
                 : (string) $DB->get_field('course_modules', 'id', ['idnumber' => $m[2]], MUST_EXIST);
         }, $path);
+    }
+
+    /**
+     * The template of certificate of Épure, as an administrator makes it (« Certificate — Acceptance test site »).
+     * Skips the scenario without the activity Course certificate (mod_coursecertificate) and its plugin Certificate.
+     *
+     * @Given /^the certificate template of Épure exists$/
+     */
+    public function the_certificate_template_of_epure_exists(): void {
+        if (
+            !\theme_epure\certificate_template::available()
+                || \core_component::get_component_directory('mod_coursecertificate') === null
+        ) {
+            throw new SkippedException('The activity Course certificate (mod_coursecertificate) is not installed.');
+        }
+        \core\session\manager::set_user(get_admin());
+        \theme_epure\certificate_template::create();
+    }
+
+    /**
+     * The brand colour of the site, its styles built again.
+     *
+     * @Given /^the brand colour of the site is "(?P<colour>#[0-9A-Fa-f]{6})"$/
+     * @param string $colour Colour.
+     */
+    public function the_brand_colour_of_the_site_is(string $colour): void {
+        set_config('brandcolor', $colour, 'theme_epure');
+        theme_reset_all_caches();
+    }
+
+    /**
+     * Each element reached with the keyboard (the first 60 of the page), once focused, is not hidden under a bar fixed at
+     * the top or the bottom of the screen (WCAG 2.4.11), on a computer (1300 pixels) and on a phone (390 pixels). The
+     * element is focused as with the key Tab, then given the time of the theme to move it clear of the bars.
+     *
+     * @Then /^the elements focused with the keyboard should not be hidden under a fixed bar on the pages:$/
+     * @param TableNode $data Column path.
+     */
+    public function the_elements_focused_should_not_be_hidden_under_a_fixed_bar(TableNode $data): void {
+        $list = <<<'JS'
+            window.epureFocusables = Array.from(document.querySelectorAll(
+                'a[href], button, input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+            )).filter((element) => !element.disabled && element.getClientRects().length > 0
+                && getComputedStyle(element).visibility !== 'hidden').slice(0, 60);
+            return window.epureFocusables.length;
+        JS;
+        $failures = [];
+        foreach ($data->getHash() as $row) {
+            $path = $this->epure_path($row['path']);
+            foreach ([1300, 390] as $width) {
+                $this->getSession()->resizeWindow($width, 900);
+                $this->getSession()->visit($this->locate_path($path));
+                $this->wait_for_pending_js();
+                $count = (int) $this->getSession()->evaluateScript($list);
+                for ($i = 0; $i < $count; $i++) {
+                    $this->getSession()->executeScript("window.epureFocusables[{$i}].focus();");
+                    $this->getSession()->wait(150);
+                    $hidden = $this->getSession()->evaluateScript(<<<JS
+                        return (() => {
+                            const element = window.epureFocusables[{$i}];
+                            if (document.activeElement !== element) {
+                                return '';
+                            }
+                            const rect = element.getBoundingClientRect();
+                            const x = Math.min(Math.max(rect.left + rect.width / 2, 0), window.innerWidth - 1);
+                            const y = rect.top + rect.height / 2;
+                            if (!rect.width || !rect.height || y < 0 || y >= window.innerHeight) {
+                                return '';
+                            }
+                            const top = document.elementFromPoint(x, y);
+                            if (!top || element.contains(top) || top.contains(element)) {
+                                return '';
+                            }
+                            for (let node = top; node && node !== document.body; node = node.parentElement) {
+                                const position = getComputedStyle(node).position;
+                                if ((position === 'fixed' || position === 'sticky') && !node.contains(element)) {
+                                    const name = (element.textContent || element.getAttribute('aria-label')
+                                        || element.name || element.id || element.tagName).trim().slice(0, 40);
+                                    return name + ' under ' + node.tagName.toLowerCase()
+                                        + (node.className ? '.' + String(node.className).trim().split(/\s+/)[0] : '');
+                                }
+                            }
+                            return '';
+                        })();
+                    JS);
+                    if ($hidden) {
+                        $failures[] = "{$row['path']} ({$width} px): {$hidden}";
+                    }
+                }
+            }
+        }
+        $this->getSession()->resizeWindow(1366, 900);
+        if ($failures) {
+            throw new ExpectationException(count($failures) . " failures:\n" . implode("\n", $failures), $this->getSession());
+        }
     }
 
     /**

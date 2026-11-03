@@ -1,5 +1,16 @@
 # Changes
 
+## 0.56.4 (RC) — matrix of non-regression of the accessibility
+
+- Behat matrix of non-regression of the accessibility functions together: brand colours light, dark and of mid tones; all the display preferences on; the elements focused with the keyboard never under a fixed bar, on a computer and a phone; the panel « Aa » with Alt + A and Escape, the focus given back; the display preferences from page to page; a timed quiz; the colours of the IOMAD companies, light, dark and of mid tones; the menus and the windows (user menu, quick search) with a name, closed with Escape, the focus given back. Each page in the four displays.
+- Found by the matrix: with OpenDyslexic and the text spacing of WCAG 1.4.12, the frame of the content of a page could scroll down by a little, a scroll the keyboard could not reach (WCAG 2.1.1). The frames of the contents now scroll across only, and their long words wrap.
+- Found by the matrix: with a light brand colour (yellow), the section to continue in the course index read at 4.18:1 on the grey of Moodle 5.x under the pointer or on the active section. It keeps the tint of the brand in every state (4.5:1 at least).
+- Template of certificate: a very long name of course (155 characters) went past the frame on both sides. The texts now wrap inside the frame, the name of the course on two lines at most (18 pt), the date of issue a little lower. Checked on the PDF of a certificate issued by the activity Course certificate, with a long and a short name of course.
+- The activity Course certificate (mod_coursecertificate) is installed on the jobs of the continuous integration whose version it supports (Moodle and IOMAD 4.5 to 5.2), from the fork of the maintainer; its page, for a learner and a teacher, with the template of Épure, in the four displays.
+- Found by the matrix: on phones, with the text at 115 or 130 % in « Aa », the buttons of the header and the switch of the edit mode went past 390 and 320 pixels, the user menu or the switch off the screen (the page scrolled across on Moodle 5.2, the buttons were out of reach on the others). On phones, the header keeps the size of its buttons whatever the size of text chosen; the zoom of the browser still enlarges it.
+- Content checker of the teachers, without false alerts: a decorative image (alt="", with or without role="presentation"), a table of layout (role="presentation" or "none"), headers on several rows, a short link clear in its sentence (« The programme is here. », WCAG 2.4.4, RGAA 6.1). Only a link alone in its block is reported. After « Save anyway », the next saving is checked again (a form refused for another field, then changed). Behat scenario.
+- Roadmap: the pre-audit, Alt + A and the quick preferences done; the steps of the publication.
+
 ## 0.56.3 (RC) — My summary from the menu and the profile, one style for the links that stand on their own
 
 - My summary, once enabled, is reached from the dashboard, the user menu (after the grades) and the reports of the profile of the user. Before, only from the overview of the learner on the dashboard: a user taking no course as a learner (managers of IOMAD, administrators) or with the overview turned off had no link to it.
