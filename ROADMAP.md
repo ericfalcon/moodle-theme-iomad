@@ -233,7 +233,7 @@ Les chantiers du thème prévus ci-dessus (0.29 à 0.57) sont livrés. Avant la 
 - [ ] **Matrice de non-régression** des fonctions d'accessibilité entre elles : clair et sombre ; couleurs de marque claires, sombres et intermédiaires ; zoom à 200 % et 320 px ; tout au clavier, sans piège ; aucun élément focalisé caché sous une barre fixe ; « réduire les animations » ; panneaux, menus et fenêtres (nom, ouverture, fermeture, retour du focus) ; couleurs des entreprises IOMAD ; tests chronométrés ; préférences d'affichage gardées d'une page à l'autre.
 - [x] **Raccourci Alt + A** (0.56.2) : ignoré pendant la saisie dans un champ ou l'éditeur (Option + A écrit « å » sur Mac) ; documenté dans le README et le wiki.
 - [x] **Préférences d'affichage changées très vite** (0.56.2) : les enregistrements partent l'un après l'autre, le dernier choix est gardé au rechargement.
-- [ ] **Vérificateur de contenu** des formateurs, sans fausses alertes : images décoratives, tableaux à plusieurs lignes d'en-tête, liens courts mais clairs dans leur contexte, contenus en plusieurs langues, plusieurs éditeurs dans un formulaire, enregistrements successifs.
+- [x] **Vérificateur de contenu** (0.56.4) des formateurs, sans fausses alertes : images décoratives, tableaux à plusieurs lignes d'en-tête, liens courts mais clairs dans leur contexte, contenus en plusieurs langues, plusieurs éditeurs dans un formulaire, enregistrements successifs.
 - [ ] **Attestation** : PDF vérifié avec des logos de formes différentes et sans logo (fait en 0.56.1) ; reste un nom de cours très long et l'activité Attestation de formation (`mod_coursecertificate`) installée.
 
 #### Code
