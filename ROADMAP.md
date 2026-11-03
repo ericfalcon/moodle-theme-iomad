@@ -229,23 +229,26 @@ Les chantiers du thème prévus ci-dessus (0.29 à 0.57) sont livrés. Avant la 
 #### Preuves d'accessibilité
 
 - [x] **Texte sur la couleur de marque à 4,5:1** (0.56.1), sur la couleur et au survol, en clair et en sombre, quelle que soit la couleur de marque ; les tests balaient les couleurs et échouent sous 4,5:1. Relevé par un audit externe de la 0.56.
-- [ ] **Pré-audit refait sur la version courante** : le rapport publié porte sur la 0.21 et ne vaut pas pour la 0.56. Même méthode (axe-core WCAG 2.2 A et AA, contrôles clavier, 320 px), sur Moodle 4.5, Moodle 5.3 et IOMAD, avec les pages ajoutées depuis (formulaires longs, Ma synthèse, déclaration pas à pas, ajout de bloc, modèle d'attestation).
+- [x] **Pré-audit refait sur la version courante** (0.56.2) : 40 pages de Moodle et 24 d'IOMAD, chacune en clair et en sombre sur ordinateur, en clair à 390 et 320 px (axe-core WCAG 2.2 A et AA, pas de défilement horizontal), plus les contrôles clavier ; il fait partie des tests et passe sur les 11 configurations de l'intégration continue (Moodle 4.5 à 5.3, IOMAD 4.5 à 5.2, PHP 8.1 à 8.4). Rapport dans le wiki (Pré-audit d'accessibilité).
 - [ ] **Matrice de non-régression** des fonctions d'accessibilité entre elles : clair et sombre ; couleurs de marque claires, sombres et intermédiaires ; zoom à 200 % et 320 px ; tout au clavier, sans piège ; aucun élément focalisé caché sous une barre fixe ; « réduire les animations » ; panneaux, menus et fenêtres (nom, ouverture, fermeture, retour du focus) ; couleurs des entreprises IOMAD ; tests chronométrés ; préférences d'affichage gardées d'une page à l'autre.
-- [ ] **Raccourci Alt + A** : vérifier qu'il n'entre pas en conflit avec les navigateurs, les lecteurs d'écran et la saisie dans les champs et l'éditeur ; le documenter.
-- [ ] **Préférences d'affichage changées très vite** (taille, contraste, mode) puis page rechargée : c'est le dernier choix qui est enregistré.
+- [x] **Raccourci Alt + A** (0.56.2) : ignoré pendant la saisie dans un champ ou l'éditeur (Option + A écrit « å » sur Mac) ; documenté dans le README et le wiki.
+- [x] **Préférences d'affichage changées très vite** (0.56.2) : les enregistrements partent l'un après l'autre, le dernier choix est gardé au rechargement.
 - [ ] **Vérificateur de contenu** des formateurs, sans fausses alertes : images décoratives, tableaux à plusieurs lignes d'en-tête, liens courts mais clairs dans leur contexte, contenus en plusieurs langues, plusieurs éditeurs dans un formulaire, enregistrements successifs.
 - [ ] **Attestation** : PDF vérifié avec des logos de formes différentes et sans logo (fait en 0.56.1) ; reste un nom de cours très long et l'activité Attestation de formation (`mod_coursecertificate`) installée.
 
 #### Code
 
-- [ ] **Moins de surcharges** : déplacer ce qui peut l'être de `core_renderer` vers les hooks de Moodle (haut de page, pied de page, reste de l'en-tête), chacun limité au thème Épure et couvert par un test ; réduire les `!important` du SCSS. Par petites étapes, sur Moodle 4.5 et 5.x ; on garde les surcharges vraiment nécessaires.
-- [ ] **Micro-interactions harmonisées** : mêmes durées et mêmes transitions partout, coupées par « réduire les animations ».
+- [ ] **Moins de surcharges** (ne conditionne pas la publication) : déplacer ce qui peut l'être de `core_renderer` vers les hooks de Moodle (haut de page, pied de page, reste de l'en-tête), chacun limité au thème Épure et couvert par un test ; réduire les `!important` du SCSS. Par petites étapes, sur Moodle 4.5 et 5.x ; on garde les surcharges vraiment nécessaires.
+- [ ] **Micro-interactions harmonisées** (ne conditionne pas la publication) : mêmes durées et mêmes transitions partout, coupées par « réduire les animations ».
 - [ ] Corrections remontées par les utilisateurs, en priorité celles qui gênent l'apprentissage.
 
 #### Publication (V1.0)
 
-- [ ] Audit d'accessibilité manuel (RGAA) par un auditeur, sur la version qui sera publiée.
-- [ ] Transfert du français dans AMOS, puis publication sur moodle.org/plugins.
+- [ ] Audit d'accessibilité manuel (RGAA) par un auditeur, sur la version qui sera publiée ; ses résultats dans la déclaration d'accessibilité.
+- [ ] Version 1.0.0, maturité stable.
+- [ ] Dépôt dédié au plugin (`moodle-theme_epure`, le plugin à sa racine), lié depuis la fiche du plugin.
+- [ ] Paquet publié avec l'anglais seul ; le français transféré dans AMOS.
+- [ ] Fiche sur moodle.org/plugins : description, captures, documentation (wiki), suivi des anomalies (GitHub), versions prises en charge (4.5 à 5.3) ; puis le contrôle automatique de moodle.org et la revue.
 
 ### Après la V1.0
 
