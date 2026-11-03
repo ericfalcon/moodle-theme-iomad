@@ -4,6 +4,7 @@
 
 - Behat matrix of non-regression of the accessibility functions together: brand colours light, dark and of mid tones; all the display preferences on; the elements focused with the keyboard never under a fixed bar, on a computer and a phone; the panel « Aa » with Alt + A and Escape, the focus given back; the display preferences from page to page; a timed quiz. Each page in the four displays.
 - Found by the matrix: with OpenDyslexic and the text spacing of WCAG 1.4.12, the frame of the content of a page could scroll down by a little, a scroll the keyboard could not reach (WCAG 2.1.1). The frames of the contents now scroll across only, and their long words wrap.
+- Found by the matrix: with a light brand colour (yellow), the section to continue in the course index read at 4.18:1 on the grey of Moodle 5.x under the pointer or on the active section. It keeps the tint of the brand in every state (4.5:1 at least).
 - Content checker of the teachers, without false alerts: a decorative image (alt="", with or without role="presentation"), a table of layout (role="presentation" or "none"), headers on several rows, a short link clear in its sentence (« The programme is here. », WCAG 2.4.4, RGAA 6.1). Only a link alone in its block is reported. After « Save anyway », the next saving is checked again (a form refused for another field, then changed). Behat scenario.
 - Roadmap: the pre-audit, Alt + A and the quick preferences done; the steps of the publication.
 
