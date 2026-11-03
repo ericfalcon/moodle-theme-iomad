@@ -1,5 +1,11 @@
 # Changes
 
+## 0.56.4 (RC) — matrix of non-regression of the accessibility
+
+- Behat matrix of non-regression of the accessibility functions together: brand colours light, dark and of mid tones; all the display preferences on; the elements focused with the keyboard never under a fixed bar, on a computer and a phone; the panel « Aa » with Alt + A and Escape, the focus given back; the display preferences from page to page; a timed quiz. Each page in the four displays.
+- Found by the matrix: with OpenDyslexic and the text spacing of WCAG 1.4.12, the frame of the content of a page could scroll down by a little, a scroll the keyboard could not reach (WCAG 2.1.1). The frames of the contents now scroll across only, and their long words wrap.
+- Roadmap: the pre-audit, Alt + A and the quick preferences done; the steps of the publication.
+
 ## 0.56.3 (RC) — My summary from the menu and the profile, one style for the links that stand on their own
 
 - My summary, once enabled, is reached from the dashboard, the user menu (after the grades) and the reports of the profile of the user. Before, only from the overview of the learner on the dashboard: a user taking no course as a learner (managers of IOMAD, administrators) or with the overview turned off had no link to it.
