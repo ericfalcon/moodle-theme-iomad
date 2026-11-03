@@ -1,5 +1,9 @@
 # Changes
 
+## 0.56.5 (RC) — the user menu under the pointer
+
+- User menu: under the pointer or focused, an item was in the colour of the brand on the fill of the brand, unreadable (since 0.56.3). It is now in the colour of the text on the brand, with its arrow, in light and dark mode. The links of the blocks of the dashboard keep the colour of the brand under the pointer, underlined.
+
 ## 0.56.4 (RC) — matrix of non-regression of the accessibility
 
 - Behat matrix of non-regression of the accessibility functions together: brand colours light, dark and of mid tones; all the display preferences on; the elements focused with the keyboard never under a fixed bar, on a computer and a phone; the panel « Aa » with Alt + A and Escape, the focus given back; the display preferences from page to page; a timed quiz; the colours of the IOMAD companies, light, dark and of mid tones; the menus and the windows (user menu, quick search) with a name, closed with Escape, the focus given back. Each page in the four displays.
