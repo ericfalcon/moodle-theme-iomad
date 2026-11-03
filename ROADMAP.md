@@ -234,7 +234,7 @@ Les chantiers du thème prévus ci-dessus (0.29 à 0.57) sont livrés. Avant la 
 - [x] **Raccourci Alt + A** (0.56.2) : ignoré pendant la saisie dans un champ ou l'éditeur (Option + A écrit « å » sur Mac) ; documenté dans le README et le wiki.
 - [x] **Préférences d'affichage changées très vite** (0.56.2) : les enregistrements partent l'un après l'autre, le dernier choix est gardé au rechargement.
 - [x] **Vérificateur de contenu** (0.56.4) des formateurs, sans fausses alertes : images décoratives, tableaux à plusieurs lignes d'en-tête, liens courts mais clairs dans leur contexte, contenus en plusieurs langues, plusieurs éditeurs dans un formulaire, enregistrements successifs.
-- [ ] **Attestation** : PDF vérifié avec des logos de formes différentes et sans logo (fait en 0.56.1) ; reste un nom de cours très long et l'activité Attestation de formation (`mod_coursecertificate`) installée.
+- [x] **Attestation** : PDF vérifié avec des logos de formes différentes et sans logo (0.56.1), avec un nom de cours très long (0.56.4 : les textes passent à la ligne dans le cadre) ; l'activité Attestation de formation (`mod_coursecertificate`) installée dans l'intégration continue et contrôlée.
 
 #### Code
 
