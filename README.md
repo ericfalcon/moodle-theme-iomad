@@ -1,5 +1,8 @@
 # Épure
 
+> **Épure has moved.** Development continues in [ericfalcon/moodle-theme_epure](https://github.com/ericfalcon/moodle-theme_epure) (version 1.0.0 and later, to install as `theme/epure`). This repository keeps the history up to 0.56.5 and is no longer updated.
+> Épure a déménagé : la suite (1.0.0 et après) est dans [ericfalcon/moodle-theme_epure](https://github.com/ericfalcon/moodle-theme_epure).
+
 A modern, clean and accessible Moodle theme for **Moodle 4.5 LTS and 5.x**, with or without **IOMAD**.
 
 ![Theme preview](theme/epure/pix/screenshot.png)

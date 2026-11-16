@@ -1,5 +1,7 @@
 # Changes
 
+> The changes since 1.0.0 are in [the CHANGES of ericfalcon/moodle-theme_epure](https://github.com/ericfalcon/moodle-theme_epure/blob/main/CHANGES.md); this file stops at 0.56.5.
+
 ## 0.56.5 (RC) — the user menu under the pointer
 
 - User menu: under the pointer or focused, an item was in the colour of the brand on the fill of the brand, unreadable (since 0.56.3). It is now in the colour of the text on the brand, with its arrow, in light and dark mode. The links of the blocks of the dashboard keep the colour of the brand under the pointer, underlined.
